@@ -41,8 +41,13 @@ export default function TrafficCard() {
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">60%</span>
-                                        <div className="relative w-full">
-                                            <Progress color="blue" value="60" />
+                                        <div class="relative w-full">
+                                            <div class="overflow-hidden h-2 flex rounded bg-blue-200">
+                                                <div
+                                                    class="flex justify-center items-center rounded text-xs font-medium bg-blue-500 text-white"
+                                                    style={{ width: '60%' }}
+                                                ></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -57,8 +62,13 @@ export default function TrafficCard() {
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">80%</span>
-                                        <div className="relative w-full">
-                                            <Progress color="red" value="80" />
+                                        <div class="relative w-full">
+                                            <div class="overflow-hidden h-2 flex rounded bg-red-200">
+                                                <div
+                                                    class="flex justify-center items-center rounded text-xs font-medium bg-red-500 text-white"
+                                                    style={{ width: '80%' }}
+                                                ></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -73,11 +83,13 @@ export default function TrafficCard() {
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">75%</span>
-                                        <div className="relative w-full">
-                                            <Progress
-                                                color="indigo"
-                                                value="75"
-                                            />
+                                        <div class="relative w-full">
+                                            <div class="overflow-hidden h-2 flex rounded bg-indigo-200">
+                                                <div
+                                                    class="flex justify-center items-center rounded text-xs font-medium bg-indigo-500 text-white"
+                                                    style={{ width: '75%' }}
+                                                ></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -92,11 +104,13 @@ export default function TrafficCard() {
                                 <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">30%</span>
-                                        <div className="relative w-full">
-                                            <Progress
-                                                color="lightBlue"
-                                                value="30"
-                                            />
+                                        <div class="relative w-full">
+                                            <div class="overflow-hidden h-2 flex rounded bg-light-blue-200">
+                                                <div
+                                                    class="flex justify-center items-center rounded text-xs font-medium bg-light-blue-500 text-white"
+                                                    style={{ width: '30%' }}
+                                                ></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
