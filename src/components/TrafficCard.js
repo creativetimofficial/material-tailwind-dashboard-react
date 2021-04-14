@@ -95,13 +95,13 @@ export default function TrafficCard() {
                                 </td>
                             </tr>
                             <tr>
-                                <th className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     Twitter
                                 </th>
-                                <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     2,645
                                 </td>
-                                <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">30%</span>
                                         <div class="relative w-full">
