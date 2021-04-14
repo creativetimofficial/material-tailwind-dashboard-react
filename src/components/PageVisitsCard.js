@@ -78,16 +78,16 @@ export default function PageVisitsCard() {
                                 </td>
                             </tr>
                             <tr>
-                                <th className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     4
                                 </th>
-                                <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     Philip Chaney
                                 </td>
-                                <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     $38,735
                                 </td>
-                                <td className="align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     Korea, South
                                 </td>
                             </tr>
