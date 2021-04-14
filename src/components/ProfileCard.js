@@ -74,7 +74,7 @@ export default function ProfileCard() {
                                     onClick={(e) => e.preventDefault()}
                                 >
                                     <Button
-                                        color="lightBlue"
+                                        color="purple"
                                         buttonType="link"
                                         ripple="dark"
                                     >
