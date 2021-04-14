@@ -6,7 +6,7 @@ import TrafficCard from '../components/TrafficCard';
 
 export default function Dashboard() {
     return (
-        <div className="md:ml-64">
+        <>
             <div className="bg-light-blue-500 pt-14 pb-28 px-9 h-auto">
                 <div className="container mx-auto max-w-full">
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
@@ -67,7 +67,7 @@ export default function Dashboard() {
                 </div>
             </div>
 
-            <div className="pb-14 px-9 h-auto">
+            <div className="px-9 h-auto">
                 <div className="container mx-auto max-w-full">
                     <div className="grid grid-cols-1 xl:grid-cols-5">
                         <div className="xl:col-start-1	xl:col-end-4 px-6">
@@ -79,6 +79,6 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
