@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
 import Chart from 'chart.js';
+import Card from '@material-tailwind/react/Card';
+import CardHeader from '@material-tailwind/react/CardHeader';
+import CardBody from '@material-tailwind/react/CardBody';
 
 export default function ChartLine() {
     useEffect(() => {
@@ -108,24 +111,18 @@ export default function ChartLine() {
     }, []);
 
     return (
-        <>
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-20 shadow rounded-lg bg-white px-4">
-                <div className="rounded-lg mb-0 px-6 py-4 bg-gradient-to-tr from-orange-500 to-orange-700 shadow-xl -mt-8">
-                    <div className="flex flex-wrap items-center">
-                        <div className="relative w-full max-w-full flex-grow flex-1">
-                            <h6 className="uppercase text-gray-200 mb-1 text-xs font-medium">
-                                Overview
-                            </h6>
-                            <h2 className="text-white text-2xl">Sales value</h2>
-                        </div>
-                    </div>
+        <Card>
+            <CardHeader color="orange" contentPosition="left">
+                <h6 className="uppercase text-gray-200 text-xs font-medium">
+                    Overview
+                </h6>
+                <h2 className="text-white text-2xl">Sales value</h2>
+            </CardHeader>
+            <CardBody>
+                <div className="relative h-96">
+                    <canvas id="line-chart"></canvas>
                 </div>
-                <div className="p-4 flex-auto">
-                    <div className="relative h-96">
-                        <canvas id="line-chart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </>
+            </CardBody>
+        </Card>
     );
 }
