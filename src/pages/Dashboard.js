@@ -7,7 +7,7 @@ import TrafficCard from 'components/TrafficCard';
 export default function Dashboard() {
     return (
         <>
-            <div className="bg-light-blue-500 pt-14 pb-28 px-9 h-auto">
+            <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
                 <div className="container mx-auto max-w-full">
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
                         <StatusCard
@@ -17,7 +17,7 @@ export default function Dashboard() {
                             amount="350,897"
                             percentage="3.48"
                             percentageIcon="fas fa-arrow-up"
-                            persentageColor="green"
+                            percentageColor="green"
                             date="Since last month"
                         />
                         <StatusCard
@@ -27,7 +27,7 @@ export default function Dashboard() {
                             amount="2,356"
                             percentage="3.48"
                             percentageIcon="fas fa-arrow-down"
-                            persentageColor="red"
+                            percentageColor="red"
                             date="Since last week"
                         />
                         <StatusCard
@@ -37,7 +37,7 @@ export default function Dashboard() {
                             amount="924"
                             percentage="1.10"
                             percentageIcon="fas fa-arrow-down"
-                            persentageColor="orange"
+                            percentageColor="orange"
                             date="Since yesterday"
                         />
                         <StatusCard
@@ -47,33 +47,33 @@ export default function Dashboard() {
                             amount="49,65%"
                             percentage="12"
                             percentageIcon="fas fa-arrow-up"
-                            persentageColor="green"
+                            percentageColor="green"
                             date="Since last month"
                         />
                     </div>
                 </div>
             </div>
 
-            <div className="px-9 h-auto -mt-24">
+            <div className="px-3 md:px-8 h-auto -mt-24">
                 <div className="container mx-auto max-w-full">
                     <div className="grid grid-cols-1 xl:grid-cols-5">
-                        <div className="xl:col-start-1	xl:col-end-4 px-6">
+                        <div className="xl:col-start-1 xl:col-end-4 px-4 mb-14">
                             <ChartLine />
                         </div>
-                        <div className="xl:col-start-4 xl:col-end-6 px-6">
+                        <div className="xl:col-start-4 xl:col-end-6 px-4 mb-14">
                             <ChartBar />
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="px-9 h-auto">
+            <div className="px-3 md:px-8 h-auto">
                 <div className="container mx-auto max-w-full">
                     <div className="grid grid-cols-1 xl:grid-cols-5">
-                        <div className="xl:col-start-1	xl:col-end-4 px-6">
+                        <div className="xl:col-start-1 xl:col-end-4 px-4 mb-14">
                             <PageVisitsCard />
                         </div>
-                        <div className="xl:col-start-4 xl:col-end-6 px-6">
+                        <div className="xl:col-start-4 xl:col-end-6 px-4 mb-14">
                             <TrafficCard />
                         </div>
                     </div>
