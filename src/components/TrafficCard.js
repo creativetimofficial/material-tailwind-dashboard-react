@@ -1,5 +1,4 @@
 import Button from '@material-tailwind/react/Button';
-import Progress from '@material-tailwind/react/Progress';
 
 export default function TrafficCard() {
     return (

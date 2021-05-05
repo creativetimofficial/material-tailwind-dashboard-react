@@ -3,7 +3,7 @@ import H5 from '@material-tailwind/react/Heading5';
 import Icon from '@material-tailwind/react/Icon';
 import LeadText from '@material-tailwind/react/LeadText';
 import Button from '@material-tailwind/react/Button';
-import ProfilePicture from '../img/team-1-800x800.jpg';
+import ProfilePicture from 'assets/img/team-1-800x800.jpg';
 
 export default function ProfileCard() {
     return (

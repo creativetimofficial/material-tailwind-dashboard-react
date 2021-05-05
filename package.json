@@ -2,9 +2,10 @@
   "name": "material-tailwind-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
-    "@craco/craco": "^6.1.1",
-    "@material-tailwind/react": "^0.2.0",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@material-tailwind/react": "0.3.1",
     "@react-google-maps/api": "^2.1.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -17,10 +18,14 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "build:tailwind": "postcss ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css",
+    "watch:tailwind": "postcss ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css -w",
+    "start": "npm run build:tailwind && watch:tailwind & react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "npm:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "yarn:clean": "rm -rf node_modules/ && rm -rf package-lock.json && yarn install && yarn start"
   },
   "eslintConfig": {
     "extends": [
@@ -41,9 +46,13 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.1.0",
-    "autoprefixer": "^9",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.13",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.1.2"
+  },
+  "optionalDependencies": {
+    "@babel/core": "7.14.0",
+    "typescript": "4.2.4"
   }
 }

@@ -4,7 +4,7 @@ import NavbarInput from '@material-tailwind/react/NavbarInput';
 import Image from '@material-tailwind/react/Image';
 import Dropdown from '@material-tailwind/react/Dropdown';
 import DropdownItem from '@material-tailwind/react/DropdownItem';
-import ProfilePicture from '../img/team-1-800x800.jpg';
+import ProfilePicture from 'assets/img/team-1-800x800.jpg';
 
 export default function AdminNavbar({ showSidebar, setShowSidebar }) {
     return (

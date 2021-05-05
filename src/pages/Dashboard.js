@@ -1,8 +1,8 @@
-import StatusCard from '../components/StatusCard';
-import ChartLine from '../components/ChartLine';
-import ChartBar from '../components/ChartBar';
-import PageVisitsCard from '../components/PageVisitsCard';
-import TrafficCard from '../components/TrafficCard';
+import StatusCard from 'components/StatusCard';
+import ChartLine from 'components/ChartLine';
+import ChartBar from 'components/ChartBar';
+import PageVisitsCard from 'components/PageVisitsCard';
+import TrafficCard from 'components/TrafficCard';
 
 export default function Dashboard() {
     return (

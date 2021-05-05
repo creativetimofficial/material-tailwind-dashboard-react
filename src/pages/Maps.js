@@ -1,5 +1,5 @@
-import StatusCard from '../components/StatusCard';
-import Map from '../components/MapExample';
+import StatusCard from 'components/StatusCard';
+import Map from 'components/MapExample';
 
 export default function Dashboard() {
     return (

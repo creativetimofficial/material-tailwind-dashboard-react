@@ -1,5 +1,5 @@
-import StatusCard from '../components/StatusCard';
-import TableCard from '../components/TableCard';
+import StatusCard from 'components/StatusCard';
+import TableCard from 'components/TableCard';
 
 export default function Dashboard() {
     return (

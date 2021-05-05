@@ -1,6 +1,6 @@
-import StatusCard from '../components/StatusCard';
-import SettingsForm from '../components/SettingsForm';
-import ProfileCard from '../components/ProfileCard';
+import StatusCard from 'components/StatusCard';
+import SettingsForm from 'components/SettingsForm';
+import ProfileCard from 'components/ProfileCard';
 
 export default function Dashboard() {
     return (

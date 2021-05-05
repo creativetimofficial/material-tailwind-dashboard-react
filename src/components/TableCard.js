@@ -1,9 +1,8 @@
-import React from 'react';
-import Team1 from '../img/team-1-800x800.jpg';
-import Team2 from '../img/team-2-800x800.jpg';
-import Team3 from '../img/team-3-800x800.jpg';
-import Team4 from '../img/team-4-470x470.png';
 import Image from '@material-tailwind/react/Image';
+import Team1 from 'assets/img/team-1-800x800.jpg';
+import Team2 from 'assets/img/team-2-800x800.jpg';
+import Team3 from 'assets/img/team-3-800x800.jpg';
+import Team4 from 'assets/img/team-4-470x470.png';
 
 export default function CardTable() {
     return (

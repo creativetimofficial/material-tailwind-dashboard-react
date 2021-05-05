@@ -1,10 +1,18 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Dashboard from './pages/Dashboard';
-import Settings from './pages/Settings';
-import Tables from './pages/Tables';
-import Maps from './pages/Maps';
-import Footer from './components/Footer';
+import Sidebar from 'components/Sidebar';
+import Dashboard from 'pages/Dashboard';
+import Settings from 'pages/Settings';
+import Tables from 'pages/Tables';
+import Maps from 'pages/Maps';
+import Footer from 'components/Footer';
+
+// Tailwind CSS Style Sheet
+import 'assets/styles/tailwind.css';
+
+// Font Awesome Style Sheet
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+// Material Tailwind Style Sheet
 import '@material-tailwind/react/tailwind.css';
 
 function App() {
@@ -13,19 +21,11 @@ function App() {
             <Sidebar />
             <div className="md:ml-64">
                 <Switch>
-                    <Route exact path="/dashboard">
-                        <Dashboard />
-                    </Route>
-                    <Route exact path="/settings">
-                        <Settings />
-                    </Route>
-                    <Route exact path="/tables">
-                        <Tables />
-                    </Route>
-                    <Route exact path="/maps">
-                        <Maps />
-                    </Route>
-                    <Redirect from="*" to="/dashboard" />
+                    <Route exact path="/" component={Dashboard} />
+                    <Route exact path="/settings" component={Settings} />
+                    <Route exact path="/tables" component={Tables} />
+                    <Route exact path="/maps" component={Maps} />
+                    <Redirect from="*" to="/" />
                 </Switch>
                 <Footer />
             </div>
