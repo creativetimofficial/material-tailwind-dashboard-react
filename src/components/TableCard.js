@@ -83,10 +83,10 @@ export default function CardTable() {
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">60%</span>
-                                        <div class="relative w-full">
-                                            <div class="overflow-hidden h-2 flex rounded bg-red-200">
+                                        <div className="relative w-full">
+                                            <div className="overflow-hidden h-2 flex rounded bg-red-200">
                                                 <div
-                                                    class="flex justify-center items-center rounded text-xs font-medium bg-red-500 text-white"
+                                                    className="flex justify-center items-center rounded text-xs font-medium bg-red-500 text-white"
                                                     style={{ width: '60%' }}
                                                 ></div>
                                             </div>
@@ -140,10 +140,10 @@ export default function CardTable() {
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">100%</span>
-                                        <div class="relative w-full">
-                                            <div class="overflow-hidden h-2 flex rounded bg-green-200">
+                                        <div className="relative w-full">
+                                            <div className="overflow-hidden h-2 flex rounded bg-green-200">
                                                 <div
-                                                    class="flex justify-center items-center rounded text-xs font-medium bg-green-500 text-white"
+                                                    className="flex justify-center items-center rounded text-xs font-medium bg-green-500 text-white"
                                                     style={{ width: '100%' }}
                                                 ></div>
                                             </div>
@@ -197,10 +197,10 @@ export default function CardTable() {
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">90%</span>
-                                        <div class="relative w-full">
-                                            <div class="overflow-hidden h-2 flex rounded bg-teal-200">
+                                        <div className="relative w-full">
+                                            <div className="overflow-hidden h-2 flex rounded bg-teal-200">
                                                 <div
-                                                    class="flex justify-center items-center rounded text-xs font-medium bg-teal-500 text-white"
+                                                    className="flex justify-center items-center rounded text-xs font-medium bg-teal-500 text-white"
                                                     style={{ width: '90%' }}
                                                 ></div>
                                             </div>
@@ -254,10 +254,10 @@ export default function CardTable() {
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                     <div className="flex items-center">
                                         <span className="mr-2">100%</span>
-                                        <div class="relative w-full">
-                                            <div class="overflow-hidden h-2 flex rounded bg-green-200">
+                                        <div className="relative w-full">
+                                            <div className="overflow-hidden h-2 flex rounded bg-green-200">
                                                 <div
-                                                    class="flex justify-center items-center rounded text-xs font-medium bg-green-500 text-white"
+                                                    className="flex justify-center items-center rounded text-xs font-medium bg-green-500 text-white"
                                                     style={{ width: '100%' }}
                                                 ></div>
                                             </div>
