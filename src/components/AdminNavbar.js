@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';
 import NavbarInput from '@material-tailwind/react/NavbarInput';
@@ -7,6 +8,8 @@ import DropdownItem from '@material-tailwind/react/DropdownItem';
 import ProfilePicture from 'assets/img/team-1-800x800.jpg';
 
 export default function AdminNavbar({ showSidebar, setShowSidebar }) {
+    const location = useLocation().pathname;
+
     return (
         <nav className="bg-light-blue-500 md:ml-64 py-6 px-4">
             <div className="container max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10">
@@ -43,7 +46,9 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
 
                 <div className="flex justify-between items-center w-full">
                     <h4 className="uppercase text-white text-sm tracking-wider mt-1">
-                        Dashboard
+                        {location === '/'
+                            ? 'DASHBOARD'
+                            : location.toUpperCase().replace('/', '')}
                     </h4>
 
                     <div className="flex">
@@ -60,9 +65,15 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
                                 rounded
                                 style={{ padding: 0, color: 'transparent' }}
                             >
-                                <DropdownItem>Action</DropdownItem>
-                                <DropdownItem>Another Action</DropdownItem>
-                                <DropdownItem>Something Else</DropdownItem>
+                                <DropdownItem color="lightBlue">
+                                    Action
+                                </DropdownItem>
+                                <DropdownItem color="lightBlue">
+                                    Another Action
+                                </DropdownItem>
+                                <DropdownItem color="lightBlue">
+                                    Something Else
+                                </DropdownItem>
                             </Dropdown>
                         </div>
                     </div>
