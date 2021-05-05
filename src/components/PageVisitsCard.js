@@ -1,22 +1,26 @@
+import Card from '@material-tailwind/react/Card';
+import CardHeader from '@material-tailwind/react/CardHeader';
+import CardBody from '@material-tailwind/react/CardBody';
 import Button from '@material-tailwind/react/Button';
 
 export default function PageVisitsCard() {
     return (
-        <>
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-20 shadow rounded-lg px-4">
-                <div className="rounded-lg mb-0 px-6 py-4 bg-gradient-to-tr from-teal-500 to-teal-700 shadow-xl -mt-8">
-                    <div className="flex flex-wrap items-center justify-between">
-                        <div className="relative max-w-full">
-                            <h3 className="text-xl text-white">Page visits</h3>
-                        </div>
-                        <div className="relative text-right">
-                            <Button color="lightBlue" size="sm" ripple="light">
-                                See More
-                            </Button>
-                        </div>
-                    </div>
+        <Card>
+            <CardHeader color="teal" contentPosition="none">
+                <div className="w-full flex items-center justify-between">
+                    <h2 className="text-white text-2xl">Page Visits</h2>
+                    <Button
+                        color="transparent"
+                        buttonType="link"
+                        size="lg"
+                        ripple="light"
+                    >
+                        See More
+                    </Button>
                 </div>
-                <div className="block w-full overflow-x-auto pt-6 pb-4 px-2">
+            </CardHeader>
+            <CardBody>
+                <div className="overflow-x-auto">
                     <table className="items-center w-full bg-transparent border-collapse">
                         <thead>
                             <tr>
@@ -94,7 +98,7 @@ export default function PageVisitsCard() {
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </>
+            </CardBody>
+        </Card>
     );
 }
