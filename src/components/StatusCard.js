@@ -31,11 +31,9 @@ export default function StatusCard({
                     color={percentageColor}
                     date={date}
                 >
-                    <Icon
-                        family="font-awesome"
-                        color={percentageColor}
-                        name={percentageIcon}
-                    />
+                    <div className="inline-block align-middle">
+                        <Icon color={percentageColor} name={percentageIcon} />
+                    </div>
                 </CardStatusFooter>
             </Card>
         </div>

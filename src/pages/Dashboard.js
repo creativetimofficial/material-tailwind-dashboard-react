@@ -16,7 +16,7 @@ export default function Dashboard() {
                             title="Traffic"
                             amount="350,897"
                             percentage="3.48"
-                            percentageIcon="fas fa-arrow-up"
+                            percentageIcon="arrow_upward"
                             percentageColor="green"
                             date="Since last month"
                         />
@@ -26,7 +26,7 @@ export default function Dashboard() {
                             title="New Users"
                             amount="2,356"
                             percentage="3.48"
-                            percentageIcon="fas fa-arrow-down"
+                            percentageIcon="arrow_downward"
                             percentageColor="red"
                             date="Since last week"
                         />
@@ -36,7 +36,7 @@ export default function Dashboard() {
                             title="Sales"
                             amount="924"
                             percentage="1.10"
-                            percentageIcon="fas fa-arrow-down"
+                            percentageIcon="arrow_downward"
                             percentageColor="orange"
                             date="Since yesterday"
                         />
@@ -46,7 +46,7 @@ export default function Dashboard() {
                             title="Performance"
                             amount="49,65%"
                             percentage="12"
-                            percentageIcon="fas fa-arrow-up"
+                            percentageIcon="arrow_upward"
                             percentageColor="green"
                             date="Since last month"
                         />
