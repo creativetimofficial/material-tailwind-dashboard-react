@@ -28,7 +28,7 @@ export default function Sidebar() {
                         <hr className="my-4 min-w-full" />
 
                         <ul className="flex-col min-w-full flex list-none">
-                            <li className={`rounded-lg mb-4`}>
+                            <li className="rounded-lg mb-4">
                                 <NavLink
                                     to="/"
                                     exact

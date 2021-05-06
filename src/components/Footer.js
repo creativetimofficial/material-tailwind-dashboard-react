@@ -2,7 +2,7 @@ export default function footer() {
     return (
         <footer className="py-6 px-16 border-t border-gray-200 font-light flex flex-col lg:flex-row justify-between items-center">
             <p className="text-gray-700 mb-6 lg:mb-0">
-                Copyright &copy; {new Date().getFullYear()} Material Tailwind by{' '}
+                Copyright &copy; {new Date().getFullYear()}{' '}
                 <a
                     href="https://www.creative-tim.com?ref=mtdk"
                     target="_blank"
@@ -19,29 +19,29 @@ export default function footer() {
                         className="text-gray-700 hover:text-gray-900 font-medium block text-sm"
                         target="_blank"
                         rel="noreferrer"
-                        href="https://github.com/creativetimofficial/material-tailwind/blob/main/LICENSE.md?ref=mtdk"
+                        href="https://www.creative-tim.com/presentation?ref=mtdk"
+                    >
+                        About Us
+                    </a>
+                </li>
+                <li className="mr-6">
+                    <a
+                        className="text-gray-700 hover:text-gray-900 font-medium block text-sm"
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.creative-tim.com/blog/?ref=mtdk"
+                    >
+                        Blog
+                    </a>
+                </li>
+                <li className="mr-6">
+                    <a
+                        className="text-gray-700 hover:text-gray-900 font-medium block text-sm"
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://github.com/creativetimofficial/material-tailwind-dashboard-react/blob/main/LICENSE?ref=mtdk"
                     >
                         MIT License
-                    </a>
-                </li>
-                <li className="mr-6">
-                    <a
-                        className="text-gray-700 hover:text-gray-900 font-medium block text-sm"
-                        target="_blank"
-                        rel="noreferrer"
-                        href="https://github.com/creativetimofficial/material-tailwind/blob/main/CONTRIBUTING.md?ref=mtdk"
-                    >
-                        Contribute
-                    </a>
-                </li>
-                <li className="mr-6">
-                    <a
-                        className="text-gray-700 hover:text-gray-900 font-medium block text-sm"
-                        target="_blank"
-                        rel="noreferrer"
-                        href="https://github.com/creativetimofficial/material-tailwind/blob/main/CODE_OF_CONDUCT.md?ref=mtdk"
-                    >
-                        Code of Conduct
                     </a>
                 </li>
                 <li>
