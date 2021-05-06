@@ -51,32 +51,30 @@ export default function ProfileCard() {
                     University of Computer Science
                 </div>
             </div>
-            <div className="mt-10 pt-2 pb-10 border-t border-blueGray-200 text-center">
-                <div className="flex flex-wrap justify-center">
-                    <div className="w-full px-6 flex flex-col items-center">
-                        <LeadText color="blueGray">
-                            An artist of considerable range, Jenna the name
-                            taken by Melbourne-raised, Brooklyn-based Nick
-                            Murphy writes, performs and records all of his own
-                            music, giving it a warm, intimate feel with a solid
-                            groove structure. An artist of considerable range.
-                        </LeadText>
-                        <a
-                            href="#pablo"
-                            className="mt-5"
-                            onClick={(e) => e.preventDefault()}
-                        >
-                            <Button
-                                color="purple"
-                                buttonType="link"
-                                ripple="dark"
-                            >
-                                Show more
-                            </Button>
-                        </a>
-                    </div>
+            <CardBody>
+                <div className="border-t border-lightBlue-200 text-center px-2 ">
+                    <LeadText color="blueGray">
+                        An artist of considerable range, Jenna the name taken by
+                        Melbourne-raised, Brooklyn-based Nick Murphy writes,
+                        performs and records all of his own music, giving it a
+                        warm, intimate feel with a solid groove structure. An
+                        artist of considerable range.
+                    </LeadText>
                 </div>
-            </div>
+            </CardBody>
+            <CardFooter>
+                <div className="w-full flex justify-center -mt-8">
+                    <a
+                        href="#pablo"
+                        className="mt-5"
+                        onClick={(e) => e.preventDefault()}
+                    >
+                        <Button color="purple" buttonType="link" ripple="dark">
+                            Show more
+                        </Button>
+                    </a>
+                </div>
+            </CardFooter>
         </Card>
     );
 }
