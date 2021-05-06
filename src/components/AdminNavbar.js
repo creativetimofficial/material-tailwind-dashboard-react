@@ -28,7 +28,7 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
                     <div
                         className={`absolute top-2 md:hidden ${
                             showSidebar === 'left-0' ? 'left-64' : '-left-64'
-                        } transition-all duration-300`}
+                        } z-50 transition-all duration-300`}
                     >
                         <Button
                             color="transparent"
