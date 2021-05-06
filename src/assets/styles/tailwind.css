@@ -719,6 +719,9 @@ video {
 .h-\[600px\] {
 	height: 600px;
 }
+.h-full {
+	height: 100%;
+}
 .min-h-full {
 	min-height: 100%;
 }
@@ -808,6 +811,9 @@ video {
 }
 .rounded-full {
 	border-radius: 9999px;
+}
+.rounded-2xl {
+	border-radius: 1rem;
 }
 .border-2 {
 	border-width: 2px;
