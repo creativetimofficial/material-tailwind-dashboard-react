@@ -1,6 +1,6 @@
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-export default function Map() {
+export default function MapExample() {
     const mapStyles = {
         height: '100%',
         width: '100%',
@@ -13,21 +13,16 @@ export default function Map() {
     };
 
     return (
-        <>
-            <div
-                className="relative w-full rounded-xl shadow"
-                style={{ height: '600px' }}
-            >
-                <LoadScript googleMapsApiKey="AIzaSyCN5RsuQUGXEAd3TqNpEkHygtmhFxNiDZk">
-                    <GoogleMap
-                        mapContainerStyle={mapStyles}
-                        zoom={13}
-                        center={defaultCenter}
-                    >
-                        <Marker key="location" position={defaultCenter} />
-                    </GoogleMap>
-                </LoadScript>
-            </div>
-        </>
+        <div className="relative w-full rounded-xl shadow-lg">
+            <LoadScript googleMapsApiKey="AIzaSyCN5RsuQUGXEAd3TqNpEkHygtmhFxNiDZk">
+                <GoogleMap
+                    mapContainerStyle={mapStyles}
+                    zoom={13}
+                    center={defaultCenter}
+                >
+                    <Marker key="location" position={defaultCenter} />
+                </GoogleMap>
+            </LoadScript>
+        </div>
     );
 }
