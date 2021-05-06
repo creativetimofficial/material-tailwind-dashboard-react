@@ -19,7 +19,8 @@
   "scripts": {
     "build:tailwind": "postcss ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css",
     "watch:tailwind": "postcss ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css -w",
-    "start": "npm run build:tailwind && watch:tailwind & react-scripts start",
+    "start:react": "react-scripts start",
+    "start": "npm-run-all -p watch:tailwind start:react",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.2.13",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.1.2"
