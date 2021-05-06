@@ -58,7 +58,7 @@ export default function Dashboard() {
                         <div className="xl:col-start-1 xl:col-end-5 px-4 mb-16">
                             <SettingsForm />
                         </div>
-                        <div className="xl:col-start-5 xl:col-end-7 px-4 mb-16">
+                        <div className="xl:col-start-5 xl:col-end-7 px-4 mb-16 mt-14">
                             <ProfileCard />
                         </div>
                     </div>
