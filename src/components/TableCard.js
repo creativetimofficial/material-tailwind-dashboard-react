@@ -1,4 +1,8 @@
+import Card from '@material-tailwind/react/Card';
+import CardHeader from '@material-tailwind/react/CardHeader';
+import CardBody from '@material-tailwind/react/CardBody';
 import Image from '@material-tailwind/react/Image';
+import Progress from '@material-tailwind/react/Progress';
 import Team1 from 'assets/img/team-1-800x800.jpg';
 import Team2 from 'assets/img/team-2-800x800.jpg';
 import Team3 from 'assets/img/team-3-800x800.jpg';
@@ -6,16 +10,12 @@ import Team4 from 'assets/img/team-4-470x470.png';
 
 export default function CardTable() {
     return (
-        <>
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-xl bg-white p-4">
-                <div className="rounded-xl px-6 py-8 bg-gradient-to-tr from-purple-500 to-purple-700 shadow-xl -mt-12">
-                    <div className="flex flex-wrap items-center">
-                        <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 className="text-xl text-white">Card Table</h3>
-                        </div>
-                    </div>
-                </div>
-                <div className="block w-full overflow-x-auto pt-6 pb-4 px-2">
+        <Card>
+            <CardHeader color="purple" size="lg" contentPosition="left">
+                <h2 className="text-white text-2xl">Card Table</h2>
+            </CardHeader>
+            <CardBody>
+                <div className="overflow-x-auto">
                     <table className="items-center w-full bg-transparent border-collapse">
                         <thead>
                             <tr>
@@ -81,17 +81,11 @@ export default function CardTable() {
                                     </div>
                                 </th>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <div className="flex items-center">
-                                        <span className="mr-2">60%</span>
-                                        <div className="relative w-full">
-                                            <div className="overflow-hidden h-2 flex rounded bg-red-200">
-                                                <div
-                                                    className="flex justify-center items-center rounded text-xs font-medium bg-red-500 text-white"
-                                                    style={{ width: '60%' }}
-                                                ></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Progress
+                                        color="red"
+                                        value="60"
+                                        percentage
+                                    />
                                 </th>
                             </tr>
                             <tr>
@@ -138,17 +132,11 @@ export default function CardTable() {
                                     </div>
                                 </th>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <div className="flex items-center">
-                                        <span className="mr-2">100%</span>
-                                        <div className="relative w-full">
-                                            <div className="overflow-hidden h-2 flex rounded bg-green-200">
-                                                <div
-                                                    className="flex justify-center items-center rounded text-xs font-medium bg-green-500 text-white"
-                                                    style={{ width: '100%' }}
-                                                ></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Progress
+                                        color="green"
+                                        value="100"
+                                        percentage
+                                    />
                                 </th>
                             </tr>
                             <tr>
@@ -195,17 +183,11 @@ export default function CardTable() {
                                     </div>
                                 </th>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <div className="flex items-center">
-                                        <span className="mr-2">90%</span>
-                                        <div className="relative w-full">
-                                            <div className="overflow-hidden h-2 flex rounded bg-teal-200">
-                                                <div
-                                                    className="flex justify-center items-center rounded text-xs font-medium bg-teal-500 text-white"
-                                                    style={{ width: '90%' }}
-                                                ></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Progress
+                                        color="teal"
+                                        value="90"
+                                        percentage
+                                    />
                                 </th>
                             </tr>
                             <tr>
@@ -252,23 +234,17 @@ export default function CardTable() {
                                     </div>
                                 </th>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                    <div className="flex items-center">
-                                        <span className="mr-2">100%</span>
-                                        <div className="relative w-full">
-                                            <div className="overflow-hidden h-2 flex rounded bg-green-200">
-                                                <div
-                                                    className="flex justify-center items-center rounded text-xs font-medium bg-green-500 text-white"
-                                                    style={{ width: '100%' }}
-                                                ></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Progress
+                                        color="green"
+                                        value="100"
+                                        percentage
+                                    />
                                 </th>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </>
+            </CardBody>
+        </Card>
     );
 }
