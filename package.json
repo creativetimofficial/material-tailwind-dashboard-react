@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3",
     "@material-tailwind/react": "0.3.1",
     "@react-google-maps/api": "^2.1.1",
     "@testing-library/jest-dom": "^5.11.4",
