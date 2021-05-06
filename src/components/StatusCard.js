@@ -20,12 +20,7 @@ export default function StatusCard({
             <Card>
                 <CardRow>
                     <CardHeader color={color} size="lg" iconOnly>
-                        <Icon
-                            family="font-awesome"
-                            name={icon}
-                            size="3xl"
-                            color="white"
-                        />
+                        <Icon name={icon} size="5xl" color="white" />
                     </CardHeader>
 
                     <CardStatus title={title} amount={amount} />

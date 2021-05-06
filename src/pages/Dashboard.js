@@ -12,7 +12,7 @@ export default function Dashboard() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
                         <StatusCard
                             color="red"
-                            icon="far fa-chart-bar"
+                            icon="trending_up"
                             title="Traffic"
                             amount="350,897"
                             percentage="3.48"
@@ -22,7 +22,7 @@ export default function Dashboard() {
                         />
                         <StatusCard
                             color="orange"
-                            icon="fas fa-chart-pie"
+                            icon="groups"
                             title="New Users"
                             amount="2,356"
                             percentage="3.48"
@@ -32,7 +32,7 @@ export default function Dashboard() {
                         />
                         <StatusCard
                             color="purple"
-                            icon="fas fa-users"
+                            icon="paid"
                             title="Sales"
                             amount="924"
                             percentage="1.10"
@@ -42,7 +42,7 @@ export default function Dashboard() {
                         />
                         <StatusCard
                             color="teal"
-                            icon="fas fa-percentage"
+                            icon="poll"
                             title="Performance"
                             amount="49,65%"
                             percentage="12"
