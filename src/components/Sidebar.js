@@ -71,7 +71,7 @@ export default function Sidebar() {
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
                                 <a
-                                    href="#login"
+                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/login"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="flex items-center gap-4 text-sm font-light py-3"
@@ -82,7 +82,7 @@ export default function Sidebar() {
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
                                 <a
-                                    href="#register"
+                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/register"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="flex items-center gap-4 text-sm font-light py-3"
@@ -93,7 +93,7 @@ export default function Sidebar() {
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
                                 <a
-                                    href="#landing"
+                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/landing"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="flex items-center gap-4 text-sm font-light py-3"
@@ -104,7 +104,7 @@ export default function Sidebar() {
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
                                 <a
-                                    href="#profile"
+                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/profile"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="flex items-center gap-4 text-sm font-light py-3"
