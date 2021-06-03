@@ -9,9 +9,6 @@ import Footer from 'components/Footer';
 // Tailwind CSS Style Sheet
 import 'assets/styles/tailwind.css';
 
-// Material Tailwind Style Sheet
-import '@material-tailwind/react/tailwind.css';
-
 function App() {
     return (
         <>
