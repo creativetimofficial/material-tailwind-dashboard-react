@@ -17,7 +17,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build:tailwind": "postcss ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css",
+    "build:tailwind": "postcss ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css --env production",
     "watch:tailwind": "postcss ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css -w",
     "start:react": "react-scripts start",
     "start": "npm-run-all -p watch:tailwind start:react",
