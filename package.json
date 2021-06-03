@@ -2,7 +2,7 @@
   "name": "material-tailwind-dashboard",
   "version": "1.0.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://demos.creative-tim.com/material-tailwind-dashboard-react/#/",
   "dependencies": {
     "@material-tailwind/react": "0.3.2",
     "@react-google-maps/api": "^2.1.1",
