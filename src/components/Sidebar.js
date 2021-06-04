@@ -110,7 +110,7 @@ export default function Sidebar() {
                                     className="flex items-center gap-4 text-sm font-light py-3"
                                 >
                                     <Icon name="account_circle" size="2xl" />
-                                    Progile Page
+                                    Profile Page
                                 </a>
                             </li>
                         </ul>

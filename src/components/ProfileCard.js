@@ -36,7 +36,7 @@ export default function ProfileCard() {
                     </div>
                 </div>
             </div>
-            <div className="text-center mt-8">
+            <div className="text-center">
                 <H5 color="gray">John Smith</H5>
                 <div className="mt-0 mb-2 text-gray-700 flex items-center justify-center gap-2">
                     <Icon name="place" size="xl" />

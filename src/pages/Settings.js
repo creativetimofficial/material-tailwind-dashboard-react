@@ -9,7 +9,7 @@ export default function Dashboard() {
                 <div className="container mx-auto max-w-full">
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
                         <StatusCard
-                            color="red"
+                            color="pink"
                             icon="trending_up"
                             title="Traffic"
                             amount="350,897"
@@ -39,7 +39,7 @@ export default function Dashboard() {
                             date="Since yesterday"
                         />
                         <StatusCard
-                            color="teal"
+                            color="blue"
                             icon="poll"
                             title="Performance"
                             amount="49,65%"

@@ -8,14 +8,14 @@ import Textarea from '@material-tailwind/react/Textarea';
 export default function SettingsForm() {
     return (
         <Card>
-            <CardHeader color="purple" size="lg" contentPosition="none">
+            <CardHeader color="purple" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
                     <h2 className="text-white text-2xl">My Account</h2>
                     <Button
                         color="transparent"
                         buttonType="link"
                         size="lg"
-                        ripple="light"
+                        style={{ padding: 0 }}
                     >
                         Settings
                     </Button>
