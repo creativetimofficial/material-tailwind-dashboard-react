@@ -103,7 +103,7 @@ export default function ChartBar() {
     }, []);
     return (
         <Card>
-            <CardHeader color="red" contentPosition="left">
+            <CardHeader color="pink" contentPosition="left">
                 <h6 className="uppercase text-gray-200 text-xs font-medium">
                     Overview
                 </h6>

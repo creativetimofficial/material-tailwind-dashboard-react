@@ -19,8 +19,8 @@ export default function StatusCard({
         <div className="px-4 mb-10">
             <Card>
                 <CardRow>
-                    <CardHeader color={color} size="lg" iconOnly>
-                        <Icon name={icon} size="5xl" color="white" />
+                    <CardHeader color={color} iconOnly className="mb-0">
+                        <Icon name={icon} size="3xl" color="white" />
                     </CardHeader>
 
                     <CardStatus title={title} amount={amount} />
@@ -31,9 +31,7 @@ export default function StatusCard({
                     color={percentageColor}
                     date={date}
                 >
-                    <div className="inline-block align-middle">
-                        <Icon color={percentageColor} name={percentageIcon} />
-                    </div>
+                    <Icon color={percentageColor} name={percentageIcon} />
                 </CardStatusFooter>
             </Card>
         </div>

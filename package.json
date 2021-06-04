@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://demos.creative-tim.com/material-tailwind-dashboard-react/#/",
   "dependencies": {
-    "@material-tailwind/react": "0.3.2",
+    "@material-tailwind/react": "^0.3.3",
     "@react-google-maps/api": "^2.1.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

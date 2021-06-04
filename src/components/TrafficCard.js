@@ -14,7 +14,7 @@ export default function TrafficCard() {
                         color="transparent"
                         buttonType="link"
                         size="lg"
-                        ripple="light"
+                        style={{ padding: 0 }}
                     >
                         See More
                     </Button>
