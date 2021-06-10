@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.1.0] 2021-06-10
+
+### New Features
+
+-   Add the download button
+
+### Bug Fixing
+
+-   Fix the dropdown of admin navbar
+
 ## [1.0.0] 2021-06-08
 
 ### Original Release
