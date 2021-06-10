@@ -56,14 +56,17 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
 
                         <div className="-mr-4 ml-6">
                             <Dropdown
-                                buttonType="link"
+                                color="transparent"
                                 buttonText={
                                     <div className="w-12">
                                         <Image src={ProfilePicture} rounded />
                                     </div>
                                 }
                                 rounded
-                                style={{ padding: 0, color: 'transparent' }}
+                                style={{
+                                    padding: 0,
+                                    color: 'transparent',
+                                }}
                             >
                                 <DropdownItem color="lightBlue">
                                     Action
