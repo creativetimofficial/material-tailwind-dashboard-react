@@ -22,7 +22,7 @@ export function DashboardFooter({ brandName, brandLink, routes }) {
         </Typography>
         <ul className="flex items-center gap-4">
           {routes.map(({ name, path }) => (
-            <li>
+            <li key={name}>
               <Typography
                 as="a"
                 href={path}
