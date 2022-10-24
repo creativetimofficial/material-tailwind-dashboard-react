@@ -30,8 +30,10 @@ export function DashboardNavbar() {
   return (
     <Navbar
       color={fixedNavbar ? "white" : "transparent"}
-      className={`rounded-xl shadow-md shadow-blue-gray-500/5 transition-all ${
-        fixedNavbar ? "sticky top-4 py-3" : "px-0 py-1"
+      className={`rounded-xl transition-all ${
+        fixedNavbar
+          ? "sticky top-4 py-3 shadow-md shadow-blue-gray-500/5"
+          : "px-0 py-1"
       }`}
       fullWidth
       blurred={fixedNavbar}
