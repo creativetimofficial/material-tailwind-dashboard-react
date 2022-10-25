@@ -20,7 +20,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
   return (
     <aside
-      className={`${sidenavTypes[sidenavType]} fixed inset-0 my-4 ml-4 h-[calc(100vh-32px)] w-72 -translate-x-80 rounded-xl transition-transform duration-300 lg:translate-x-0`}
+      className={`${sidenavTypes[sidenavType]} fixed inset-0 my-4 ml-4 h-[calc(100vh-32px)] w-72 -translate-x-80 rounded-xl transition-transform duration-300 xl:translate-x-0`}
     >
       <div
         className={`relative border-b ${
