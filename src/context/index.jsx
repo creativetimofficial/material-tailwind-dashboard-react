@@ -6,8 +6,8 @@ MaterialTailwind.displayName = "MaterialTailwindContext";
 
 export function reducer(state, action) {
   switch (action.type) {
-    case "SHOW_SIDENAV": {
-      return { ...state, showSidenav: action.value };
+    case "OPEN_SIDENAV": {
+      return { ...state, openSidenav: action.value };
     }
     case "SIDENAV_TYPE": {
       return { ...state, sidenavType: action.value };
@@ -32,7 +32,7 @@ export function reducer(state, action) {
 
 export function MaterialTailwindControllerProvider({ children }) {
   const initialState = {
-    showSidenav: false,
+    openSidenav: false,
     sidenavColor: "blue",
     sidenavType: "dark",
     transparentNavbar: true,
@@ -71,8 +71,8 @@ MaterialTailwindControllerProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const setShowSidenav = (dispatch, value) =>
-  dispatch({ type: "SHOW_SIDENAV", value });
+export const setOpenSidenav = (dispatch, value) =>
+  dispatch({ type: "OPEN_SIDENAV", value });
 export const setSidenavType = (dispatch, value) =>
   dispatch({ type: "SIDENAV_TYPE", value });
 export const setSidenavColor = (dispatch, value) =>
