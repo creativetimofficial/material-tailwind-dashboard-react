@@ -25,7 +25,7 @@ import { StatisticsChart } from "@/widgets/charts";
 import {
   statisticsCardsData,
   statisticsChartsData,
-  projectsTableContent,
+  projectsTableData,
   ordersOverviewData,
 } from "@/data";
 
@@ -126,10 +126,10 @@ export function Home() {
                 </tr>
               </thead>
               <tbody>
-                {projectsTableContent.map(
+                {projectsTableData.map(
                   ({ img, name, members, budget, completion }, key) => {
                     const className = `py-3 px-5 ${
-                      key === projectsTableContent.length - 1
+                      key === projectsTableData.length - 1
                         ? ""
                         : "border-b border-blue-gray-50"
                     }`;

@@ -1,4 +1,4 @@
-export const projectsTableContent = [
+export const projectsTableData = [
   {
     img: "/img/logo-xd.svg",
     name: "Material XD Version",
@@ -62,4 +62,4 @@ export const projectsTableContent = [
   },
 ];
 
-export default projectsTableContent;
+export default projectsTableData;

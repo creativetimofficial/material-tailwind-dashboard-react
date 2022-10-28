@@ -6,7 +6,7 @@ import {
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile } from "@/pages/dashboard";
+import { Home, Profile, Tables } from "@/pages/dashboard";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -32,6 +32,7 @@ export const routes = [
         icon: <TableCellsIcon {...icon} />,
         name: "tables",
         path: "/tables",
+        element: <Tables />,
       },
       { icon: <MapIcon {...icon} />, name: "maps", path: "/maps" },
     ],
