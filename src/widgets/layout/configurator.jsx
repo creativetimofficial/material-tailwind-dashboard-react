@@ -168,7 +168,7 @@ export function Configurator() {
               target="_black"
             >
               <Button variant="outlined" color="blue-gray" fullWidth>
-                Material Tailwind Blocks
+                Material Tailwind PRO
               </Button>
             </a>
           </div>

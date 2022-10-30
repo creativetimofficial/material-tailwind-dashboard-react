@@ -2,11 +2,12 @@ import {
   HomeIcon,
   UserCircleIcon,
   TableCellsIcon,
-  MapIcon,
+  BellIcon,
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables } from "@/pages/dashboard";
+import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
+import { SignIn, SignUp } from "@/pages/auth";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -34,7 +35,12 @@ export const routes = [
         path: "/tables",
         element: <Tables />,
       },
-      { icon: <MapIcon {...icon} />, name: "maps", path: "/maps" },
+      {
+        icon: <BellIcon {...icon} />,
+        name: "notifactions",
+        path: "/notifactions",
+        element: <Notifications />,
+      },
     ],
   },
   {
@@ -44,12 +50,14 @@ export const routes = [
       {
         icon: <ArrowRightOnRectangleIcon {...icon} />,
         name: "sign in",
-        path: "/auth/sign-in",
+        path: "/sign-in",
+        element: <SignIn />,
       },
       {
         icon: <UserPlusIcon {...icon} />,
         name: "sign up",
-        path: "/auth/sign-up",
+        path: "/sign-up",
+        element: <SignUp />,
       },
     ],
   },

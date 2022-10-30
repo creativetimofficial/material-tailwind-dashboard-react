@@ -1,11 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import { IconButton } from "@material-tailwind/react";
 import {
   Sidenav,
   DashboardNavbar,
   Configurator,
-  DashboardFooter,
+  Footer,
 } from "@/widgets/layout";
 import routes from "@/routes";
 import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
@@ -43,7 +43,9 @@ export function Dashboard() {
               ))
           )}
         </Routes>
-        <DashboardFooter />
+        <div className="text-blue-gray-600">
+          <Footer />
+        </div>
       </div>
     </div>
   );

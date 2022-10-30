@@ -224,6 +224,7 @@ export function Home() {
                   title={title}
                   description={
                     <Typography
+                      as="span"
                       variant="small"
                       className="text-xs font-medium text-blue-gray-500"
                     >
