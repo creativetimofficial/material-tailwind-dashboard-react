@@ -234,10 +234,10 @@ export function Home() {
                   icon={React.createElement(icon, {
                     className: `!w-5 !h-5 ${color}`,
                   })}
-                  className="py-1"
+                  className="!py-1"
                   lineClassName="!border border-blue-gray-50"
                   iconBackgroundClassName="bg-white rounded-full !m-0"
-                  cardClassName="bg-transparet ml-0 !px-2 !py-0 !w-full"
+                  cardClassName="bg-transparet !ml-0 !px-2 !py-0 !w-full"
                   titleClassName="!text-sm text-blue-gray-900 !mb-1"
                 />
               ))}
