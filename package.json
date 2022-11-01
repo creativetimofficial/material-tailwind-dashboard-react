@@ -11,14 +11,12 @@
   "dependencies": {
     "@heroicons/react": "2.0.12",
     "@material-tailwind/react": "1.2.4",
-    "@react-google-maps/api": "2.13.1",
     "apexcharts": "3.35.5",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-apexcharts": "1.4.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.4.2",
-    "react-tailwind-timeline-component": "1.1.2"
+    "react-router-dom": "6.4.2"
   },
   "devDependencies": {
     "@types/react": "18.0.17",
