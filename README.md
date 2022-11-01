@@ -4,7 +4,27 @@
 
 Elisa <!-- ![Image](https://s3.amazonaws.com/creativetim_bucket/products/89/original/material-kit-2-pro-react.jpg) -->
 
-// Alexandra 
+Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. If you’re a developer looking to create an admin dashboard that is developer-friendly, rich with features, and highly customisable, here is your match. Our innovative Material Tailwind, Tailwind CSS & React dashboard comes with a beautiful design inspired by Google's Material Design and it will help you create stunning websites & web apps to delight your clients.
+
+**Fully Coded Elements**
+
+Material Tailwind Dashboard React is built with over 40 frontend individual elements coming from @material-tailwind/react, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining. All components can take variations in color, which you can easily modify using props and tailwind css classnames. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
+
+This free Material Tailwind, Tailwind CSS & React Dashboard is coming with prebuilt design blocks, so the development process is seamless, switching from our pages to the real website is very easy to be done.
+
+View [all components here](https://www.material-tailwind.com/docs/react/button).
+
+**Documentation built by Developers**
+
+Each element is well presented in very complex documentation.
+
+You can read more about the [documentation here](https://www.material-tailwind.com/docs/react/installation).
+
+**Example Pages**
+
+If you want to get inspiration or just show something directly to your clients, you can jump-start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
+
+View [example pages here](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/dashboard/home).
 
 **HELPFUL LINKS**
 
@@ -46,11 +66,12 @@ Let us know your thoughts below. And good luck with development!
 
 ## Demo
 
-- [Sign in page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/authentication/sign-in/basic?ref=readme-Softrp)
-- [Sign up page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/authentication/sign-up/cover?ref=readme-Softrp)
-- [About us page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/pages/company/about-us?ref=readme-Softrp)
-- [Pricing page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/pages/company/pricing?ref=readme-Softrp)
-- [Page headers](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/sections/page-sections/page-headers?ref=readme-Softrp)
+- [Dashboard page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/dashboard/home?ref=readme-mtdr)
+- [Profile page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/dashboard/profile?ref=readme-mtdr)
+- [Tables page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/dashboard/tables?ref=readme-mtdr)
+- [Notifications page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/dashboard/notifications?ref=readme-mtdr)
+- [Sign in page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/auth/sign-in?ref=readme-mtdr)
+- [Sign up page](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/auth/sign-up?ref=readme-mtdr)
 
 [View More](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/?ref=readme-mtdr).
 
@@ -110,7 +131,7 @@ At present, we officially aim to support the last two versions of the following 
 
 ## Resources
 
-- [Live Preview](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/?ref=readme-mtdr)
+- [Live Preview](https://demos.creative-tim.com/material-tailwind-dashboard-react/#/dashboard/home?ref=readme-mtdr)
 - [Download Page](https://www.creative-tim.com/product/material-tailwind-dashboard-react?ref=readme-mtdr)
 - Documentation is [here](https://material-tailwind.com/?ref=readme-mtdr)
 - [License Agreement](https://www.creative-tim.com/license?ref=readme-mtdr)
