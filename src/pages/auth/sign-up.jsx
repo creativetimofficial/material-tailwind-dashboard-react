@@ -38,7 +38,7 @@ export function SignUp() {
             </div>
           </CardBody>
           <CardFooter className="pt-0">
-            <Button type="link" variant="gradient" fullWidth>
+            <Button variant="gradient" fullWidth>
               Sign Up
             </Button>
             <Typography variant="small" className="mt-6 flex justify-center">

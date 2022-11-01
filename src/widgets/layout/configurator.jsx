@@ -114,21 +114,18 @@ export function Configurator() {
           </Typography>
           <div className="mt-3 flex items-center gap-2">
             <Button
-              type="link"
               variant={sidenavType === "dark" ? "gradient" : "outlined"}
               onClick={() => setSidenavType(dispatch, "dark")}
             >
               Dark
             </Button>
             <Button
-              type="link"
               variant={sidenavType === "transparent" ? "gradient" : "outlined"}
               onClick={() => setSidenavType(dispatch, "transparent")}
             >
               Transparent
             </Button>
             <Button
-              type="link"
               variant={sidenavType === "white" ? "gradient" : "outlined"}
               onClick={() => setSidenavType(dispatch, "white")}
             >
@@ -154,7 +151,7 @@ export function Configurator() {
               href="https://www.creative-tim.com/product/material-tailwind-dashboard-react?rel=mtdr"
               target="_black"
             >
-              <Button type="link" variant="gradient" fullWidth>
+              <Button variant="gradient" fullWidth>
                 Free Download
               </Button>
             </a>
@@ -215,7 +212,6 @@ export function Configurator() {
           </Typography>
           <div className="mt-4 flex justify-center gap-2">
             <Button
-              type="link"
               variant="gradient"
               color="blue-gray"
               className="flex items-center gap-2"
@@ -224,7 +220,6 @@ export function Configurator() {
               Tweet
             </Button>
             <Button
-              type="link"
               variant="gradient"
               color="blue-gray"
               className="flex items-center gap-2"
