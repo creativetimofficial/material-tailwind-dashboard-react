@@ -19,7 +19,6 @@ import {
   EllipsisVerticalIcon,
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
-import { Timeline, EventTimeline } from "react-tailwind-timeline-component";
 import { StatisticsCard } from "@/widgets/cards";
 import { StatisticsChart } from "@/widgets/charts";
 import {
@@ -216,13 +215,29 @@ export function Home() {
               <strong>24%</strong> this month
             </Typography>
           </CardHeader>
-          <CardBody className="px-0 pt-0">
-            <Timeline>
-              {ordersOverviewData.map(({ icon, color, title, description }) => (
-                <EventTimeline
-                  key={title}
-                  title={title}
-                  description={
+          <CardBody className="pt-0">
+            {ordersOverviewData.map(
+              ({ icon, color, title, description }, key) => (
+                <div key={title} className="flex items-start gap-4 py-3">
+                  <div
+                    className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${
+                      key === ordersOverviewData.length - 1
+                        ? "after:h-0"
+                        : "after:h-4/6"
+                    }`}
+                  >
+                    {React.createElement(icon, {
+                      className: `!w-5 !h-5 ${color}`,
+                    })}
+                  </div>
+                  <div>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="block font-medium"
+                    >
+                      {title}
+                    </Typography>
                     <Typography
                       as="span"
                       variant="small"
@@ -230,18 +245,10 @@ export function Home() {
                     >
                       {description}
                     </Typography>
-                  }
-                  icon={React.createElement(icon, {
-                    className: `!w-5 !h-5 ${color}`,
-                  })}
-                  className="!py-1"
-                  lineClassName="!border border-blue-gray-50"
-                  iconBackgroundClassName="bg-white rounded-full !m-0"
-                  cardClassName="bg-transparet !ml-0 !px-2 !py-0 !w-full"
-                  titleClassName="!text-sm text-blue-gray-900 !mb-1"
-                />
-              ))}
-            </Timeline>
+                  </div>
+                </div>
+              )
+            )}
           </CardBody>
         </Card>
       </div>
