@@ -1,0 +1,191 @@
+<!-- 
+=========================================================
+* Material Tailwind Dashboard React - v2.0.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/material-tailwind-dashboard-react
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/material-tailwind-dashboard-react/blob/main/LICENSE.md)
+* Coded by Creative Tim
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+      .async-hide {
+        opacity: 0 !important;
+      }
+    </style>
+    <script>
+      (function (a, s, y, n, c, h, i, d, e) {
+        s.className += " " + y;
+        h.start = 1 * new Date();
+        h.end = i = function () {
+          s.className = s.className.replace(RegExp(" ?" + y), "");
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function () {
+          i();
+          h.end = null;
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
+        "GTM-K9BGS8K": true,
+      });
+    </script>
+
+    <!-- Analytics-Optimize Snippet -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+      ga("create", "UA-46172202-22", "auto", { allowLinker: true });
+      ga("set", "anonymizeIp", true);
+      ga("require", "GTM-K9BGS8K");
+      ga("require", "displayfeatures");
+      ga("require", "linker");
+      ga("linker:autoLink", ["2checkout.com", "avangate.com"]);
+    </script>
+    <!-- end Analytics-Optimize Snippet -->
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NKDMSK6");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/material-tailwind-dashboard-react/img/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2196f3" />
+    <title>Material Tailwind Dashboard React | By Creative Tim</title>
+    <meta
+      name="description"
+      content="Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. It was built to simplify the developer's work and is comes with a fresh design inspired by Google's Material Design."
+    />
+    <!-- Extra details for Live View on GitHub Pages -->
+    <!-- Canonical SEO -->
+    <link
+      rel="canonical"
+      href="https://www.creative-tim.com/product/material-tailwind-dashboard-react"
+    />
+
+    <!--  Social tags      -->
+    <meta
+      name="keywords"
+      content="tailwind css,  tailwind, tailwindcss,  tailwind template, tailwind components, react, material design, material, free template, free kit, free admin, free webapp, free web app, freebie, free, kit, react admin, react template, react free, tailwind free, tailwind css free, material admin, material template, material free, material react, new, react webapp, tailwind webapp, landing page, material tailwind, free dashboard, dashboard, react dashboard, material dashboard, tailwind dashboard tailwindcss dashboard"
+    />
+    <meta
+      name="description"
+      content="Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. It was built to simplify the developer's work and is comes with a fresh design inspired by Google's Material Design."
+    />
+
+    <!-- Schema.org markup for Google+ -->
+    <meta
+      itemprop="name"
+      content="Material Tailwind Dashboard React by Creative Tim"
+    />
+    <meta
+      itemprop="description"
+      content="Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. It was built to simplify the developer's work and is comes with a fresh design inspired by Google's Material Design."
+    />
+
+    <meta
+      itemprop="image"
+      content="https://s3.amazonaws.com/creativetim_bucket/products/488/original/material-tailwind-react-dashboard.jpg"
+    />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="product" />
+    <meta name="twitter:site" content="@creativetim" />
+    <meta
+      name="twitter:title"
+      content="Material Tailwind Dashboard React by Creative Tim"
+    />
+
+    <meta
+      name="twitter:description"
+      content="Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. It was built to simplify the developer's work and is comes with a fresh design inspired by Google's Material Design."
+    />
+    <meta name="twitter:creator" content="@creativetim" />
+    <meta
+      name="twitter:image"
+      content="https://s3.amazonaws.com/creativetim_bucket/products/488/original/material-tailwind-react-dashboard.jpg"
+    />
+
+    <!-- Open Graph data -->
+    <meta property="fb:app_id" content="655968634437471" />
+    <meta
+      property="og:title"
+      content="Material Tailwind Dashboard React by Creative Tim"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="http://demos.creative-tim.com/material-tailwind-dashboard-react/#/"
+    />
+    <meta
+      property="og:image"
+      content="https://s3.amazonaws.com/creativetim_bucket/products/488/original/material-tailwind-react-dashboard.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. It was built to simplify the developer's work and is comes with a fresh design inspired by Google's Material Design."
+    />
+    <meta property="og:site_name" content="Creative Tim" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script type="module" crossorigin src="/material-tailwind-dashboard-react/assets/index.dcc2df99.js"></script>
+    <link rel="stylesheet" href="/material-tailwind-dashboard-react/assets/index.caa9766d.css">
+  </head>
+  <body>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <div id="root"></div>
+    
+  </body>
+</html>
