@@ -3,10 +3,12 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
+  "homepage": "https://demos.creative-tim.com/material-tailwind-dashboard-react/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@heroicons/react": "2.0.12",
@@ -23,6 +25,7 @@
     "@types/react-dom": "18.0.6",
     "@vitejs/plugin-react": "2.1.0",
     "autoprefixer": "10.4.12",
+    "gh-pages": "4.0.0",
     "postcss": "8.4.17",
     "prettier": "2.7.1",
     "prettier-plugin-tailwindcss": "0.1.13",
