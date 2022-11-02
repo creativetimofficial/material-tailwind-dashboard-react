@@ -3,12 +3,11 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "homepage": "https://demos.creative-tim.com/material-tailwind-dashboard-react/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@heroicons/react": "2.0.12",
