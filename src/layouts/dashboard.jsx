@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import { IconButton } from "@material-tailwind/react";
 import {
