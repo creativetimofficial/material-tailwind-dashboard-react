@@ -5,8 +5,12 @@ import {
   BellIcon,
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
+  ComputerDesktopIcon
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
+import WorkerList from "@/pages/dashboard/worker/List"
+import WorkerDetail from "@/pages/dashboard/worker/Detail"
+
 import { SignIn, SignUp } from "@/pages/auth";
 
 const icon = {
@@ -41,6 +45,18 @@ export const routes = [
         path: "/notifactions",
         element: <Notifications />,
       },
+      {
+        icon: <ComputerDesktopIcon {...icon} />,
+        name: "worker",
+        path: "/worker",
+        element: <WorkerList />,
+      },
+      {
+        icon: <ComputerDesktopIcon {...icon} />,
+        name: "details",
+        path: "/worker/:id",
+        element: <WorkerDetail />,
+      }
     ],
   },
   {
