@@ -140,7 +140,7 @@ export default function List() {
             </thead>
             <tbody>
               {authorsTableData && authorsTableData.map(
-                ({ number, ip, mac, clients, online, date }, key) => {
+                ({ number, ip, online, date }, key) => {
                   const className = `py-3 px-5 ${key === authorsTableData.length - 1
                     ? ""
                     : "border-b border-blue-gray-50"
