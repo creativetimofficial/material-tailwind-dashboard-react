@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.0.1] 2023-03-29
+
+- Add nepcha script
+
 ## [2.0.0] 2022-11-02
 
 - Update the entire structure
