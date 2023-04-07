@@ -9,13 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "2.0.12",
+    "@heroicons/react": "^2.0.17",
     "@material-tailwind/react": "1.2.4",
     "apexcharts": "3.35.5",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-apexcharts": "1.4.0",
     "react-dom": "18.2.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "6.4.2"
   },
   "devDependencies": {

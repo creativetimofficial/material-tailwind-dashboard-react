@@ -8,8 +8,9 @@ import {
   ComputerDesktopIcon
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Notifications } from "@/pages/dashboard";
-import WorkerList from "@/pages/dashboard/worker/List"
-import WorkerDetail from "@/pages/dashboard/worker/Detail"
+import WorkerList from "@/pages/dashboard/worker/List";
+import WorkerDetail from "@/pages/dashboard/worker/Detail";
+import ConnectOption from "@/pages/dashboard/order/connectOption";
 
 import { SignIn, SignUp } from "@/pages/auth";
 
@@ -50,7 +51,13 @@ export const routes = [
         name: "details",
         path: "/worker/:id",
         element: <WorkerDetail />,
-      }
+      },
+      {
+        icon: <ComputerDesktopIcon {...icon} />,
+        name: "connect",
+        path: "/connect",
+        element: <ConnectOption />,
+      },
     ],
   },
   {
