@@ -38,6 +38,7 @@ During the development of this dashboard, we have used many existing resources f
 - [Material Tailwind](https://material-tailwind.com/) - Material Tailwind is an easy to use components library for Tailwind CSS and Material Design.
 - [Hero Icons](https://heroicons.com/) - Beautiful hand-crafted SVG icons.
 - [Apex Charts](https://apexcharts.com/) - Modern & Interactive open-source Charts.
+- [Nepcha Analytics](https://nepcha.com?ref=readme) for the analytics tool. Nepcha is already integrated with Material Tailwind Dashboard React. You can use it to gain insights into your sources of traffic.
 
 Let us know your thoughts below. And good luck with development!
 
@@ -137,6 +138,7 @@ At present, we officially aim to support the last two versions of the following 
 - [License Agreement](https://www.creative-tim.com/license?ref=readme-mtdr)
 - [Support](https://www.creative-tim.com/contact-us?ref=readme-mtdr)
 - Issues: [Github Issues Page](https://github.com/creativetimofficial/material-tailwind-dashboard-react/issues)
+- [Nepcha Analytics](https://nepcha.com?ref=readme) - Analytics tool for your website
 
 ## Reporting Issues
 
