@@ -2,11 +2,18 @@ import {
   HomeIcon,
   UserCircleIcon,
   TableCellsIcon,
-  BellIcon,
+  BellIcon, FlagIcon,
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
+import {
+  Home,
+  Profile,
+  Tables,
+  Notifications,
+  Categories, 
+  Complain
+} from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 
 const icon = {
@@ -40,6 +47,18 @@ export const routes = [
         name: "notifactions",
         path: "/notifactions",
         element: <Notifications />,
+      },
+      {
+        icon: <FlagIcon {...icon} />,
+        name: "complain",
+        path: "/complain",
+        element: <Complain />,
+      },
+      {
+        icon: <BellIcon {...icon} />,
+        name: "Categories",
+        path: "/categories",
+        element: <Categories />,
       },
     ],
   },
