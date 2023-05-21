@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import SubCategoryCard from "./SubCategoryCard";
 import AddSubCategoryButton from "./AddSubCategoryButton";
+import useDeleteCategory from "@/apiHooks/Category/useDeleteCategory";
 
-const CategoryCard = ({ name, id, subcategories }) => {
+const CategoryCard = ({ name, id, subcategories, updater }) => {
+  const deleteCategory = useDeleteCategory({ updater });
   return (
     <>
       <div
@@ -14,16 +16,21 @@ const CategoryCard = ({ name, id, subcategories }) => {
           <h1 className="mx-auto">{name}</h1>
           <span
             className="flex cursor-pointer justify-end text-center text-red-800"
-            // onClick={() => deleteCategory(e?.id, setupdater, "category")}
+            onClick={() => deleteCategory(id, "category")}
           >
-            {1 === 1 ? "X" : "X"}
+            X
           </span>
         </div>
         {subcategories?.map((e, index) => (
-          <SubCategoryCard key={index} name={e.name} id={e._id} />
+          <SubCategoryCard
+            updater={updater}
+            key={index}
+            name={e.name}
+            id={e._id}
+          />
         ))}
         <div className="w-full">
-          <AddSubCategoryButton categoryId={id} />
+          <AddSubCategoryButton updater={updater} categoryId={id} />
         </div>
       </div>
     </>
