@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import api from "@/apiConfig/axiosInstance";
 const useGetCategory = () => {
@@ -10,6 +9,7 @@ const useGetCategory = () => {
     try {
       const { data, status } = await api.get("/category");
       if (status === 200) {
+        console.log(data);
         setdata(data);
         setloading(false);
       }
