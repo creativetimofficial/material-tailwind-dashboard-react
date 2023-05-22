@@ -2,7 +2,8 @@ import {
   HomeIcon,
   UserCircleIcon,
   TableCellsIcon,
-  BellIcon, FlagIcon,
+  BellIcon,
+  FlagIcon,
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
@@ -11,8 +12,9 @@ import {
   Profile,
   Tables,
   Notifications,
-  Categories, 
-  Complain
+  Categories,
+  Complain,
+  ComplainList
 } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 
@@ -53,6 +55,12 @@ export const routes = [
         name: "complain",
         path: "/complain",
         element: <Complain />,
+      },
+      {
+        icon: <FlagIcon {...icon} />,
+        name: "Your Complain",
+        path: "/complain-list",
+        element: <ComplainList />,
       },
       {
         icon: <BellIcon {...icon} />,

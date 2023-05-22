@@ -54,22 +54,23 @@ export const Complain = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div className="p-3"></div>
+      <form className="space-y-10" onSubmit={handleSubmit}>
+        <div>
         <label>Name:</label>
         <Input
           value={name}
           onChange={(e) => setname(e.target.value)}
           size="lg"
         />
-        <div className="p-3"></div>
+        </div>
+        <div>
         <label>Email:</label>
         <Input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           size="lg"
         />
-        <div className="p-5"></div>
+        </div>
         {/* Parent Selector */}
         <div>
           <Select
@@ -86,7 +87,6 @@ export const Complain = () => {
           </Select>
         </div>
 
-        <div className="p-5"></div>
         {/* Child Selector */}
 
         <div>
@@ -104,7 +104,6 @@ export const Complain = () => {
           </Select>
         </div>
 
-        <div className="p-5"></div>
         <Textarea
           required
           value={description}
@@ -113,7 +112,6 @@ export const Complain = () => {
           size="lg"
           style={{ height: "100px", resize: "vertical" }}
         />
-        <div className="p-5"></div>
 
         <Button type="submit" color="green">
           Submit

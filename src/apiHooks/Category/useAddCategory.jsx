@@ -3,6 +3,7 @@ import React from "react";
 import { toast } from "react-hot-toast";
 
 const useAddCategory = ({ updater, setshow, setname }) => {
+  // ==========================
   const addCategory = async (name) => {
     try {
       const { data, status } = await api.post("/category", { name });
@@ -17,6 +18,7 @@ const useAddCategory = ({ updater, setshow, setname }) => {
       toast.error(e?.response?.data?.message);
     }
   };
+  // ======================
   return addCategory;
 };
 
