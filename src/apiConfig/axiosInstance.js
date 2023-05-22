@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  // baseURL: "https://d4f0-206-84-142-90.ngrok-free.app",
-  baseURL: "http://localhost:1000",
+  // baseURL: "http://localhost:1000",
+  baseURL: "https://1e09-206-84-142-90.ngrok-free.app",
 });
 
 // Set the user token if available

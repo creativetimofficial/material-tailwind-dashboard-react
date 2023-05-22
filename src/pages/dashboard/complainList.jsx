@@ -1,17 +1,7 @@
 import React, { useState } from "react";
 import useGetComplain from "@/apiHooks/complain/useGetComplain";
 import { formatDistanceToNow } from "date-fns";
-import { parseISO } from "date-fns/esm";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Avatar,
-  Chip,
-  Tooltip,
-  Progress,
-} from "@material-tailwind/react";
+import { Typography, Select, Option } from "@material-tailwind/react";
 export const ComplainList = () => {
   // const complaints = useGetComplain();
   const { complains, loading } = useGetComplain();
@@ -20,7 +10,6 @@ export const ComplainList = () => {
     id: "",
     display: false,
   });
-  console.log(complains);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -67,25 +56,28 @@ export const ComplainList = () => {
                     <span>{item.description?.substring(40)}</span>
                   )}
 
-                  <span
-                    onClick={() =>
-                      setshow((prev) => ({
-                        ...prev,
-                        display: show.id === item._id ? !show.display : true,
-                        id: item._id,
-                      }))
-                    }
-                    className="bg-red-300"
-                  >
-                    {show.id === item._id && show.display
-                      ? "See Less"
-                      : "...See More"}
-                  </span>
+                  {item.description.length > 40 && (
+                    <span
+                      onClick={() =>
+                        setshow((prev) => ({
+                          ...prev,
+                          display: show.id === item._id ? !show.display : true,
+                          id: item._id,
+                        }))
+                      }
+                      className="text-sm"
+                    >
+                      {show.id === item._id && show.display
+                        ? "See Less"
+                        : "...See More"}
+                    </span>
+                  )}
                 </td>
 
                 <td className="border-b border-blue-gray-50 py-3 px-5">
-                {formatDistanceToNow((new Date(item.date)), { addSuffix: false })}
-                {/* {item.date} */}
+                  {formatDistanceToNow(new Date(item.date), {
+                    addSuffix: false,
+                  })}
                 </td>
                 <td className="border-b border-blue-gray-50 py-3 px-5">
                   {item.status}
