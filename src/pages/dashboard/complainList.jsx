@@ -77,9 +77,9 @@ export const ComplainList = () => {
                 <td className="border-b border-blue-gray-50 py-3 px-5">
                   {formatDistanceToNow(new Date(item.date), {
                     addSuffix: false,
-                  })}
+                  })} ago
                 </td>
-                <td className="border-b border-blue-gray-50 py-3 px-5">
+                <td className="border-b border-blue-gray-50 py-3 px-5 text-yellow-800 font-bold">
                   {item.status}
                 </td>
               </tr>
