@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
+import useLogin from "../../apiHooks/user/useLogin";
 import {
   Card,
   CardHeader,
@@ -11,6 +14,23 @@ import {
 } from "@material-tailwind/react";
 
 export function SignIn() {
+  const loginUser = useLogin();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (email.trim() === "" || password.trim() === "") {
+      toast.error("Please enter your email and password");
+      return;
+    }
+
+    loginUser({ email, password });
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <>
       <img
@@ -29,31 +49,45 @@ export function SignIn() {
               Sign In
             </Typography>
           </CardHeader>
-          <CardBody className="flex flex-col gap-4">
-            <Input type="email" label="Email" size="lg" />
-            <Input type="password" label="Password" size="lg" />
-            <div className="-ml-2.5">
-              <Checkbox label="Remember Me" />
-            </div>
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-              Sign In
-            </Button>
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Don't have an account?
-              <Link to="/auth/sign-up">
-                <Typography
-                  as="span"
-                  variant="small"
-                  color="blue"
-                  className="ml-1 font-bold"
-                >
-                  Sign up
-                </Typography>
-              </Link>
-            </Typography>
-          </CardFooter>
+          <form onSubmit={handleSubmit}>
+            <CardBody className="flex flex-col gap-4">
+              <Input
+                type="email"
+                label="Email"
+                size="lg"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                type="password"
+                label="Password"
+                size="lg"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="-ml-2.5">
+                <Checkbox label="Remember Me" />
+              </div>
+            </CardBody>
+            <CardFooter className="pt-0">
+              <Button variant="gradient" fullWidth type="submit">
+                Sign In
+              </Button>
+              <Typography variant="small" className="mt-6 flex justify-center">
+                Don't have an account?
+                <Link to="/auth/sign-up">
+                  <Typography
+                    as="span"
+                    variant="small"
+                    color="blue"
+                    className="ml-1 font-bold"
+                  >
+                    Sign up
+                  </Typography>
+                </Link>
+              </Typography>
+            </CardFooter>
+          </form>
         </Card>
       </div>
     </>
