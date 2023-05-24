@@ -1,4 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
+import Logout from "@/pages/auth/logout";
 import {
   Navbar,
   Typography,
@@ -13,6 +14,7 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import {
+  ArrowLeftOnRectangleIcon,
   UserCircleIcon,
   Cog6ToothIcon,
   BellIcon,
@@ -72,9 +74,9 @@ export function DashboardNavbar() {
           </Typography>
         </div>
         <div className="flex items-center">
-          <div className="mr-auto md:mr-4 md:w-56">
+          {/* <div className="mr-auto md:mr-4 md:w-56">
             <Input label="Type here" />
-          </div>
+          </div> */}
           <IconButton
             variant="text"
             color="blue-gray"
@@ -83,7 +85,8 @@ export function DashboardNavbar() {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
-          <Link to="/auth/sign-in">
+          <Logout />
+          {/* <Link to="/auth/sign-in">
             <Button
               variant="text"
               color="blue-gray"
@@ -99,20 +102,20 @@ export function DashboardNavbar() {
             >
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
             </IconButton>
-          </Link>
-          <IconButton
+          </Link> */}
+          {/* <IconButton
             variant="text"
             color="blue-gray"
             onClick={() => setOpenConfigurator(dispatch, true)}
           >
             <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-          </IconButton>
+          </IconButton> */}
           <Menu>
-            <MenuHandler>
+            {/* <MenuHandler>
               <IconButton variant="text" color="blue-gray">
                 <BellIcon className="h-5 w-5 text-blue-gray-500" />
               </IconButton>
-            </MenuHandler>
+            </MenuHandler> */}
             <MenuList className="w-max border-0">
               <MenuItem className="flex items-center gap-3">
                 <Avatar

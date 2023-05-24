@@ -29,8 +29,8 @@ export function SignUp() {
       confirmPassword
     });
     // Reset the form fields
-    setName("");
-    setEmail("");
+    // setName("");
+    // setEmail("");
     setPassword("");
     setConfirmPassword("")
   };

@@ -5,7 +5,7 @@ import {
   BellIcon,
   FlagIcon,
   ArrowRightOnRectangleIcon,
-  UserPlusIcon,
+  UserPlusIcon, TagIcon, BookmarkIcon
 } from "@heroicons/react/24/solid";
 import {
   Home,
@@ -26,30 +26,30 @@ export const routes = [
   {
     layout: "dashboard",
     pages: [
-      {
-        icon: <HomeIcon {...icon} />,
-        name: "dashboard",
-        path: "/home",
-        element: <Home />,
-      },
-      {
-        icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        icon: <TableCellsIcon {...icon} />,
-        name: "tables",
-        path: "/tables",
-        element: <Tables />,
-      },
-      {
-        icon: <BellIcon {...icon} />,
-        name: "notifactions",
-        path: "/notifactions",
-        element: <Notifications />,
-      },
+      // {
+      //   icon: <HomeIcon {...icon} />,
+      //   name: "dashboard",
+      //   path: "/home",
+      //   element: <Home />,
+      // },
+      // {
+      //   icon: <UserCircleIcon {...icon} />,
+      //   name: "profile",
+      //   path: "/profile",
+      //   element: <Profile />,
+      // },
+      // {
+      //   icon: <TableCellsIcon {...icon} />,
+      //   name: "tables",
+      //   path: "/tables",
+      //   element: <Tables />,
+      // },
+      // {
+      //   icon: <BellIcon {...icon} />,
+      //   name: "notifactions",
+      //   path: "/notifactions",
+      //   element: <Notifications />,
+      // },
       {
         icon: <FlagIcon {...icon} />,
         name: "complain",
@@ -57,21 +57,21 @@ export const routes = [
         element: <Complain />,
       },
       {
-        icon: <FlagIcon {...icon} />,
+        icon: <BookmarkIcon {...icon} />,
         name: "Your Complain",
         path: "/complain-list",
         element: <ComplainList />,
       },
-      {
-        icon: <BellIcon {...icon} />,
-        name: "Categories",
-        path: "/categories",
-        element: <Categories />,
-      },
+      // {
+      //   icon: <TagIcon {...icon} />,
+      //   name: "Categories",
+      //   path: "/categories",
+      //   element: <Categories />,
+      // },
     ],
   },
   {
-    title: "auth pages",
+    title: "Login/Logout",
     layout: "auth",
     pages: [
       {
