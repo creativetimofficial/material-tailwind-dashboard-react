@@ -33,7 +33,7 @@ export function Auth() {
   ];
 
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative  min-h-screen w-full">
       <div className="container relative z-40 mx-auto p-4">
         <Navbar routes={navbarRoutes} />
       </div>
@@ -41,7 +41,7 @@ export function Auth() {
         {routes.map(
           ({ layout, pages }) =>
             layout === "auth" &&
-            pages.map(({ path, element }) => (
+            pages?.map(({ path, element }) => (
               <Route exact path={path} element={element} />
             ))
         )}
