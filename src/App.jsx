@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import PrivateRoute from "./pages/auth/PrivateRoute";
 import { SignIn, SignUp } from "./pages/auth";
 import { useUserContext } from "./context/UserContext";
+import SignInAdmin from "./pages/auth/admin/LoginAdmin";
 function App() {
   const { user } = useUserContext();
   return (
@@ -22,14 +23,8 @@ function App() {
           path="/dashboard/*"
           element={<PrivateRoute element={Dashboard} />}
         />
-        <Route
-          path="/admin"
-          element={
-            <>
-              <div>lkajsdlkajd</div>
-            </>
-          }
-        />
+        <Route path="/admin" element={<SignInAdmin />} />
+        {/* <Route path="/admin/register" element={<SignUpAdmin />} /> */}
         {/* <Route path="*" element={<Navigate to="/dashboard/home" replace />} /> */}
       </Routes>
     </>

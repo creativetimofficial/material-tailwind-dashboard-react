@@ -6,7 +6,7 @@ import DropdownStatus from "./dropdownStatus";
 
 export const ComplainList = () => {
   // const complaints = useGetComplain();
-  const [complains, setComplains] = useState([]);
+  const [complains, setComplains] = useState();
 
   const { fetchComplains, loading } = useGetComplain(setComplains);
 

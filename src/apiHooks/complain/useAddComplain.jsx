@@ -12,7 +12,7 @@ const useAddComplain = () => {
       const { data, status } = await api.post("/complain", complain);
       if (status === 200) {
         toast.success("Your Complain is Added");
-        nav("/dashboard/home");
+        nav("/dashboard/complain-list");
       }
     } catch (e) {
       console.log(e);

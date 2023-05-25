@@ -6,7 +6,7 @@ export const Welcome = () => {
   return (
     <>
       <img src={welcome2} alt="" className="m-auto w-[35vw]" />
-      <div className="flex justify-center text-4xl">
+      <div className="flex justify-center text-4xl font-bold font-sans">
         Welcome &nbsp; <span className=""> {user?.name}</span>
       </div>
     </>
