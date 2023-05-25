@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <Toaster />
-    
       <Routes>
         {/* <Route path="/dashboard/*" element={<Dashboard />} /> */}
         <Route path="/auth/*" element={<Auth />} />

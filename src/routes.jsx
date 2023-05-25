@@ -5,7 +5,9 @@ import {
   BellIcon,
   FlagIcon,
   ArrowRightOnRectangleIcon,
-  UserPlusIcon, TagIcon, BookmarkIcon
+  UserPlusIcon,
+  TagIcon,
+  BookmarkIcon,
 } from "@heroicons/react/24/solid";
 import {
   Home,
@@ -14,14 +16,14 @@ import {
   Notifications,
   Categories,
   Complain,
-  ComplainList
+  ComplainList,
 } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
-
+const user = false;
 export const routes = [
   {
     layout: "dashboard",
@@ -70,7 +72,7 @@ export const routes = [
       // },
     ],
   },
-  {
+  !user && {
     title: "Login/Logout",
     layout: "auth",
     pages: [

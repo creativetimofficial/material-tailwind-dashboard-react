@@ -10,9 +10,9 @@ const dropdownStatus = ({func}) => {
   console.log(statuses)
 
   const handleSelectItem = (event) => {
-    setSelectedItem(event.target.value);
-    func(event.target.value);
-    console.log("Selected item:", event.target.value);
+    setSelectedItem(event);
+    func(event);
+    console.log("Selected item:", event);
   };
   return (
     <div>
