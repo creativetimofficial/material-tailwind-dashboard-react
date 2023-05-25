@@ -6,19 +6,21 @@ import { SignIn, SignUp } from "./pages/auth";
 import { useUserContext } from "./context/UserContext";
 import SignInAdmin from "./pages/auth/admin/LoginAdmin";
 function App() {
+  // const { user } = useUserContext();
   const user = localStorage.getItem("user");
+
   return (
     <>
       <Toaster />
       <Routes>
-        {/* <Route path="/dashboard/*" element={<Dashboard />} /> */}
-
+        <Route
+          exact
+          path="/*"
+          // element={<Navigate to={user ? "/dashboard/" : "/login"} />}
+          element={<PrivateRoute element={Dashboard} />}
+        />
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
-        <Route
-          path="/"
-          element={<Navigate to={user?._id ? "/dashboard/" : "/login"} />}
-        />
         <Route
           path="/dashboard/*"
           element={<PrivateRoute element={Dashboard} />}

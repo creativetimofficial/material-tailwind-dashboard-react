@@ -10,12 +10,19 @@ import {
   Checkbox,
   Button,
   Typography,
+  Select,
+  Option,
 } from "@material-tailwind/react";
 
 export function SignUp() {
   const registerUser = useRegister();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
+  const [registrationNumber, setregistrationNumber] = useState("");
+  const [houseNo, sethouseNo] = useState("");
+  const [streetNo, setstreetNo] = useState("");
+  const [block, setblock] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const handleSubmit = (e) => {
@@ -26,13 +33,18 @@ export function SignUp() {
       name,
       email,
       password,
-      confirmPassword
+      confirmPassword,
+      phoneNumber,
+      registrationNumber,
+      houseNo,
+      streetNo,
+      block,
     });
     // Reset the form fields
     // setName("");
     // setEmail("");
     setPassword("");
-    setConfirmPassword("")
+    setConfirmPassword("");
   };
 
   return (
@@ -62,12 +74,56 @@ export function SignUp() {
                 onChange={(e) => setName(e.target.value)}
               />
               <Input
+                required={false}
                 type="email"
                 label="Email"
                 size="lg"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              <Input
+                required
+                type="text"
+                label="Phone Number"
+                size="lg"
+                value={phoneNumber}
+                onChange={(e) => setphoneNumber(e.target.value)}
+              />
+              <Input
+                required
+                type="text"
+                label="Registration Number"
+                size="lg"
+                value={registrationNumber}
+                onChange={(e) => setregistrationNumber(e.target.value)}
+              />
+              <Input
+                required
+                type="text"
+                label="House Number"
+                size="lg"
+                value={houseNo}
+                onChange={(e) => sethouseNo(e.target.value)}
+              />
+              <Input
+                required
+                type="text"
+                label="Street Number"
+                size="lg"
+                value={streetNo}
+                onChange={(e) => setstreetNo(e.target.value)}
+              />
+              <Select
+                label="Select Block"
+                placeholder="Select Block"
+                onChange={(e) => setblock(e)}
+              >
+                <Option value="Block A">Block A</Option>
+                <Option value="Block B">Block B</Option>
+                <Option value="Block C">Block C</Option>
+                <Option value="Block D">Block D</Option>
+              </Select>
+
               <Input
                 type="password"
                 label="Password"

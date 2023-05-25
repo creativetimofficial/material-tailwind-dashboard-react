@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import useLogin from "../../../apiHooks/admin/useLoginAdmin";
+import useLoginAdmin from "../../../apiHooks/admin/useLoginAdmin";
 import {
   Card,
   CardHeader,
@@ -13,8 +13,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-export function SignInAdmin() {
-  const loginUser = useLogin();
+export const SignInAdmin = () => {
+  const loginAdmin = useLoginAdmin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +26,7 @@ export function SignInAdmin() {
       return;
     }
 
-    loginUser({ email, password });
+    loginAdmin({ email, password });
     // setEmail("");
     // setPassword("");
   };
@@ -46,19 +46,21 @@ export function SignInAdmin() {
             className="mb-4 grid h-28 place-items-center"
           >
             <Typography variant="h3" color="white">
-              Sign In
+              Admin Sign In
             </Typography>
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardBody className="flex flex-col gap-4">
               <Input
-                type="email"
+                required
+                type="text"
                 label="Email"
                 size="lg"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Input
+                required
                 type="password"
                 label="Password"
                 size="lg"
@@ -92,6 +94,6 @@ export function SignInAdmin() {
       </div>
     </>
   );
-}
+};
 
 export default SignInAdmin;
