@@ -13,9 +13,3 @@ const PrivateRoute = ({ element: Element, isAuthenticated }) => {
   );
 };
 export default PrivateRoute;
-const token = localStorage.getItem("user");
-
-<Route path="/admin" element={<SignInAdmin />} />;
-{
-  /* <Route path="/admin/register" element={<SignUpAdmin />} /> */
-}
