@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useGetComplain from "@/apiHooks/complain/useGetComplain";
 import { formatDistanceToNow } from "date-fns";
 import { Typography, Select, Option } from "@material-tailwind/react";
+import DropdownStatus from "./dropdownStatus";
+
+
 export const ComplainList = () => {
   // const complaints = useGetComplain();
-  const { complains, loading } = useGetComplain();
+  const [complains, setComplains] = useState([]);
+
+  const {  fetchComplains,loading } = useGetComplain(setComplains);
+
   // Test COde
   const [show, setshow] = useState({
     id: "",
@@ -13,8 +19,14 @@ export const ComplainList = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  useEffect(() => {
+    fetchComplains()
+  }, [])
+  
   return (
     <div>
+      <DropdownStatus func={fetchComplains}/>
       <table className="w-full min-w-[640px] table-auto">
         <thead>
           <tr>
@@ -80,7 +92,7 @@ export const ComplainList = () => {
                   })} ago
                 </td>
                 <td className="border-b border-blue-gray-50 py-3 px-5 text-yellow-800 font-bold">
-                  {item.status}
+                  {item.status.name}
                 </td>
               </tr>
             </>

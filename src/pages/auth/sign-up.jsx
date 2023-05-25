@@ -1,4 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useRegister from "../../apiHooks/user/useRegister";
 import {
   Card,
   CardHeader,
@@ -11,6 +13,28 @@ import {
 } from "@material-tailwind/react";
 
 export function SignUp() {
+  const registerUser = useRegister();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Getting Category Id
+    // const { _id } = data?.find((o) => o.name === category);
+    registerUser({
+      name,
+      email,
+      password,
+      confirmPassword
+    });
+    // Reset the form fields
+    // setName("");
+    // setEmail("");
+    setPassword("");
+    setConfirmPassword("")
+  };
+
   return (
     <>
       <img
@@ -29,32 +53,61 @@ export function SignUp() {
               Sign Up
             </Typography>
           </CardHeader>
-          <CardBody className="flex flex-col gap-4">
-            <Input label="Name" size="lg" />
-            <Input type="email" label="Email" size="lg" />
-            <Input type="password" label="Password" size="lg" />
-            <div className="-ml-2.5">
-              <Checkbox label="I agree the Terms and Conditions" />
-            </div>
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-              Sign Up
-            </Button>
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Already have an account?
-              <Link to="/auth/sign-in">
-                <Typography
-                  as="span"
-                  variant="small"
-                  color="blue"
-                  className="ml-1 font-bold"
-                >
-                  Sign in
-                </Typography>
-              </Link>
-            </Typography>
-          </CardFooter>
+          <form onSubmit={handleSubmit}>
+            <CardBody className="flex flex-col gap-4">
+              <Input
+                label="Name"
+                size="lg"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Input
+                type="email"
+                label="Email"
+                size="lg"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                type="password"
+                label="Password"
+                size="lg"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Input
+                type="password"
+                label="Confirm Password"
+                size="lg"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+
+              <div className="-ml-2.5">
+                <Checkbox label="I agree the Terms and Conditions" />
+              </div>
+            </CardBody>
+
+            <CardFooter className="pt-0">
+              <Button variant="gradient" fullWidth type="submit">
+                Register
+              </Button>
+
+              <Typography variant="small" className="mt-6 flex justify-center">
+                Already have an account?
+                <Link to="/auth/sign-in">
+                  <Typography
+                    as="span"
+                    variant="small"
+                    color="blue"
+                    className="ml-1 font-bold"
+                  >
+                    Sign in
+                  </Typography>
+                </Link>
+              </Typography>
+            </CardFooter>
+          </form>
         </Card>
       </div>
     </>

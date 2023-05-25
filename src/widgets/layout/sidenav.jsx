@@ -38,7 +38,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
             {brandName}
           </Typography>
         </Link>
-        <IconButton
+        {/* <IconButton
           variant="text"
           color="white"
           size="sm"
@@ -47,7 +47,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
           onClick={() => setOpenSidenav(dispatch, false)}
         >
           <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
-        </IconButton>
+        </IconButton> */}
       </div>
       <div className="m-4">
         {routes.map(({ layout, title, pages }, key) => (
@@ -94,13 +94,14 @@ export function Sidenav({ brandImg, brandName, routes }) {
           </ul>
         ))}
       </div>
+      
     </aside>
   );
 }
 
 Sidenav.defaultProps = {
-  brandImg: "/img/logo-ct.png",
-  brandName: "Material Tailwind React",
+  brandImg: "/img/awt_logo.png",
+  brandName: "AWT Complain Portal",
 };
 
 Sidenav.propTypes = {
