@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Textarea } from "@material-tailwind/react";
 import { Input } from "@material-tailwind/react";
-// import { Textarea } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
 import useGetCategory from "@/apiHooks/Category/useGetCategory";
 import { toast } from "react-hot-toast";
@@ -15,11 +14,10 @@ export const Complain = () => {
     getCatogery();
   }, []);
   const [name, setname] = useState(user?.name);
+  const [email, setEmail] = useState(user?.email);
   const [category, setCategory] = useState("");
   const [subcategory, setSubCategory] = useState("");
-  const [email, setEmail] = useState(user?.email);
   const [description, setDescription] = useState("");
-
   // SubCategory List
   const [subcategories, setsubcategories] = useState([]);
 
@@ -60,7 +58,6 @@ export const Complain = () => {
             value={name}
             onChange={(e) => setname(e.target.value)}
             size="lg"
-            disabled
           />
         </div>
         <div>
@@ -69,7 +66,6 @@ export const Complain = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             size="lg"
-            disabled
           />
         </div>
         {/* Parent Selector */}

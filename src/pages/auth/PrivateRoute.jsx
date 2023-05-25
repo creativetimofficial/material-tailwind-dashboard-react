@@ -1,12 +1,14 @@
+import { useUserContext } from "@/context/UserContext";
 import { Route, Navigate } from "react-router-dom";
-// import { useUserContext } from "../../contexts/UserContext";
 
 const PrivateRoute = ({ element: Element, isAuthenticated }) => {
+  // const { user } = useUserContext();
+
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <>
-      {user?._id && <Element />}
-      {!user?._id && <Navigate to="/auth/sign-in" replace />}
+      {user && <Element />}
+      {!user && <Navigate to="/login" replace />}
 
       {/* user?._id ? <Element /> : <Navigate to="/login" replace />; */}
     </>

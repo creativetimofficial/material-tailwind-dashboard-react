@@ -3,10 +3,11 @@ import useVerifyUser from "@/apiHooks/user/useVerifyUser";
 const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
-  console.log("Rendering At First and Every REnder");
+  const user1 = JSON.parse(localStorage.getItem("user"));
+
   // User State
-  const [user, setuser] = useState();
-  useVerifyUser(setuser);
+  const [user, setuser] = useState(null);
+  useVerifyUser(user1, setuser);
 
   return (
     <UserContext.Provider value={{ setuser, user }}>

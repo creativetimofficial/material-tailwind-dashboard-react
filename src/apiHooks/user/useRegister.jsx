@@ -17,11 +17,11 @@ const useRegister = () => {
     setError(null);
 
     try {
-      const { email, password } = userData;
+      const { phoneNumber, password } = userData;
       const response = await api.post("/register", userData);
       if (response.status === 201) {
         toast.success("User registered successfully");
-        login({ email, password });
+        login({ phoneNumber, password });
       }
     } catch (error) {
       setError(error.response.data.message || "Registration failed");
