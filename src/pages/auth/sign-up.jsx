@@ -95,7 +95,7 @@ export function SignUp() {
 
               <Typography variant="small" className="mt-6 flex justify-center">
                 Already have an account?
-                <Link to="/auth/sign-in">
+                <Link to="/login">
                   <Typography
                     as="span"
                     variant="small"

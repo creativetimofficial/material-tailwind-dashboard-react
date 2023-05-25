@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import useLogin from "../../apiHooks/user/useLogin";
+import useLogin from "../../../apiHooks/admin/useLoginAdmin";
 import {
   Card,
   CardHeader,
@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-export function SignIn() {
+export function SignInAdmin() {
   const loginUser = useLogin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,7 +75,7 @@ export function SignIn() {
               </Button>
               <Typography variant="small" className="mt-6 flex justify-center">
                 Don't have an account?
-                <Link to="/register">
+                <Link to="/auth/sign-up">
                   <Typography
                     as="span"
                     variant="small"
@@ -94,4 +94,4 @@ export function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInAdmin;
