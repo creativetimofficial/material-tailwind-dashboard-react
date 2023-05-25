@@ -1,9 +1,11 @@
-import api from "@/apiConfig/axiosInstance";
+import useAxios from "@/apiConfig/axiosInstance";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const useAddComplain = () => {
+  const api = useAxios();
+
   const nav = useNavigate();
   const addComplain = async (complain) => {
     try {

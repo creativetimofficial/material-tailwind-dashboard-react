@@ -1,8 +1,9 @@
-import api from "@/apiConfig/axiosInstance";
+import useAxios from "@/apiConfig/axiosInstance";
 import React from "react";
 import { toast } from "react-hot-toast";
 
 const useAddCategory = ({ updater, setshow, setname }) => {
+  const api = useAxios();
   // ==========================
   const addCategory = async (name) => {
     try {

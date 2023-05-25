@@ -27,8 +27,8 @@ export function SignIn() {
     }
 
     loginUser({ email, password });
-    setEmail("");
-    setPassword("");
+    // setEmail("");
+    // setPassword("");
   };
 
   return (
