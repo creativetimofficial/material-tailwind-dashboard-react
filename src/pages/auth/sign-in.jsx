@@ -15,19 +15,17 @@ import {
 
 export function SignIn() {
   const loginUser = useLogin();
-  const [email, setEmail] = useState("");
+  const [number, setnumber] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email.trim() === "" || password.trim() === "") {
-      toast.error("Please enter your email and password");
+    if (number.trim() === "" || password.trim() === "") {
+      toast.error("Please enter your Number and password");
       return;
     }
-
-    loginUser({ email, password });
-    // setEmail("");
+    loginUser({ phoneNumber: number, password });
     // setPassword("");
   };
 
@@ -52,11 +50,11 @@ export function SignIn() {
           <form onSubmit={handleSubmit}>
             <CardBody className="flex flex-col gap-4">
               <Input
-                type="email"
-                label="Email"
+                type="text"
+                label="Phone Number"
                 size="lg"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={number}
+                onChange={(e) => setnumber(e.target.value)}
               />
               <Input
                 type="password"
