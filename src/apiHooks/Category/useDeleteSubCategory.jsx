@@ -1,7 +1,9 @@
 import React from "react";
-import api from "@/apiConfig/axiosInstance";
 import { toast } from "react-hot-toast";
+import useAxios from "@/apiConfig/axiosInstance";
 const useDeleteSubCategory = (updater) => {
+  const api = useAxios();
+
   const deleteSubCategory = async (id, route) => {
     try {
       const { data, status } = await api.delete(`/${route}/${id}`);

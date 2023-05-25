@@ -6,17 +6,18 @@ import { Select, Option } from "@material-tailwind/react";
 import useGetCategory from "@/apiHooks/Category/useGetCategory";
 import { toast } from "react-hot-toast";
 import useAddComplain from "@/apiHooks/complain/useAddComplain";
+import { useUserContext } from "@/context/UserContext";
 export const Complain = () => {
+  const { user } = useUserContext();
   const { data, getCatogery } = useGetCategory();
   const addComplain = useAddComplain();
   useEffect(() => {
     getCatogery();
   }, []);
-  const [name, setname] = useState("Huzaifa");
-  const [userId, setUserId] = useState("123");
+  const [name, setname] = useState(user?.name);
   const [category, setCategory] = useState("");
   const [subcategory, setSubCategory] = useState("");
-  const [email, setEmail] = useState("huzaifahkhan00@gmail.com");
+  const [email, setEmail] = useState(user?.email);
   const [description, setDescription] = useState("");
 
   // SubCategory List
@@ -38,7 +39,6 @@ export const Complain = () => {
     // Getting Category Id
     const { _id } = data?.find((o) => o.name === category);
     addComplain({
-      userId,
       name,
       category: _id,
       subcategory,
@@ -46,7 +46,6 @@ export const Complain = () => {
       description,
     });
     // Reset the form fields
-    setUserId("");
     setCategory("");
     setSubCategory("");
     setEmail("");
@@ -56,20 +55,20 @@ export const Complain = () => {
     <div>
       <form className="space-y-10" onSubmit={handleSubmit}>
         <div>
-        <label>Name:</label>
-        <Input
-          value={name}
-          onChange={(e) => setname(e.target.value)}
-          size="lg"
-        />
+          <label>Name:</label>
+          <Input
+            value={name}
+            onChange={(e) => setname(e.target.value)}
+            size="lg"
+          />
         </div>
         <div>
-        <label>Email:</label>
-        <Input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          size="lg"
-        />
+          <label>Email:</label>
+          <Input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            size="lg"
+          />
         </div>
         {/* Parent Selector */}
         <div>

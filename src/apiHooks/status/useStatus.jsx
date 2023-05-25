@@ -1,8 +1,10 @@
-import api from "@/apiConfig/axiosInstance";
+import useAxios from "@/apiConfig/axiosInstance";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 const useStatus = () => {
+  const api = useAxios();
+
   const [statuses, setStatuses] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +12,6 @@ const useStatus = () => {
     const fetchStatuses = async () => {
       try {
         const { data, status } = await api.get("/status");
-        console.log("API response:", data);
         if (status === 200) {
           setStatuses(data);
           setLoading(false);
@@ -26,7 +27,7 @@ const useStatus = () => {
   }, []);
 
   return statuses;
-//   return { statuses, loading };
+  //   return { statuses, loading };
 };
 
 export default useStatus;

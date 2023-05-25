@@ -1,7 +1,9 @@
-import api from "@/apiConfig/axiosInstance";
 import { toast } from "react-hot-toast";
 import useGetCategory from "./useGetCategory";
+import useAxios from "@/apiConfig/axiosInstance";
 const useAddSubCategory = (setshow, updater, setsubCategory) => {
+  const api = useAxios();
+
   const { getCatogery } = useGetCategory();
   const addSubCategory = async (name, categoryId) => {
     try {
@@ -10,7 +12,6 @@ const useAddSubCategory = (setshow, updater, setsubCategory) => {
         categoryId,
       });
       if (status === 201) {
-        console.log(data);
         setshow(false);
         setsubCategory("");
         getCatogery();

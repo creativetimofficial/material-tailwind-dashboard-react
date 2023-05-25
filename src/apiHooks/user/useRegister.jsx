@@ -1,11 +1,13 @@
-import api from "@/apiConfig/axiosInstance";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useLogin from "./useLogin";
+import useAxios from "@/apiConfig/axiosInstance";
 
 const useRegister = () => {
-  const login=useLogin()
+  const api = useAxios();
+
+  const login = useLogin();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -15,13 +17,11 @@ const useRegister = () => {
     setError(null);
 
     try {
-      console.log(userData);
-      const {email,password} = userData
+      const { email, password } = userData;
       const response = await api.post("/register", userData);
       if (response.status === 201) {
         toast.success("User registered successfully");
-        // navigate("/login"); 
-        login({email,password})
+        login({ email, password });
       }
     } catch (error) {
       setError(error.response.data.message || "Registration failed");
