@@ -6,9 +6,10 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { Navbar, Footer } from "@/widgets/layout";
-import routes from "@/routes";
+import userRoutes from "@/routes";
 
 export function Auth() {
+  const routes = userRoutes();
   const navbarRoutes = [
     // {
     //   name: "dashboard",
@@ -37,7 +38,7 @@ export function Auth() {
       <div className="container relative z-40 mx-auto p-4">
         <Navbar routes={navbarRoutes} />
       </div>
-      <Routes>
+      {/* <Routes>
         {routes.map(
           ({ layout, pages }) =>
             layout === "auth" &&
@@ -45,7 +46,7 @@ export function Auth() {
               <Route exact path={path} element={element} />
             ))
         )}
-      </Routes>
+      </Routes> */}
       <div className="container absolute bottom-8 left-2/4 z-10 mx-auto -translate-x-2/4 text-white">
         <Footer />
       </div>
