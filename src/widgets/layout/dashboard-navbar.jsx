@@ -73,7 +73,7 @@ export function DashboardNavbar() {
             {page}
           </Typography>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center justify-end gap-x-3">
           {/* <div className="mr-auto md:mr-4 md:w-56">
             <Input label="Type here" />
           </div> */}
