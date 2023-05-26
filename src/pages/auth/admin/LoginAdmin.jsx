@@ -88,6 +88,19 @@ export const SignInAdmin = () => {
                   </Typography>
                 </Link>
               </Typography>
+              <Typography variant="small" className="mt-6 flex justify-center">
+                Sign in as Resident
+                <Link to="/login">
+                  <Typography
+                    as="span"
+                    variant="small"
+                    color="blue"
+                    className="ml-1 font-bold"
+                  >
+                    Sign In
+                  </Typography>
+                </Link>
+              </Typography>
             </CardFooter>
           </form>
         </Card>
