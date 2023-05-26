@@ -4,11 +4,9 @@ import { formatDistanceToNow } from "date-fns";
 import { Typography, Select, Option } from "@material-tailwind/react";
 import DropdownStatus from "./dropdownStatus";
 
-export const ComplainList = () => {
-  // const complaints = useGetComplain();
+export const ComplainList = ({ admin }) => {
   const [complains, setComplains] = useState();
-
-  const { fetchComplains, loading } = useGetComplain(setComplains);
+  const { fetchComplains, loading } = useGetComplain(setComplains, admin);
 
   // Test COde
   const [show, setshow] = useState({
@@ -36,6 +34,7 @@ export const ComplainList = () => {
               "Description",
               "Date",
               "Status",
+              "Assigned To",
             ].map((el) => (
               <th
                 key={el}
@@ -52,6 +51,10 @@ export const ComplainList = () => {
           </tr>
         </thead>
         <tbody>
+          {!complains && <div>Loading...</div>}
+          {complains?.length === 0 && (
+            <div className="text-3xl text-gray-700">No Complains Found</div>
+          )}
           {complains?.map((item) => (
             <>
               <tr className="border-2 border-black" key={item._id}>
@@ -88,9 +91,8 @@ export const ComplainList = () => {
 
                 <td className="border-b border-blue-gray-50 py-3 px-5">
                   {formatDistanceToNow(new Date(item.date), {
-                    addSuffix: false,
-                  })}{" "}
-                  ago
+                    addSuffix: true,
+                  })}
                 </td>
                 <td className="border-b border-blue-gray-50 py-3 px-5 font-bold text-yellow-800">
                   {item.status.name}

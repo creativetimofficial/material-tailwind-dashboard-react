@@ -6,9 +6,6 @@ import { SignIn, SignUp } from "./pages/auth";
 import { useUserContext } from "./context/UserContext";
 import SignInAdmin from "./pages/auth/admin/LoginAdmin";
 function App() {
-  // const { user } = useUserContext();
-  const user = localStorage.getItem("user");
-
   return (
     <>
       <Toaster />
