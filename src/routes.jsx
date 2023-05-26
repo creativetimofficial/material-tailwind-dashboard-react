@@ -8,6 +8,7 @@ import {
   UserPlusIcon,
   TagIcon,
   BookmarkIcon,
+  ArrowPathIcon,
 } from "@heroicons/react/24/solid";
 import {
   Home,
