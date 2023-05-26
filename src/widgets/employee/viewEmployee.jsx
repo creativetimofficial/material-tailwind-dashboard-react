@@ -4,7 +4,7 @@ import { Typography, Select, Option } from "@material-tailwind/react";
 
 export const ViewEmployee = () => {
   const [employees, setEmployees] = useState([]);
-  const { loading, fetchEmployees } = useGetEmployees(setEmployees);
+  const { loading, fetchEmployees, data } = useGetEmployees();
 
   useEffect(() => {
     fetchEmployees();
@@ -32,10 +32,10 @@ export const ViewEmployee = () => {
         </thead>
         <tbody>
           {loading && <div>Loading...</div>}
-          {employees.length === 0 && (
+          {data?.length === 0 && !loading && (
             <div className=" text-gray-700">No Employees Found</div>
           )}
-          {employees.map((employee) => (
+          {data?.map((employee) => (
             <tr className="border-2 border-black" key={employee._id}>
               <td className="border-b border-blue-gray-50 py-3 px-5">
                 {employee.name}

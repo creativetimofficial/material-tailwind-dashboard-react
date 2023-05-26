@@ -3,11 +3,29 @@ import useGetComplain from "@/apiHooks/complain/useGetComplain";
 import { formatDistanceToNow } from "date-fns";
 import { Typography, Select, Option } from "@material-tailwind/react";
 import DropdownStatus from "./dropdownStatus";
-
+import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import EmployeeSelect from "@/widgets/employee/EmployeeSelect";
+import useAssignComplain from "@/apiHooks/complain/useAssignComplain";
+import ComplainStatus from "@/widgets/complain/ComplainStatus";
 export const ComplainList = ({ admin }) => {
   const [complains, setComplains] = useState();
   const { fetchComplains, loading } = useGetComplain(setComplains, admin);
+  const [selectedEmployee, setselectedEmployee] = useState("");
+  const assignComplain = useAssignComplain(fetchComplains);
+  const tableHeadings = [
+    "Categories",
+    "Subcategories",
+    "Description",
+    "Date",
+    "Status",
+    "Assigned To",
+    "Edit",
+  ];
 
+  if (!admin) {
+    tableHeadings.pop();
+    tableHeadings.pop();
+  }
   // Test COde
   const [show, setshow] = useState({
     id: "",
@@ -28,14 +46,7 @@ export const ComplainList = ({ admin }) => {
       <table className="w-full min-w-[640px] table-auto">
         <thead>
           <tr>
-            {[
-              "Categories",
-              "Subcategories",
-              "Description",
-              "Date",
-              "Status",
-              "Assigned To",
-            ].map((el) => (
+            {tableHeadings?.map((el) => (
               <th
                 key={el}
                 className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -94,9 +105,34 @@ export const ComplainList = ({ admin }) => {
                     addSuffix: true,
                   })}
                 </td>
-                <td className="border-b border-blue-gray-50 py-3 px-5 font-bold text-yellow-800">
-                  {item.status.name}
+                <td className="border-b border-blue-gray-50 py-3 px-5 ">
+                  <ComplainStatus name={item?.status?.name} />
                 </td>
+                {/* Assignied to Staff */}
+                {admin && (
+                  <td className="border-b border-blue-gray-50 py-3 px-5 ">
+                    <EmployeeSelect
+                      employee={item.assignedTo?._id}
+                      setEmployee={setselectedEmployee}
+                    />
+                  </td>
+                )}
+                {/* Edit Button */}
+                {admin && (
+                  <td className=" cursor-pointer border-blue-gray-50 py-3 px-5 ">
+                    <ArrowPathIcon
+                      width={25}
+                      className=""
+                      onClick={() => {
+                        console.log(item?._id, "aiushduahd");
+                        assignComplain({
+                          _id: item?._id,
+                          assignedTo: selectedEmployee,
+                        });
+                      }}
+                    />
+                  </td>
+                )}
               </tr>
             </>
           ))}

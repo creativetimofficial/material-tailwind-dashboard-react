@@ -4,7 +4,7 @@ import { Button } from "@material-tailwind/react";
 import React, { useState } from "react";
 
 export const Employee = () => {
-  const [show, setshow] = useState(true);
+  const [show, setshow] = useState(false);
 
   return (
     <>

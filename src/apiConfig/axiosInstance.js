@@ -5,8 +5,8 @@ const useAxios = () => {
   const token = localStorage.getItem("token"); // Example: Get the token from local storage
 
   const api = axios.create({
-    baseURL: "http://localhost:1000",
-    // baseURL: "https://awt-api.fineit.io",
+    // baseURL: "http://localhost:1000",
+    baseURL: "https://awt-api.fineit.io",
 
     //  headers: {
     //   "ngrok-skip-browser-warning": "*",
