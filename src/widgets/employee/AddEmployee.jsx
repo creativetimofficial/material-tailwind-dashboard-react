@@ -2,7 +2,7 @@ import useAddEmployee from "@/apiHooks/employee/useAddEmployee";
 import { Button, Input } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 
-const AddEmployee = () => {
+const AddEmployee = ({ show }) => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -16,7 +16,7 @@ const AddEmployee = () => {
     console.log("updater");
   }, [updater]);
 
-  const addEmployee = useAddEmployee(setupdater);
+  const addEmployee = useAddEmployee(setupdater, show);
   const handleSubmit = (e) => {
     e.preventDefault();
     addEmployee({

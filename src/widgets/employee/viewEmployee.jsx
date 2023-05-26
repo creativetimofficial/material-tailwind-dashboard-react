@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import useGetEmployees from '@/apiHooks/employee/useGetEmployees';
+import React, { useEffect, useState } from "react";
+import useGetEmployees from "@/apiHooks/employee/useGetEmployees";
 import { Typography, Select, Option } from "@material-tailwind/react";
 
 export const ViewEmployee = () => {
@@ -12,10 +12,10 @@ export const ViewEmployee = () => {
 
   return (
     <div>
-      <table className="w-full min-w-[640px] table-auto">
+      <table className="w-[30vw] ">
         <thead>
           <tr>
-            {['Name', 'Email', 'Designation', 'Phone number'].map((el) => (
+            {["Name", "Email", "Designation", "Phone number"].map((el) => (
               <th
                 key={el}
                 className="border-b border-blue-gray-50 py-3 px-5 text-left"

@@ -7,3 +7,4 @@ export * from "@/pages/dashboard/complainList";
 export * from "@/pages/dashboard/categories";
 export * from "@/pages/dashboard/welcome";
 export * from "@/pages/dashboard/employee";
+export * from "@/pages/dashboard/users";
