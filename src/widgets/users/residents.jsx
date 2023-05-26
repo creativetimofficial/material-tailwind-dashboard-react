@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
-import useGetEmployees from "@/apiHooks/employee/useGetEmployees";
-import { Typography, Select, Option } from "@material-tailwind/react";
+import useGetUsers from "@/apiHooks/user/userGetUsers";
+import { Typography } from "@material-tailwind/react";
 
-export const ViewEmployee = () => {
-  const [employees, setEmployees] = useState([]);
-  const { loading, fetchEmployees } = useGetEmployees(setEmployees);
+export const Residents = () => {
+  const [users, setUsers] = useState([]);
+  const { loading, fetchUsers } = useGetUsers(setUsers);
 
   useEffect(() => {
-    fetchEmployees();
+    fetchUsers();
   }, []);
 
   return (
     <div>
-      <table className="w-full78 ">
+      <table className="w-full">
         <thead>
           <tr>
-            {["Name", "Email", "Designation", "Phone number"].map((el) => (
+            {[
+              "Name",
+              "Email",
+              "Phone Number",
+              "Registration Number",
+              "Address",
+            ].map((el) => (
               <th
                 key={el}
                 className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -32,22 +38,25 @@ export const ViewEmployee = () => {
         </thead>
         <tbody>
           {loading && <div>Loading...</div>}
-          {employees.length === 0 && (
-            <div className=" text-gray-700">No Employees Found</div>
+          {users.length === 0 && (
+            <div className=" text-gray-700">No Users Found</div>
           )}
-          {employees.map((employee) => (
-            <tr className="border-2 border-black" key={employee._id}>
+          {users.map((user) => (
+            <tr className="border-2 border-black" key={user._id}>
               <td className="border-b border-blue-gray-50 py-3 px-5">
-                {employee.name}
+                {user.name}
               </td>
               <td className="border-b border-blue-gray-50 py-3 px-5">
-                {employee.email}
+                {user.email}
               </td>
               <td className="border-b border-blue-gray-50 py-3 px-5">
-                {employee.designation}
+                {user.phoneNumber}
               </td>
               <td className="border-b border-blue-gray-50 py-3 px-5">
-                {employee.phoneNumber}
+                {user.registrationNumber}
+              </td>
+              <td className="border-b border-blue-gray-50 py-3 px-5">
+                H {user.houseNo}, St {user.streetNo}, {user.block}
               </td>
             </tr>
           ))}
@@ -57,4 +66,4 @@ export const ViewEmployee = () => {
   );
 };
 
-export default ViewEmployee;
+export default Residents;

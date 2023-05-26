@@ -1,4 +1,5 @@
 import ViewEmployee from "@/widgets/employee/viewEmployee";
+import Residents from "@/widgets/users/residents";
 import { Button } from "@material-tailwind/react";
 import React, { useState } from "react";
 
@@ -18,7 +19,9 @@ export const Users = () => {
             </div>
           )}
           {!show && (
-            <div className="">{/* <AddEmployee show={setshow} /> */}</div>
+            <div className="">
+              <Residents />
+              </div>
           )}
         </div>
       </div>
