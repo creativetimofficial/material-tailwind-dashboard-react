@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-hot-toast";
 import useAxios from "@/apiConfig/axiosInstance";
-const useAddEmployee = (setupdater) => {
+const useAddEmployee = (setupdater, show) => {
   const api = useAxios();
   const addEmployee = async (e) => {
     try {
@@ -9,7 +9,7 @@ const useAddEmployee = (setupdater) => {
       if (status === 200) {
         console.log(data);
         toast.success(data?.message);
-        setupdater((o) => !o);
+        show(false);
       }
     } catch (e) {
       console.log(e);
