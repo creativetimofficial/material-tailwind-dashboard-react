@@ -7,12 +7,16 @@ import {
   Configurator,
   Footer,
 } from "@/widgets/layout";
-import routes from "@/routes";
+// import routes from "@/routes";
 import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
 import { useUserContext } from "@/context/UserContext";
 import welcome2 from "/img/welcome2.svg";
+import userRoutes from "@/routes";
 
 export function Dashboard() {
+  const routes = userRoutes();
+  console.log(routes, "Routes From Dashboard");
+
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavType } = controller;
   const { user } = useUserContext();

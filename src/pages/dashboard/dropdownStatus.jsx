@@ -8,6 +8,7 @@ const dropdownStatus = ({ fetchComplains }) => {
   const statuses = useStatus();
 
   const handleSelectItem = (event) => {
+    console.log(event);
     setSelectedItem(event);
     fetchComplains(event);
   };
