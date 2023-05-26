@@ -14,7 +14,6 @@ const useGetComplain = (setComplains, admin) => {
       // const { data, status } = await api.get(`/complain/${id ? id : ""}`);
       const { data, status } = await api.get(route);
       if (status === 200) {
-        console.log(data, "Complains From Hook");
         setComplains(data);
         setLoading(false);
       }

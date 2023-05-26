@@ -81,6 +81,12 @@ const userRoutes = () => {
               path: "/categories",
               element: <Categories />,
             },
+            {
+              icon: <TagIcon {...icon} />,
+              name: "Employees",
+              path: "/employee",
+              element: <Categories />,
+            },
           ],
         },
       ]);
