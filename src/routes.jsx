@@ -18,6 +18,7 @@ import {
   Complain,
   ComplainList,
   Welcome,
+  Employee,
 } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import { useEffect, useState } from "react";
@@ -85,7 +86,7 @@ const userRoutes = () => {
               icon: <TagIcon {...icon} />,
               name: "Employees",
               path: "/employee",
-              element: <Categories />,
+              element: <Employee />,
             },
           ],
         },
