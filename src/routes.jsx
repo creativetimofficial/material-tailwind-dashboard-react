@@ -84,13 +84,13 @@ const userRoutes = () => {
               element: <Categories />,
             },
             {
-              icon: <TagIcon {...icon} />,
+              icon: <UserPlusIcon {...icon} />,
               name: "Employees",
               path: "/employee",
               element: <Employee />,
             },
             {
-              icon: <TagIcon {...icon} />,
+              icon: <UserCircleIcon {...icon} />,
               name: "Users",
               path: "/users",
               element: <Users />,
