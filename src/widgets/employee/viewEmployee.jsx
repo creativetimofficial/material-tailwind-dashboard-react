@@ -12,7 +12,7 @@ export const ViewEmployee = () => {
 
   return (
     <div>
-      <table className="w-full78 ">
+      <table className="w-full ">
         <thead>
           <tr>
             {["Name", "Email", "Designation", "Phone number"].map((el) => (

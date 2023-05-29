@@ -2,16 +2,17 @@ import ViewEmployee from "@/widgets/employee/viewEmployee";
 import Residents from "@/widgets/users/residents";
 import { Button } from "@material-tailwind/react";
 import React, { useState } from "react";
-
+import ShowButtons from "@/widgets/htmlComponents/ShowButtons";
 export const Users = () => {
   const [show, setshow] = useState(true);
   return (
     <>
       <div>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
-          <Button onClick={() => setshow(true)}>View Officers</Button>
-          <Button onClick={() => setshow(false)}>View Residents</Button>
-        </div>
+        <ShowButtons
+          button1={"View Officers"}
+          button2={"View Residents"}
+          setshow={setshow}
+        />
         <div className="mt-10 flex items-center justify-center ">
           {show && (
             <div className="">
@@ -21,7 +22,7 @@ export const Users = () => {
           {!show && (
             <div className="">
               <Residents />
-              </div>
+            </div>
           )}
         </div>
       </div>

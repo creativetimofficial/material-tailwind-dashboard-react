@@ -22,6 +22,9 @@ const useGetEmployees = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
 
   return { loading, fetchEmployees, data };
 };

@@ -6,7 +6,7 @@ const useStatus = () => {
   const api = useAxios();
 
   const [statuses, setStatuses] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchStatuses = async () => {
@@ -14,7 +14,7 @@ const useStatus = () => {
         const { data, status } = await api.get("/status");
         if (status === 200) {
           setStatuses(data);
-          setLoading(false);
+          setLoading(true);
         }
       } catch (error) {
         console.error(error);
