@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useGetComplain from "@/apiHooks/complain/useGetComplain";
 import { formatDistanceToNow } from "date-fns";
 import { Typography } from "@material-tailwind/react";
-import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import { ArrowPathIcon, PencilSquareIcon } from "@heroicons/react/24/solid";
 import EmployeeSelect from "@/widgets/employee/EmployeeSelect";
 import useAssignComplain from "@/apiHooks/complain/useAssignComplain";
 import ComplainStatus from "@/widgets/complain/ComplainStatus";
@@ -166,10 +166,10 @@ export const ComplainList = ({ admin, employee }) => {
                           id: item._id,
                         }))
                       }
-                      className="text-sm"
+                      className="text-sm text-blue-800"
                     >
                       {show.id === item._id && show.display
-                        ? "See Less"
+                        ? "   See Less"
                         : "...See More"}
                     </span>
                   )}
@@ -203,7 +203,7 @@ export const ComplainList = ({ admin, employee }) => {
                 {/* Edit Button */}
                 {admin && (
                   <td className=" cursor-pointer border-blue-gray-50 py-3 px-5 ">
-                    <ArrowPathIcon
+                    <PencilSquareIcon
                       width={25}
                       className=""
                       onClick={() => {
@@ -226,7 +226,7 @@ export const ComplainList = ({ admin, employee }) => {
                 )}
                 {employee && (
                   <td className="border-b border-blue-gray-50 py-3 px-5 ">
-                    <ArrowPathIcon
+                    <PencilSquareIcon
                       width={25}
                       className="cursor-pointer"
                       onClick={() => {
