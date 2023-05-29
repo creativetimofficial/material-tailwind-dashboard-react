@@ -6,15 +6,19 @@ const useGetComplain = (setComplains, admin) => {
   const api = useAxios();
 
   const [loading, setLoading] = useState(false);
+  const [pending, setpending] = useState(0);
+
   const fetchComplains = async (id) => {
     const route = admin
       ? `/all-complains/${id ? id : ""}`
       : `/complain/${id ? id : ""}`;
+
     try {
       // const { data, status } = await api.get(`/complain/${id ? id : ""}`);
       const { data, status } = await api.get(route);
       if (status === 200) {
-        setComplains(data);
+        setComplains(data?.complains);
+        setpending(data?.pending);
         setLoading(false);
       }
     } catch (e) {
@@ -24,7 +28,7 @@ const useGetComplain = (setComplains, admin) => {
     }
   };
 
-  return { loading, fetchComplains };
+  return { loading, fetchComplains, pending };
 };
 
 export default useGetComplain;

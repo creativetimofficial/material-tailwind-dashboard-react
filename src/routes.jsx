@@ -1,30 +1,7 @@
-import {
-  HomeIcon,
-  UserCircleIcon,
-  TableCellsIcon,
-  BellIcon,
-  FlagIcon,
-  ArrowRightOnRectangleIcon,
-  UserPlusIcon,
-  TagIcon,
-  BookmarkIcon,
-  ArrowPathIcon,
-} from "@heroicons/react/24/solid";
-import {
-  Home,
-  Profile,
-  Tables,
-  Notifications,
-  Categories,
-  Complain,
-  ComplainList,
-  Welcome,
-  Employee,
-  Users,
-} from "@/pages/dashboard";
-import { SignIn, SignUp } from "@/pages/auth";
 import { useEffect, useState } from "react";
-
+import EmployeeRoutes from "./widgets/userRoutes/EmployeeRoutes";
+import AdminRoutes from "./widgets/userRoutes/AdminRoutes";
+import ResidentRoutes from "./widgets/userRoutes/ResidentRoutes";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -33,72 +10,16 @@ const userRoutes = () => {
   const [routes, setroutes] = useState([]);
 
   const conditionalRoutes = () => {
+    if (user?.role === "Employee") {
+      setroutes([EmployeeRoutes]);
+      return;
+    }
     if (user?.role === "Resident") {
-      setroutes([
-        {
-          layout: "dashboard",
-          pages: [
-            {
-              icon: <FlagIcon {...icon} />,
-              name: "complain",
-              path: "/complain",
-              element: <Complain />,
-            },
-            {
-              icon: <BookmarkIcon {...icon} />,
-              name: "Your Complain",
-              path: "/complain-list",
-              element: <ComplainList />,
-            },
-            {
-              icon: <FlagIcon {...icon} />,
-              name: "hide",
-              path: "/",
-              element: <Welcome />,
-            },
-          ],
-        },
-      ]);
+      setroutes([ResidentRoutes]);
       return;
     }
     if (user?.role === "admin") {
-      setroutes([
-        {
-          layout: "dashboard",
-          pages: [
-            {
-              icon: <FlagIcon {...icon} />,
-              name: "hide",
-              path: "/",
-              element: <Welcome />,
-            },
-            {
-              icon: <BookmarkIcon {...icon} />,
-              name: "Complains",
-              path: "/complain-list",
-              element: <ComplainList admin={true} />,
-            },
-            {
-              icon: <TagIcon {...icon} />,
-              name: "Categories",
-              path: "/categories",
-              element: <Categories />,
-            },
-            {
-              icon: <UserPlusIcon {...icon} />,
-              name: "Employees",
-              path: "/employee",
-              element: <Employee />,
-            },
-            {
-              icon: <UserCircleIcon {...icon} />,
-              name: "Users",
-              path: "/users",
-              element: <Users />,
-            },
-          ],
-        },
-      ]);
+      setroutes([AdminRoutes]);
       return;
     }
   };
