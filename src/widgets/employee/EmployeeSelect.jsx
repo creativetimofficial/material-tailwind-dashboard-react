@@ -1,31 +1,23 @@
 import useGetEmployees from "@/apiHooks/employee/useGetEmployees";
+import { Option, Select } from "@material-tailwind/react";
 import React, { useEffect } from "react";
 
-const EmployeeSelect = ({ setEmployee, employee }) => {
-  const { loading, fetchEmployees, data } = useGetEmployees();
-  useEffect(() => {
-    fetchEmployees();
-  }, []);
-
+const EmployeeSelect = ({ setEmployee, employee, data }) => {
+  const defaultSelect = data?.find((e) => e?._id === employee);
   return (
     <>
-      <select
+      <Select
+        label="Select Employee"
+        value={defaultSelect?._id}
         className="rounded-lg  border-[1.5px] border-gray-500 px-2 py-1"
-        onChange={(o) => setEmployee(o.target.value)}
-        name=""
-        id=""
+        onChange={(o) => setEmployee(o)}
       >
-        <option value="">Select Employee</option>
         {data?.map((e) => (
-          <option
-            selected={e?._id === employee && "selected"}
-            key={e?._id}
-            value={e?._id}
-          >
+          <Option key={e?._id} value={e?._id}>
             {e?.name}
-          </option>
+          </Option>
         ))}
-      </select>
+      </Select>
     </>
   );
 };

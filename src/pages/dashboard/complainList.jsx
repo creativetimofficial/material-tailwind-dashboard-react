@@ -1,31 +1,106 @@
 import React, { useEffect, useState } from "react";
 import useGetComplain from "@/apiHooks/complain/useGetComplain";
 import { formatDistanceToNow } from "date-fns";
-import { Typography, Select, Option } from "@material-tailwind/react";
-import DropdownStatus from "./dropdownStatus";
+import { Typography } from "@material-tailwind/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import EmployeeSelect from "@/widgets/employee/EmployeeSelect";
 import useAssignComplain from "@/apiHooks/complain/useAssignComplain";
 import ComplainStatus from "@/widgets/complain/ComplainStatus";
-export const ComplainList = ({ admin }) => {
-  const [complains, setComplains] = useState();
-  const { fetchComplains, loading } = useGetComplain(setComplains, admin);
-  const [selectedEmployee, setselectedEmployee] = useState("");
+import SelectStatus from "@/widgets/htmlComponents/StatusSelect";
+import WorkerSelect from "@/widgets/worker/WorkerSelect";
+import useGetWorker from "@/apiHooks/worker/useGetWorker";
+import useGetEmployees from "@/apiHooks/employee/useGetEmployees";
+import useUpdateStatus from "@/apiHooks/status/useUpdateStatus";
+import StatusSelect from "@/widgets/complain/StatusSelect";
+import useStatus from "@/apiHooks/status/useStatus";
+import ComplainTable from "@/widgets/complain/complain-table";
+import useGetUsers from "@/apiHooks/user/userGetUsers";
+export const ComplainList = ({ admin, official }) => {
+  const { fetchUsers, users } = useGetUsers();
+  useEffect(() => {
+    fetchUsers({ role: "Worker" });
+  }, []);
+
+  const statuses = useStatus();
+
+  //
+  const updateStatus = useUpdateStatus();
+  //
+  const { fetchComplains, loading, pending, complains } = useGetComplain();
+
+  // Select Component States Passed Thorugh Props
+
+  // const [selectedEmployee, setselectedEmployee] = useState("");
+  const [worker, setworker] = useState("");
+  const [status, setstatus] = useState("");
   const assignComplain = useAssignComplain(fetchComplains);
-  const tableHeadings = [
+  // Making Table Arrays
+  const [headings, setheadings] = useState([
     "Categories",
     "Subcategories",
     "Description",
     "Date",
     "Status",
+    "Assign Worker",
+    "Action",
     "Assigned To",
     "Edit",
-  ];
+  ]);
+  useEffect(() => {
+    if (admin) {
+      const stringsToDelete = ["Assign Worker", "Action"];
+      setheadings(headings.filter((s) => !stringsToDelete.includes(s)));
+      return;
+    }
+    if (official) {
+      const stringsToDelete = ["Assigned To", "Edit"];
+      setheadings(headings.filter((s) => !stringsToDelete.includes(s)));
+      return;
+    }
+    setheadings([
+      "Categories",
+      "Subcategories",
+      "Description",
+      "Date",
+      "Status",
+    ]);
+  }, []);
 
-  if (!admin) {
-    tableHeadings.pop();
-    tableHeadings.pop();
-  }
+  const handleUpdate = (_id) => {
+    console.log(_id, "Complain IDDDDDDD");
+    console.log(worker);
+
+    if (worker) {
+      assignComplain({
+        _id,
+        worker,
+      });
+    }
+    if (status) {
+      updateStatus({
+        _id,
+        status,
+      });
+    }
+  };
+
+  // const tableHeadings = [
+  //   "Categories",
+  //   "Subcategories",
+  //   "Description",
+  //   "Date",
+  //   "Status",
+  //   "Assign Worker",
+  //   "Action",
+  //   "Assigned To",
+  //   "Edit",
+  // ];
+
+  // if (!admin) {
+  //   tableHeadings.pop();
+  //   tableHeadings.pop();
+  // }
+
   // Test COde
   const [show, setshow] = useState({
     id: "",
@@ -33,7 +108,7 @@ export const ComplainList = ({ admin }) => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <span>Loading...</span>;
   }
 
   useEffect(() => {
@@ -42,102 +117,41 @@ export const ComplainList = ({ admin }) => {
 
   return (
     <div>
-      <DropdownStatus fetchComplains={fetchComplains} />
-      <table className="w-full min-w-[640px] table-auto">
-        <thead>
-          <tr>
-            {tableHeadings?.map((el) => (
-              <th
-                key={el}
-                className="border-b border-blue-gray-50 py-3 px-5 text-left"
-              >
-                <Typography
-                  variant="small"
-                  className="text-[11px] font-bold uppercase text-blue-gray-400"
-                >
-                  {el}
-                </Typography>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {!complains && <div>Loading...</div>}
-          {complains?.length === 0 && (
-            <div className="text-3xl text-gray-700">No Complains Found</div>
-          )}
-          {complains?.map((item) => (
-            <>
-              <tr className="border-2 border-black" key={item._id}>
-                <td className="border-b border-blue-gray-50 py-3 px-5">
-                  {item.category.name}
-                </td>
-                <td className="border-b border-blue-gray-50 py-3 px-5">
-                  {item.subcategory.name}
-                </td>
-                <td className="border-b border-blue-gray-50 py-3 px-5">
-                  {1 == 1 && <span>{item.description?.substring(0, 40)}</span>}
-
-                  {show.id === item._id && show.display && (
-                    <span>{item.description?.substring(40)}</span>
-                  )}
-
-                  {item.description.length > 40 && (
-                    <span
-                      onClick={() =>
-                        setshow((prev) => ({
-                          ...prev,
-                          display: show.id === item._id ? !show.display : true,
-                          id: item._id,
-                        }))
-                      }
-                      className="text-sm"
-                    >
-                      {show.id === item._id && show.display
-                        ? "See Less"
-                        : "...See More"}
-                    </span>
-                  )}
-                </td>
-
-                <td className="border-b border-blue-gray-50 py-3 px-5">
-                  {formatDistanceToNow(new Date(item.date), {
-                    addSuffix: true,
-                  })}
-                </td>
-                <td className="border-b border-blue-gray-50 py-3 px-5 ">
-                  <ComplainStatus name={item?.status?.name} />
-                </td>
-                {/* Assignied to Staff */}
-                {admin && (
-                  <td className="border-b border-blue-gray-50 py-3 px-5 ">
-                    <EmployeeSelect
-                      employee={item.assignedTo?._id}
-                      setEmployee={setselectedEmployee}
-                    />
-                  </td>
-                )}
-                {/* Edit Button */}
-                {admin && (
-                  <td className=" cursor-pointer border-blue-gray-50 py-3 px-5 ">
-                    <ArrowPathIcon
-                      width={25}
-                      className=""
-                      onClick={() => {
-                        console.log(item?._id, "aiushduahd");
-                        assignComplain({
-                          _id: item?._id,
-                          assignedTo: selectedEmployee,
-                        });
-                      }}
-                    />
-                  </td>
-                )}
-              </tr>
-            </>
-          ))}
-        </tbody>
-      </table>
+      <SelectStatus fetchComplains={fetchComplains} />
+      <h1 className="py-5 text-center text-2xl ">
+        You have {pending} Pending Complains
+      </h1>
+      <div className="grid grid-cols-[1fr,1fr,3fr,1fr,1fr,1fr,1fr]">
+        {headings?.map((el) => (
+          <div
+            key={el}
+            className="border-b border-blue-gray-50 py-3 px-5 text-left"
+          >
+            <Typography
+              variant="small"
+              className="text-[11px] font-bold uppercase text-blue-gray-400"
+            >
+              {el}
+            </Typography>
+          </div>
+        ))}
+      </div>
+      <ComplainTable
+        fetchComplains={fetchComplains}
+        pending={pending}
+        headings={headings}
+        complains={complains}
+        show={show}
+        setshow={setshow}
+        statuses={statuses}
+        setstatus={setstatus}
+        admin={admin}
+        official={official}
+        assignComplain={assignComplain}
+        data={users}
+        setworker={setworker}
+        handleUpdate={handleUpdate}
+      />
     </div>
   );
 };

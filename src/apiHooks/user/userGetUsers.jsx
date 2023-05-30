@@ -2,16 +2,20 @@ import useAxios from "@/apiConfig/axiosInstance";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
-const useGetUsers = (setUsers) => {
+const useGetUsers = () => {
   const api = useAxios();
 
   const [loading, setLoading] = useState(false);
+  const [users, setusers] = useState([]);
 
-  const fetchUsers = async () => {
+  const fetchUsers = async (query) => {
     try {
-      const { data, status } = await api.get("/user");
+      const { data, status } = await api.post(
+        "http://localhost:1000/get-user",
+        query
+      );
       if (status === 200) {
-        setUsers(data);
+        setusers(data);
         setLoading(false);
       }
     } catch (error) {
@@ -21,7 +25,7 @@ const useGetUsers = (setUsers) => {
     }
   };
 
-  return { loading, fetchUsers };
+  return { loading, fetchUsers, users };
 };
 
 export default useGetUsers;

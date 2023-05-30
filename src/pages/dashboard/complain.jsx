@@ -3,18 +3,19 @@ import { Button, Textarea } from "@material-tailwind/react";
 import { Input } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
 import useGetCategory from "@/apiHooks/Category/useGetCategory";
-import { toast } from "react-hot-toast";
 import useAddComplain from "@/apiHooks/complain/useAddComplain";
 import { useUserContext } from "@/context/UserContext";
 export const Complain = () => {
   const { user } = useUserContext();
+  const user1 = JSON.parse(localStorage.getItem("user"));
+
   const { data, getCatogery } = useGetCategory();
   const addComplain = useAddComplain();
   useEffect(() => {
     getCatogery();
   }, []);
-  const [name, setname] = useState(user?.name);
-  const [email, setEmail] = useState(user?.email);
+  const [name, setname] = useState(user1?.name);
+  const [email, setEmail] = useState(user1?.email);
   const [category, setCategory] = useState("");
   const [subcategory, setSubCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -36,6 +37,7 @@ export const Complain = () => {
     e.preventDefault();
     // Getting Category Id
     const { _id } = data?.find((o) => o.name === category);
+
     addComplain({
       name,
       category: _id,

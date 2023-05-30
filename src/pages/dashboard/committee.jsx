@@ -4,27 +4,27 @@ import { Button } from "@material-tailwind/react";
 import React, { useState } from "react";
 import ShowButtons from "@/widgets/htmlComponents/ShowButtons";
 
-export const Employee = () => {
+export const Committee = () => {
   const [show, setshow] = useState(false);
 
   return (
     <>
       <div>
         <ShowButtons
-          button2={"View Officials"}
-          button1={"Add Official"}
+          button2={"View Committee Users"}
+          button1={"Add Committee Users"}
           setshow={setshow}
         />
 
         <div className="mt-10 flex items-center justify-center ">
           {!show && (
             <div className="">
-              <ViewEmployee />
+              <ViewEmployee committee />
             </div>
           )}
           {show && (
             <div className="">
-              <AddEmployee show={setshow} />
+              <AddEmployee committee show={setshow} />
             </div>
           )}
         </div>
@@ -33,4 +33,4 @@ export const Employee = () => {
   );
 };
 
-export default Employee;
+export default Committee;

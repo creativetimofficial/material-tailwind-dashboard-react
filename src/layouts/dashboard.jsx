@@ -15,7 +15,6 @@ import userRoutes from "@/routes";
 
 export function Dashboard() {
   const routes = userRoutes();
-  console.log(routes, "Routes From Dashboard");
 
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavType } = controller;

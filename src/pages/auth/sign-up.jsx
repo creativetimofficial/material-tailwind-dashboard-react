@@ -15,6 +15,7 @@ import {
 } from "@material-tailwind/react";
 
 export function SignUp() {
+  const signin = true;
   const registerUser = useRegister();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,20 +30,22 @@ export function SignUp() {
     e.preventDefault();
     // Getting Category Id
     // const { _id } = data?.find((o) => o.name === category);
-    registerUser({
-      name,
-      email,
-      password,
-      confirmPassword,
-      phoneNumber,
-      registrationNumber,
-      houseNo,
-      streetNo,
-      block,
-    });
+    registerUser(
+      {
+        name,
+        email,
+        password,
+        confirmPassword,
+        phoneNumber,
+        registrationNumber,
+        houseNo,
+        streetNo,
+        block,
+        role: "Resident",
+      },
+      signin
+    );
     // Reset the form fields
-    // setName("");
-    // setEmail("");
     setPassword("");
     setConfirmPassword("");
   };
