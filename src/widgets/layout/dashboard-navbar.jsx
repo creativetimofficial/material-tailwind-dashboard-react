@@ -77,15 +77,17 @@ export function DashboardNavbar() {
           {/* <div className="mr-auto md:mr-4 md:w-56">
             <Input label="Type here" />
           </div> */}
+          <div className="">
+            <Logout />
+          </div>
           <IconButton
             variant="text"
-            color="blue-gray"
-            className="grid xl:hidden"
+            color="white"
+            className="z-50 grid  xl:hidden"
             onClick={() => setOpenSidenav(dispatch, !openSidenav)}
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
-          <Logout />
           {/* <Link to="/auth/sign-in">
             <Button
               variant="text"
