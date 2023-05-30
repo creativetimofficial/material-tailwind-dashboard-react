@@ -84,19 +84,6 @@ export function SignIn() {
                   </Typography>
                 </Link>
               </Typography>
-              <Typography variant="small" className="mt-6 flex justify-center">
-                Sign In as Admin
-                <Link to="/admin">
-                  <Typography
-                    as="span"
-                    variant="small"
-                    color="blue"
-                    className="ml-1 font-bold"
-                  >
-                    Sign in
-                  </Typography>
-                </Link>
-              </Typography>
             </CardFooter>
           </form>
         </Card>

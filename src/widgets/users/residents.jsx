@@ -3,11 +3,10 @@ import useGetUsers from "@/apiHooks/user/userGetUsers";
 import { Typography } from "@material-tailwind/react";
 
 export const Residents = () => {
-  const [users, setUsers] = useState([]);
-  const { loading, fetchUsers } = useGetUsers(setUsers);
+  const { loading, fetchUsers, users } = useGetUsers();
 
   useEffect(() => {
-    fetchUsers();
+    fetchUsers({ role: "Resident" });
   }, []);
 
   return (
@@ -38,10 +37,10 @@ export const Residents = () => {
         </thead>
         <tbody>
           {loading && <div>Loading...</div>}
-          {users.length === 0 && (
+          {users?.length === 0 && (
             <div className=" text-gray-700">No Users Found</div>
           )}
-          {users.map((user) => (
+          {users?.map((user) => (
             <tr className="border-2 border-black" key={user._id}>
               <td className="border-b border-blue-gray-50 py-3 px-5">
                 {user.name}

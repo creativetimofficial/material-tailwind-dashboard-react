@@ -1,13 +1,15 @@
 import useGetWorker from "@/apiHooks/worker/useGetWorker";
 import { Typography } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/solid";
-
 import React, { useEffect } from "react";
 import useDeleteWorker from "@/apiHooks/worker/useDeleteWorker";
+import useGetUsers from "@/apiHooks/user/userGetUsers";
 
 const ListWorkers = () => {
-  const { data, loading, getWorkers } = useGetWorker();
-  const deleteWorker = useDeleteWorker(getWorkers);
+  const { fetchUsers, users, loading } = useGetUsers();
+  useEffect(() => {
+    fetchUsers({ role: "Worker" });
+  }, []);
 
   return (
     <>
@@ -35,12 +37,12 @@ const ListWorkers = () => {
           <tbody>
             {loading && <div>Loading...</div>}
 
-            {data?.length === 0 && !loading && (
+            {users?.length === 0 && !loading && (
               <div className=" text-gray-700">No Workers Found</div>
             )}
 
             {!loading &&
-              data?.map((worker) => (
+              users?.map((worker) => (
                 <tr className="border-2 border-black" key={worker._id}>
                   <td className="border-b border-blue-gray-50 py-3 px-5">
                     {worker.name}

@@ -2,22 +2,21 @@ import useAxios from "@/apiConfig/axiosInstance";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
-const useGetComplain = (setComplains, admin) => {
+const useGetComplain = () => {
   const api = useAxios();
 
   const [loading, setLoading] = useState(false);
+  const [complains, setcomplains] = useState([]);
+
   const [pending, setpending] = useState(0);
 
   const fetchComplains = async (id) => {
-    const route = admin
-      ? `/all-complains/${id ? id : ""}`
-      : `/complain/${id ? id : ""}`;
+    const query = id ? `/complain/${id}` : "/complain";
 
     try {
-      // const { data, status } = await api.get(`/complain/${id ? id : ""}`);
-      const { data, status } = await api.get(route);
+      const { data, status } = await api.get(query);
       if (status === 200) {
-        setComplains(data?.complains);
+        setcomplains(data?.complains);
         setpending(data?.pending);
         setLoading(false);
       }
@@ -28,7 +27,7 @@ const useGetComplain = (setComplains, admin) => {
     }
   };
 
-  return { loading, fetchComplains, pending };
+  return { loading, fetchComplains, pending, complains };
 };
 
 export default useGetComplain;

@@ -3,7 +3,7 @@ import { BookmarkIcon, FlagIcon } from "@heroicons/react/24/solid";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
-const EmployeeRoutes = {
+const OfficialRoutes = {
   layout: "dashboard",
   pages: [
     {
@@ -16,7 +16,7 @@ const EmployeeRoutes = {
       icon: <BookmarkIcon {...icon} />,
       name: "Assigned Complains",
       path: "/complain-list",
-      element: <ComplainList employee />,
+      element: <ComplainList admin />,
     },
     {
       icon: <BookmarkIcon {...icon} />,
@@ -26,4 +26,4 @@ const EmployeeRoutes = {
     },
   ],
 };
-export default EmployeeRoutes;
+export default OfficialRoutes;

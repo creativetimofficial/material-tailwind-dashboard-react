@@ -4,6 +4,7 @@ import {
   Employee,
   Users,
   Welcome,
+  Committee,
 } from "@/pages/dashboard";
 import {
   BookmarkIcon,
@@ -38,9 +39,15 @@ const AdminRoutes = {
     },
     {
       icon: <UserPlusIcon {...icon} />,
-      name: "Employees",
+      name: "Officials",
       path: "/employee",
       element: <Employee />,
+    },
+    {
+      icon: <UserPlusIcon {...icon} />,
+      name: "Committee",
+      path: "/committee",
+      element: <Committee />,
     },
     {
       icon: <UserCircleIcon {...icon} />,

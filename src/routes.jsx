@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import EmployeeRoutes from "./widgets/userRoutes/EmployeeRoutes";
+import OfficialRoutes from "./widgets/userRoutes/OfficialRoutes";
 import AdminRoutes from "./widgets/userRoutes/AdminRoutes";
 import ResidentRoutes from "./widgets/userRoutes/ResidentRoutes";
+import CommitteeRoutes from "./widgets/userRoutes/CommitteeRoutes";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -10,15 +11,19 @@ const userRoutes = () => {
   const [routes, setroutes] = useState([]);
 
   const conditionalRoutes = () => {
-    if (user?.role === "Employee") {
-      setroutes([EmployeeRoutes]);
+    if (user?.role === "Committee") {
+      setroutes([CommitteeRoutes]);
+      return;
+    }
+    if (user?.role === "Official") {
+      setroutes([OfficialRoutes]);
       return;
     }
     if (user?.role === "Resident") {
       setroutes([ResidentRoutes]);
       return;
     }
-    if (user?.role === "admin") {
+    if (user?.role === "Admin") {
       setroutes([AdminRoutes]);
       return;
     }

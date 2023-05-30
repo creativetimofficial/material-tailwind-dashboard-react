@@ -1,8 +1,9 @@
 import useAddEmployee from "@/apiHooks/employee/useAddEmployee";
+import useRegister from "@/apiHooks/user/useRegister";
 import { Button, Input } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 
-const AddEmployee = ({ show }) => {
+const AddEmployee = ({ show, committee }) => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -16,17 +17,26 @@ const AddEmployee = ({ show }) => {
     console.log("updater");
   }, [updater]);
 
-  const addEmployee = useAddEmployee(setupdater, show);
+  // const addEmployee = useAddEmployee(setupdater, show);
+  const registerUser = useRegister(show);
   const handleSubmit = (e) => {
     e.preventDefault();
-    addEmployee({
+    let payload = {
       name,
       email,
       password,
       confirmPassword,
       phoneNumber,
       designation,
-    });
+      role: committee ? "Committee" : "Official",
+    };
+    if (committee) {
+      delete payload.designation;
+    }
+    if (!email) {
+      delete payload.email;
+    }
+    registerUser(payload);
     setpassword("");
     setconfirmPassword("");
   };
@@ -34,7 +44,7 @@ const AddEmployee = ({ show }) => {
     <>
       <div>
         <div className="p-7 text-center text-2xl font-medium">
-          Employee Form
+          Add {committee ? "Committee" : "Official"}
         </div>
         <form className="w-[25vw] space-y-6" onSubmit={handleSubmit}>
           <Input
@@ -47,10 +57,10 @@ const AddEmployee = ({ show }) => {
           />
           <Input
             size="lg"
-            required
+            required={false}
             value={email}
             type="email"
-            label="Enter Email"
+            label="Enter Email (Optional)"
             onChange={(e) => setemail(e.target.value)}
           />
           <Input
@@ -77,14 +87,17 @@ const AddEmployee = ({ show }) => {
             label="Enter Phone Number"
             onChange={(e) => setphoneNumber(e.target.value)}
           />
-          <Input
-            size="lg"
-            required
-            value={designation}
-            type="text"
-            label="Enter Designation"
-            onChange={(e) => setdesignation(e.target.value)}
-          />
+          {!committee && (
+            <Input
+              size="lg"
+              required
+              value={designation}
+              type="text"
+              label="Enter Designation"
+              onChange={(e) => setdesignation(e.target.value)}
+            />
+          )}
+
           <Button className="w-full" type="submit" color="green">
             Submit
           </Button>
