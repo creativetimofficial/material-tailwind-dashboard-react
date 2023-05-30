@@ -17,7 +17,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
     white: "bg-white shadow-lg",
     transparent: "bg-transparent",
   };
-
+  const handleClose = () => {
+    setOpenSidenav(dispatch, false);
+  };
   return (
     <aside
       className={`${sidenavTypes[sidenavType]} ${
@@ -70,6 +72,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                     <NavLink to={`/${layout}${path}`}>
                       {({ isActive }) => (
                         <Button
+                          onClick={handleClose}
                           variant={isActive ? "gradient" : "text"}
                           color={
                             isActive
