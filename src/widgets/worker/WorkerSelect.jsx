@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Option, Select } from "@material-tailwind/react";
-const WorkerSelect = ({ id, data, setvalue }) => {
+const WorkerSelect = ({ id, data, setvalue, disable }) => {
   const handleChange = (e) => {
     setvalue(e);
   };
   const defaultVal = data?.find((e) => e?._id === id);
-
   const options = data?.map((e) => {
     return (
       <Option key={e?._id} value={e?._id}>
@@ -19,6 +18,7 @@ const WorkerSelect = ({ id, data, setvalue }) => {
   return (
     <>
       <Select
+        disabled={disable}
         // value={defaultVal?._id}
         value={defaultVal?._id}
         onChange={handleChange}

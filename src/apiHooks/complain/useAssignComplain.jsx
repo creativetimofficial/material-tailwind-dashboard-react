@@ -5,8 +5,8 @@ import { toast } from "react-hot-toast";
 const useAssignComplain = (fetchComplains) => {
   const api = useAxios();
   const assignComplain = async (ids) => {
-    const { _id, assignedTo, worker } = ids;
-    if (!_id || (!assignedTo && !worker)) {
+    const { _id, worker } = ids;
+    if (!_id || !worker) {
       return toast.error("Please Select First");
     }
     try {

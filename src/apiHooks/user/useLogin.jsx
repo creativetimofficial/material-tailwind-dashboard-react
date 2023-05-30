@@ -14,8 +14,9 @@ const useLogin = () => {
     setLoading(true);
     setError(null);
     try {
-      const { data, status } = await api.post("/login", credentials);
+      const { data, status } = await api.post("/new-login", credentials);
       if (status === 200) {
+        console.log(data);
         // Store the token in local storage or session storage
         localStorage.setItem("token", data?.token);
         localStorage.setItem("user", JSON.stringify(data?.user));

@@ -1,3 +1,4 @@
+import useRegister from "@/apiHooks/user/useRegister";
 import useAddWorker from "@/apiHooks/worker/useAddWorker";
 import { Button, Input } from "@material-tailwind/react";
 import React, { useState } from "react";
@@ -8,8 +9,7 @@ const AddWorker = ({ show }) => {
   const addWorker = useAddWorker(show);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ name, field });
-    addWorker({ name, field });
+    addWorker({ name, field, role: "Worker" });
   };
   return (
     <>

@@ -10,7 +10,7 @@ const UserContextProvider = ({ children }) => {
   useVerifyUser(user1, setuser);
 
   return (
-    <UserContext.Provider value={{ setuser, user }}>
+    <UserContext.Provider value={{ setuser, user, user1 }}>
       {children}
     </UserContext.Provider>
   );

@@ -6,9 +6,8 @@ const useAddWorker = (show) => {
   const api = useAxios();
   const addWorker = async (e) => {
     try {
-      const { data, status } = await api.post("/worker", e);
+      const { data, status } = await api.post("/new-worker", e);
       if (status === 200) {
-        console.log(data);
         toast.success(data?.message);
         show((o) => !o);
       }
