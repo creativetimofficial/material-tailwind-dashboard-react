@@ -121,22 +121,48 @@ export const ComplainList = ({ admin, official }) => {
       <h1 className="py-5 text-center text-2xl ">
         You have {pending} Pending Complains
       </h1>
-      <div className="grid grid-cols-[1fr,1fr,3fr,1fr,1fr,1fr,1fr]">
-        {headings?.map((el) => (
-          <div
-            key={el}
-            className="border-b border-blue-gray-50 py-3 px-5 text-left"
-          >
-            <Typography
-              variant="small"
-              className="text-[11px] font-bold uppercase text-blue-gray-400"
-            >
-              {el}
-            </Typography>
+      <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+              <div className="grid grid-cols-[1fr,1fr,3fr,1fr,1fr,1fr,1fr]">
+                {headings?.map((el) => (
+                  <div
+                    key={el}
+                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                  >
+                    <Typography
+                      variant="small"
+                      className="text-[11px] font-bold uppercase text-blue-gray-400"
+                    >
+                      {el}
+                    </Typography>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <ComplainTable
+                  fetchComplains={fetchComplains}
+                  pending={pending}
+                  headings={headings}
+                  complains={complains}
+                  show={show}
+                  setshow={setshow}
+                  statuses={statuses}
+                  setstatus={setstatus}
+                  admin={admin}
+                  official={official}
+                  assignComplain={assignComplain}
+                  data={users}
+                  setworker={setworker}
+                  handleUpdate={handleUpdate}
+                />
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
-      <ComplainTable
+      {/* <ComplainTable
         fetchComplains={fetchComplains}
         pending={pending}
         headings={headings}
@@ -151,7 +177,7 @@ export const ComplainList = ({ admin, official }) => {
         data={users}
         setworker={setworker}
         handleUpdate={handleUpdate}
-      />
+      /> */}
     </div>
   );
 };
