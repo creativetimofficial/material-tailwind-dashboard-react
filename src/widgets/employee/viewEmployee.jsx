@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import useGetEmployees from "@/apiHooks/employee/useGetEmployees";
-import { Typography, Select, Option } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import useGetUsers from "@/apiHooks/user/userGetUsers";
+import CustomTable from "../htmlComponents/CustomTable";
 
 export const ViewEmployee = ({ committee }) => {
-  // const { loading, fetchEmployees, data } = useGetEmployees();
   const { loading, fetchUsers, users } = useGetUsers();
 
   useEffect(() => {
     fetchUsers({ role: committee ? "Committee" : "Official" });
   }, []);
 
+  let headings = ["Name", "Email", "Designation", "Phone number"];
+  if (committee) {
+    headings = ["Name", "Email", "Phone number"];
+  }
+  console.log(users, "kjahdjkahsdh");
   return (
     <div>
-      <table className="w-full ">
+      <table className="hidden w-full">
         <thead>
           <tr>
             {["Name", "Email", "Designation", "Phone number"].map((el) => (
@@ -54,6 +58,7 @@ export const ViewEmployee = ({ committee }) => {
           ))}
         </tbody>
       </table>
+      <CustomTable headings={headings} tableData={users} />
     </div>
   );
 };

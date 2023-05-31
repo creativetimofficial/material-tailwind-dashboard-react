@@ -10,10 +10,7 @@ const useGetUsers = () => {
 
   const fetchUsers = async (query) => {
     try {
-      const { data, status } = await api.post(
-        "http://localhost:1000/get-user",
-        query
-      );
+      const { data, status } = await api.post("/get-user", query);
       if (status === 200) {
         setusers(data);
         setLoading(false);

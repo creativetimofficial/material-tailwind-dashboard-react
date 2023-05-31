@@ -121,21 +121,6 @@ export const ComplainList = ({ admin, official }) => {
       <h1 className="py-5 text-center text-2xl ">
         You have {pending} Pending Complains
       </h1>
-      <div className="grid grid-cols-[1fr,1fr,3fr,1fr,1fr,1fr,1fr]">
-        {headings?.map((el) => (
-          <div
-            key={el}
-            className="border-b border-blue-gray-50 py-3 px-5 text-left"
-          >
-            <Typography
-              variant="small"
-              className="text-[11px] font-bold uppercase text-blue-gray-400"
-            >
-              {el}
-            </Typography>
-          </div>
-        ))}
-      </div>
       <ComplainTable
         fetchComplains={fetchComplains}
         pending={pending}
