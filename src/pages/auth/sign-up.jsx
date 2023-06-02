@@ -125,6 +125,10 @@ export function SignUp() {
                 <Option value="Block B">Block B</Option>
                 <Option value="Block C">Block C</Option>
                 <Option value="Block D">Block D</Option>
+                <Option value="Block E">Block E</Option>
+                <Option value="Block F">Block F</Option>
+                <Option value="Block G">Block G</Option>
+                <Option value="Block H">Block H</Option>
               </Select>
 
               <Input
