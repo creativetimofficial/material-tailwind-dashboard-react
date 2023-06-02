@@ -16,6 +16,7 @@ const useGetComplain = () => {
     try {
       const { data, status } = await api.get(query);
       if (status === 200) {
+        data?.complains?.reverse();
         setcomplains(data?.complains);
         setpending(data?.pending);
         setLoading(false);

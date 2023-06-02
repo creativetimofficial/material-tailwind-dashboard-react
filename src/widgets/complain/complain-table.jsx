@@ -105,6 +105,7 @@ const ComplainTable = ({
                               data={statuses}
                               setvalue={setstatus}
                               id={item?.status?._id}
+                              complainId={item?._id}
                             />
                           )}
                         </td>
@@ -115,10 +116,11 @@ const ComplainTable = ({
                               setvalue={setworker}
                               data={data}
                               id={item?.worker?._id}
+                              complainId={item?._id}
                             />
                           )}
                         </td>
-                        <td className="whitespace-nowrap px-6 py-4">
+                        {/* <td className="whitespace-nowrap px-6 py-4">
                           {admin && !official && (
                             <div className="cursor-pointer border-blue-gray-50 py-3 px-5 ">
                               <PencilSquareIcon
@@ -128,7 +130,7 @@ const ComplainTable = ({
                               />
                             </div>
                           )}
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>

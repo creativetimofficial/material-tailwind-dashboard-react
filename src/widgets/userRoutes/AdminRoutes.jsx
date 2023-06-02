@@ -27,7 +27,7 @@ const AdminRoutes = {
     },
     {
       icon: <BookmarkIcon {...icon} />,
-      name: "Complains",
+      name: "Complaints",
       path: "/complain-list",
       element: <ComplainList admin />,
     },
