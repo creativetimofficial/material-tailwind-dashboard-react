@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { Option, Select } from "@material-tailwind/react";
-const WorkerSelect = ({ id, data, setvalue, disable }) => {
-  const handleChange = (e) => {
-    setvalue(e);
+import useAssignComplain from "@/apiHooks/complain/useAssignComplain";
+const WorkerSelect = ({ id, data, setvalue, disable, complainId }) => {
+  const assignComplain = useAssignComplain();
+
+  const handleChange = (worker) => {
+    // setvalue(e);
+    assignComplain({
+      _id: complainId,
+      worker,
+    });
   };
   const defaultVal = data?.find((e) => e?._id === id);
   const options = data?.map((e) => {

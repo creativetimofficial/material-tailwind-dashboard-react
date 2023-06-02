@@ -48,12 +48,12 @@ export const ComplainList = ({ admin, official }) => {
   ]);
   useEffect(() => {
     if (admin) {
-      const stringsToDelete = ["Assign Worker"];
+      const stringsToDelete = ["Assign Worker", "Action"];
       setheadings(headings.filter((s) => !stringsToDelete.includes(s)));
       return;
     }
     if (official) {
-      const stringsToDelete = ["Assigned To"];
+      const stringsToDelete = ["Assigned To", "Edit"];
       setheadings(headings.filter((s) => !stringsToDelete.includes(s)));
       return;
     }
