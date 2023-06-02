@@ -2,6 +2,7 @@ import { Option, Select } from "@material-tailwind/react";
 import React from "react";
 
 const StatusSelect = ({ setvalue, data, id, disable }) => {
+  console.log(id, "COmplain ID in Status Select");
   const defaultVal = data?.find((e) => e?._id === id);
   return (
     <>

@@ -14,7 +14,6 @@ export const ViewEmployee = ({ committee }) => {
   if (committee) {
     headings = ["Name", "Email", "Phone number"];
   }
-  console.log(users, "kjahdjkahsdh");
   return (
     <div>
       <table className="hidden w-full">
