@@ -8,6 +8,7 @@ const useAddComplain = () => {
 
   const nav = useNavigate();
   const addComplain = async (complain) => {
+    console.log(complain);
     try {
       const { data, status } = await api.post("/complain", complain);
       if (status === 200) {
