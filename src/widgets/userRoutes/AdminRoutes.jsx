@@ -13,6 +13,7 @@ import {
   UserCircleIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
+import Test from "./Test";
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -27,7 +28,7 @@ const AdminRoutes = {
     },
     {
       icon: <BookmarkIcon {...icon} />,
-      name: "Complains",
+      name: "Complaints",
       path: "/complain-list",
       element: <ComplainList admin />,
     },
@@ -54,6 +55,12 @@ const AdminRoutes = {
       name: "Users",
       path: "/users",
       element: <Users />,
+    },
+    {
+      icon: <UserCircleIcon {...icon} />,
+      name: "Buttons",
+      path: "/buttons",
+      element: <Test />,
     },
   ],
 };

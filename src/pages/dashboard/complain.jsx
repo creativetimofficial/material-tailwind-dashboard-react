@@ -19,6 +19,8 @@ export const Complain = () => {
   const [category, setCategory] = useState("");
   const [subcategory, setSubCategory] = useState("");
   const [description, setDescription] = useState("");
+  const [complainType, setcomplainType] = useState("");
+
   // SubCategory List
   const [subcategories, setsubcategories] = useState([]);
 
@@ -44,6 +46,7 @@ export const Complain = () => {
       subcategory,
       email,
       description,
+      complainType,
     });
     // Reset the form fields
     setCategory("");
@@ -102,6 +105,17 @@ export const Complain = () => {
                 {category?.name}
               </Option>
             ))}
+          </Select>
+        </div>
+
+        <div>
+          <Select
+            onChange={(e) => setcomplainType(e)}
+            label="Select Complain Type"
+            size="lg"
+          >
+            <Option value="Resident">Resident</Option>
+            <Option value="Commercial">Commercial</Option>
           </Select>
         </div>
 

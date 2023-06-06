@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useGetComplain from "@/apiHooks/complain/useGetComplain";
 import { formatDistanceToNow } from "date-fns";
-import { Typography } from "@material-tailwind/react";
-import { ArrowPathIcon, PencilSquareIcon } from "@heroicons/react/24/solid";
+import { Button, Typography } from "@material-tailwind/react";
+import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import EmployeeSelect from "@/widgets/employee/EmployeeSelect";
 import useAssignComplain from "@/apiHooks/complain/useAssignComplain";
 import ComplainStatus from "@/widgets/complain/ComplainStatus";
@@ -15,29 +15,23 @@ import StatusSelect from "@/widgets/complain/StatusSelect";
 import useStatus from "@/apiHooks/status/useStatus";
 import ComplainTable from "@/widgets/complain/complain-table";
 import useGetUsers from "@/apiHooks/user/userGetUsers";
+import ComplainSearch from "@/widgets/complain/ComplainSearch";
 export const ComplainList = ({ admin, official }) => {
   const { fetchUsers, users } = useGetUsers();
-  useEffect(() => {
-    fetchUsers({ role: "Worker" });
-  }, []);
-
-  const statuses = useStatus();
-
-  //
-  const updateStatus = useUpdateStatus();
-  //
   const { fetchComplains, loading, pending, complains } = useGetComplain();
-
-  // Select Component States Passed Thorugh Props
-
+  const statuses = useStatus();
+  console.log(complains?.length, "Total Complains");
   // const [selectedEmployee, setselectedEmployee] = useState("");
   const [worker, setworker] = useState("");
   const [status, setstatus] = useState("");
-  const assignComplain = useAssignComplain(fetchComplains);
-  // Making Table Arrays
+  const [show, setshow] = useState({
+    id: "",
+    display: false,
+  });
   const [headings, setheadings] = useState([
     "Categories",
     "Subcategories",
+    "Complainee",
     "Description",
     "Date",
     "Status",
@@ -46,6 +40,11 @@ export const ComplainList = ({ admin, official }) => {
     "Assigned To",
     "Edit",
   ]);
+  useEffect(() => {
+    fetchUsers({ role: "Worker" });
+  }, []);
+  // Making Table Arrays
+
   useEffect(() => {
     if (admin) {
       const stringsToDelete = ["Assign Worker", "Action"];
@@ -66,62 +65,16 @@ export const ComplainList = ({ admin, official }) => {
     ]);
   }, []);
 
-  const handleUpdate = (_id) => {
-    console.log(_id, "Complain IDDDDDDD");
-    console.log(worker);
-
-    if (worker) {
-      assignComplain({
-        _id,
-        worker,
-      });
-    }
-    if (status) {
-      updateStatus({
-        _id,
-        status,
-      });
-    }
-  };
-
-  // const tableHeadings = [
-  //   "Categories",
-  //   "Subcategories",
-  //   "Description",
-  //   "Date",
-  //   "Status",
-  //   "Assign Worker",
-  //   "Action",
-  //   "Assigned To",
-  //   "Edit",
-  // ];
-
-  // if (!admin) {
-  //   tableHeadings.pop();
-  //   tableHeadings.pop();
-  // }
-
-  // Test COde
-  const [show, setshow] = useState({
-    id: "",
-    display: false,
-  });
-
-  if (loading) {
-    return <span>Loading...</span>;
-  }
-
   useEffect(() => {
     fetchComplains();
   }, []);
 
   return (
     <div>
-      <SelectStatus fetchComplains={fetchComplains} />
-      <h1 className="py-5 text-center text-2xl ">
-        You have {pending} Pending Complains
-      </h1>
+      <ComplainSearch fetchComplains={fetchComplains} />
+      <div className="mt-10"></div>
       <ComplainTable
+        loading={loading}
         fetchComplains={fetchComplains}
         pending={pending}
         headings={headings}
@@ -132,10 +85,9 @@ export const ComplainList = ({ admin, official }) => {
         setstatus={setstatus}
         admin={admin}
         official={official}
-        assignComplain={assignComplain}
         data={users}
         setworker={setworker}
-        handleUpdate={handleUpdate}
+        // handleUpdate={handleUpdate}
       />
     </div>
   );

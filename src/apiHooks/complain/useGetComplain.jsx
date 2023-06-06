@@ -10,12 +10,13 @@ const useGetComplain = () => {
 
   const [pending, setpending] = useState(0);
 
-  const fetchComplains = async (id) => {
+  const fetchComplains = async (id = {}) => {
     const query = id ? `/complain/${id}` : "/complain";
-
+    setLoading(true);
     try {
-      const { data, status } = await api.get(query);
+      const { data, status } = await api.post("/get-complain", id);
       if (status === 200) {
+        data?.complains?.reverse();
         setcomplains(data?.complains);
         setpending(data?.pending);
         setLoading(false);
