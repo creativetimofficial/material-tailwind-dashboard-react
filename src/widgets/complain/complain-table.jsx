@@ -52,7 +52,7 @@ const ComplainTable = ({
                   </div>
                 )}
                 {/* {loading && complains.length > 0 && <span>Loading...</span>} */}
-                {!loading && complains.length > 0 && (
+                {!loading && complains?.length > 0 && (
                   <table className="min-w-full text-left text-sm font-light ease-in">
                     <thead className="dark:border-neutral-500 border-b font-medium">
                       <tr>
