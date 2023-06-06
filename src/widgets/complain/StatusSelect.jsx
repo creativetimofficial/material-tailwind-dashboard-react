@@ -3,9 +3,9 @@ import { Option, Select } from "@material-tailwind/react";
 import React from "react";
 
 const StatusSelect = ({ setvalue, data, id, disable, complainId }) => {
+  const defaultVal = data?.find((e) => e?._id === id);
   const updateStatus = useUpdateStatus();
 
-  const defaultVal = data?.find((e) => e?._id === id);
   const statusChange = (status) => {
     // setvalue(status);
     // console.log({ _id: id, status });
@@ -20,7 +20,7 @@ const StatusSelect = ({ setvalue, data, id, disable, complainId }) => {
         disabled={disable}
         label="Select Status"
         value={defaultVal?._id}
-        className="rounded-lg  border-[1.5px] border-gray-500 px-2 py-1"
+        className="rounded-lg px-2 py-1"
         onChange={statusChange}
       >
         {data?.map((e) => (

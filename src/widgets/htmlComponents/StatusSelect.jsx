@@ -1,23 +1,28 @@
 import useStatus from "@/apiHooks/status/useStatus";
-import { Select, Option } from "@material-tailwind/react";
+import { Select, Option, Button } from "@material-tailwind/react";
 import React, { useState } from "react";
 
-const SelectStatus = ({ fetchComplains }) => {
+const SelectStatus = ({ setSearch }) => {
   const statuses = useStatus();
-  const [selectedItem, setSelectedItem] = useState("");
-  const handleSelectItem = (event) => {
-    setSelectedItem(event);
-    fetchComplains(event);
+  const handleState = (status) => {
+    if (!status) {
+      return setSearch((p) => ({ ...p, status: undefined }));
+    }
+    setSearch((p) => ({ ...p, status }));
   };
   return (
-    <Select value={""} onChange={handleSelectItem}>
-      <Option value="">All Status</Option>
-      {statuses?.map((status) => (
-        <Option key={status._id} value={status._id}>
-          {status.name}
-        </Option>
-      ))}
-    </Select>
+    <>
+      <div className="flex flex-col gap-4">
+        <Select label="Select Status" onChange={handleState}>
+          {/* <Option>All Status</Option> */}
+          {statuses?.map((status) => (
+            <Option key={status._id} value={status._id}>
+              {status.name}
+            </Option>
+          ))}
+        </Select>
+      </div>
+    </>
   );
 };
 
