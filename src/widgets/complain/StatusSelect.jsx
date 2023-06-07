@@ -3,15 +3,18 @@ import { Option, Select } from "@material-tailwind/react";
 import React from "react";
 
 const StatusSelect = ({ setvalue, data, id, disable, complainId }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user._id;
   const defaultVal = data?.find((e) => e?._id === id);
   const updateStatus = useUpdateStatus();
-
+  // console.log(userId)
   const statusChange = (status) => {
     // setvalue(status);
     // console.log({ _id: id, status });
     updateStatus({
       _id: complainId,
       status,
+      officialId: userId
     });
   };
   return (

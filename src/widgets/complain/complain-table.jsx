@@ -14,6 +14,13 @@ import useUpdateStatus from "@/apiHooks/status/useUpdateStatus";
 import StatusSelect from "@/widgets/complain/StatusSelect";
 import useStatus from "@/apiHooks/status/useStatus";
 import ComplainLoading from "../loading/ComplainLoading";
+import UserData from "./user-data-popup";
+import {
+  Popover,
+  PopoverHandler,
+  PopoverContent,
+  Button,
+} from "@material-tailwind/react";
 const ComplainTable = ({
   loading,
   fetchComplains,
@@ -34,6 +41,7 @@ const ComplainTable = ({
   setworker,
   handleUpdate,
 }) => {
+  console.log(complains);
   return (
     <>
       {loading && (
@@ -75,7 +83,11 @@ const ComplainTable = ({
                             {item.subcategory.name}
                           </td>
                           <td className="whitespace-nowrap px-6 py-4 font-medium">
-                            {item?.name}
+                            <UserData
+                              userName={item?.name}
+                              id={item?._id}
+                              userId={item?.userId}
+                            />
                           </td>
 
                           <td className="whitespace-nowrap px-6 py-4">
@@ -105,6 +117,33 @@ const ComplainTable = ({
                               </span>
                             )}
                           </td>
+                          {admin && (
+                            <td className="whitespace-nowrap px-6 py-4">
+                              <Popover
+                                placement="bottom"
+                                animate={{
+                                  mount: { scale: 1, y: 0 },
+                                  unmount: { scale: 0, y: 25 },
+                                }}
+                              >
+                                <PopoverHandler>
+                                  <Button variant="text">Show Official</Button>
+                                </PopoverHandler>
+                                <PopoverContent>
+                                  {item.official?.name}
+                                  <br />
+                                  {item.statusChangeTime}
+                                  {/* {formatDistanceToNow(
+                                    new Date(item.statusChangeTime),
+                                    {
+                                      addSuffix: true,
+                                    }
+                                  )} */}
+                                </PopoverContent>
+                              </Popover>
+                            </td>
+                          )}
+
                           <td className="whitespace-nowrap px-6 py-4">
                             {formatDistanceToNow(new Date(item.date), {
                               addSuffix: true,

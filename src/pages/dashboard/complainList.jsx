@@ -9,7 +9,7 @@ export const ComplainList = ({ admin, official }) => {
   const { fetchUsers, users } = useGetUsers();
   const { fetchComplains, loading, pending, complains } = useGetComplain();
   const statuses = useStatus();
-  console.log(complains?.length, "Total Complains");
+  console.log(complains, "Total Complains");
   // const [selectedEmployee, setselectedEmployee] = useState("");
   const [worker, setworker] = useState("");
   const [status, setstatus] = useState("");
@@ -21,7 +21,7 @@ export const ComplainList = ({ admin, official }) => {
     "Categories",
     "Subcategories",
     "Complainee",
-    "Description",
+    "Description","By",
     "Date",
     "Status",
     "Assign Worker",
