@@ -127,11 +127,11 @@ const ComplainTable = ({
                                 }}
                               >
                                 <PopoverHandler>
-                                  <Button variant="text">Show Official</Button>
+                                  <Button variant="text">{item.official?.name}</Button>
                                 </PopoverHandler>
                                 <PopoverContent>
-                                  {item.official?.name}
-                                  <br />
+                                  
+                                  
                                   {item.statusChangeTime}
                                   {/* {formatDistanceToNow(
                                     new Date(item.statusChangeTime),
