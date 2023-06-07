@@ -6,31 +6,18 @@ import DateSelector from "../htmlComponents/DateSelector";
 const ComplainSearch = ({ fetchComplains }) => {
   const [searchData, setsearchData] = useState({});
   const [user, setuser] = useState("");
-  const [userPayload, setuserPayload] = useState({});
-  console.log(searchData);
+  let check;
+  const checkOnChange = (e) => {
+    const regex = /^[a-zA-Z]+$/;
+    const regex2 = /^[a-zA-Z\s]*$/;
+    const teste = regex2.test(e);
+    const vals = teste ? { name: e } : { phoneNumber: e };
+    check = vals;
+    console.log(check);
+  };
   const handleSearch = () => {
-    if (user) {
-      setuserPayload((prev) => ({
-        ...prev,
-        name: undefined,
-        phoneNumber: undefined,
-      }));
-      const regex = /^[a-zA-Z]+$/;
-      const check = regex.test(user)
-        ? setuserPayload((prev) => ({ ...prev, name: user }))
-        : setuserPayload((prev) => ({ ...prev, phoneNumber: user }));
-
-      if (!Object.keys(userPayload)?.length) {
-        setsearchData((prev) => ({ ...prev, user: userPayload }));
-      }
-      console.log(searchData, "akjsghdjagdsj");
-      return;
-    }
-    if (!Object.keys(searchData)?.length) {
-      console.log("Check Rmpty");
-      return;
-    }
-    fetchComplains(searchData);
+    console.log({ ...searchData, user: check });
+    fetchComplains({ ...searchData, user: check });
   };
   return (
     <>
@@ -42,7 +29,7 @@ const ComplainSearch = ({ fetchComplains }) => {
             className="w-62"
             label="Search Number or Name"
             type="text"
-            onChange={(e) => setuser(e.target.value)}
+            onChange={(e) => checkOnChange(e.target.value)}
           />
         </div>
         <Button onClick={handleSearch}>Search Complaints</Button>

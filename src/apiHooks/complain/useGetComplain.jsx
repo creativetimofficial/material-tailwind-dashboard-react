@@ -16,6 +16,7 @@ const useGetComplain = () => {
     try {
       const { data, status } = await api.post("/get-complain", id);
       if (status === 200) {
+        console.log(data, "From Hook");
         data?.complains?.reverse();
         setcomplains(data?.complains);
         setpending(data?.pending);
