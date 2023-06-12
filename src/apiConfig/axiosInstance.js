@@ -7,7 +7,7 @@ const useAxios = () => {
   const api = axios.create({
     // baseURL: "https://awt-api.fineit.io",
     baseURL: "http://localhost:1000",
-    // baseURL: "https://7a21-182-180-75-164.ngrok-free.app",
+    // baseURL: "https://1195-182-180-75-164.ngrok-free.app",
     // headers: {
     //   "ngrok-skip-browser-warning": "*",
     // },
