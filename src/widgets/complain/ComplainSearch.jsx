@@ -6,6 +6,7 @@ import SearchInput from "../htmlComponents/SearchInput";
 
 const ComplainSearch = ({ fetchComplains }) => {
   const [searchData, setsearchData] = useState({});
+
   const [userId, setuserId] = useState("");
 
   const handleSearch = () => {
@@ -25,12 +26,15 @@ const ComplainSearch = ({ fetchComplains }) => {
       setsearchData({});
     };
 
+
   return (
     <>
       <div className="flex  gap-6">
         <SelectStatus setSearch={setsearchData} />
         <DateSelector setSearch={setsearchData} />
+
         <SearchInput setuserId={setuserId} setSearch={setsearchData} />
+
 
         <Button onClick={handleSearch}>Search Complaints</Button>
       </div>

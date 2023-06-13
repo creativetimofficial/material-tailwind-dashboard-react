@@ -2,16 +2,20 @@ import useSearchUser from "@/apiHooks/user/useSearchUser";
 import { Input } from "@material-tailwind/react";
 import React, { useState } from "react";
 
+
 const SearchInput = ({ setuserId }) => {
   const [check, setCheck] = useState("");
   const [open, setopen] = useState(false);
+
   const { searchUser, users } = useSearchUser();
   console.log(users);
   const handleChange = (text) => {
     console.log(text);
+
     setCheck(text);
     searchUser(text);
     setopen(true);
+
   };
   return (
     <>
@@ -22,6 +26,7 @@ const SearchInput = ({ setuserId }) => {
           value={check}
           onChange={(e) => handleChange(e.target.value)}
         />
+
         {open && check !== "" && (
           <div className="max-h-200 absolute z-50 h-52 overflow-auto  overflow-y-auto border border-gray-300 bg-white shadow">
             {users?.map((e, index) => (
@@ -49,6 +54,7 @@ const SearchInput = ({ setuserId }) => {
                   </span>
                 </div>
               </div>
+
             ))}
           </div>
         )}
