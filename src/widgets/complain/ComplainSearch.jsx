@@ -6,40 +6,32 @@ import SearchInput from "../htmlComponents/SearchInput";
 
 const ComplainSearch = ({ fetchComplains }) => {
   const [searchData, setsearchData] = useState({});
-  console.log(searchData, "From Parent");
-  const [user, setuser] = useState("");
-  let check;
-  const checkOnChange = (e) => {
-    const regex = /^[a-zA-Z]+$/;
-    const regex2 = /^[a-zA-Z\s]*$/;
-    const teste = regex2.test(e);
-    const vals = teste ? { name: e } : { phoneNumber: e };
-    check = vals;
-    console.log(check);
-  };
-  const handleSearch = () => {
-    console.log({ ...searchData, user: check });
+  const [userId, setuserId] = useState("");
 
-    fetchComplains({ ...searchData, user: check });
-  };
+  const handleSearch = () => {
+    // console.log({ ...searchData, userId });
+    // fetchComplains({ ...searchData, userId });
+    if (userId) {
+      fetchComplains({ userId });
+    } else if (searchData) {
+      fetchComplains({ ...searchData });
+    } else {
+      fetchComplains({ ...searchData, userId });
+    }
+    handleReset();
+  }
+    const handleReset = () => {
+      setuserId('');
+      setsearchData({});
+    };
+
   return (
     <>
       <div className="flex  gap-6">
         <SelectStatus setSearch={setsearchData} />
         <DateSelector setSearch={setsearchData} />
-        {1 === 2 && (
-          <div>
-            <Input
-              className="w-62"
-              label="Search Number or Name"
-              type="text"
-              onChange={(e) => checkOnChange(e.target.value)}
-            />
-          </div>
-        )}
-        <div>
-          <SearchInput />
-        </div>
+        <SearchInput setuserId={setuserId} setSearch={setsearchData} />
+
         <Button onClick={handleSearch}>Search Complaints</Button>
       </div>
     </>

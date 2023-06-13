@@ -5,6 +5,7 @@ import {
   Users,
   Welcome,
   Committee,
+  ShowFeedback,
 } from "@/pages/dashboard";
 import {
   BookmarkIcon,
@@ -12,6 +13,7 @@ import {
   TagIcon,
   UserCircleIcon,
   UserPlusIcon,
+  ChatBubbleBottomCenterIcon
 } from "@heroicons/react/24/solid";
 import Test from "./Test";
 const icon = {
@@ -57,11 +59,17 @@ const AdminRoutes = {
       element: <Users />,
     },
     {
-      icon: <UserCircleIcon {...icon} />,
-      name: "Buttons",
-      path: "/buttons",
-      element: <Test />,
+      icon: <ChatBubbleBottomCenterIcon {...icon} />,
+      name: "Feedbacks",
+      path: "/feedbacks",
+      element: <ShowFeedback />,
     },
+    // {
+    //   icon: <UserCircleIcon {...icon} />,
+    //   name: "Buttons",
+    //   path: "/buttons",
+    //   element: <Test />,
+    // },
   ],
 };
 export default AdminRoutes;

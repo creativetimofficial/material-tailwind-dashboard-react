@@ -27,7 +27,7 @@ export const ComplainList = ({ admin, official }) => {
     "Assign Worker",
     "Action",
     "Assigned To",
-    "Edit",
+    // "Edit",
   ]);
   useEffect(() => {
     fetchUsers({ role: "Worker" });

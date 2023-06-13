@@ -67,6 +67,7 @@ const DateSelector = ({ setSearch }) => {
     <>
       <div className="flex flex-col gap-4">
         <Select label="Search By Date" onChange={handleDateChange}>
+          <Option>All Complains</Option>
           <Option value="today">Today Complaints</Option>
           <Option value="week">Week's Complaints</Option>
           <Option value="month">Month's Complaints</Option>

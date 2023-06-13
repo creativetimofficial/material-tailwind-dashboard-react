@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useGetComplain from "@/apiHooks/complain/useGetComplain";
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow, formatDistanceToNowStrict } from "date-fns";
 import { Typography } from "@material-tailwind/react";
 import { ArrowPathIcon, PencilSquareIcon } from "@heroicons/react/24/solid";
 import EmployeeSelect from "@/widgets/employee/EmployeeSelect";
@@ -51,9 +51,11 @@ const ComplainTable = ({
       )}
       <div>
         <div className="flex flex-col">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-              <div className="overflow-hidden">
+          {/* <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="overflow-hidden"> */}
+          <div className="overflow-auto hover:overflow-scroll">
+            <div>
+              <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 {complains?.length < 0 && !loading && (
                   <div className="flex h-screen items-center justify-center text-3xl text-gray-700">
                     No Complains Found
@@ -127,25 +129,27 @@ const ComplainTable = ({
                                 }}
                               >
                                 <PopoverHandler>
-                                  <Button variant="text">{item.official?.name}</Button>
+                                  <Button variant="text">
+                                    {item.official?.name}
+                                  </Button>
                                 </PopoverHandler>
                                 <PopoverContent>
-                                  
-                                  
-                                  {item.statusChangeTime}
-                                  {/* {formatDistanceToNow(
-                                    new Date(item.statusChangeTime),
-                                    {
-                                      addSuffix: true,
-                                    }
-                                  )} */}
+                                  {/* {item.statusChangeTime} */}
+                                  {item.statusChangeTime && (
+                                    <span>
+                                      {formatDistanceToNow(
+                                        new Date(item.statusChangeTime),
+                                        { addSuffix: true }
+                                      )}
+                                    </span>
+                                  )}
                                 </PopoverContent>
                               </Popover>
                             </td>
                           )}
 
                           <td className="whitespace-nowrap px-6 py-4">
-                            {formatDistanceToNow(new Date(item.date), {
+                            {formatDistanceToNowStrict(new Date(item.date), {
                               addSuffix: true,
                             })}
                           </td>

@@ -10,3 +10,4 @@ export * from "@/pages/dashboard/employee";
 export * from "@/pages/dashboard/committee";
 export * from "@/pages/dashboard/users";
 export * from "@/pages/dashboard/worker";
+export * from "@/pages/dashboard/show-feedback";
