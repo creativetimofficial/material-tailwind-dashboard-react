@@ -102,6 +102,6 @@ Navbar.propTypes = {
   action: PropTypes.node,
 };
 
-Navbar.displayName = "/src/widgets/layout/navbar.jsx";
+Navbar.displayName = "/src/widgets/layout/navbar.tsx";
 
 export default Navbar;

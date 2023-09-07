@@ -234,6 +234,6 @@ export function Configurator() {
   );
 }
 
-Configurator.displayName = "/src/widgets/layout/configurator.jsx";
+Configurator.displayName = "/src/widgets/layout/configurator.tsx";
 
 export default Configurator;

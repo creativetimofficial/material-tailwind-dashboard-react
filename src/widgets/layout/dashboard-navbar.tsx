@@ -191,6 +191,6 @@ export function DashboardNavbar() {
   );
 }
 
-DashboardNavbar.displayName = "/src/widgets/layout/dashboard-navbar.jsx";
+DashboardNavbar.displayName = "/src/widgets/layout/dashboard-navbar.tsx";
 
 export default DashboardNavbar;

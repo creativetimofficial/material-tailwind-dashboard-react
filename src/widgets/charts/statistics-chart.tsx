@@ -65,6 +65,6 @@ StatisticsChart.propTypes = {
   footer: PropTypes.node,
 };
 
-StatisticsChart.displayName = "/src/widgets/charts/statistics-chart.jsx";
+StatisticsChart.displayName = "/src/widgets/charts/statistics-chart.tsx";
 
 export default StatisticsChart;
