@@ -5,8 +5,29 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
+import { ReactNode } from "react";
 
-export function ProfileInfoCard({ title, description, details, action }) {
+type ProfileInfoDetailType = {
+  "first name": string;
+  mobile: string;
+  email: string;
+  location: string;
+  social: ReactNode;
+};
+
+interface ProfileInfoCardProps {
+  title: string;
+  description: ReactNode;
+  details: ProfileInfoDetailType;
+  action: any;
+}
+
+export function ProfileInfoCard({
+  title,
+  description,
+  details,
+  action,
+}: ProfileInfoCardProps) {
   return (
     <Card color="transparent" shadow={false}>
       <CardHeader
@@ -34,7 +55,7 @@ export function ProfileInfoCard({ title, description, details, action }) {
         ) : null}
         {details && (
           <ul className="flex flex-col gap-4 p-0">
-            {Object.keys(details).map((el, key) => (
+            {Object.keys(details).map((el: any, key) => (
               <li key={key} className="flex items-center gap-4">
                 <Typography
                   variant="small"
@@ -74,6 +95,6 @@ ProfileInfoCard.propTypes = {
   details: PropTypes.object,
 };
 
-ProfileInfoCard.displayName = "/src/widgets/cards/profile-info-card.jsx";
+ProfileInfoCard.displayName = "/src/widgets/cards/profile-info-card.tsx";
 
 export default ProfileInfoCard;
