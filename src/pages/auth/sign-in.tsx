@@ -30,10 +30,15 @@ export function SignIn() {
             </Typography>
           </CardHeader>
           <CardBody className="flex flex-col gap-4">
-            <Input type="email" label="Email" size="lg" />
-            <Input type="password" label="Password" size="lg" />
+            <Input crossOrigin={null} type="email" label="Email" size="lg" />
+            <Input
+              crossOrigin={null}
+              type="password"
+              label="Password"
+              size="lg"
+            />
             <div className="-ml-2.5">
-              <Checkbox label="Remember Me" />
+              <Checkbox crossOrigin={null} label="Remember Me" />
             </div>
           </CardBody>
           <CardFooter className="pt-0">

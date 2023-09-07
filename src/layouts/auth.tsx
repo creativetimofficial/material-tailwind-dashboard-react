@@ -16,6 +16,11 @@ export function Auth() {
       icon: ChartPieIcon,
     },
     {
+      name: "students",
+      path: "/students/home",
+      icon: ChartPieIcon,
+    },
+    {
       name: "profile",
       path: "/dashboard/home",
       icon: UserIcon,
@@ -34,9 +39,9 @@ export function Auth() {
 
   return (
     <div className="relative min-h-screen w-full">
-      <div className="container relative z-40 mx-auto p-4">
+      {/* <div className="container relative z-40 mx-auto p-4">
         <Navbar routes={navbarRoutes} />
-      </div>
+      </div> */}
       <Routes>
         {routes.map(
           ({ layout, pages }) =>

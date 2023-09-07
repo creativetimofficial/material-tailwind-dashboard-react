@@ -1,4 +1,4 @@
-export const authorsTableData = [
+export const studentsTableData = [
   {
     img: "/img/team-2.jpeg",
     name: "John Michael",
@@ -49,4 +49,4 @@ export const authorsTableData = [
   },
 ];
 
-export default authorsTableData;
+export default studentsTableData;

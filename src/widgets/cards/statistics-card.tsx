@@ -1,3 +1,4 @@
+import { ColorsType, StatisticType } from "@/data";
 import {
   Card,
   CardHeader,
@@ -9,27 +10,7 @@ import PropTypes from "prop-types";
 import { ReactNode } from "react";
 
 interface StatisticsCardProps {
-  color:
-    | "white"
-    | "blue-gray"
-    | "gray"
-    | "brown"
-    | "deep-orange"
-    | "orange"
-    | "amber"
-    | "yellow"
-    | "lime"
-    | "light-green"
-    | "green"
-    | "teal"
-    | "cyan"
-    | "light-blue"
-    | "blue"
-    | "indigo"
-    | "deep-purple"
-    | "purple"
-    | "pink"
-    | "red";
+  color: ColorsType;
   icon: ReactNode;
   title: ReactNode;
   value: ReactNode;

@@ -2,7 +2,6 @@ import { useLocation, Link } from "react-router-dom";
 import {
   Navbar,
   Typography,
-  Button,
   IconButton,
   Breadcrumbs,
   Input,
@@ -14,17 +13,12 @@ import {
 } from "@material-tailwind/react";
 import {
   UserCircleIcon,
-  Cog6ToothIcon,
   BellIcon,
   ClockIcon,
   CreditCardIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
-import {
-  useMaterialTailwindController,
-  setOpenConfigurator,
-  setOpenSidenav,
-} from "@/context";
+import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 
 export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -73,7 +67,7 @@ export function DashboardNavbar() {
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Type here" />
+            <Input crossOrigin={null} label="Type here" />
           </div>
           <IconButton
             variant="text"
@@ -84,29 +78,25 @@ export function DashboardNavbar() {
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
           <Link to="/auth/sign-in">
-            <Button
+            {/* <Button
               variant="text"
               color="blue-gray"
               className="hidden items-center gap-1 px-4 xl:flex"
             >
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
               Sign In
-            </Button>
-            <IconButton
-              variant="text"
-              color="blue-gray"
-              className="grid xl:hidden"
-            >
+            </Button> */}
+            <IconButton variant="text" color="blue-gray" className="grid">
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
             </IconButton>
           </Link>
-          <IconButton
+          {/* <IconButton
             variant="text"
             color="blue-gray"
             onClick={() => setOpenConfigurator(dispatch, true)}
           >
             <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-          </IconButton>
+          </IconButton> */}
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="blue-gray">
