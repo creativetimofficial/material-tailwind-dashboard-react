@@ -4,16 +4,29 @@ import {
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
   AcademicCapIcon,
+  PencilIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
+import { Home, PersonalInfo, Profile } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import Students from "./pages/dashboard/students";
+import { ReactNode } from "react";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
 
-export const routes = [
+export type RouteType = {
+  title?: string;
+  layout: string;
+  pages: Array<{
+    icon: ReactNode;
+    name: string;
+    path: string;
+    element: ReactNode;
+  }>;
+};
+
+export const routes: Array<RouteType> = [
   {
     layout: "dashboard",
     pages: [
@@ -34,6 +47,12 @@ export const routes = [
         name: "profile",
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        icon: <PencilIcon {...icon} />,
+        name: "personal info",
+        path: "/personal-info",
+        element: <PersonalInfo />,
       },
       // {
       //   icon: <TableCellsIcon {...icon} />,

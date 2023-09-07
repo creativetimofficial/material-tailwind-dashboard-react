@@ -1,28 +1,54 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import PropTypes from "prop-types";
 
-export const MaterialTailwind = React.createContext(null);
+type ContextValueType = [any, React.Dispatch<any>];
+
+type SideNavType = "dark" | "transparent" | "white";
+
+type ReducerState = {
+  openSidenav: boolean;
+  sidenavColor: string;
+  sidenavType: SideNavType;
+  transparentNavbar: boolean;
+  fixedNavbar: boolean;
+  openConfigurator: boolean;
+};
+
+type ActionType = {
+  type:
+    | "OPEN_SIDENAV"
+    | "SIDENAV_TYPE"
+    | "SIDENAV_COLOR"
+    | "TRANSPARENT_NAVBAR"
+    | "FIXED_NAVBAR"
+    | "OPEN_CONFIGURATOR";
+  value: boolean | string | SideNavType;
+};
+
+export const MaterialTailwind = React.createContext<ContextValueType | null>(
+  null
+);
 MaterialTailwind.displayName = "MaterialTailwindContext";
 
-export function reducer(state, action) {
+export function reducer(state: ReducerState, action: ActionType): ReducerState {
   switch (action.type) {
     case "OPEN_SIDENAV": {
-      return { ...state, openSidenav: action.value };
+      return { ...state, openSidenav: action.value as boolean };
     }
     case "SIDENAV_TYPE": {
-      return { ...state, sidenavType: action.value };
+      return { ...state, sidenavType: action.value as SideNavType };
     }
     case "SIDENAV_COLOR": {
-      return { ...state, sidenavColor: action.value };
+      return { ...state, sidenavColor: action.value as string };
     }
     case "TRANSPARENT_NAVBAR": {
-      return { ...state, transparentNavbar: action.value };
+      return { ...state, transparentNavbar: action.value as boolean };
     }
     case "FIXED_NAVBAR": {
-      return { ...state, fixedNavbar: action.value };
+      return { ...state, fixedNavbar: action.value as boolean };
     }
     case "OPEN_CONFIGURATOR": {
-      return { ...state, openConfigurator: action.value };
+      return { ...state, openConfigurator: action.value as boolean };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -30,8 +56,14 @@ export function reducer(state, action) {
   }
 }
 
-export function MaterialTailwindControllerProvider({ children }) {
-  const initialState = {
+type ReactNodeChildren = {
+  children: ReactNode;
+};
+
+export function MaterialTailwindControllerProvider({
+  children,
+}: ReactNodeChildren) {
+  const initialState: ReducerState = {
     openSidenav: false,
     sidenavColor: "blue",
     sidenavType: "dark",
@@ -41,7 +73,7 @@ export function MaterialTailwindControllerProvider({ children }) {
   };
 
   const [controller, dispatch] = React.useReducer(reducer, initialState);
-  const value = React.useMemo(
+  const value: ContextValueType = React.useMemo(
     () => [controller, dispatch],
     [controller, dispatch]
   );
@@ -71,15 +103,21 @@ MaterialTailwindControllerProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const setOpenSidenav = (dispatch, value) =>
+export const setOpenSidenav = (dispatch: React.Dispatch<any>, value: boolean) =>
   dispatch({ type: "OPEN_SIDENAV", value });
-export const setSidenavType = (dispatch, value) =>
-  dispatch({ type: "SIDENAV_TYPE", value });
-export const setSidenavColor = (dispatch, value) =>
+export const setSidenavType = (
+  dispatch: React.Dispatch<any>,
+  value: SideNavType
+) => dispatch({ type: "SIDENAV_TYPE", value });
+export const setSidenavColor = (dispatch: React.Dispatch<any>, value: string) =>
   dispatch({ type: "SIDENAV_COLOR", value });
-export const setTransparentNavbar = (dispatch, value) =>
-  dispatch({ type: "TRANSPARENT_NAVBAR", value });
-export const setFixedNavbar = (dispatch, value) =>
+export const setTransparentNavbar = (
+  dispatch: React.Dispatch<any>,
+  value: boolean
+) => dispatch({ type: "TRANSPARENT_NAVBAR", value });
+export const setFixedNavbar = (dispatch: React.Dispatch<any>, value: boolean) =>
   dispatch({ type: "FIXED_NAVBAR", value });
-export const setOpenConfigurator = (dispatch, value) =>
-  dispatch({ type: "OPEN_CONFIGURATOR", value });
+export const setOpenConfigurator = (
+  dispatch: React.Dispatch<any>,
+  value: boolean
+) => dispatch({ type: "OPEN_CONFIGURATOR", value });
