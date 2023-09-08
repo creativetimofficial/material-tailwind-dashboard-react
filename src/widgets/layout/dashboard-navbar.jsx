@@ -73,7 +73,7 @@ export function DashboardNavbar() {
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Type here" />
+            <Input label="BUSCAR EN GESTOR" />
           </div>
           <IconButton
             variant="text"
