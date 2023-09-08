@@ -19,30 +19,31 @@ export const routes = [
     pages: [
       {
         icon: <HomeIcon {...icon} />,
-        name: "dashboard",
-        path: "/home",
+        name: "Noticias",
+        path: "/noticias",
         element: <Home />,
       },
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/profile",
+        name: "Indicadores",
+        path: "/indicadores",
         element: <Profile />,
       },
       {
         icon: <TableCellsIcon {...icon} />,
-        name: "tables",
-        path: "/tables",
+        name: "Calendario",
+        path: "/calendario",
         element: <Tables />,
       },
       {
         icon: <BellIcon {...icon} />,
-        name: "notifactions",
-        path: "/notifactions",
+        name: "Mensajes",
+        path: "/mensajes",
         element: <Notifications />,
       },
     ],
   },
+  /*
   {
     title: "auth pages",
     layout: "auth",
@@ -61,6 +62,7 @@ export const routes = [
       },
     ],
   },
+  */
 ];
 
 export default routes;
