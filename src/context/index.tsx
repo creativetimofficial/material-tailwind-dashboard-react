@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import PropTypes from "prop-types";
+import { ReactNodeChildren } from "@/types";
 
 type ContextValueType = [any, React.Dispatch<any>];
 
@@ -55,10 +56,6 @@ export function reducer(state: ReducerState, action: ActionType): ReducerState {
     }
   }
 }
-
-type ReactNodeChildren = {
-  children: ReactNode;
-};
 
 export function MaterialTailwindControllerProvider({
   children,

@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-import lockBackground from "../../../public/img/lock_background.png";
+import lockBackground from "../../../src/assets/img/lock_background.png";
 
 export function SignIn() {
   return (
