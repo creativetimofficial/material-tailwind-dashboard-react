@@ -5,6 +5,7 @@ type StudentData = {
   birthday: Date;
   profession: string;
   birthplace: string;
+  faculty: string;
   avatar: string;
   sex: string;
   height: string;
@@ -26,6 +27,7 @@ export default class Student {
   private _birthday: Date;
   private _profession: string;
   private _birthplace: string;
+  private _faculty: string;
   private _avatar: string;
   private _sex: string;
   private _height: string;
@@ -46,6 +48,7 @@ export default class Student {
     this._birthday = data.birthday;
     this._profession = data.profession;
     this._birthplace = data.birthplace;
+    this._faculty = data.faculty;
     this._avatar = data.avatar ?? "";
     this._sex = data.sex;
     this._height = data.height;
@@ -87,6 +90,10 @@ export default class Student {
 
   get birthplace(): string {
     return `${this._birthplace[0].toUpperCase()}${this._birthplace.slice(1)}`;
+  }
+
+  get faculty(): string {
+    return this._faculty;
   }
 
   get avatar(): string | null {

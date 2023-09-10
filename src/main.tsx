@@ -15,6 +15,12 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
 import { MaterialTailwindControllerProvider } from "@/context";
+
+// Fonts
+import "./fonts/Nunito/static/Nunito-Bold.ttf";
+import "./fonts/Nunito/static/Nunito-BoldItalic.ttf";
+import "./fonts/nico-moji/NicoMoji-Regular.ttf";
+
 import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

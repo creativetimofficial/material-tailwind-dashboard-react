@@ -5,11 +5,13 @@ import {
   UserPlusIcon,
   AcademicCapIcon,
   PencilIcon,
+  PrinterIcon,
 } from "@heroicons/react/24/solid";
 import { Home, PersonalInfo, Profile } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import Students from "./pages/dashboard/students";
 import { ReactNode } from "react";
+import Export from "./layouts/exports";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -53,6 +55,12 @@ export const routes: Array<RouteType> = [
         name: "personal info",
         path: "/personal-info",
         element: <PersonalInfo />,
+      },
+      {
+        icon: <PrinterIcon {...icon} />,
+        name: "export card",
+        path: "/export-card",
+        element: <Export />,
       },
       // {
       //   icon: <TableCellsIcon {...icon} />,
