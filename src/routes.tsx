@@ -12,7 +12,7 @@ import { SignIn, SignUp } from "@/pages/auth";
 import Students from "./pages/dashboard/students";
 import { ReactNode } from "react";
 import Export from "./layouts/exports";
-import AddS from "./components/addStudent";
+import AddStudent from "./components/addStudent";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -67,7 +67,7 @@ export const routes: Array<RouteType> = [
         icon: <UserPlusIcon {...icon} />,
         name: "add student",
         path: "/add-student",
-        element: <AddS />,
+        element: <AddStudent />,
       },
       // {
       //   icon: <TableCellsIcon {...icon} />,

@@ -27,6 +27,7 @@ export function Configurator() {
     orange: "from-orange-400 to-orange-600",
     red: "from-red-400 to-red-600",
     pink: "from-pink-400 to-pink-600",
+    purple: "from-purple-400 to-purple-600",
   };
 
   return (

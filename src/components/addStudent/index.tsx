@@ -16,23 +16,16 @@ Coded by www.creative-tim.com
 // @mui material components
 
 // Data
+import { CustomStepperForm } from "../organisms/CustomStepperForm";
 import "./styles.css";
 import { Card } from "@material-tailwind/react";
 
 function AddStudent() {
   return (
     <div className="pt-6 pb-3">
-      <Grid container spacing={6}>
-        <Grid item xs={12}>
-          <Card>
-            <div className="pt-3">
-              <div className="m-[1.25rem]">
-                <UserForm />
-              </div>
-            </div>
-          </Card>
-        </Grid>
-      </Grid>
+      <Card>
+        <CustomStepperForm />
+      </Card>
     </div>
   );
 }
