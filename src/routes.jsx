@@ -2,9 +2,7 @@ import {
   HomeIcon,
   UserCircleIcon,
   TableCellsIcon,
-  BellIcon,
-  ArrowRightOnRectangleIcon,
-  UserPlusIcon,
+  BellIcon
 } from "@heroicons/react/24/solid";
 import { Noticias, Indicadores, Calendario, Mensajes } from "@/pages/dashboard";
 
