@@ -4,9 +4,9 @@ import { Gestor, Auth } from "@/layouts";
 function App() {
   return (
     <Routes>
-      <Route path="/dashboard/*" element={<Gestor />} />
+      <Route path="/gestor/*" element={<Gestor />} />
       <Route path="/auth/*" element={<Auth />} />
-      <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
+      <Route path="*" element={<Navigate to="/gestor/Noticias" replace />} />
     </Routes>
   );
 }

@@ -4,7 +4,7 @@ import {
   TableCellsIcon,
   BellIcon
 } from "@heroicons/react/24/solid";
-import { Noticias, Indicadores, Calendario, Mensajes } from "@/pages/dashboard";
+import { Noticias, Indicadores, Calendario, Mensajes } from "@/pages/gestor";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -12,7 +12,7 @@ const icon = {
 
 export const routes = [
   {
-    layout: "dashboard",
+    layout: "gestor",
     pages: [
       {
         icon: <HomeIcon {...icon} />,
