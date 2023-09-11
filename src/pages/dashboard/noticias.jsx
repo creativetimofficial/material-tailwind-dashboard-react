@@ -19,7 +19,6 @@ import {
   EllipsisVerticalIcon,
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
-import { StatisticsCard } from "@/widgets/cards";
 import {
   statisticsCardsData,
   statisticsChartsData,
