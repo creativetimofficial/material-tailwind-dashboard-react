@@ -4,11 +4,10 @@ import { IconButton } from "@material-tailwind/react";
 import {
   Sidenav,
   DashboardNavbar,
-  Configurator,
   Footer,
 } from "@/widgets/layout";
 import routes from "@/routes";
-import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
+import { useMaterialTailwindController } from "@/context";
 
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();

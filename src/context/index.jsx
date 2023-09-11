@@ -21,9 +21,6 @@ export function reducer(state, action) {
     case "FIXED_NAVBAR": {
       return { ...state, fixedNavbar: action.value };
     }
-    case "OPEN_CONFIGURATOR": {
-      return { ...state, openConfigurator: action.value };
-    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -37,7 +34,6 @@ export function MaterialTailwindControllerProvider({ children }) {
     sidenavType: "dark",
     transparentNavbar: true,
     fixedNavbar: false,
-    openConfigurator: false,
   };
 
   const [controller, dispatch] = React.useReducer(reducer, initialState);
@@ -81,5 +77,3 @@ export const setTransparentNavbar = (dispatch, value) =>
   dispatch({ type: "TRANSPARENT_NAVBAR", value });
 export const setFixedNavbar = (dispatch, value) =>
   dispatch({ type: "FIXED_NAVBAR", value });
-export const setOpenConfigurator = (dispatch, value) =>
-  dispatch({ type: "OPEN_CONFIGURATOR", value });
