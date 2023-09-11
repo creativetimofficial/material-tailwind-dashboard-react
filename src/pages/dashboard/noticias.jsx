@@ -20,7 +20,6 @@ import {
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
 import { StatisticsCard } from "@/widgets/cards";
-import { StatisticsChart } from "@/widgets/charts";
 import {
   statisticsCardsData,
   statisticsChartsData,
