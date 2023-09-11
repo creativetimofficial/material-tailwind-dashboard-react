@@ -6,7 +6,7 @@ import {
 import routes from "@/routes";
 import { useMaterialTailwindController } from "@/context";
 
-export function Dashboard() {
+export function Gestor() {
   const [controller] = useMaterialTailwindController();
   const { sidenavType } = controller;
 
@@ -35,6 +35,6 @@ export function Dashboard() {
   );
 }
 
-Dashboard.displayName = "/src/layout/dashboard.jsx";
+Gestor.displayName = "/src/layouts/dashboard.jsx";
 
-export default Dashboard;
+export default Gestor;
