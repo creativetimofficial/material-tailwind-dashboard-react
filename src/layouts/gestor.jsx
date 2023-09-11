@@ -35,6 +35,6 @@ export function Gestor() {
   );
 }
 
-Gestor.displayName = "/src/layouts/dashboard.jsx";
+Gestor.displayName = "/src/layouts/gestor.jsx";
 
 export default Gestor;
