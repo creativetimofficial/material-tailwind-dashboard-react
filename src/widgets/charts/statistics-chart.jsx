@@ -8,7 +8,7 @@ import {
 import PropTypes from "prop-types";
 import Chart from "react-apexcharts";
 
-export function StatisticsChart({ color, chart, title, description, footer }) {
+export function StatisticsChart({ color, chart, title, description }) {
   return (
     <Card>
       <CardHeader variant="gradient" color={color}>
@@ -22,18 +22,12 @@ export function StatisticsChart({ color, chart, title, description, footer }) {
           {description}
         </Typography>
       </CardBody>
-      {footer && (
-        <CardFooter className="border-t border-blue-gray-50 px-6 py-5">
-          {footer}
-        </CardFooter>
-      )}
     </Card>
   );
 }
 
 StatisticsChart.defaultProps = {
   color: "blue",
-  footer: null,
 };
 
 StatisticsChart.propTypes = {
@@ -62,7 +56,6 @@ StatisticsChart.propTypes = {
   chart: PropTypes.object.isRequired,
   title: PropTypes.node.isRequired,
   description: PropTypes.node.isRequired,
-  footer: PropTypes.node,
 };
 
 StatisticsChart.displayName = "/src/widgets/charts/statistics-chart.jsx";
