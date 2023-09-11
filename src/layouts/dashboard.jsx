@@ -1,6 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { Cog6ToothIcon } from "@heroicons/react/24/solid";
-import { IconButton } from "@material-tailwind/react";
 import {
   Sidenav,
   DashboardNavbar,
@@ -9,7 +7,7 @@ import routes from "@/routes";
 import { useMaterialTailwindController } from "@/context";
 
 export function Dashboard() {
-  const [controller, dispatch] = useMaterialTailwindController();
+  const [controller] = useMaterialTailwindController();
   const { sidenavType } = controller;
 
   return (
