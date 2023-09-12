@@ -10,14 +10,14 @@ export function reducer(state, action) {
       return { ...state, openSidenav: action.value };
     }
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
+      throw new Error(`Tipo de acción no controlada: ${action.type}`);
     }
   }
 }
 
 export function MaterialTailwindControllerProvider({ children }) {
   const initialState = {
-    openSidenav: false,
+    openSidenav: true,
     sidenavType: "white"
   };
 
@@ -39,7 +39,7 @@ export function useMaterialTailwindController() {
 
   if (!context) {
     throw new Error(
-      "useMaterialTailwindController should be used inside the MaterialTailwindControllerProvider."
+      "useMaterialTailwindController debe utilizarse dentro de MaterialTailwindControllerProvider."
     );
   }
 
