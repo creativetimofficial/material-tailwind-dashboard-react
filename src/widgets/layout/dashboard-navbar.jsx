@@ -14,9 +14,11 @@ import {
   setOpenSidenav,
 } from "@/context";
 
+
+
 export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const { fixedNavbar, openSidenav } = controller;
+  const { fixedNavbar, openSidenav, sidenavType } = controller;
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
 
@@ -62,7 +64,12 @@ export function DashboardNavbar() {
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
 
-            <Input label="BUSCAR EN GESTOR" color="red"/>
+            <Input 
+            
+              label  ="Buscar en el gestor" 
+              color = { sidenavType === "white" ? "red" : "green" }                        
+            />
+            
 
           </div>
           <IconButton
