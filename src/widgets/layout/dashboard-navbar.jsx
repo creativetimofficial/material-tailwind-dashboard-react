@@ -61,7 +61,9 @@ export function DashboardNavbar() {
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="BUSCAR EN GESTOR" />
+
+            <Input label="BUSCAR EN GESTOR" color="red"/>
+
           </div>
           <IconButton
             variant="text"
