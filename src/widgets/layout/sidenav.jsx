@@ -13,8 +13,8 @@ export function Sidenav({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
-    dark: "bg-gradient-to-br from-red-900 to-gray-700",
     white: "bg-gradient-to-br from-red-900 to-gray-700",
+    dark: "bg-gradient-to-br from-green-900 to-gray-700",
     transparent: "bg-transparent",
   };
 
@@ -41,7 +41,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
           <Typography
             variant="h6"
-            color={sidenavType === "dark" ? "white" : "blue-gray"}
+            color={sidenavType === "dark" ? "white" : "white"}
           >
             {brandName}
           </Typography>
@@ -64,7 +64,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
               <li className="mx-3.5 mt-4 mb-2">
                 <Typography
                   variant="small"
-                  color={sidenavType === "dark" ? "white" : "blue-gray"}
+                  color={sidenavType === "dark" ? "white" : "white"}
                   className="font-black uppercase opacity-75"
                 >
                   {title}
@@ -82,7 +82,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                           ? sidenavColor
                           : sidenavType === "dark"
                           ? "white"
-                          : "blue-gray"
+                          : "white"
                       }
                       className="flex items-center gap-4 px-4 capitalize"
                       fullWidth

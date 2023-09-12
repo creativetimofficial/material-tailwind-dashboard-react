@@ -9,18 +9,6 @@ export function reducer(state, action) {
     case "OPEN_SIDENAV": {
       return { ...state, openSidenav: action.value };
     }
-    case "SIDENAV_TYPE": {
-      return { ...state, sidenavType: action.value };
-    }
-    case "SIDENAV_COLOR": {
-      return { ...state, sidenavColor: action.value };
-    }
-    case "TRANSPARENT_NAVBAR": {
-      return { ...state, transparentNavbar: action.value };
-    }
-    case "FIXED_NAVBAR": {
-      return { ...state, fixedNavbar: action.value };
-    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -30,10 +18,7 @@ export function reducer(state, action) {
 export function MaterialTailwindControllerProvider({ children }) {
   const initialState = {
     openSidenav: false,
-    sidenavColor: "blue",
-    sidenavType: "dark",
-    transparentNavbar: true,
-    fixedNavbar: false,
+    sidenavType: "dark"
   };
 
   const [controller, dispatch] = React.useReducer(reducer, initialState);
@@ -69,11 +54,3 @@ MaterialTailwindControllerProvider.propTypes = {
 
 export const setOpenSidenav = (dispatch, value) =>
   dispatch({ type: "OPEN_SIDENAV", value });
-export const setSidenavType = (dispatch, value) =>
-  dispatch({ type: "SIDENAV_TYPE", value });
-export const setSidenavColor = (dispatch, value) =>
-  dispatch({ type: "SIDENAV_COLOR", value });
-export const setTransparentNavbar = (dispatch, value) =>
-  dispatch({ type: "TRANSPARENT_NAVBAR", value });
-export const setFixedNavbar = (dispatch, value) =>
-  dispatch({ type: "FIXED_NAVBAR", value });
