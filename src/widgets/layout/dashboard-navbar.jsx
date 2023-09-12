@@ -40,15 +40,21 @@ export function DashboardNavbar() {
               fixedNavbar ? "mt-1" : ""
             }`}
           >
-            <Link to={`/${layout}`}>
+            {/* TREE PAGE */}
+            <Link to = {`/Noticias`}>
               <Typography
-                variant="small"
-                color="blue-gray"
-                className="font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
+                variant = "small"            
+                color = {
+                  sidenavType === "white"
+                  ? "red"
+                  : "green"
+                }
+                className="font-normal opacity-50 transition-all hover:text-gray-500 hover:opacity-100"
               >
-                {layout}
+                {layout} SAT Móvil
               </Typography>
             </Link>
+            
             <Typography
               variant="small"
               color="blue-gray"

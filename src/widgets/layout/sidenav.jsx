@@ -114,7 +114,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
 Sidenav.defaultProps = {
   brandImg: "/img/logo-sat.png",
-  brandName: "GESTOR SAT MÓVIL",
+  brandName: "Gestor SAT Móvil",
 };
 
 Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
