@@ -90,7 +90,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                           ? "white"
                           : "white"
                       }
-                      className="flex items-center gap-4 px-4 capitalize"
+                      className = "flex items-center gap-4 px-4 capitalize"
                       fullWidth
                     >
                       {icon}
