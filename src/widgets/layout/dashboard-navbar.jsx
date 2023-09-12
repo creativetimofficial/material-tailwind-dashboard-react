@@ -33,7 +33,9 @@ export function DashboardNavbar() {
       fullWidth
       blurred={fixedNavbar}
     >
+
       <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
+        
         <div className="capitalize">
           <Breadcrumbs
             className={`bg-transparent p-0 transition-all ${
@@ -63,21 +65,20 @@ export function DashboardNavbar() {
               {page}
             </Typography>
           </Breadcrumbs>
+
           <Typography variant="h6" color="blue-gray">
             {page}
           </Typography>
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-
-            <Input 
-            
+            <Input             
               label  ="Buscar en el gestor" 
               color = { sidenavType === "white" ? "red" : "green" }                        
             />
-            
-
           </div>
+          
+          {/* MOVILE - BURGUER MENU */}
           <IconButton
             variant="text"
             color="blue-gray"
