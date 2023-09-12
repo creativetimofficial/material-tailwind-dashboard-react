@@ -12,10 +12,10 @@ import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 export function Sidenav({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
+
   const sidenavTypes = {
     white: "bg-gradient-to-br from-red-900 to-gray-700",
-    dark: "bg-gradient-to-br from-green-900 to-gray-700",
-    transparent: "bg-transparent",
+    dark: "bg-gradient-to-br from-green-900 to-gray-700"
   };
 
   return (
@@ -24,6 +24,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
         openSidenav ? "translate-x-0" : "-translate-x-80"
       } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0`}
     >
+      {/* MOBILE */}
       <div
         className={`relative border-b ${
           sidenavType === "dark" ? "border-white/20" : "border-blue-gray-50"
@@ -46,6 +47,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
             {brandName}
           </Typography>
         </Link>
+
         <IconButton
           variant="text"
           color="white"
@@ -57,6 +59,8 @@ export function Sidenav({ brandImg, brandName, routes }) {
           <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
         </IconButton>
       </div>
+
+      {/* DESKTOP */}
       <div className="m-4">
         {routes.map(({ layout, title, pages }, key) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
@@ -79,7 +83,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
                       variant={isActive ? "gradient" : "text"}
                       color={
                         isActive
-                          ? sidenavColor
+                          ? sidenavType === "white"
+                          ? "red"
+                          : "green"
                           : sidenavType === "dark"
                           ? "white"
                           : "white"
@@ -109,12 +115,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
 Sidenav.defaultProps = {
   brandImg: "/img/logo-sat.png",
   brandName: "GESTOR SAT MÓVIL",
-};
-
-Sidenav.propTypes = {
-  brandImg: PropTypes.string,
-  brandName: PropTypes.string,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
