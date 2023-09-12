@@ -7,7 +7,7 @@ import {
   Input
 } from "@material-tailwind/react";
 import {
-  Bars3Icon,
+  Bars3Icon, SunIcon
 } from "@heroicons/react/24/solid";
 import {
   useMaterialTailwindController,
@@ -77,6 +77,18 @@ export function DashboardNavbar() {
               color = { sidenavType === "white" ? "red" : "green" }                        
             />
           </div>
+
+          {/* SUN BUTTON */}
+          <div className="mr-auto md:mr-4 md:w-5">
+            <SunIcon
+              strokeWidth={3}
+              className="h-6 w-6 text-blue-gray-500"
+              onClick={ () => {
+                alert("Dark Mode")
+                }
+              }
+            />
+          </div> 
           
           {/* MOVILE - BURGUER MENU */}
           <IconButton
