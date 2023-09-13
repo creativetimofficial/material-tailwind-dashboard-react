@@ -104,21 +104,23 @@ export function DashboardNavbar({ brandImg }) {
           </div> 
 
           {/* AVATAR */}
-          <Avatar
-            src = "../public/img/avatar.png"
-            size = "md"          
-            style = {{
-              padding: "2px",
-              backgroundColor: "white",
-              fill: "gray",            
-              borderRadius: "50%",
-              border: "2px solid white" 
-            }}
-            onClick  = { () => {
-              alert("Avatar")
+          <div className = "mr-auto md:mr-4 md:w-25">
+            <Avatar
+              src = "../public/img/avatar.png"
+              size = "md"          
+              style = {{
+                padding: "2px",
+                backgroundColor: "white",
+                fill: "gray",            
+                borderRadius: "50%",
+                border: "2px solid white" 
+              }}
+              onClick  = { () => {
+                alert("Avatar")
+                }
               }
-            }
-          />
+            />
+          </div>
           
           
           {/* MOVILE - BURGUER MENU */}
