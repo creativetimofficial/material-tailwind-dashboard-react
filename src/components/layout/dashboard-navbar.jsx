@@ -140,6 +140,6 @@ export function DashboardNavbar({ brandImg }) {
   );
 }
 
-DashboardNavbar.displayName = "/src/widgets/layout/dashboard-navbar.jsx";
+DashboardNavbar.displayName = "/src/components/layout/dashboard-navbar.jsx";
 
 export default DashboardNavbar;

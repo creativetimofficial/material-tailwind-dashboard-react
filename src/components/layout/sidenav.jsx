@@ -117,6 +117,6 @@ Sidenav.defaultProps = {
   brandName: "Gestor SAT Móvil",
 };
 
-Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
+Sidenav.displayName = "/src/components/layout/sidnave.jsx";
 
 export default Sidenav;
