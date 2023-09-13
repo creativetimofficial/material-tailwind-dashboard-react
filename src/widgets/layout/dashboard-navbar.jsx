@@ -1,5 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
 import {
+  Avatar,
   Navbar,
   Typography,
   IconButton,
@@ -7,7 +8,7 @@ import {
   Input
 } from "@material-tailwind/react";
 import {
-  Bars3Icon, SunIcon
+  Bars3Icon, SunIcon, MagnifyingGlassIcon
 } from "@heroicons/react/24/solid";
 import {
   useMaterialTailwindController,
@@ -16,7 +17,7 @@ import {
 
 
 
-export function DashboardNavbar() {
+export function DashboardNavbar({ brandImg }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav, sidenavType } = controller;
   const { pathname } = useLocation();
@@ -78,17 +79,47 @@ export function DashboardNavbar() {
             />
           </div>
 
-          {/* SUN BUTTON */}
+          {/* SEARCH BUTTON */}
           <div className="mr-auto md:mr-4 md:w-5">
+            <MagnifyingGlassIcon
+              strokeWidth = {3}
+              className = "h-6 w-6 text-blue-gray-500"
+              onClick = { () => {
+                alert("Buscar")
+                }
+              }
+            />
+          </div> 
+          
+          {/* SUN BUTTON */}
+          <div className = "mr-auto md:mr-4 md:w-5">
             <SunIcon
-              strokeWidth={3}
-              className="h-6 w-6 text-blue-gray-500"
-              onClick={ () => {
+              strokeWidth = {3}
+              className = "h-6 w-6 text-blue-gray-500"
+              onClick  = { () => {
                 alert("Dark Mode")
                 }
               }
             />
           </div> 
+
+          {/* AVATAR */}
+          <Avatar
+            src = "../public/img/avatar.png"
+            size = "md"          
+            style = {{
+              padding: "2px",
+              backgroundColor: "white",
+              fill: "gray",            
+              borderRadius: "50%",
+              border: "2px solid white" 
+            }}
+            onClick  = { () => {
+              alert("Avatar")
+              }
+            }
+          />
+          
           
           {/* MOVILE - BURGUER MENU */}
           <IconButton
