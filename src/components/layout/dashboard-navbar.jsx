@@ -27,7 +27,7 @@ export function DashboardNavbar({ brandImg }) {
 
   return (
     <Navbar
-      color={fixedNavbar ? "white" : "transparent"}
+      color={fixedNavbar ? "light" : "transparent"}
       className={`rounded-xl transition-all ${
         fixedNavbar
           ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5"
@@ -50,7 +50,7 @@ export function DashboardNavbar({ brandImg }) {
               <Typography
                 variant = "small"            
                 color = {
-                  sidenavType === "white"
+                  sidenavType === "light"
                   ? colors.primary
                   : colors.secondary
                 }
@@ -78,7 +78,7 @@ export function DashboardNavbar({ brandImg }) {
             <Input             
               label  ="Buscar en el gestor" 
               color = { 
-                sidenavType === "white" 
+                sidenavType === "light" 
                 ? colors.primary
                 : colors.secondary
               }                        
