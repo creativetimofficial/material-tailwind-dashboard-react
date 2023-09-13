@@ -9,6 +9,8 @@ import {
 } from "@material-tailwind/react";
 import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 
+import colors from "../../context/colors"
+
 export function Sidenav({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
@@ -84,8 +86,8 @@ export function Sidenav({ brandImg, brandName, routes }) {
                       color={
                         isActive
                           ? sidenavType === "white"
-                          ? "red"
-                          : "green"
+                          ? colors.primary
+                          : colors.secondary
                           : sidenavType === "dark"
                           ? "white"
                           : "white"

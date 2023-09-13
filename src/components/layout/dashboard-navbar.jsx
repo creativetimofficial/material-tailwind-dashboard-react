@@ -52,7 +52,7 @@ export function DashboardNavbar({ brandImg }) {
                 color = {
                   sidenavType === "white"
                   ? colors.primary
-                  : colors[secondary]
+                  : colors.secondary
                 }
                 className="font-normal opacity-50 transition-all hover:text-gray-500 hover:opacity-100"
               >
@@ -79,17 +79,17 @@ export function DashboardNavbar({ brandImg }) {
               label  ="Buscar en el gestor" 
               color = { 
                 sidenavType === "white" 
-                ? colors[primary]
-                : colors[secondary]
+                ? colors.primary
+                : colors.secondary
               }                        
             />
           </div>
 
-          {/* SEARCH BUTTON */}
+          {/* SEARCH BUTTON */}        
           <div className="mr-auto md:mr-4 md:w-5">
             <MagnifyingGlassIcon
               strokeWidth = {3}
-              className = "h-6 w-6 text-blue-gray-500"
+              className = "h-6 w-6 text-gray-500"
               onClick = { () => {
                 alert("Buscar")
                 }
@@ -101,7 +101,7 @@ export function DashboardNavbar({ brandImg }) {
           <div className = "mr-auto md:mr-4 md:w-5">
             <SunIcon
               strokeWidth = {3}
-              className = "h-6 w-6 text-blue-gray-500"
+              className = "h-6 w-6 text-gray-500"
               onClick  = { () => {
                 alert("Dark Mode")
                 }
