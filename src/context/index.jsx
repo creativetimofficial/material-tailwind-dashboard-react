@@ -18,7 +18,7 @@ export function reducer(state, action) {
 export function MaterialTailwindControllerProvider({ children }) {
   const initialState = {
     openSidenav: true,
-    sidenavType: "light"
+    sidenavType: "dark"
   };
 
   const [controller, dispatch] = React.useReducer(reducer, initialState);
