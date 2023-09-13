@@ -15,6 +15,8 @@ import {
   setOpenSidenav,
 } from "@/context";
 
+import colors from "../../context/colors.jsx"
+
 
 
 export function DashboardNavbar({ brandImg }) {
@@ -49,8 +51,8 @@ export function DashboardNavbar({ brandImg }) {
                 variant = "small"            
                 color = {
                   sidenavType === "white"
-                  ? "red"
-                  : "green"
+                  ? colors.primary
+                  : colors[secondary]
                 }
                 className="font-normal opacity-50 transition-all hover:text-gray-500 hover:opacity-100"
               >
@@ -75,7 +77,11 @@ export function DashboardNavbar({ brandImg }) {
           <div className="mr-auto md:mr-4 md:w-56">
             <Input             
               label  ="Buscar en el gestor" 
-              color = { sidenavType === "white" ? "red" : "green" }                        
+              color = { 
+                sidenavType === "white" 
+                ? colors[primary]
+                : colors[secondary]
+              }                        
             />
           </div>
 
