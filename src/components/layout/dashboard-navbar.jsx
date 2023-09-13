@@ -89,7 +89,11 @@ export function DashboardNavbar({ brandImg }) {
           <div className="mr-auto md:mr-4 md:w-5">
             <MagnifyingGlassIcon
               strokeWidth = {3}
-              className = "h-6 w-6 text-gray-500"
+              className = { 
+                sidenavType === "light" 
+                ? colors.navbar_btn_primary
+                : colors.navbar_btn_secondary
+              }        
               onClick = { () => {
                 alert("Buscar")
                 }
@@ -101,7 +105,11 @@ export function DashboardNavbar({ brandImg }) {
           <div className = "mr-auto md:mr-4 md:w-5">
             <SunIcon
               strokeWidth = {3}
-              className = "h-6 w-6 text-gray-500"
+              className = { 
+                sidenavType === "light" 
+                ? colors.navbar_btn_primary
+                : colors.navbar_btn_secondary
+              }  
               onClick  = { () => {
                 alert("Dark Mode")
                 }
@@ -136,7 +144,14 @@ export function DashboardNavbar({ brandImg }) {
             className="grid xl:hidden"
             onClick={() => setOpenSidenav(dispatch, !openSidenav)}
           >
-            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
+            <Bars3Icon 
+              strokeWidth = {3} 
+              className = { 
+                sidenavType === "light" 
+                ? colors.navbar_btn_primary
+                : colors.navbar_btn_secondary
+              }  
+            />
           </IconButton>
 
 
