@@ -16,8 +16,8 @@ export function Sidenav({ brandImg, brandName, routes }) {
   const { sidenavColor, sidenavType, openSidenav } = controller;
 
   const sidenavTypes = {
-    light: "bg-gradient-to-br from-red-900 to-gray-700",
-    dark: "bg-gradient-to-br from-green-900 to-gray-700"
+    light: colors.sidebar_primary,
+    dark: colors.sidebar_secondary
   };
 
   return (
