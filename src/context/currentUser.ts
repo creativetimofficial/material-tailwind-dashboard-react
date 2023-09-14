@@ -1,12 +1,12 @@
-import { Admin } from "@/entities/admin.entity";
+import { User } from "@/entities/user.entity";
 import { createContext } from "react";
 
 type CurrentUserContextType = {
   // State
-  currentUser: Admin | null;
+  currentUser: User | null;
 
   // Actions
-  login: (user: Admin) => void;
+  login: (user: User) => void;
   logout: VoidFunction;
 };
 

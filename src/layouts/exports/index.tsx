@@ -4,11 +4,13 @@ import RectoCard from "../../assets/img/recto_v4.svg";
 import VersoCard from "../../assets/img/verso_v4.svg";
 import team1 from "../../assets/img/team-1.jpeg";
 import { useContext, useMemo, useRef, useState } from "react";
-import { Typography } from "@material-tailwind/react";
+import { IconButton, Typography } from "@material-tailwind/react";
 import StudentContext from "@/context/students";
 import Student from "@/entities/student.entity";
 import { formatDateBySlash } from "@/utils";
 import QrCodeGenerator from "@/components/Qrgenerator";
+import { ExportContext } from "@/context/export";
+import { PrinterIcon } from "@heroicons/react/24/solid";
 // import { formatDate } from "@/utils";
 // import QRCode from "qrcode";
 
@@ -19,6 +21,8 @@ type ExportProps = {
 
 function Export({ exportRef }: ExportProps) {
   const { student } = useContext(StudentContext);
+
+  const exportContext = useContext(ExportContext);
 
   // Some functions
   const getFullname = (student: Student) => {
@@ -86,17 +90,15 @@ function Export({ exportRef }: ExportProps) {
         newStudent && (
           <div ref={exportRef} className="w-full">
             <>
-              <Typography
-                sx={{
-                  fontSize: 28,
-                  fontWeight: 800,
-                }}
-              >
+              <IconButton className="flex" onClick={exportContext?.print}>
+                <PrinterIcon /> <Typography>Print</Typography>
+              </IconButton>
+              <Typography className="text-[1.75rem] font-extrabold">
                 This is your unique QRCode
               </Typography>
               {/* This will contain all the logic */}
 
-              <div className="flex w-full">
+              <div className="flex w-full" ref={exportContext?.exportRef}>
                 <div className="relative w-1/2 font-nunitoBold uppercase leading-[150%]">
                   <img
                     src={RectoCard}

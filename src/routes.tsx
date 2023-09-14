@@ -6,6 +6,7 @@ import {
   AcademicCapIcon,
   PencilIcon,
   PrinterIcon,
+  RectangleGroupIcon,
 } from "@heroicons/react/24/solid";
 import { Home, PersonalInfo, Profile } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
@@ -34,7 +35,7 @@ export const routes: Array<RouteType> = [
     layout: "dashboard",
     pages: [
       {
-        icon: <HomeIcon {...icon} />,
+        icon: <RectangleGroupIcon {...icon} />,
         name: "dashboard",
         path: "/home",
         element: <Home />,
