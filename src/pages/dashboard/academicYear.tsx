@@ -1,9 +1,8 @@
+import FilterAndResearch from "@/components/filterAndResearch/FilterAndResearch";
 import { DefaultPagination } from "@/components/pagination/DefaultPagination";
 import { ModalContext } from "@/context/modalContext";
 import { AcademicYear as AcademicYearEntity } from "@/entities/academicYear.entity";
-import {
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+
 import {
   PencilIcon,
   PlusCircleIcon,
@@ -12,23 +11,32 @@ import {
 import {
   Card,
   CardHeader,
-  Input,
   Typography,
   Button,
   CardBody,
   CardFooter,
-  Tabs,
-  TabsHeader,
-  Tab,
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
-const TABS = [
+type TabItem = {
+  label: string,
+  value: string
+}
+
+const TABS: TabItem[] = [
   {
     label: "Tous",
     value: "tous",
+  },
+  {
+    label: "Plus récents",
+    value: "récents",
+  },
+  {
+    label: "Plus Anciens",
+    value: "anciens",
   },
 ];
 
@@ -42,6 +50,8 @@ const academicYears: Array<AcademicYearEntity> = [
 function AcademicYear() {
 
   const {handleOpen, dispatch} = useContext(ModalContext)
+
+  const [selectedTab, setSelectedTab] = useState<TabItem>(TABS[0])
 
   const handleOpenCreateAcademicYearModal = () => {
     if(!dispatch) return
@@ -74,31 +84,13 @@ function AcademicYear() {
             année académique
           </Button>
         </div>
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <Tabs value="all" className="w-full md:w-max">
-            <TabsHeader>
-              {TABS.map(({ label, value }) => (
-                <Tab key={value} value={value}>
-                  &nbsp;&nbsp;{label}&nbsp;&nbsp;
-                </Tab>
-              ))}
-            </TabsHeader>
-          </Tabs>
-          <div className="w-full md:w-72">
-            <Input
-              crossOrigin={null}
-              label="Rechercher"
-              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-            />
-          </div>
-        </div>
+        <FilterAndResearch tabsList={TABS} />
       </CardHeader>
       <CardBody className={`grid 600px:grid-cols-2 843px:grid-cols-3 1087px:grid-cols-4 1140px:grid-cols-3 1359px:grid-cols-4 gap-0 sm:gap-x-4 overflow-auto`}>
         {academicYears.map(({ date }, index) => {
-          const isLast = index === academicYears.length - 1;
 
           return (
-            <Card className="mt-6 bg-primary">
+            <Card key={index} className="mt-6 bg-primary">
               <CardBody className="flex items-center justify-between">
                 <Typography variant="h5" className="text-white">
                   {date}

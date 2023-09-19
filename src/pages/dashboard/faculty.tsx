@@ -1,22 +1,18 @@
+import FilterAndResearch from "@/components/filterAndResearch/FilterAndResearch";
 import { DefaultPagination } from "@/components/pagination/DefaultPagination";
 import { ModalContext } from "@/context/modalContext";
 import { Faculty } from "@/entities/faculty.entity";
 import {
-  MagnifyingGlassIcon,
   ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
 import { PencilIcon, PlusCircleIcon, TrashIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
-  Input,
   Typography,
   Button,
   CardBody,
   CardFooter,
-  Tabs,
-  TabsHeader,
-  Tab,
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
@@ -27,7 +23,16 @@ const TABS = [
     label: "Tous",
     value: "tous",
   },
+  {
+    label: "Noms",
+    value: "noms",
+  },
+  {
+    label: "Description",
+    value: "Description",
+  },
 ];
+;
 
 const TABLE_HEAD = ["Name", "Description", "Actions"];
 
@@ -78,24 +83,7 @@ export function Faculties() {
             faculté
           </Button>
         </div>
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <Tabs value="all" className="w-full md:w-max">
-            <TabsHeader>
-              {TABS.map(({ label, value }) => (
-                <Tab key={value} value={value}>
-                  &nbsp;&nbsp;{label}&nbsp;&nbsp;
-                </Tab>
-              ))}
-            </TabsHeader>
-          </Tabs>
-          <div className="w-full md:w-72">
-            <Input
-              crossOrigin={null}
-              label="Search"
-              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-            />
-          </div>
-        </div>
+        <FilterAndResearch tabsList={TABS} />
       </CardHeader>
       <CardBody className="overflow-auto px-0">
         <table className="mt-4 w-full min-w-max table-auto text-left">
