@@ -3,7 +3,7 @@ import Student from "@/entities/student.entity";
 import { ReactNodeChildren } from "@/types";
 import { useState } from "react";
 
-export const StudentProvider = ({ children }: ReactNodeChildren) => {
+const StudentProvider = ({ children }: ReactNodeChildren) => {
   // State
   const [students, setStudents] = useState<Array<Student>>([]);
   const [student, setStudent] = useState<Student | null>(null);
@@ -51,3 +51,5 @@ export const StudentProvider = ({ children }: ReactNodeChildren) => {
     </StudentContext.Provider>
   );
 };
+
+export default StudentProvider

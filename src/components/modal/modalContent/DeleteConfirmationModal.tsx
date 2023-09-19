@@ -11,14 +11,18 @@ const DeleteConfirmationModal = () => {
             Confirmer la suppression
         </Typography>
         <CardBody className="flex text-center flex-col gap-4">
-        <Typography>Êtes vous sur de vouloir supprimer cette resource ?</Typography>
+        <Typography className='text-lg'>Êtes vous sur de vouloir supprimer cette resource ?</Typography>
         </CardBody>
         <CardFooter className="pt-0 flex justify-between">
-        <Button variant="filled" className="bg-gray-400 uppercase" onClick={handleOpen}>
-            Annuler
+        <Button variant="filled" className="bg-gray-400 uppercase font-bold" onClick={handleOpen}>
+            <Typography className='font-semibold text-base'>
+                Annuler
+            </Typography>
         </Button>
-        <Button variant="filled" className="bg-red-700 uppercase" onClick={handleOpen}>
+        <Button variant="filled" className="bg-red-700 uppercase font-bold" onClick={handleOpen}>
+            <Typography className='font-semibold text-base'>
             Valider
+            </Typography>
         </Button>
         </CardFooter>
     </Card>

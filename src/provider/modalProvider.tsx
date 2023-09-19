@@ -45,7 +45,7 @@ const ModalProvider = ({ children }: ReactNodeChildren) => {
             case "ADD_SECTOR":
                 return { ...state, state: <CreateSectorModal />, size: 'sm' }
             case "DELETE_CONFIRMATION":
-                return { ...state, state: <DeleteConfirmationModal /> }
+                return { ...state, state: <DeleteConfirmationModal />, size: "xs" }
             default:
                 return {...state};
         }

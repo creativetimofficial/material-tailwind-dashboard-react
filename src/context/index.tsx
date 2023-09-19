@@ -1,6 +1,5 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { ReactNodeChildren } from "@/types";
 
 type ContextValueType = [any, React.Dispatch<any>];
 
@@ -57,9 +56,13 @@ export function reducer(state: ReducerState, action: ActionType): ReducerState {
   }
 }
 
+type ChildrenType = {
+  children: JSX.Element
+}
+
 export function MaterialTailwindControllerProvider({
   children,
-}: ReactNodeChildren) {
+}: ChildrenType) {
   const initialState: ReducerState = {
     openSidenav: false,
     sidenavColor: "blue",

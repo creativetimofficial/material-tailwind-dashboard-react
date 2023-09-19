@@ -24,13 +24,5 @@ import "./fonts/nico-moji/NicoMoji-Regular.ttf";
 import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider>
-        <MaterialTailwindControllerProvider>
-          <App />
-        </MaterialTailwindControllerProvider>
-      </ThemeProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <App />
 );
