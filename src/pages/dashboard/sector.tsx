@@ -1,10 +1,11 @@
 import { DefaultPagination } from "@/components/pagination/DefaultPagination";
+import { ModalContext } from "@/context/modalContext";
 import { Sector as SectorEntity } from "@/entities/sector.entity";
 import {
   MagnifyingGlassIcon,
   ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
-import { PencilIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
+import { PencilIcon, PlusCircleIcon, TrashIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
@@ -19,6 +20,7 @@ import {
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
+import { useContext } from "react";
 
 const TABS = [
   {
@@ -43,6 +45,23 @@ const TABLE_ROWS: Array<SectorEntity> = [
 ];
 
 export function Sectors() {
+
+  const { handleOpen, dispatch} = useContext(ModalContext)
+
+  const handleOpenCreateSectorModal = () => {
+    if(!dispatch) return
+    
+    dispatch!({ type: "ADD_SECTOR" })
+    handleOpen();
+  }
+
+  const handleOpenDeleteModal = () => {
+    if(!dispatch) return
+    
+    dispatch!({ type: "DELETE_CONFIRMATION" })
+    handleOpen();
+  }
+
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -55,7 +74,7 @@ export function Sectors() {
               Ci-dessous les informations sur les filières
             </Typography>
           </div>
-          <Button className="flex items-center gap-3 bg-primary" size="md">
+          <Button onClick={handleOpenCreateSectorModal} className="flex items-center gap-3 bg-primary" size="md">
             <PlusCircleIcon strokeWidth={2} className="h-6 w-6" /> Ajouter une
             filière
           </Button>
@@ -135,6 +154,11 @@ export function Sectors() {
                     <Tooltip content="Edit Faculty">
                       <IconButton variant="text">
                         <PencilIcon className="h-4 w-4" />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip content="Delete Faculty">
+                      <IconButton onClick={handleOpenDeleteModal} variant="text">
+                        <TrashIcon className="h-4 w-4" />
                       </IconButton>
                     </Tooltip>
                   </td>

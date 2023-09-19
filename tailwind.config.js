@@ -20,8 +20,11 @@ module.exports = withMT({
       nicoMojiRegular: ["NicoMojiRegular", "Helvetica", "Arial", "sans-serif"],
     },
     screens: {
-      '1359': '1359px',
-      "min-[1359px]": "1359px"
+      '1359px': {"min":'1359px'},
+      '1140px': {"min": "1140px", 'max': '1358px'},
+      '1087px': {"min": "1087px", 'max': '1139px'},
+      '843px': {"min": "843px", 'max': '1086px'},
+      '600px': {"min": "600px", 'max': '842px'}
       // => @media (min-width: 1359px) { ... }
     },
   },

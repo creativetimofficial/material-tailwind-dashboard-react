@@ -1,8 +1,8 @@
 import { DefaultPagination } from "@/components/pagination/DefaultPagination";
+import { ModalContext } from "@/context/modalContext";
 import { AcademicYear as AcademicYearEntity } from "@/entities/academicYear.entity";
 import {
   MagnifyingGlassIcon,
-  ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
 import {
   PencilIcon,
@@ -23,6 +23,7 @@ import {
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
+import { useContext } from "react";
 
 const TABS = [
   {
@@ -40,10 +41,26 @@ const academicYears: Array<AcademicYearEntity> = [
 
 function AcademicYear() {
 
+  const {handleOpen, dispatch} = useContext(ModalContext)
+
+  const handleOpenCreateAcademicYearModal = () => {
+    if(!dispatch) return
+    
+    dispatch!({ type: "ADD_ACADEMIC_YEAR" })
+    handleOpen();
+  }
+
+  const handleOpenDeleteModal = () => {
+    if(!dispatch) return
+    
+    dispatch!({ type: "DELETE_CONFIRMATION" })
+    handleOpen();
+  }
+
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
-        <div className="mb-8 flex items-center justify-between gap-8">
+        <div className="mb-8 600px:flex md:flex items-center justify-between gap-8">
           <div>
             <Typography variant="h5" color="blue-gray">
               Liste d'années académiques
@@ -52,7 +69,7 @@ function AcademicYear() {
               Ci-dessous les informations sur les années académiques
             </Typography>
           </div>
-          <Button className="flex items-center gap-3 bg-primary" size="md">
+          <Button onClick={handleOpenCreateAcademicYearModal} className="flex mt-4 600px:mt-0 items-center gap-3 bg-primary" size="md">
             <PlusCircleIcon strokeWidth={2} className="h-6 w-6" /> Ajouter une
             année académique
           </Button>
@@ -76,7 +93,7 @@ function AcademicYear() {
           </div>
         </div>
       </CardHeader>
-      <CardBody className={`grid gap-4 overflow-auto`}>
+      <CardBody className={`grid 600px:grid-cols-2 843px:grid-cols-3 1087px:grid-cols-4 1140px:grid-cols-3 1359px:grid-cols-4 gap-0 sm:gap-x-4 overflow-auto`}>
         {academicYears.map(({ date }, index) => {
           const isLast = index === academicYears.length - 1;
 
@@ -94,7 +111,7 @@ function AcademicYear() {
                   </Tooltip>
 
                   <Tooltip content="Delete Faculty">
-                    <IconButton color="white" variant="text">
+                    <IconButton onClick={handleOpenDeleteModal} color="white" variant="text">
                       <TrashIcon className="h-4 w-4" />
                     </IconButton>
                   </Tooltip>

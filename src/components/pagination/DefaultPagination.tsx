@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, IconButton } from "@material-tailwind/react";
+import { Button, IconButton, Typography } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 export function DefaultPagination() {
@@ -14,7 +14,7 @@ export function DefaultPagination() {
     } as any);
 
   const next = () => {
-    if (active === 5) return;
+    if (active === 2) return;
 
     setActive(active + 1);
   };
@@ -33,7 +33,11 @@ export function DefaultPagination() {
         onClick={prev}
         disabled={active === 1}
       >
-        <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Précédent
+        <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" />
+        
+        <Typography className="hidden sm:block text-xs font-bold ">
+         Précédent
+        </Typography>
       </Button>
       <div className="flex items-center gap-2">
         <IconButton {...getItemProps(1)}>1</IconButton>
@@ -45,7 +49,9 @@ export function DefaultPagination() {
         onClick={next}
         disabled={active === 5}
       >
+        <Typography className="hidden sm:block text-xs font-bold ">
         Suivant
+        </Typography>
         <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
       </Button>
     </div>

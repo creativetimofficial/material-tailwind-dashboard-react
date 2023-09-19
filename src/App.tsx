@@ -3,9 +3,11 @@ import { Dashboard, Auth } from "@/layouts";
 import { StudentProvider } from "./provider/students";
 import { CurrentUserProvider } from "./provider/currentUser";
 import { ExportProvider } from "./provider/export";
+import ModalProvider from "./provider/modalProvider";
 
 function App() {
   return (
+        <ModalProvider>
     <CurrentUserProvider>
       <StudentProvider>
         <ExportProvider>
@@ -15,11 +17,12 @@ function App() {
             <Route
               path="*"
               element={<Navigate to="/dashboard/home" replace />}
-            />
+              />
           </Routes>
         </ExportProvider>
       </StudentProvider>
     </CurrentUserProvider>
+              </ModalProvider>
   );
 }
 
