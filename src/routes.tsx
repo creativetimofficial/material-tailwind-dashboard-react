@@ -7,6 +7,7 @@ import {
   PencilIcon,
   PrinterIcon,
   RectangleGroupIcon,
+  CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
 import { Home, PersonalInfo, Profile } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
@@ -14,6 +15,9 @@ import Students from "./pages/dashboard/students";
 import { ReactNode } from "react";
 import Export from "./layouts/exports";
 import AddStudent from "./components/addStudent";
+import { Faculties } from "./pages/dashboard/faculty";
+import { Sectors } from "./pages/dashboard/sector";
+import AcademicYear from "./pages/dashboard/academicYear";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -69,6 +73,24 @@ export const routes: Array<RouteType> = [
         name: "add student",
         path: "/add-student",
         element: <AddStudent />,
+      },
+      {
+        icon: <AcademicCapIcon {...icon} />,
+        name: "faculty",
+        path: "/faculty",
+        element: <Faculties />,
+      },
+      {
+        icon: <AcademicCapIcon {...icon} />,
+        name: "sector",
+        path: "/sector",
+        element: <Sectors />,
+      },
+      {
+        icon: <CalendarDaysIcon {...icon} />,
+        name: "academic year",
+        path: "/academic-year",
+        element: <AcademicYear />,
       },
       // {
       //   icon: <TableCellsIcon {...icon} />,
