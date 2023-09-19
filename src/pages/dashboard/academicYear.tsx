@@ -31,9 +31,7 @@ const TABS = [
   },
 ];
 
-const TABLE_HEAD = ["Date", "Actions"];
-
-const TABLE_ROWS: Array<AcademicYearEntity> = [
+const academicYears: Array<AcademicYearEntity> = [
   new AcademicYearEntity({ date: "2023-2024" }),
   new AcademicYearEntity({ date: "2024-2025" }),
   new AcademicYearEntity({ date: "2025-2026" }),
@@ -41,6 +39,7 @@ const TABLE_ROWS: Array<AcademicYearEntity> = [
 ];
 
 function AcademicYear() {
+
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -77,12 +76,12 @@ function AcademicYear() {
           </div>
         </div>
       </CardHeader>
-      <CardBody className="grid grid-cols-4 gap-4 overflow-auto">
-        {TABLE_ROWS.map(({ date }, index) => {
-          const isLast = index === TABLE_ROWS.length - 1;
+      <CardBody className={`grid gap-4 overflow-auto`}>
+        {academicYears.map(({ date }, index) => {
+          const isLast = index === academicYears.length - 1;
 
           return (
-            <Card className="mt-6 bg-primary ">
+            <Card className="mt-6 bg-primary">
               <CardBody className="flex items-center justify-between">
                 <Typography variant="h5" className="text-white">
                   {date}
@@ -110,6 +109,12 @@ function AcademicYear() {
       </CardFooter>
     </Card>
   );
+}
+
+const styles = {
+  "&:hover": {
+    background: "#efefef"
+  },
 }
 
 export default AcademicYear;

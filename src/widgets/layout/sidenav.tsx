@@ -1,13 +1,7 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  Avatar,
-  Button,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
-import { useMaterialTailwindController, setOpenSidenav } from "@/context";
+import { Avatar, Button, Typography } from "@material-tailwind/react";
+import { useMaterialTailwindController } from "@/context";
 import { RouteType } from "@/routes";
 
 type SideNavProps = {
@@ -16,50 +10,34 @@ type SideNavProps = {
 };
 
 export function Sidenav({ brandImg, routes }: SideNavProps) {
-  const [controller, dispatch] = useMaterialTailwindController();
-  const { sidenavColor, sidenavType, openSidenav } = controller;
-  const sidenavTypes = {
-    dark: "bg-gradient-to-br from-blue-gray-800 to-blue-gray-900",
-    white: "bg-white shadow-lg",
-    transparent: "bg-transparent",
-  };
+  const [controller, _] = useMaterialTailwindController();
+  const { sidenavColor, sidenavType } = controller;
 
   return (
     <aside
-      className={`${sidenavTypes[sidenavType]} ${
-        openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0`}
+      className={`fixed inset-0 z-50 h-full w-max bg-primary  transition-transform duration-300 xl:w-72 xl:translate-x-0`}
     >
       <div
         className={`relative border-b ${
           sidenavType === "dark" ? "border-white/20" : "border-blue-gray-50"
         }`}
       >
-        <Link to="/" className="flex items-center gap-4 py-6 px-8">
+        <Link to="/" className={`flex items-center gap-4 py-6 px-2 xl:px-8`}>
           <Avatar src={brandImg} size="sm" />
           <Typography
             variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
+            className="hidden xl:block"
           >
             {"Students Card"}
           </Typography>
         </Link>
-        <IconButton
-          variant="text"
-          color="white"
-          size="sm"
-          ripple={false}
-          className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
-          onClick={() => setOpenSidenav(dispatch, false)}
-        >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
-        </IconButton>
       </div>
-      <div className="m-4">
+      <div className="m-2 xl:m-4">
         {routes.map(({ layout, title, pages }, key) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
             {title && (
-              <li className="mx-3.5 mt-4 mb-2">
+              <li className="mt-4 mb-2 hidden xl:mx-3.5 xl:block">
                 <Typography
                   variant="small"
                   color={sidenavType === "dark" ? "white" : "blue-gray"}
@@ -75,20 +53,14 @@ export function Sidenav({ brandImg, routes }: SideNavProps) {
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "gradient" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                          ? "white"
-                          : "blue-gray"
-                      }
-                      className="flex items-center gap-4 px-4 capitalize"
+                      color={isActive ? "white" : "white"}
+                      className={`${ isActive ? "bg-white text-primary" : "text-white"} flex items-center gap-4 pl-2 pr-0 capitalize xl:px-4`}
                       fullWidth
                     >
                       {icon}
                       <Typography
                         color="inherit"
-                        className="font-medium capitalize"
+                        className={`${isActive ? "text-primary" : "text-white"} hidden font-medium capitalize xl:block`}
                       >
                         {name}
                       </Typography>

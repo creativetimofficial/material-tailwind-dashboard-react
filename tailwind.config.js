@@ -19,6 +19,11 @@ module.exports = withMT({
       ],
       nicoMojiRegular: ["NicoMojiRegular", "Helvetica", "Arial", "sans-serif"],
     },
+    screens: {
+      '1359': '1359px',
+      "min-[1359px]": "1359px"
+      // => @media (min-width: 1359px) { ... }
+    },
   },
   plugins: [],
 });
