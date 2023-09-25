@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
-import { Dashboard, Auth } from "@/layouts";
+import { Dashboard } from "@/layouts";
 import { CurrentUserProvider } from "./provider/currentUser";
 import { ExportProvider } from "./provider/export";
 import ModalProvider from "./provider/modalProvider";
@@ -14,25 +14,25 @@ function App() {
     <GXProvider store={store}>
       <ThemeProvider>
         <ModalProvider>
-        <BrowserRouter>
-        <CurrentUserProvider>
-        <MaterialTailwindControllerProvider>
-          <StudentProvider>
-            <ExportProvider>
-              <Routes>
-                <Route path="/dashboard/*" element={<Dashboard />} />
-                <Route path="/auth/*" element={<Auth />} />
-                <Route
-                  path="*"
-                  element={<Navigate to="/dashboard/home" replace />}
-                  />
-              </Routes>
-            </ExportProvider>
-          </StudentProvider>
-        </MaterialTailwindControllerProvider>
-    </CurrentUserProvider>
-    </BrowserRouter>
-              </ModalProvider>
+          <BrowserRouter>
+            <CurrentUserProvider>
+              <MaterialTailwindControllerProvider>
+                <StudentProvider>
+                  <ExportProvider>
+                    <Routes>
+                      <Route path="/dashboard/*" element={<Dashboard />} />
+                      {/* <Route path="/auth/*" element={<Auth />} /> */}
+                      <Route
+                        path="*"
+                        element={<Navigate to="/dashboard/home" replace />}
+                      />
+                    </Routes>
+                  </ExportProvider>
+                </StudentProvider>
+              </MaterialTailwindControllerProvider>
+            </CurrentUserProvider>
+          </BrowserRouter>
+        </ModalProvider>
       </ThemeProvider>
     </GXProvider>
   );

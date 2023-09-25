@@ -9,6 +9,8 @@ import {
 
 import { studentsTableData } from "@/data";
 
+import userImage from "../../assets/img/user.png";
+
 export default function Students() {
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
@@ -40,67 +42,65 @@ export default function Students() {
               </tr>
             </thead>
             <tbody>
-              {studentsTableData.map(
-                ({ img, name, email, job, online, date }, key) => {
-                  const className = `py-3 px-5 ${
-                    key === studentsTableData.length - 1
-                      ? ""
-                      : "border-b border-blue-gray-50"
-                  }`;
+              {studentsTableData.map(({ name, email, job, online, date }, key) => {
+                const className = `py-3 px-5 ${
+                  key === studentsTableData.length - 1
+                    ? ""
+                    : "border-b border-blue-gray-50"
+                }`;
 
-                  return (
-                    <tr key={name}>
-                      <td className={className}>
-                        <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" />
-                          <div>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-semibold"
-                            >
-                              {name}
-                            </Typography>
-                            <Typography className="text-xs font-normal text-blue-gray-500">
-                              {email}
-                            </Typography>
-                          </div>
+                return (
+                  <tr key={name}>
+                    <td className={className}>
+                      <div className="flex items-center gap-4">
+                        <Avatar src={userImage} alt={name} size="sm" />
+                        <div>
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-semibold"
+                          >
+                            {name}
+                          </Typography>
+                          <Typography className="text-xs font-normal text-blue-gray-500">
+                            {email}
+                          </Typography>
                         </div>
-                      </td>
-                      <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {job[0]}
-                        </Typography>
-                        <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Chip
-                          variant="gradient"
-                          color={online ? "green" : "blue-gray"}
-                          value={online ? "online" : "offline"}
-                          className="py-0.5 px-2 text-[11px] font-medium"
-                        />
-                      </td>
-                      <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {date}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Typography
-                          as="a"
-                          href="#"
-                          className="text-xs font-semibold text-blue-gray-600"
-                        >
-                          Edit
-                        </Typography>
-                      </td>
-                    </tr>
-                  );
-                },
-              )}
+                      </div>
+                    </td>
+                    <td className={className}>
+                      <Typography className="text-xs font-semibold text-blue-gray-600">
+                        {job[0]}
+                      </Typography>
+                      <Typography className="text-xs font-normal text-blue-gray-500">
+                        {job[1]}
+                      </Typography>
+                    </td>
+                    <td className={className}>
+                      <Chip
+                        variant="gradient"
+                        color={online ? "green" : "blue-gray"}
+                        value={online ? "online" : "offline"}
+                        className="py-0.5 px-2 text-[11px] font-medium"
+                      />
+                    </td>
+                    <td className={className}>
+                      <Typography className="text-xs font-semibold text-blue-gray-600">
+                        {date}
+                      </Typography>
+                    </td>
+                    <td className={className}>
+                      <Typography
+                        as="a"
+                        href="#"
+                        className="text-xs font-semibold text-blue-gray-600"
+                      >
+                        Edit
+                      </Typography>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </CardBody>

@@ -7,6 +7,8 @@ import {
   Chip,
 } from "@material-tailwind/react";
 
+import userImage from "../../assets/img/user.png";
+
 import { studentsTableData } from "@/data";
 
 export default function Agents() {
@@ -52,7 +54,7 @@ export default function Agents() {
                     <tr key={name}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" />
+                          <Avatar src={userImage} alt={name} size="sm" />
                           <div>
                             <Typography
                               variant="small"
