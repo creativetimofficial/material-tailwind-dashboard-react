@@ -9,13 +9,13 @@ import {
 
 import { studentsTableData } from "@/data";
 
-export default function Students() {
+export default function Agents() {
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
         <CardHeader className="mb-8 p-6 bg-primary">
           <Typography variant="h6" color="white">
-            Students Table
+            Agents Table
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">

@@ -18,6 +18,7 @@ import AddStudent from "./components/addStudent";
 import { Faculties } from "./pages/dashboard/faculty";
 import { Sectors } from "./pages/dashboard/sector";
 import AcademicYear from "./pages/dashboard/academicYear";
+import Agents from "./pages/dashboard/agents";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -49,6 +50,12 @@ export const routes: Array<RouteType> = [
         name: "students",
         path: "/students",
         element: <Students />,
+      },
+      {
+        icon: <AcademicCapIcon {...icon} />,
+        name: "agents",
+        path: "/agents",
+        element: <Agents />,
       },
       {
         icon: <UserCircleIcon {...icon} />,
