@@ -21,6 +21,7 @@ import "./fonts/Nunito/static/Nunito-Bold.ttf";
 import "./fonts/Nunito/static/Nunito-BoldItalic.ttf";
 import "./fonts/nico-moji/NicoMoji-Regular.ttf";
 import "./fonts/Gideon_Roman/GideonRoman-Regular.ttf";
+import "./fonts/Nunito/static/Nunito-Regular.ttf";
 
 import "./main.css";
 

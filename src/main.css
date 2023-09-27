@@ -52,3 +52,13 @@ body {
   font-size: 10rem;
   line-height: 150%;
 }
+
+@font-face {
+  font-family: "NunitoRegular";
+  src:
+    local("NunitoRegular"),
+    url("./fonts/Nunito/static/Nunito-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-size: 10rem;
+  line-height: 150%;
+}

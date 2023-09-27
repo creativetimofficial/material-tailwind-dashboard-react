@@ -12,6 +12,7 @@ module.exports = withMT({
     fontFamily: {
       nunitoBold: ["NunitoBold", "Helvetica", "Arial", "sans-serif"],
       nunitoBoldItalic: ["NunitoBoldItalic", "Helvetica", "Arial", "sans-serif"],
+      nunitoRegular: ["NunitoRegular", "Helvetica", "Arial", "sans-serif"],
       nicoMojiRegular: ["NicoMojiRegular", "Helvetica", "Arial", "sans-serif"],
       gideonRomanRegular: ["GideonRomanRegular", "Helvetica", "Arial", "sans-serif"],
     },
