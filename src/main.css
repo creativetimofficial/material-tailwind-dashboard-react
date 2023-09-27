@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border scroll-smooth;
+}
+
+body {
+  @apply m-0 p-0;
+}
+
+@font-face {
+  font-family: "NunitoBold";
+  src:
+    local("NunitoBold"),
+    url("./fonts/Nunito/static/Nunito-Bold.ttf") format("truetype");
+  font-size: 0.53125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+@font-face {
+  font-family: "NunitoBoldItalic";
+  src:
+    local("NunitoBoldItalic"),
+    url("./fonts/Nunito/static/Nunito-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-size: 10rem;
+  line-height: 150%;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NicoMojiRegular";
+  src:
+    local("NicoMojiRegular"),
+    url("./fonts/nico-moji/NicoMoji-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-size: 10rem;
+  line-height: 150%;
+}
+
+@font-face {
+  font-family: "GideonRomanRegular";
+  src:
+    local("GideonRomanRegular"),
+    url("./fonts/Gideon_Roman/GideonRoman-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-size: 10rem;
+  line-height: 150%;
+}
+
+@font-face {
+  font-family: "NunitoRegular";
+  src:
+    local("NunitoRegular"),
+    url("./fonts/Nunito/static/Nunito-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-size: 10rem;
+  line-height: 150%;
+}
