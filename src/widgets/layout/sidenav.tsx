@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
-import { Avatar, Button, Typography } from "@material-tailwind/react";
+import { Button, Tooltip, Typography } from "@material-tailwind/react";
 import { useMaterialTailwindController } from "@/context";
 import { RouteType } from "@/routes";
 
@@ -23,7 +23,7 @@ export function Sidenav({ brandImg, routes }: SideNavProps) {
         }`}
       >
         <Link to="/" className={`flex items-center gap-4 py-6 px-2 xl:px-8`}>
-          <Avatar src={brandImg} size="sm" />
+          <img src={brandImg} alt="app logo image" className="w-9 h-9" />
           <Typography
             variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
@@ -48,26 +48,36 @@ export function Sidenav({ brandImg, routes }: SideNavProps) {
               </li>
             )}
             {pages.map(({ icon, name, path }) => (
-              <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
-                  {({ isActive }) => (
-                    <Button
-                      variant={isActive ? "gradient" : "text"}
-                      color={isActive ? "white" : "white"}
-                      className={`${ isActive ? "bg-white text-primary" : "text-white"} flex items-center gap-4 pl-2 pr-0 capitalize xl:px-4`}
-                      fullWidth
-                    >
-                      {icon}
-                      <Typography
-                        color="inherit"
-                        className={`${isActive ? "text-primary" : "text-white"} hidden font-medium capitalize xl:block`}
+              <Tooltip
+                content={name}
+                className="bg-primary block 1140px:hidden 1359px:hidden ml-2 font-nunitoBold capitalize"
+                placement="right-center"
+              >
+                <li key={name}>
+                  <NavLink to={`/${layout}${path}`}>
+                    {({ isActive }) => (
+                      <Button
+                        variant={isActive ? "gradient" : "text"}
+                        color={isActive ? "white" : "white"}
+                        className={`${
+                          isActive ? "bg-white text-primary" : "text-white"
+                        } flex items-center gap-4 pl-2 pr-0 capitalize xl:px-4`}
+                        fullWidth
                       >
-                        {name}
-                      </Typography>
-                    </Button>
-                  )}
-                </NavLink>
-              </li>
+                        {icon}
+                        <Typography
+                          color="inherit"
+                          className={`${
+                            isActive ? "text-primary" : "text-white"
+                          } hidden font-medium capitalize xl:block`}
+                        >
+                          {name}
+                        </Typography>
+                      </Button>
+                    )}
+                  </NavLink>
+                </li>
+              </Tooltip>
             ))}
           </ul>
         ))}

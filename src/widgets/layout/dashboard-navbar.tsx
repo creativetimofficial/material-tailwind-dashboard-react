@@ -18,10 +18,7 @@ import {
   CreditCardIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
-import {
-  useMaterialTailwindController,
-  setOpenSidenav,
-} from "@/context";
+import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 
 export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -56,11 +53,7 @@ export function DashboardNavbar() {
                 {layout}
               </Typography>
             </Link>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="font-normal"
-            >
+            <Typography variant="small" color="blue-gray" className="font-normal">
               {page}
             </Typography>
           </Breadcrumbs>
