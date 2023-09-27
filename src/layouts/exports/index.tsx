@@ -11,6 +11,11 @@ import { formatDateBySlash } from "@/utils";
 import QrCodeGenerator from "@/components/Qrgenerator";
 import { ExportContext } from "@/context/export";
 import { PrinterIcon } from "@heroicons/react/24/solid";
+
+import logo from "@/assets/img/logo.svg";
+import logoTransparent from "@/assets/img/logo_transparent.png";
+import userImage from "@/assets/img/bruce-mars.jpeg";
+import star from "@/assets/img/star.svg";
 // import { formatDate } from "@/utils";
 // import QRCode from "qrcode";
 
@@ -58,7 +63,7 @@ function Export({ exportRef }: ExportProps) {
         numericCode: 1244845,
         qrcode: "sdfsdfsdf",
       }),
-    []
+    [],
   );
 
   // useEffect(() => {
@@ -88,17 +93,248 @@ function Export({ exportRef }: ExportProps) {
       {
         // student &&
         newStudent && (
-          <div ref={exportRef} className="w-full">
+          <div className="w-full">
             <>
               <IconButton className="flex" onClick={exportContext?.print}>
-                <PrinterIcon /> <Typography>Print</Typography>
+                <PrinterIcon
+                  fill="black"
+                  color="red"
+                  scale={1}
+                  className="bg-red-100"
+                />
               </IconButton>
               <Typography className="text-[1.75rem] font-extrabold">
                 This is your unique QRCode
               </Typography>
               {/* This will contain all the logic */}
+              <div ref={exportContext?.exportRef}>
+                {/* Recto of the card */}
 
-              <div className="flex w-full" ref={exportContext?.exportRef}>
+                <div className="w-[686px] h-[466px] relative bg-neutral-100 border-2 border-primary bg-gray-100 rounded-2xl">
+                  <div className="w-full h-[25%] bg-primary bg-opacity-60 rounded-t-2xl">
+                    <div className="flex bg-primary justify-center items-center rounded-t-2xl h-[10%] w-full">
+                      <div className="w-[40%] h-[50%] flex">
+                        <div className="w-1/3 bg-[#6DAD9D]" />
+                        <div className="w-1/3 bg-[#E8766E] flex justify-center items-center">
+                          <img
+                            src={star}
+                            alt="Yellow star"
+                            className="w-full h-full"
+                          />
+                        </div>
+                        <div className="w-1/3 bg-[#FAE24C]" />
+                      </div>
+                    </div>
+                    <div className="flex w-full h-[90%] bg-primary">
+                      <div className="w-[40%] text-white h-full font-gideonRomanRegular flex flex-col justify-center items-center">
+                        <p>REPUBLIQUE DU CAMEROUN</p>
+                        <p>Paix - Travail - Patrie</p>
+                        <p>UNIVERSITE DE YAOUNDE 1</p>
+                      </div>
+                      <div className="w-[20%] h-full flex justify-center items-center">
+                        <img
+                          src={logo}
+                          className="w-full h-full"
+                          alt="UY1 transparent logo"
+                        />
+                      </div>
+                      <div className="w-[40%] h-full font-gideonRomanRegular text-white flex flex-col justify-center items-center">
+                        <p>REPUBLIC OF CAMEROON</p>
+                        <p>Peace - Work - Fatherland</p>
+                        <p>UNIVERSITY OF YAOUNDE 1</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full h-[15%] text-lg py-2 font-nunitoBold bg-[#BA68C8]">
+                    <p className="h-1/2 w-full text-center">
+                      CARTE D’ÉTUDIANT - FACULTE DES SCIENCES
+                    </p>
+                    <p className="h-1/2 w-full text-center">
+                      <span className="text-white font-nunitoBoldItalic">
+                        FACULTES DES SCIENCES:
+                      </span>
+                      <span>{" INFORMATIQUE"}</span>
+                    </p>
+                  </div>
+                  <div className="w-full h-[60%] flex bg-white p-3 rounded-b-2xl">
+                    <div className="h-full w-[78%]">
+                      <div className="h-1/3 font-nunitoBoldItalic text-primary flex w-full">
+                        <div className="w-2/6 mr-2 bg-red-100 h-full">
+                          <p>NOM/SURNAME</p>
+                          <p className="font-nunitoBold text-black">
+                            BTOMPE SSSSSSFFF
+                          </p>
+                        </div>
+                        <div className="w-3/6 mr-2 bg-red-100 h-full">
+                          <p>PRÉNOMS/GIVEN NAMES</p>
+                          <p className="font-nunitoBold text-black">MICHEL RUFIN</p>
+                        </div>
+                        <div className="w-1/6 h-full">
+                          <p>SEXE/SEX</p>
+                          <p className="font-nunitoBold text-black">M</p>
+                        </div>
+                      </div>
+                      <div className="h-1/3 font-nunitoBoldItalic text-primary w-full">
+                        <p className="w-full">
+                          DATE ET LIEU DE NAISSANCE/DATE AND PLACE OF BIRTH
+                        </p>
+                        <p className="w-full">
+                          <span className="w-full h-full font-nunitoBold text-black">
+                            14/05/2001
+                          </span>
+                          <span className="mx-4">À/AT</span>
+                          <span className="w-full h-full font-nunitoBold text-black">
+                            DOUALA
+                          </span>
+                        </p>
+                      </div>
+                      <div className="h-1/3 font-nunitoBoldItalic text-primary flex w-full">
+                        <div className="w-1/2 h-full mr-2">
+                          <p>NATIONALITÉ/NATIONALITY</p>
+                          <p className="font-nunitoBold text-black">CAMEROUNAIS</p>
+                        </div>
+                        <div className="w-1/2 h-full">
+                          <p>ANNÉE/ACADEMIC YEAR</p>
+                          <p className="font-nunitoBold text-black">2023-2024</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="h-full flex flex-col justify-end pb-4 w-[22%]">
+                      <div className="w-full h-[60%] rounded-3xl border-2 border-primary">
+                        <img
+                          src={userImage}
+                          className="w-full h-full rounded-2xl object-cover"
+                          alt="Student image"
+                        />
+                      </div>
+                      <p className="w-full text-lg text-center mt-2 font-nunitoBold text-black">
+                        MAT: 18T2615
+                      </p>
+                    </div>
+                  </div>
+                  <div className="absolute w-[50%] h-full top-0 left-0">
+                    <img
+                      src={logoTransparent}
+                      className="w-full h-full object-fill opacity-[0.15]"
+                      alt="University of Yaounde 1 logo"
+                    />
+                  </div>
+                </div>
+
+                {/* Verso of the card */}
+                <div className="w-[686px] h-[466px] relative bg-neutral-100 border-2 border-primary bg-gray-100 rounded-2xl">
+                  <div className="w-full h-[25%] bg-primary bg-opacity-60 rounded-t-2xl">
+                    <div className="flex bg-primary justify-center items-center rounded-t-2xl h-[10%] w-full">
+                      <div className="w-[40%] h-[50%] flex">
+                        <div className="w-1/3 bg-[#6DAD9D]" />
+                        <div className="w-1/3 bg-[#E8766E] flex justify-center items-center">
+                          <img
+                            src={star}
+                            alt="Yellow star"
+                            className="w-full h-full"
+                          />
+                        </div>
+                        <div className="w-1/3 bg-[#FAE24C]" />
+                      </div>
+                    </div>
+                    <div className="flex w-full h-[90%] bg-primary">
+                      <div className="w-[40%] text-white h-full font-gideonRomanRegular flex flex-col justify-center items-center">
+                        <p>REPUBLIQUE DU CAMEROUN</p>
+                        <p>Paix - Travail - Patrie</p>
+                        <p>UNIVERSITE DE YAOUNDE 1</p>
+                      </div>
+                      <div className="w-[20%] h-full flex justify-center items-center">
+                        <img
+                          src={logo}
+                          className="w-full h-full"
+                          alt="UY1 transparent logo"
+                        />
+                      </div>
+                      <div className="w-[40%] h-full font-gideonRomanRegular text-white flex flex-col justify-center items-center">
+                        <p>REPUBLIC OF CAMEROON</p>
+                        <p>Peace - Work - Fatherland</p>
+                        <p>UNIVERSITY OF YAOUNDE 1</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full h-[15%] text-lg py-2 font-nunitoBold bg-[#BA68C8]">
+                    <p className="h-1/2 w-full text-center">
+                      CARTE D’ÉTUDIANT - FACULTE DES SCIENCES
+                    </p>
+                    <p className="h-1/2 w-full text-center">
+                      <span className="text-white font-nunitoBoldItalic">
+                        FACULTES DES SCIENCES:
+                      </span>
+                      <span>{" INFORMATIQUE"}</span>
+                    </p>
+                  </div>
+                  <div className="w-full h-[60%] flex bg-white p-3 rounded-b-2xl">
+                    <div className="h-full w-[78%]">
+                      <div className="h-1/3 font-nunitoBoldItalic text-primary flex w-full">
+                        <div className="w-2/6 mr-2 bg-red-100 h-full">
+                          <p>NOM/SURNAME</p>
+                          <p className="font-nunitoBold text-black">
+                            BTOMPE SSSSSSFFF
+                          </p>
+                        </div>
+                        <div className="w-3/6 mr-2 bg-red-100 h-full">
+                          <p>PRÉNOMS/GIVEN NAMES</p>
+                          <p className="font-nunitoBold text-black">MICHEL RUFIN</p>
+                        </div>
+                        <div className="w-1/6 h-full">
+                          <p>SEXE/SEX</p>
+                          <p className="font-nunitoBold text-black">M</p>
+                        </div>
+                      </div>
+                      <div className="h-1/3 font-nunitoBoldItalic text-primary w-full">
+                        <p className="w-full">
+                          DATE ET LIEU DE NAISSANCE/DATE AND PLACE OF BIRTH
+                        </p>
+                        <p className="w-full">
+                          <span className="w-full h-full font-nunitoBold text-black">
+                            14/05/2001
+                          </span>
+                          <span className="mx-4">À/AT</span>
+                          <span className="w-full h-full font-nunitoBold text-black">
+                            DOUALA
+                          </span>
+                        </p>
+                      </div>
+                      <div className="h-1/3 font-nunitoBoldItalic text-primary flex w-full">
+                        <div className="w-1/2 h-full mr-2">
+                          <p>NATIONALITÉ/NATIONALITY</p>
+                          <p className="font-nunitoBold text-black">CAMEROUNAIS</p>
+                        </div>
+                        <div className="w-1/2 h-full">
+                          <p>ANNÉE/ACADEMIC YEAR</p>
+                          <p className="font-nunitoBold text-black">2023-2024</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="h-full flex flex-col justify-end pb-4 w-[22%]">
+                      <div className="w-full h-[60%] rounded-3xl border-2 border-primary">
+                        <img
+                          src={userImage}
+                          className="w-full h-full rounded-2xl object-cover"
+                          alt="Student image"
+                        />
+                      </div>
+                      <p className="w-full text-lg text-center mt-2 font-nunitoBold text-black">
+                        MAT: 18T2615
+                      </p>
+                    </div>
+                  </div>
+                  <div className="absolute w-[50%] h-full top-0 left-0">
+                    <img
+                      src={logoTransparent}
+                      className="w-full h-full object-fill opacity-[0.15]"
+                      alt="University of Yaounde 1 logo"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* <div className="flex w-full" ref={exportContext?.exportRef}>
                 <div className="relative w-1/2 font-nunitoBold uppercase leading-[150%]">
                   <img
                     src={RectoCard}
@@ -126,14 +362,12 @@ function Export({ exportRef }: ExportProps) {
                   <p className="absolute bottom-[6.05rem] left-[9.9rem]">
                     {newStudent.birthplace}
                   </p>
-                  <p className="absolute bottom-[1.566rem] left-[1.1rem]">
-                    {/* {newStudent.birthplace} */}cmr
-                  </p>
+                  <p className="absolute bottom-[1.566rem] left-[1.1rem]">cmr</p>
                   <p className="absolute bottom-[1.566rem] left-[15.9rem]">
-                    {/* {newStudent.birthplace} */}2023-2024
+                    2023-2024
                   </p>
                   <p className="absolute bottom-[1.24rem] right-[1.1rem] text-[1.2rem]  ">
-                    {/* {newStudent.birthplace} */}18T6547
+                    18T6547
                   </p>
                   <img
                     src={team1}
@@ -167,7 +401,7 @@ function Export({ exportRef }: ExportProps) {
                     <QrCodeGenerator code="1000000000000" />
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* <div className="relative">
                 <div className="rounded-[20px]">
                   <img src={QRCODECARD} className="rounded-[1.25rem]" />
