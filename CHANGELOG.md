@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.0.0] 2023-10-25
+- Upgrade to Material Tailwind `v2`
+
 ## [2.0.1] 2023-03-29
 
 - Add nepcha scripts
