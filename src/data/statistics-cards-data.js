@@ -7,7 +7,7 @@ import {
 
 export const statisticsCardsData = [
   {
-    color: "blue",
+    color: "gray",
     icon: BanknotesIcon,
     title: "Today's Money",
     value: "$53k",

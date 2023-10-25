@@ -72,7 +72,7 @@ const completedTasksChart = {
 
 export const statisticsChartsData = [
   {
-    color: "blue",
+    color: "gray",
     title: "Website View",
     description: "Last Campaign Performance",
     footer: "campaign sent 2 days ago",

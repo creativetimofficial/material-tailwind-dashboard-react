@@ -22,7 +22,7 @@ export const ordersOverviewData = [
   },
   {
     icon: ShoppingCartIcon,
-    color: "text-blue-500",
+    color: "text-gray-900",
     title: "Server payments for April",
     description: "21 DEC 9:34 PM",
   },

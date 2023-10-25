@@ -21,7 +21,7 @@ export function Notifications() {
     orange: true,
     red: true,
   });
-  const alerts = ["blue", "green", "orange", "red"];
+  const alerts = ["gray", "green", "orange", "red"];
 
   return (
     <div className="mx-auto my-20 flex max-w-screen-lg flex-col gap-8">
@@ -40,12 +40,9 @@ export function Notifications() {
           {alerts.map((color) => (
             <Alert
               key={color}
-              show={showAlerts[color]}
+              open={showAlerts[color]}
               color={color}
-              dismissible={{
-                onClose: () =>
-                  setShowAlerts((current) => ({ ...current, [color]: false })),
-              }}
+              onClose={() => setShowAlerts((current) => ({ ...current, [color]: false }))}
             >
               A simple {color} alert with an <a href="#">example link</a>. Give
               it a click if you like.
@@ -68,18 +65,15 @@ export function Notifications() {
           {alerts.map((color) => (
             <Alert
               key={color}
-              show={showAlertsWithIcon[color]}
+              open={showAlertsWithIcon[color]}
               color={color}
               icon={
                 <InformationCircleIcon strokeWidth={2} className="h-6 w-6" />
               }
-              dismissible={{
-                onClose: () =>
-                  setShowAlertsWithIcon((current) => ({
-                    ...current,
-                    [color]: false,
-                  })),
-              }}
+              onClose={() => setShowAlertsWithIcon((current) => ({
+                ...current,
+                [color]: false,
+              }))}
             >
               A simple {color} alert with an <a href="#">example link</a>. Give
               it a click if you like.

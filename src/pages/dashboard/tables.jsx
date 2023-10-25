@@ -15,7 +15,7 @@ export function Tables() {
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
-        <CardHeader variant="gradient" color="blue" className="mb-8 p-6">
+        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
             Authors Table
           </Typography>
@@ -52,7 +52,7 @@ export function Tables() {
                     <tr key={name}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" />
+                          <Avatar src={img} alt={name} size="sm" variant="rounded" />
                           <div>
                             <Typography
                               variant="small"
@@ -80,7 +80,7 @@ export function Tables() {
                           variant="gradient"
                           color={online ? "green" : "blue-gray"}
                           value={online ? "online" : "offline"}
-                          className="py-0.5 px-2 text-[11px] font-medium"
+                          className="py-0.5 px-2 text-[11px] font-medium w-fit"
                         />
                       </td>
                       <td className={className}>
@@ -106,7 +106,7 @@ export function Tables() {
         </CardBody>
       </Card>
       <Card>
-        <CardHeader variant="gradient" color="blue" className="mb-8 p-6">
+        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
             Projects Table
           </Typography>
@@ -189,7 +189,7 @@ export function Tables() {
                           <Progress
                             value={completion}
                             variant="gradient"
-                            color={completion === 100 ? "green" : "blue"}
+                            color={completion === 100 ? "green" : "gray"}
                             className="h-1"
                           />
                         </div>

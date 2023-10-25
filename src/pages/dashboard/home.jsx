@@ -181,7 +181,7 @@ export function Home() {
                             <Progress
                               value={completion}
                               variant="gradient"
-                              color={completion === 100 ? "green" : "blue"}
+                              color={completion === 100 ? "green" : "gray"}
                               className="h-1"
                             />
                           </div>

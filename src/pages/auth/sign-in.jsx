@@ -22,7 +22,7 @@ export function SignIn() {
         <Card className="absolute top-2/4 left-2/4 w-full max-w-[24rem] -translate-y-2/4 -translate-x-2/4">
           <CardHeader
             variant="gradient"
-            color="blue"
+            color="gray"
             className="mb-4 grid h-28 place-items-center"
           >
             <Typography variant="h3" color="white">
@@ -46,7 +46,7 @@ export function SignIn() {
                 <Typography
                   as="span"
                   variant="small"
-                  color="blue"
+                  color="gray"
                   className="ml-1 font-bold"
                 >
                   Sign up

@@ -8,6 +8,7 @@ export function MessageCard({ img, name, message, action }) {
         <Avatar
           src={img}
           alt={name}
+          variant="rounded"
           className="shadow-lg shadow-blue-gray-500/25"
         />
         <div>
