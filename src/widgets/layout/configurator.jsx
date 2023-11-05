@@ -47,7 +47,8 @@ export function Configurator() {
   const [stars, setStars] = React.useState(0);
 
   const sidenavColors = {
-    white: "white border-gray-200",
+    white: "from-gray-100 to-gray-100 border-gray-200",
+    dark: "from-black to-black border-gray-200",
     green: "from-green-400 to-green-600",
     orange: "from-orange-400 to-orange-600",
     red: "from-red-400 to-red-600",

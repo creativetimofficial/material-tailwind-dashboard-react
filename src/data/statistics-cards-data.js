@@ -18,7 +18,7 @@ export const statisticsCardsData = [
     },
   },
   {
-    color: "pink",
+    color: "gray",
     icon: UserIcon,
     title: "Today's Users",
     value: "2,300",
@@ -29,7 +29,7 @@ export const statisticsCardsData = [
     },
   },
   {
-    color: "green",
+    color: "gray",
     icon: UserPlusIcon,
     title: "New Clients",
     value: "3,462",
@@ -40,7 +40,7 @@ export const statisticsCardsData = [
     },
   },
   {
-    color: "orange",
+    color: "gray",
     icon: ChartBarIcon,
     title: "Sales",
     value: "$103,430",

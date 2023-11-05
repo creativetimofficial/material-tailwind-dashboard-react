@@ -11,7 +11,7 @@ const websiteViewsChart = {
   ],
   options: {
     ...chartsConfig,
-    colors: "#fff",
+    colors: "#388e3c",
     plotOptions: {
       bar: {
         columnWidth: "16%",
@@ -36,7 +36,7 @@ const dailySalesChart = {
   ],
   options: {
     ...chartsConfig,
-    colors: ["#fff"],
+    colors: ["#0288d1"],
     stroke: {
       lineCap: "round",
     },
@@ -60,8 +60,42 @@ const dailySalesChart = {
   },
 };
 
+const completedTaskChart = {
+  type: "line",
+  height: 220,
+  series: [
+    {
+      name: "Sales",
+      data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+    },
+  ],
+  options: {
+    ...chartsConfig,
+    colors: ["#388e3c"],
+    stroke: {
+      lineCap: "round",
+    },
+    markers: {
+      size: 5,
+    },
+    xaxis: {
+      ...chartsConfig.xaxis,
+      categories: [
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+    },
+  },
+};
 const completedTasksChart = {
-  ...dailySalesChart,
+  ...completedTaskChart,
   series: [
     {
       name: "Tasks",
@@ -72,21 +106,21 @@ const completedTasksChart = {
 
 export const statisticsChartsData = [
   {
-    color: "gray",
+    color: "white",
     title: "Website View",
     description: "Last Campaign Performance",
     footer: "campaign sent 2 days ago",
     chart: websiteViewsChart,
   },
   {
-    color: "pink",
+    color: "white",
     title: "Daily Sales",
     description: "15% increase in today sales",
     footer: "updated 4 min ago",
     chart: dailySalesChart,
   },
   {
-    color: "green",
+    color: "white",
     title: "Completed Tasks",
     description: "Last Campaign Performance",
     footer: "just updated",
