@@ -9,11 +9,13 @@ import PropTypes from "prop-types";
 
 export function StatisticsCard({ color, icon, title, value, footer }) {
   return (
-    <Card>
+    <Card className="border border-blue-gray-100 shadow-sm">
       <CardHeader
         variant="gradient"
         color={color}
-        className="absolute -mt-4 grid h-16 w-16 place-items-center"
+        floated={false}
+        shadow={false}
+        className="absolute grid h-12 w-12 place-items-center"
       >
         {icon}
       </CardHeader>
