@@ -1,7 +1,7 @@
 import {
   BanknotesIcon,
   UserPlusIcon,
-  UserIcon,
+  UsersIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
 
@@ -19,7 +19,7 @@ export const statisticsCardsData = [
   },
   {
     color: "gray",
-    icon: UserIcon,
+    icon: UsersIcon,
     title: "Today's Users",
     value: "2,300",
     footer: {
