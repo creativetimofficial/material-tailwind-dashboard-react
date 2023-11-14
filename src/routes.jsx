@@ -37,8 +37,8 @@ export const routes = [
       },
       {
         icon: <InformationCircleIcon {...icon} />,
-        name: "notifactions",
-        path: "/notifactions",
+        name: "notifications",
+        path: "/notifications",
         element: <Notifications />,
       },
     ],

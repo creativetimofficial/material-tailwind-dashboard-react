@@ -213,7 +213,6 @@ export function Configurator() {
           <div className="mt-4 flex justify-center gap-2">
             <Button
               variant="gradient"
-              color="blue-gray"
               className="flex items-center gap-2"
             >
               <i className="fa-brands fa-twitter text-white" />
@@ -221,7 +220,6 @@ export function Configurator() {
             </Button>
             <Button
               variant="gradient"
-              color="blue-gray"
               className="flex items-center gap-2"
             >
               <i className="fa-brands fa-facebook text-white" />

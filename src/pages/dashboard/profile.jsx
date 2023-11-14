@@ -30,7 +30,7 @@ export function Profile() {
       </div>
       <Card className="mx-3 -mt-16 mb-6 lg:mx-4 border border-blue-gray-100">
         <CardBody className="p-4">
-          <div className="mb-10 flex items-center justify-between gap-6">
+          <div className="mb-10 flex items-center justify-between flex-wrap gap-6">
             <div className="flex items-center gap-6">
               <Avatar
                 src="/img/bruce-mars.jpeg"
