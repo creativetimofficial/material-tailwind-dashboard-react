@@ -2,9 +2,9 @@ import {
   HomeIcon,
   UserCircleIcon,
   TableCellsIcon,
-  BellIcon,
-  ArrowRightOnRectangleIcon,
-  UserPlusIcon,
+  InformationCircleIcon,
+  ServerStackIcon,
+  RectangleStackIcon,
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
@@ -36,9 +36,9 @@ export const routes = [
         element: <Tables />,
       },
       {
-        icon: <BellIcon {...icon} />,
-        name: "notifactions",
-        path: "/notifactions",
+        icon: <InformationCircleIcon {...icon} />,
+        name: "notifications",
+        path: "/notifications",
         element: <Notifications />,
       },
     ],
@@ -48,13 +48,13 @@ export const routes = [
     layout: "auth",
     pages: [
       {
-        icon: <ArrowRightOnRectangleIcon {...icon} />,
+        icon: <ServerStackIcon {...icon} />,
         name: "sign in",
         path: "/sign-in",
         element: <SignIn />,
       },
       {
-        icon: <UserPlusIcon {...icon} />,
+        icon: <RectangleStackIcon {...icon} />,
         name: "sign up",
         path: "/sign-up",
         element: <SignUp />,

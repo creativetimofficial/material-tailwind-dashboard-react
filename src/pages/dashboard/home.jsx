@@ -14,8 +14,6 @@ import {
   Progress,
 } from "@material-tailwind/react";
 import {
-  ClockIcon,
-  CheckIcon,
   EllipsisVerticalIcon,
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
@@ -27,6 +25,7 @@ import {
   projectsTableData,
   ordersOverviewData,
 } from "@/data";
+import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
 
 export function Home() {
   return (
@@ -59,7 +58,7 @@ export function Home() {
                 variant="small"
                 className="flex items-center font-normal text-blue-gray-600"
               >
-                <ClockIcon strokeWidth={2} className="h-4 w-4 text-inherit" />
+                <ClockIcon strokeWidth={2} className="h-4 w-4 text-blue-gray-400" />
                 &nbsp;{props.footer}
               </Typography>
             }
@@ -67,7 +66,7 @@ export function Home() {
         ))}
       </div>
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card className="overflow-hidden xl:col-span-2">
+        <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
           <CardHeader
             floated={false}
             shadow={false}
@@ -82,7 +81,7 @@ export function Home() {
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
-                <CheckIcon strokeWidth={3} className="h-4 w-4 text-blue-500" />
+                <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
                 <strong>30 done</strong> this month
               </Typography>
             </div>
@@ -194,7 +193,7 @@ export function Home() {
             </table>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="border border-blue-gray-100 shadow-sm">
           <CardHeader
             floated={false}
             shadow={false}

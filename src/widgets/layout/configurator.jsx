@@ -47,8 +47,8 @@ export function Configurator() {
   const [stars, setStars] = React.useState(0);
 
   const sidenavColors = {
-    blue: "from-blue-400 to-blue-600",
-    "blue-gray": "from-blue-gray-800 to-blue-gray-900",
+    white: "from-gray-100 to-gray-100 border-gray-200",
+    dark: "from-black to-black border-gray-200",
     green: "from-green-400 to-green-600",
     orange: "from-orange-400 to-orange-600",
     red: "from-red-400 to-red-600",
@@ -213,7 +213,6 @@ export function Configurator() {
           <div className="mt-4 flex justify-center gap-2">
             <Button
               variant="gradient"
-              color="blue-gray"
               className="flex items-center gap-2"
             >
               <i className="fa-brands fa-twitter text-white" />
@@ -221,7 +220,6 @@ export function Configurator() {
             </Button>
             <Button
               variant="gradient"
-              color="blue-gray"
               className="flex items-center gap-2"
             >
               <i className="fa-brands fa-facebook text-white" />
