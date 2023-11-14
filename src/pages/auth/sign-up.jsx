@@ -13,7 +13,7 @@ export function SignUp() {
     <section className="m-8 flex">
             <div className="w-2/5 h-full hidden lg:block">
         <img
-          src="/img/pattern.png"
+          src="/material-tailwind-dashboard-react/img/pattern.png"
           className="h-full w-full object-cover rounded-3xl"
         />
       </div>
@@ -76,7 +76,7 @@ export function SignUp() {
               <span>Sign in With Google</span>
             </Button>
             <Button size="lg" color="white" className="flex items-center gap-2 justify-center shadow-md" fullWidth>
-              <img src="/img/twitter-logo.svg" height={24} width={24} alt="" />
+              <img src="/material-tailwind-dashboard-react/img/twitter-logo.svg" height={24} width={24} alt="" />
               <span>Sign in With Twitter</span>
             </Button>
           </div>
