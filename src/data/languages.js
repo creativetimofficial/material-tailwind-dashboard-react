@@ -23,7 +23,7 @@ import {
 } from "./persian";
 
 const languages = {
-  "en": {
+  "eng": {
     authorsTableData: enAuthorsTableData,
     conversationsData: enConversationsData,
     layoutData: enLayoutData,

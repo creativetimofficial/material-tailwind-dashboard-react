@@ -3,7 +3,7 @@ import langs from "./languages";
 const languages = {
   eng: {
     lang: "eng",
-    languageData: langs["en"],
+    languageData: langs["eng"],
     direction: "ltr"
   },
   fa: {
