@@ -13,6 +13,7 @@ import {
   setSidenavColor,
   setSidenavType,
   setFixedNavbar,
+  useLanguage,
 } from "@/context";
 
 function formatNumber(number, decPlaces) {
@@ -42,6 +43,7 @@ function formatNumber(number, decPlaces) {
 
 export function Configurator() {
   const [controller, dispatch] = useMaterialTailwindController();
+  const [language, documentDirection, changeLanguage] = useLanguage();
   const { openConfigurator, sidenavColor, sidenavType, fixedNavbar } =
     controller;
   const [stars, setStars] = React.useState(0);
@@ -63,19 +65,30 @@ export function Configurator() {
       .then((data) => setStars(formatNumber(data.stargazers_count, 1)));
   }, []);
 
+  const setLanguage = React.useCallback((e) => {
+    if(e.target.value) {
+      const docLanguage = e.target.value;
+      changeLanguage(docLanguage);
+    }
+  }, []);
+
   return (
     <aside
-      className={`fixed top-0 right-0 z-50 h-screen w-96 bg-white px-2.5 shadow-lg transition-transform duration-300 ${
-        openConfigurator ? "translate-x-0" : "translate-x-96"
+      className={`fixed overflow-x-auto top-0 right-0 z-50 h-screen w-96 bg-white px-2.5 shadow-lg transition-transform duration-300 ${
+        openConfigurator ? "-translate-x-0" : "translate-x-96"
       }`}
     >
       <div className="flex items-start justify-between px-6 pt-8 pb-6">
         <div>
           <Typography variant="h5" color="blue-gray">
-            Dashboard Configurator
+            { 
+              language.dashboradConfiguratorTitle
+            }
           </Typography>
           <Typography className="font-normal text-blue-gray-600">
-            See our dashboard options.
+            { 
+              language.dashboradConfiguratorSubtitle
+            }
           </Typography>
         </div>
         <IconButton
@@ -88,8 +101,23 @@ export function Configurator() {
       </div>
       <div className="py-4 px-6">
         <div className="mb-12">
+          <Typography variant="h6" color="blue-gray" className="whitespace-nowrap">
+            { 
+              language.dashboradConfiguratorSelectLanguage
+            }
+          </Typography>
+          <div className="w-72">
+            <select defaultValue="eng" onClick={setLanguage}>
+              <option value="eng">English</option>
+              <option value="fa">فارسی</option>
+            </select>
+          </div>
+        </div>
+        <div className="mb-12">
           <Typography variant="h6" color="blue-gray">
-            Sidenav Colors
+            { 
+              language.dashboradSidenavColorsTitle
+            }
           </Typography>
           <div className="mt-3 flex items-center gap-2">
             {Object.keys(sidenavColors).map((color) => (
@@ -107,10 +135,14 @@ export function Configurator() {
         </div>
         <div className="mb-12">
           <Typography variant="h6" color="blue-gray">
-            Sidenav Types
+           { 
+              language.dashboradSidenavTypesTitle
+            }
           </Typography>
           <Typography variant="small" color="gray">
-            Choose between 3 different sidenav types.
+           { 
+              language.dashboradSidenavTypesSubtitle
+            }
           </Typography>
           <div className="mt-3 flex items-center gap-2">
             <Button
@@ -137,7 +169,7 @@ export function Configurator() {
           <hr />
           <div className="flex items-center justify-between py-5">
             <Typography variant="h6" color="blue-gray">
-              Navbar Fixed
+              {language.dashboradSidenavNavbarType}
             </Typography>
             <Switch
               id="navbar-fixed"

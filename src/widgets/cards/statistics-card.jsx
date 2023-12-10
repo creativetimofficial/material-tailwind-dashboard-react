@@ -10,12 +10,13 @@ import PropTypes from "prop-types";
 export function StatisticsCard({ color, icon, title, value, footer }) {
   return (
     <Card className="border border-blue-gray-100 shadow-sm">
-      <CardHeader
+      <div className="flex justify-between items-start">
+        <CardHeader
         variant="gradient"
         color={color}
         floated={false}
         shadow={false}
-        className="absolute grid h-12 w-12 place-items-center"
+        className="grid h-12 w-12 place-items-center"
       >
         {icon}
       </CardHeader>
@@ -27,6 +28,7 @@ export function StatisticsCard({ color, icon, title, value, footer }) {
           {value}
         </Typography>
       </CardBody>
+      </div>
       {footer && (
         <CardFooter className="border-t border-blue-gray-50 p-4">
           {footer}
