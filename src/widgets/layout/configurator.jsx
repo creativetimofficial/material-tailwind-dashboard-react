@@ -107,7 +107,7 @@ export function Configurator() {
             }
           </Typography>
           <div className="w-72">
-            <select defaultValue="eng" onClick={setLanguage}>
+            <select defaultValue={localStorage.getItem("lang") || "eng"} onClick={setLanguage}>
               <option value="eng">English</option>
               <option value="fa">فارسی</option>
             </select>
