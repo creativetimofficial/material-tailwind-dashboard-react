@@ -1,25 +1,16 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {enLayoutData} from "@/data/english";
-import {faLayoutData} from "@/data/persian";
+import languages from "@/data";
 
-// Create a context for the language preference
+// context for the language preference
 export const LanguageContext = React.createContext();
 
-// Create a provider for the language preference context
+// a provider for the language preference context
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = 
-  React.useState(
-    (localStorage.getItem("lang") === "eng" || !localStorage.getItem("lang")) ? 
-      enLayoutData : 
-      faLayoutData
-  );
-
-  const [documentDirection, setDocumentDirection] = React.useState(
-    (localStorage.getItem("lang") === "eng" || !localStorage.getItem("lang")) ? 
-      "ltr" : 
-      "rtl"
-  );
+  const defaultLanguage = localStorage.getItem("lang") || "eng";
+  const [language, setLanguage] = React.useState(defaultLanguage);
+  const [languageData, setLanguageData] = React.useState(languages[defaultLanguage].languageData);
+  const [documentDirection, setDocumentDirection] = React.useState(languages[defaultLanguage].direction);
 
   // Update the document direction based on the language
   React.useEffect(() => {
@@ -29,24 +20,16 @@ export function LanguageProvider({ children }) {
   // Function to change the language
   const changeLanguage = React.useCallback((newLanguage) => {
     localStorage.setItem('lang', newLanguage);
-    localStorage.setItem('dir', newLanguage === 'fa' ? 'rtl' : 'ltr');
+    localStorage.setItem('dir', languages[newLanguage].direction);
     
     // Set language data and direction
-    switch (newLanguage) {
-      case "fa":
-        setDocumentDirection('rtl');
-        setLanguage(faLayoutData);
-        break;
-        
-        default:
-        setDocumentDirection('ltr');
-        setLanguage(enLayoutData);
-        break;
-    }
+    setLanguage(newLanguage);
+    setDocumentDirection(languages[newLanguage].direction);
+    setLanguageData(languages[newLanguage].languageData);
   },[]);
 
   return (
-    <LanguageContext.Provider value={{ language, documentDirection, changeLanguage }}>
+    <LanguageContext.Provider value={{ languageData, language, documentDirection, changeLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -62,8 +45,8 @@ export function useLanguage() {
     );
   }
 
-  const { language, documentDirection, changeLanguage } = context;
-  return {language, documentDirection, changeLanguage};
+  const { languageData, language, documentDirection, changeLanguage } = context;
+  return {languageData, language, documentDirection, changeLanguage};
 }
 
 LanguageProvider.propTypes = {

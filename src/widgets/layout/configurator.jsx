@@ -43,7 +43,7 @@ function formatNumber(number, decPlaces) {
 
 export function Configurator() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const { language, documentDirection, changeLanguage } = useLanguage();
+  const { languageData, language, documentDirection, changeLanguage } = useLanguage();
   const { openConfigurator, sidenavColor, sidenavType, fixedNavbar } =
     controller;
   const [stars, setStars] = React.useState(0);
@@ -82,12 +82,12 @@ export function Configurator() {
         <div>
           <Typography variant="h5" color="blue-gray">
             { 
-              language.dashboradConfiguratorTitle
+              languageData?.layoutData?.dashboradConfiguratorTitle
             }
           </Typography>
           <Typography className="font-normal text-blue-gray-600">
             { 
-              language.dashboradConfiguratorSubtitle
+              languageData?.layoutData?.dashboradConfiguratorSubtitle
             }
           </Typography>
         </div>
@@ -103,7 +103,7 @@ export function Configurator() {
         <div className="mb-12">
           <Typography variant="h6" color="blue-gray" className="whitespace-nowrap">
             { 
-              language.dashboradConfiguratorSelectLanguage
+              languageData?.layoutData?.dashboradConfiguratorSelectLanguage
             }
           </Typography>
           <div className="w-72">
@@ -116,7 +116,7 @@ export function Configurator() {
         <div className="mb-12">
           <Typography variant="h6" color="blue-gray">
             { 
-              language.dashboradSidenavColorsTitle
+              languageData?.layoutData?.dashboradSidenavColorsTitle
             }
           </Typography>
           <div className="mt-3 flex items-center gap-2">
@@ -136,12 +136,12 @@ export function Configurator() {
         <div className="mb-12">
           <Typography variant="h6" color="blue-gray">
            { 
-              language.dashboradSidenavTypesTitle
+              languageData?.layoutData?.dashboradSidenavTypesTitle
             }
           </Typography>
           <Typography variant="small" color="gray">
            { 
-              language.dashboradSidenavTypesSubtitle
+              languageData?.layoutData?.dashboradSidenavTypesSubtitle
             }
           </Typography>
           <div className="mt-3 flex items-center gap-2">
@@ -169,7 +169,7 @@ export function Configurator() {
           <hr />
           <div className="flex items-center justify-between py-5">
             <Typography variant="h6" color="blue-gray">
-              {language.dashboradSidenavNavbarType}
+              {languageData?.layoutData?.dashboradSidenavNavbarType}
             </Typography>
             <Switch
               id="navbar-fixed"

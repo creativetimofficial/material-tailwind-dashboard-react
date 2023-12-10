@@ -1,4 +1,4 @@
-export const enLayoutData = {
+export const layoutData = {
   dashboradConfiguratorTitle: "Dashboard Configurator",
   dashboradConfiguratorSubtitle: "See our dashboard options.",
   dashboradConfiguratorSelectLanguage: "Select Language",

@@ -1,4 +1,4 @@
-export const faLayoutData = {
+export const layoutData = {
   dashboradConfiguratorTitle: "تنظیمات داشبورد",
   dashboradConfiguratorSubtitle: "گزینه‌های داشبورد ما را ببینید.",
   dashboradConfiguratorSelectLanguage: "انتخاب زبان",
