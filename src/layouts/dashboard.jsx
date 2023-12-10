@@ -12,13 +12,13 @@ import { useMaterialTailwindController, setOpenConfigurator, useLanguage } from 
 
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const {documentDirection} = useLanguage();
+  const { documentDirection, language } = useLanguage();
   const { sidenavType } = controller;
 
   return (
     <div className="min-h-screen bg-blue-gray-50/50">
       <Sidenav
-        routes={routes}
+        routes={routes[language]}
         brandImg={
           sidenavType === "dark" ? "/img/logo-ct.png" : "/img/logo-ct-dark.png"
         }
@@ -36,7 +36,7 @@ export function Dashboard() {
           <Cog6ToothIcon className="h-5 w-5" />
         </IconButton>
         <Routes>
-          {routes.map(
+          {routes[language].map(
             ({ layout, pages }) =>
               layout === "dashboard" &&
               pages.map(({ path, element }) => (
