@@ -8,10 +8,11 @@ import {
   Footer,
 } from "@/widgets/layout";
 import routes from "@/routes";
-import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
+import { useMaterialTailwindController, setOpenConfigurator, useLanguage } from "@/context";
 
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();
+  const {documentDirection} = useLanguage();
   const { sidenavType } = controller;
 
   return (
@@ -22,7 +23,7 @@ export function Dashboard() {
           sidenavType === "dark" ? "/img/logo-ct.png" : "/img/logo-ct-dark.png"
         }
       />
-      <div className="p-4 xl:ml-80">
+      <div className={`p-4 ${documentDirection === "ltr" ? "xl:ml-80" : "xl:mr-80"}`}>
         <DashboardNavbar />
         <Configurator />
         <IconButton
