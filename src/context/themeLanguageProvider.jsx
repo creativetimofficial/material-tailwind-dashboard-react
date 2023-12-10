@@ -23,7 +23,6 @@ export function LanguageProvider({ children }) {
 
   // Update the document direction based on the language
   React.useEffect(() => {
-    console.log("language: ", documentDirection);
     document.documentElement.dir = documentDirection;
   }, [documentDirection]);
 
@@ -64,7 +63,7 @@ export function useLanguage() {
   }
 
   const { language, documentDirection, changeLanguage } = context;
-  return [language, documentDirection, changeLanguage];
+  return {language, documentDirection, changeLanguage};
 }
 
 LanguageProvider.propTypes = {

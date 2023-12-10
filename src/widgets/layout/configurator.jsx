@@ -43,7 +43,7 @@ function formatNumber(number, decPlaces) {
 
 export function Configurator() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const [language, documentDirection, changeLanguage] = useLanguage();
+  const { language, documentDirection, changeLanguage } = useLanguage();
   const { openConfigurator, sidenavColor, sidenavType, fixedNavbar } =
     controller;
   const [stars, setStars] = React.useState(0);
@@ -74,7 +74,7 @@ export function Configurator() {
 
   return (
     <aside
-      className={`fixed overflow-x-auto top-0 right-0 z-50 h-screen w-96 bg-white px-2.5 shadow-lg transition-transform duration-300 ${
+      className={`fixed overflow-y-auto top-0 right-0 z-50 h-screen w-96 bg-white px-2.5 shadow-lg transition-transform duration-300 ${
         openConfigurator ? "-translate-x-0" : "translate-x-96"
       }`}
     >
