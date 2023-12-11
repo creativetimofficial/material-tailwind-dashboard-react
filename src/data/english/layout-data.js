@@ -17,8 +17,8 @@ export const layoutData = {
     ordersOverviewSubHeader: "This month 24%",
   },
   profilePage: {
-    profileName: "",
-    profileSkill: "",
+    profileName: "Ricahrd Davis",
+    profileSkill: "CEO / Co-Founder",
     tabs:[
       { 
         value: "app", 
@@ -38,6 +38,31 @@ export const layoutData = {
         label: "Settings", 
         className: "-mt-1 me-2 inline-block h-5 w-5" 
       },
-    ]
+    ],
+    platformSettings: {
+      title: "Platform Settings",
+      action: "Reply",
+    },
+    profileInfoCard: {
+      title: "Profile Information",
+      description: "Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).",
+      details: {
+        "first name": "Alec M. Thompson",
+        mobile: "(44) 123 1234 123",
+        email: "alecthompson@mail.com",
+        location: "USA",
+      },
+      social: {
+        facebook: "fa-brands fa-facebook text-blue-700",
+        twitter: "fa-brands fa-twitter text-blue-400",
+        instagram: "fa-brands fa-instagram text-purple-500",
+      },
+      action: "Edit Profile",
+    },
+    projects: {
+      title: "Projects",
+      subtitle: "Architects design houses",
+      action: "View Project",
+    }
   }
 }

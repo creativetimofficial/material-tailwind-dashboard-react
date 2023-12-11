@@ -217,7 +217,7 @@ export function Configurator() {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="mt-px me-1.5 h-4 w-4"
+                  className="mt-px ml-1.5 h-4 w-4"
                 >
                   <path
                     fillRule="evenodd"
