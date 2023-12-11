@@ -72,14 +72,14 @@ export function Home() {
           >
             <div>
               <Typography variant="h6" color="blue-gray" className="mb-1">
-                {languageData.layoutData.projectsHeader}
+                {languageData.layoutData.homePage.projectsHeader}
               </Typography>
               <Typography
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
                 <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
-                {languageData.layoutData.projectsSubHeader}
+                {languageData.layoutData.homePage.projectsSubHeader}
               </Typography>
             </div>
             <Menu placement="left-start">
@@ -94,7 +94,7 @@ export function Home() {
               </MenuHandler>
               <MenuList>
                 {
-                  languageData.layoutData.projectsMenuItems.map(
+                  languageData.layoutData.homePage.projectsMenuItems.map(
                     (item => 
                       <MenuItem key={item}>{item}</MenuItem>
                     )
@@ -107,7 +107,7 @@ export function Home() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {languageData.layoutData.projectsTableHeaders.map(
+                  {languageData.layoutData.homePage.projectsTableHeaders.map(
                     (el) => (
                       <th
                         key={el}
@@ -203,7 +203,7 @@ export function Home() {
             className="m-0 p-6"
           >
             <Typography variant="h6" color="blue-gray" className="mb-2">
-              {languageData.layoutData.ordersOverviewHeader}
+              {languageData.layoutData.homePage.ordersOverviewHeader}
             </Typography>
             <Typography
               variant="small"
@@ -213,7 +213,7 @@ export function Home() {
                 strokeWidth={3}
                 className="h-3.5 w-3.5 text-green-500"
               />
-              {languageData.layoutData.ordersOverviewSubHeader}
+              {languageData.layoutData.homePage.ordersOverviewSubHeader}
             </Typography>
           </CardHeader>
           <CardBody className="pt-0">

@@ -82,12 +82,12 @@ export function Configurator() {
         <div>
           <Typography variant="h5" color="blue-gray">
             { 
-              languageData?.layoutData?.dashboradConfiguratorTitle
+              languageData?.layoutData?.homePage?.dashboradConfiguratorTitle
             }
           </Typography>
           <Typography className="font-normal text-blue-gray-600">
             { 
-              languageData?.layoutData?.dashboradConfiguratorSubtitle
+              languageData?.layoutData?.homePage?.dashboradConfiguratorSubtitle
             }
           </Typography>
         </div>
@@ -103,7 +103,7 @@ export function Configurator() {
         <div className="mb-12">
           <Typography variant="h6" color="blue-gray" className="whitespace-nowrap">
             { 
-              languageData?.layoutData?.dashboradConfiguratorSelectLanguage
+              languageData?.layoutData?.homePage?.dashboradConfiguratorSelectLanguage
             }
           </Typography>
           <div className="w-72">
@@ -116,7 +116,7 @@ export function Configurator() {
         <div className="mb-12">
           <Typography variant="h6" color="blue-gray">
             { 
-              languageData?.layoutData?.dashboradSidenavColorsTitle
+              languageData?.layoutData?.homePage?.dashboradSidenavColorsTitle
             }
           </Typography>
           <div className="mt-3 flex items-center gap-2">
@@ -136,12 +136,12 @@ export function Configurator() {
         <div className="mb-12">
           <Typography variant="h6" color="blue-gray">
            { 
-              languageData?.layoutData?.dashboradSidenavTypesTitle
+              languageData?.layoutData?.homePage?.dashboradSidenavTypesTitle
             }
           </Typography>
           <Typography variant="small" color="gray">
            { 
-              languageData?.layoutData?.dashboradSidenavTypesSubtitle
+              languageData?.layoutData?.homePage?.dashboradSidenavTypesSubtitle
             }
           </Typography>
           <div className="mt-3 flex items-center gap-2">
@@ -169,7 +169,7 @@ export function Configurator() {
           <hr />
           <div className="flex items-center justify-between py-5">
             <Typography variant="h6" color="blue-gray">
-              {languageData?.layoutData?.dashboradSidenavNavbarType}
+              {languageData?.layoutData?.homePage?.dashboradSidenavNavbarType}
             </Typography>
             <Switch
               id="navbar-fixed"
@@ -217,7 +217,7 @@ export function Configurator() {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="mt-px ml-1.5 h-4 w-4"
+                  className="mt-px me-1.5 h-4 w-4"
                 >
                   <path
                     fillRule="evenodd"
