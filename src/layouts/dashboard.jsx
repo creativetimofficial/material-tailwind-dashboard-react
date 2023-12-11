@@ -23,7 +23,7 @@ export function Dashboard() {
           sidenavType === "dark" ? "/img/logo-ct.png" : "/img/logo-ct-dark.png"
         }
       />
-      <div className={`p-4 ${documentDirection === "ltr" ? "xl:ml-80" : "xl:mr-80"}`}>
+      <div className={`p-4 ${documentDirection === "ltr" ? "xl:ml-80" : "xl:mr-80 xl:pr-0"}`}>
         <DashboardNavbar />
         <Configurator />
         <IconButton
