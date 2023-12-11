@@ -64,5 +64,16 @@ export const layoutData = {
       subtitle: "معماران خانه‌ها را طراحی می‌کنند",
       action: "مشاهده پروژه",
     }
+  },
+  "tablesPage": {
+    authorsTable: {
+      title: "جدول نویسندگان",
+      tableHeaders: ["نویسنده", "تابع", "وضعیت", "استخدام شده", ""],
+      action: "ویرایش"
+    },
+    projectsTable: {
+      title: "جدول پروژه‌ها",
+      tableHeaders: ["شرکت‌ها", "اعضا", "بودجه", "پیشرفت", ""],
+    }
   }
 }

@@ -64,5 +64,16 @@ export const layoutData = {
       subtitle: "Architects design houses",
       action: "View Project",
     }
+  },
+  "tablesPage": {
+    authorsTable: {
+      title: "Authors Table",
+      tableHeaders: ["Author", "Function", "Status", "Employed", ""],
+      action: "Edit",
+    },
+    projectsTable: {
+      title: "Projects Table",
+      tableHeaders: ["Companies", "Members", "Budget", "Completion", ""],
+    }
   }
 }

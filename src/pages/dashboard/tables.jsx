@@ -10,24 +10,29 @@ import {
 } from "@material-tailwind/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { authorsTableData, projectsTableData } from "@/data/english";
+import { useLanguage } from "@/context";
 
 export function Tables() {
+  const { languageData, documentDirection } = useLanguage();
+  const { title, tableHeaders, action } = languageData.layoutData.tablesPage.authorsTable;
+  const { title: projectsTableTitle, tableHeaders:projectsTableHeaders } = languageData.layoutData.tablesPage.projectsTable;
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
         <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
-            Authors Table
+            {title}
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["author", "function", "status", "employed", ""].map((el) => (
+                {tableHeaders.map((el) => (
                   <th
                     key={el}
-                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                    className={`border-b border-blue-gray-50 py-3 px-5 
+                    ${ documentDirection === "ltr" ? "text-left" : "text-right" }`}
                   >
                     <Typography
                       variant="small"
@@ -40,7 +45,7 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {authorsTableData.map(
+              {languageData.authorsTableData.map(
                 ({ img, name, email, job, online, date }, key) => {
                   const className = `py-3 px-5 ${
                     key === authorsTableData.length - 1
@@ -94,7 +99,7 @@ export function Tables() {
                           href="#"
                           className="text-xs font-semibold text-blue-gray-600"
                         >
-                          Edit
+                          {action}
                         </Typography>
                       </td>
                     </tr>
@@ -108,14 +113,14 @@ export function Tables() {
       <Card>
         <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
-            Projects Table
+            {projectsTableTitle}
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["companies", "members", "budget", "completion", ""].map(
+                {projectsTableHeaders.map(
                   (el) => (
                     <th
                       key={el}
@@ -133,7 +138,7 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {projectsTableData.map(
+              {languageData.projectsTableData.map(
                 ({ img, name, members, budget, completion }, key) => {
                   const className = `py-3 px-5 ${
                     key === projectsTableData.length - 1
