@@ -4,7 +4,7 @@
 
 ![Image](https://s3.amazonaws.com/creativetim_bucket/products/488/original/material-tailwind-dashboard-react.jpg)
 
-Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. If you’re a developer looking to create an admin dashboard that is developer-friendly, rich with features, and highly customisable, here is your match. Our innovative Material Tailwind, Tailwind CSS & React dashboard comes with a beautiful design inspired by Google's Material Design and it will help you create stunning websites & web apps to delight your clients.
+Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. If you’re a developer looking to create an admin dashboard that is developer-friendly, rich with features, highly customisable, and also supports multilingual and bidirectional styling, here is your match. Our innovative Material Tailwind, Tailwind CSS & React dashboard comes with a beautiful design inspired by Google's Material Design and it will help you create stunning websites & web apps to delight your clients.
 
 **Fully Coded Elements**
 
