@@ -75,5 +75,12 @@ export const layoutData = {
       title: "جدول پروژه‌ها",
       tableHeaders: ["شرکت‌ها", "اعضا", "بودجه", "پیشرفت", ""],
     }
+  },
+  "alertsPage": {
+    notifications: {
+      aalertsTitle: "هشدارها",
+      alertsDescription: "یک هشدار ساده {color} با یک {link}. اگر دوست دارید روی آن کلیک کنید.",
+      alertsIconTitle: "هشدارها با آیکون",
+    }
   }
 }

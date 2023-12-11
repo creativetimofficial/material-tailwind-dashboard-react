@@ -75,5 +75,12 @@ export const layoutData = {
       title: "Projects Table",
       tableHeaders: ["Companies", "Members", "Budget", "Completion", ""],
     }
+  },
+  "alertsPage": {
+    notifications: {
+      alertsTitle: "Alerts",
+      alertsDescription: "A simple {color} alert with an {link}. Give it a click if you like.",
+      alertsIconTitle: "Alerts with Icon",
+    }
   }
 }

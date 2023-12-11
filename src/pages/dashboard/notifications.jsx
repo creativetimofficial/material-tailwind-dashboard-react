@@ -7,8 +7,12 @@ import {
   CardBody,
 } from "@material-tailwind/react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
+import { useLanguage } from "@/context";
 
 export function Notifications() {
+  const { languageData } = useLanguage();
+  const { alertsTitle, alertsDescription, alertsIconTitle } = 
+    languageData.layoutData.alertsPage.notifications;
   const [showAlerts, setShowAlerts] = React.useState({
     blue: true,
     green: true,
@@ -33,7 +37,7 @@ export function Notifications() {
           className="m-0 p-4"
         >
           <Typography variant="h5" color="blue-gray">
-            Alerts
+            {alertsTitle}
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4 p-4">
@@ -58,7 +62,7 @@ export function Notifications() {
           className="m-0 p-4"
         >
           <Typography variant="h5" color="blue-gray">
-            Alerts with Icon
+            {alertsIconTitle}
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4 p-4">
