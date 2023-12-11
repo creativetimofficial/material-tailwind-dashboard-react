@@ -13,7 +13,7 @@ export const statisticsCardsData = [
     value: "$53k",
     footer: {
       color: "text-green-500",
-      value: "+55%",
+      value: "55%+",
       label: "نسبت به هفته گذشته",
     },
   },
@@ -24,7 +24,7 @@ export const statisticsCardsData = [
     value: "2,300",
     footer: {
       color: "text-green-500",
-      value: "+3%",
+      value: "3%+",
       label: "نسبت به ماه گذشته",
     },
   },
@@ -35,7 +35,7 @@ export const statisticsCardsData = [
     value: "3,462",
     footer: {
       color: "text-red-500",
-      value: "-2%",
+      value: "2%-",
       label: "نسبت به دیروز",
     },
   },
@@ -46,7 +46,7 @@ export const statisticsCardsData = [
     value: "$103,430",
     footer: {
       color: "text-green-500",
-      value: "+5%",
+      value: "5%+",
       label: "نسبت به دیروز",
     },
   },

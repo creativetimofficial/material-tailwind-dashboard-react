@@ -31,7 +31,7 @@ const languages = {
     platformSettingsData: enPlatformSettingsData,
     projectsData: enProjectsData,
     projectsTableData: enProjectsTableData,
-    statisicsCardsData: enStatisticsCardsData,
+    statisticsCardsData: enStatisticsCardsData,
     statisticsChartsData: enStatisticsChartsData
   },
   "fa": {
@@ -42,7 +42,7 @@ const languages = {
     platformSettingsData: faPlatformSettingsData,
     projectsData: faProjectsData,
     projectsTableData: faProjectsTableData,
-    statisicsCardsData: faStatisticsCardsData,
+    statisticsCardsData: faStatisticsCardsData,
     statisticsChartsData: faStatisticsChartsData
   }
 }

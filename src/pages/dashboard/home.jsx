@@ -19,19 +19,16 @@ import {
 } from "@heroicons/react/24/outline";
 import { StatisticsCard } from "@/widgets/cards";
 import { StatisticsChart } from "@/widgets/charts";
-import {
-  statisticsCardsData,
-  statisticsChartsData,
-  projectsTableData,
-  ordersOverviewData,
-} from "@/data/english";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
+import { useLanguage } from "@/context";
 
 export function Home() {
+  const { languageData, documentDirection } = useLanguage();
+
   return (
     <div className="mt-12">
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-        {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
+        {languageData.statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
           <StatisticsCard
             key={title}
             {...rest}
@@ -49,7 +46,7 @@ export function Home() {
         ))}
       </div>
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
-        {statisticsChartsData.map((props) => (
+        {languageData.statisticsChartsData.map((props) => (
           <StatisticsChart
             key={props.title}
             {...props}
@@ -75,14 +72,14 @@ export function Home() {
           >
             <div>
               <Typography variant="h6" color="blue-gray" className="mb-1">
-                Projects
+                {languageData.layoutData.projectsHeader}
               </Typography>
               <Typography
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
                 <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
-                <strong>30 done</strong> this month
+                {languageData.layoutData.projectsSubHeader}
               </Typography>
             </div>
             <Menu placement="left-start">
@@ -96,9 +93,13 @@ export function Home() {
                 </IconButton>
               </MenuHandler>
               <MenuList>
-                <MenuItem>Action</MenuItem>
-                <MenuItem>Another Action</MenuItem>
-                <MenuItem>Something else here</MenuItem>
+                {
+                  languageData.layoutData.projectsMenuItems.map(
+                    (item => 
+                      <MenuItem key={item}>{item}</MenuItem>
+                    )
+                  )
+                }
               </MenuList>
             </Menu>
           </CardHeader>
@@ -106,11 +107,12 @@ export function Home() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {["companies", "members", "budget", "completion"].map(
+                  {languageData.layoutData.projectsTableHeaders.map(
                     (el) => (
                       <th
                         key={el}
-                        className="border-b border-blue-gray-50 py-3 px-6 text-left"
+                        className={`border-b border-blue-gray-50 py-3 px-6 
+                        ${documentDirection === "ltr" ? "text-left" : "text-right" }`}
                       >
                         <Typography
                           variant="small"
@@ -124,10 +126,10 @@ export function Home() {
                 </tr>
               </thead>
               <tbody>
-                {projectsTableData.map(
+                {languageData.projectsTableData.map(
                   ({ img, name, members, budget, completion }, key) => {
                     const className = `py-3 px-5 ${
-                      key === projectsTableData.length - 1
+                      key === languageData.projectsTableData.length - 1
                         ? ""
                         : "border-b border-blue-gray-50"
                     }`;
@@ -201,7 +203,7 @@ export function Home() {
             className="m-0 p-6"
           >
             <Typography variant="h6" color="blue-gray" className="mb-2">
-              Orders Overview
+              {languageData.layoutData.ordersOverviewHeader}
             </Typography>
             <Typography
               variant="small"
@@ -211,16 +213,16 @@ export function Home() {
                 strokeWidth={3}
                 className="h-3.5 w-3.5 text-green-500"
               />
-              <strong>24%</strong> this month
+              {languageData.layoutData.ordersOverviewSubHeader}
             </Typography>
           </CardHeader>
           <CardBody className="pt-0">
-            {ordersOverviewData.map(
+            {languageData.ordersOverviewData.map(
               ({ icon, color, title, description }, key) => (
                 <div key={title} className="flex items-start gap-4 py-3">
                   <div
                     className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${
-                      key === ordersOverviewData.length - 1
+                      key === languageData.ordersOverviewData.length - 1
                         ? "after:h-0"
                         : "after:h-4/6"
                     }`}
