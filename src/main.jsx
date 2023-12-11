@@ -9,7 +9,7 @@
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
@@ -24,7 +24,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <ThemeProvider>
         <LanguageProvider>
           <MaterialTailwindControllerProvider>
-            <App />
+            <Suspense fallback="...Loading">
+              <App />
+            </Suspense>
           </MaterialTailwindControllerProvider>
         </LanguageProvider>
       </ThemeProvider>
