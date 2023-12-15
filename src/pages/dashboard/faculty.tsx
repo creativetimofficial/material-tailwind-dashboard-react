@@ -2,6 +2,9 @@ import FilterAndResearch from "@/components/filterAndResearch/FilterAndResearch"
 import { DefaultPagination } from "@/components/pagination/DefaultPagination";
 import { ModalContext } from "@/context/modalContext";
 import { Faculty } from "@/entities/faculty.entity";
+import { FacultiesState } from "@/gx/signals/faculties.signal";
+import { formatDate } from "@/utils";
+import { useSignal } from "@dilane3/gx";
 import {
   ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
@@ -34,23 +37,14 @@ const TABS = [
 ];
 ;
 
-const TABLE_HEAD = ["Name", "Description", "Actions"];
-
-const TABLE_ROWS: Array<Faculty> = [
-  new Faculty({
-    name: "Faculty of science",
-    description: "Description of the faculty of science",
-  }),
-  new Faculty({
-    name: "Faculty of arts",
-    description: "Description of the faculty of arts",
-  }),
-];
+const TABLE_HEAD = ["Name", "Registered At", "Actions"];
 
 
 export function Faculties() {
-
   const { handleOpen, dispatch } = useContext(ModalContext);
+
+  // Global state
+  const { faculties } = useSignal<FacultiesState>("faculties");
 
   const handleOpenCreateFacultyModal = () => {
     if(!dispatch) return
@@ -109,8 +103,8 @@ export function Faculties() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(({ name, description }, index) => {
-              const isLast = index === TABLE_ROWS.length - 1;
+            {faculties.map(({ name, createdAt }, index) => {
+              const isLast = index === faculties.length - 1;
               const classes = isLast
                 ? "p-4"
                 : "p-4 border-b border-blue-gray-50";
@@ -134,7 +128,7 @@ export function Faculties() {
                       color="blue-gray"
                       className="text-lg font-medium"
                     >
-                      {description}
+                      {formatDate(createdAt)}
                     </Typography>
                   </td>
                   <td className={classes}>

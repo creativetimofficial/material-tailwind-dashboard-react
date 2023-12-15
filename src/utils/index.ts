@@ -9,11 +9,6 @@ export const generateImage = () => {
 export const formatDate = (d: Date) => {
   const date = new Date(d);
 
-  console.log({
-    d,
-    date,
-  });
-
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();

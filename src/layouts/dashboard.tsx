@@ -6,6 +6,7 @@ import useAuth from "@/hooks/useAuth";
 import { useSignal } from "@dilane3/gx";
 import { AuthState } from "@/gx/signals/auth.signal";
 import LoadingPage from "@/components/molecules/LoadingPage";
+import useLoadFaculties from "@/hooks/useLoadFaculties";
 
 export function Dashboard() {
   // Global state
@@ -15,6 +16,7 @@ export function Dashboard() {
 
   // This hooks gets the current user from the API
   useAuth();
+  useLoadFaculties();
 
   // Check if the user is authenticated
   if (!loaded && loading) {
@@ -26,7 +28,7 @@ export function Dashboard() {
       <Sidenav routes={routes} brandImg={appLogo} />
       <div className="ml-12 p-4 xl:ml-80">
         <DashboardNavbar />
-        
+
         {/* <Configurator /> */}
 
         <Routes>
