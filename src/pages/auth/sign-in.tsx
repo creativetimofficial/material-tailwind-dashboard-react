@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -10,8 +10,43 @@ import {
 } from "@material-tailwind/react";
 
 import lockBackground from "../../../src/assets/img/lock_background.png";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { login } from "@/api/auth";
 
 export function SignIn() {
+  // Navigation
+  const navigate = useNavigate();
+
+  // Local state
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // Handlers
+  const handleEmailChange = (e: any) => setEmail(e.target.value);
+  const handlePasswordChange = (e: any) => setPassword(e.target.value);
+
+  const handleSubmit = async () => {
+    // verify email and password
+    if (email && password) {
+      setLoading(true);
+      const { data, error } = await login(email, password);
+
+      if (error) {
+        toast.error("Login failed");
+      } else {
+        toast.success("Login successful");
+
+        navigate("/dashboard/home");
+      }
+
+      setLoading(false);
+    } else {
+      toast.warning("Email and password are required");
+    }
+  };
+
   return (
     <>
       <img
@@ -30,34 +65,30 @@ export function SignIn() {
             </p>
           </Typography>
           <CardBody className="flex flex-col gap-4">
-            <Input crossOrigin={null} type="email" label="Email" size="lg" />
+            <Input
+              crossOrigin={null}
+              type="email"
+              label="Email"
+              size="lg"
+              value={email}
+              onChange={handleEmailChange}
+            />
             <Input
               crossOrigin={null}
               type="password"
               label="Password"
               size="lg"
+              value={password}
+              onChange={handlePasswordChange}
             />
             <div className="-ml-2.5">
               <Checkbox crossOrigin={null} label="Remember Me" />
             </div>
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-              Sign In
+            <Button variant="gradient" onClick={handleSubmit} fullWidth>
+              {loading ? "Loading..." : "Sign In"}
             </Button>
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Don't have an account?
-              <Link to="/auth/sign-up">
-                <Typography
-                  as="span"
-                  variant="small"
-                  color="blue"
-                  className="ml-1 font-bold"
-                >
-                  Sign up
-                </Typography>
-              </Link>
-            </Typography>
           </CardFooter>
         </Card>
       </div>

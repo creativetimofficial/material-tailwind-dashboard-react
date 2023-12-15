@@ -13,13 +13,32 @@ export const login = async (email: string, password: string) => {
       {
         email,
         password,
-      },
-      {
-        headers: {
-          "Access-Control-Allow-Credentials": true,
-        },
-      },
+      }
     );
+
+    if (response.status === 200) {
+      return { data: true, user: response.data };
+    }
+
+    return { data: false };
+  } catch (error) {
+    console.error(error);
+
+    return { error: error };
+  }
+};
+
+/**
+ * Function used retrieve information about the current agent or the admin
+ * @returns
+ */
+export const getMe = async () => {
+  try {
+    const response = await instance.get("users/admins/me", {
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+      },
+    });
 
     if (response.status === 200) {
       return { data: true, user: response.data };

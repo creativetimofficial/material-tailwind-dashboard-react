@@ -1,9 +1,26 @@
 import { Routes, Route } from "react-router-dom";
 import { Sidenav, DashboardNavbar, Configurator, Footer } from "@/widgets/layout";
 import routes from "@/routes";
-import appLogo from "@/assets/img/appLogo-dark.png";
+import appLogo from "@/assets/img/appLogo.png";
+import useAuth from "@/hooks/useAuth";
+import { useSignal } from "@dilane3/gx";
+import { AuthState } from "@/gx/signals/auth.signal";
+import LoadingPage from "@/components/molecules/LoadingPage";
 
 export function Dashboard() {
+  // Global state
+  const { loaded, loading } = useSignal<AuthState>("auth");
+
+  // Hooks
+
+  // This hooks gets the current user from the API
+  useAuth();
+
+  // Check if the user is authenticated
+  if (!loaded && loading) {
+    return <LoadingPage />;
+  }
+
   return (
     <div className="min-h-screen bg-blue-gray-50/50">
       <Sidenav routes={routes} brandImg={appLogo} />

@@ -1,40 +1,35 @@
+import { Role } from "./role.entity";
+
 export interface UserData {
   id: string;
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
   phone: string;
   avatar: string;
   sexe: string;
-  idSector: string;
-  idRole: string;
+  role: Role;
 }
 
 export class User {
   private _id: string;
   private _firstName: string;
   private _lastName: string;
-  private _password: string;
   private _email: string;
   private _phone: string;
   private _avatar: string;
   private _sexe: string;
-  private _idSector: string;
-  private _idRole: string;
+  private _role: Role;
 
   constructor(data: UserData) {
     this._id = data.id;
     this._firstName = data.firstName;
     this._lastName = data.lastName;
-    this._password = data.password;
     this._email = data.email;
-    this._password = data.password;
     this._phone = data.phone;
     this._avatar = data.avatar;
     this._sexe = data.sexe;
-    this._idSector = data.idSector;
-    this._idRole = data.idRole;
+    this._role = data.role;
   }
 
   // Getters
@@ -43,12 +38,8 @@ export class User {
     return this._id;
   }
 
-  get idSector(): string {
-    return this._idSector;
-  }
-
-  get idRole(): string {
-    return this._idRole;
+  get idRole(): Role {
+    return this._role;
   }
 
   get firstName(): string {
@@ -57,10 +48,6 @@ export class User {
 
   get lastName(): string {
     return this._lastName;
-  }
-
-  get password(): string {
-    return this._password;
   }
 
   get email(): string {
@@ -81,43 +68,35 @@ export class User {
 
   // Setters
 
-  set setId(id: string) {
+  set id(id: string) {
     this._id = id;
   }
 
-  set setIdSector(idSector: string) {
-    this._idSector = idSector;
+  set idRole(role: Role) {
+    this._role = role;
   }
 
-  set setIdRole(idRole: string) {
-    this._idRole = idRole;
-  }
-
-  set setFirstName(firstName: string) {
+  set firstName(firstName: string) {
     this._firstName = firstName;
   }
 
-  set setLastName(lastName: string) {
+  set lastName(lastName: string) {
     this._lastName = lastName;
   }
 
-  set setPassword(password: string) {
-    this._password = password;
-  }
-
-  set setEmail(email: string) {
+  set email(email: string) {
     this._email = email;
   }
 
-  set setPhone(phone: string) {
+  set phone(phone: string) {
     this._phone = phone;
   }
 
-  set setSexe(sexe: string) {
+  set sexe(sexe: string) {
     this._sexe = sexe;
   }
 
-  set setAvatar(avatar: string) {
+  set avatar(avatar: string) {
     this._avatar = avatar;
   }
 }
