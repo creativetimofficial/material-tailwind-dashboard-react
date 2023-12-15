@@ -29,6 +29,26 @@ export const login = async (email: string, password: string) => {
 };
 
 /**
+ * Function used to logout the agent or the admin
+ * @returns
+ */
+export const logout = async () => {
+  try {
+    const response = await instance.post("/auth/logout");
+
+    if (response.status === 200) {
+      return { data: true };
+    }
+
+    return { data: false };
+  } catch (error) {
+    console.error(error);
+
+    return { error: error };
+  }
+}
+
+/**
  * Function used retrieve information about the current agent or the admin
  * @returns
  */

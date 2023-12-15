@@ -38,7 +38,7 @@ export class User {
     return this._id;
   }
 
-  get idRole(): Role {
+  get role(): Role {
     return this._role;
   }
 
@@ -64,6 +64,10 @@ export class User {
 
   get avatar(): string {
     return this._avatar;
+  }
+
+  get fullName(): string {
+    return `${this._firstName} ${this._lastName}`;
   }
 
   // Setters

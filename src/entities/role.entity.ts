@@ -1,12 +1,19 @@
+export const RoleEnum = {
+  ADMIN: "admin",
+  AGENT: "agent",
+} as const;
+
+export type RoleEnum = typeof RoleEnum[keyof typeof RoleEnum];
+
 export interface RoleData {
   id: string;
-  label: string;
+  label: RoleEnum;
   description: string;
 }
 
 export class Role {
   private _id: string;
-  private _label: string;
+  private _label: RoleEnum;
   private _description: string;
 
   constructor(data: RoleData) {
@@ -21,7 +28,7 @@ export class Role {
     return this._id;
   }
 
-  get label(): string {
+  get label(): RoleEnum {
     return this._label;
   }
 
@@ -35,7 +42,7 @@ export class Role {
     this._id = id;
   }
 
-  set label(label: string) {
+  set label(label: RoleEnum) {
     this._label = label;
   }
 

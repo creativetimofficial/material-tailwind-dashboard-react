@@ -26,7 +26,9 @@ export function Dashboard() {
       <Sidenav routes={routes} brandImg={appLogo} />
       <div className="ml-12 p-4 xl:ml-80">
         <DashboardNavbar />
-        <Configurator />
+        
+        {/* <Configurator /> */}
+
         <Routes>
           {routes.map(
             ({ layout, pages }) =>

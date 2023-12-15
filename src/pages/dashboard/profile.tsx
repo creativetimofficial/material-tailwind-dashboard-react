@@ -15,9 +15,19 @@ import {
 import { setOpenConfigurator, useMaterialTailwindController } from "@/context";
 
 import userImage from "../../assets/img/user.png";
+import { AuthState } from "@/gx/signals/auth.signal";
+import { useSignal } from "@dilane3/gx";
 
 export function Profile() {
   const [_, dispatch] = useMaterialTailwindController();
+
+  // Global state
+  const { user } = useSignal<AuthState>("auth");
+
+
+  // Render
+
+  if (!user) return null;
 
   return (
     <>
@@ -35,18 +45,18 @@ export function Profile() {
                 className="rounded-lg shadow-lg shadow-blue-gray-500/40"
               />
               <div>
-                <Typography variant="h5" color="blue-gray" className="mb-1">
-                  Richard Davis
+                <Typography variant="h5" color="blue-gray" className="mb-1 capitalize">
+                  {user.fullName}
                 </Typography>
                 <Typography
                   variant="small"
                   className="font-normal text-blue-gray-600"
                 >
-                  CEO / Co-Founder
+                  {user.email} • {user.role.label}
                 </Typography>
               </div>
             </div>
-            <div className="w-96">
+            <div className="w-96 hidden">
               <Tabs value="app">
                 <TabsHeader>
                   <Tab value="app">

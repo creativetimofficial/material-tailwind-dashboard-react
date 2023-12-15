@@ -1,5 +1,5 @@
 import { getMe } from "@/api/auth";
-import { Role } from "@/entities/role.entity";
+import { Role, RoleEnum } from "@/entities/role.entity";
 import { User } from "@/entities/user.entity";
 import { AuthActions, AuthState } from "@/gx/signals/auth.signal";
 import { useActions, useSignal } from "@dilane3/gx";
@@ -40,7 +40,7 @@ export default function useAuth() {
           sexe: "male",
           role: new Role({
             id: userData.admin.id,
-            label: "admin",
+            label: RoleEnum.ADMIN,
             description: "admin",
           }),
         };
