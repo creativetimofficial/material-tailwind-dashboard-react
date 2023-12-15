@@ -31,14 +31,14 @@ const sectorsSignal = createSignal<SectorsState>({
     addSector: (state, sector: Sector) => {
       return {
         ...state,
-        faculties: [...state.sectors, sector]
+        sectors: [...state.sectors, sector]
       };
     },
 
     updateSector: (state, sector: Sector) => {
       return {
         ...state,
-        faculties: state.sectors.map((s) => {
+        sectors: state.sectors.map((s) => {
           if (s.id === sector.id) {
             return sector;
           }
@@ -50,7 +50,7 @@ const sectorsSignal = createSignal<SectorsState>({
     deleteSector: (state, sector: Sector) => {
       return {
         ...state,
-        faculties: state.sectors.filter((s) => s.id !== sector.id)
+        sectors: state.sectors.filter((s) => s.id !== sector.id)
       };
     }
   }

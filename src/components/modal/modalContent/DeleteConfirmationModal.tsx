@@ -6,7 +6,7 @@ const DeleteConfirmationModal = () => {
     const {handleOpen} = useContext(ModalContext);
 
   return (
-    <Card className="w-full">
+    <Card className="w-full px-2">
         <Typography type="h2" className="uppercase text-2xl text-center mt-8 text-primary font-bold">
             Confirmer la suppression
         </Typography>
