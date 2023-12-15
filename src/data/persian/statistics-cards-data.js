@@ -1,53 +1,53 @@
 import {
   BanknotesIcon,
   UserPlusIcon,
-  UserIcon,
+  UsersIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
 
 export const statisticsCardsData = [
   {
-    color: "blue",
+    color: "gray",
     icon: BanknotesIcon,
-    title: "Today's Money",
+    title: "پول امروز",
     value: "$53k",
     footer: {
       color: "text-green-500",
-      value: "+55%",
-      label: "than last week",
+      value: "55%+",
+      label: "نسبت به هفته گذشته",
     },
   },
   {
-    color: "pink",
-    icon: UserIcon,
-    title: "Today's Users",
+    color: "gray",
+    icon: UsersIcon,
+    title: "کاربران امروز",
     value: "2,300",
     footer: {
       color: "text-green-500",
-      value: "+3%",
-      label: "than last month",
+      value: "3%+",
+      label: "نسبت به ماه گذشته",
     },
   },
   {
-    color: "green",
+    color: "gray",
     icon: UserPlusIcon,
-    title: "New Clients",
+    title: "مشتریان جدید",
     value: "3,462",
     footer: {
       color: "text-red-500",
-      value: "-2%",
-      label: "than yesterday",
+      value: "2%-",
+      label: "نسبت به دیروز",
     },
   },
   {
-    color: "orange",
+    color: "gray",
     icon: ChartBarIcon,
-    title: "Sales",
+    title: "فروش",
     value: "$103,430",
     footer: {
       color: "text-green-500",
-      value: "+5%",
-      label: "than yesterday",
+      value: "5%+",
+      label: "نسبت به دیروز",
     },
   },
 ];

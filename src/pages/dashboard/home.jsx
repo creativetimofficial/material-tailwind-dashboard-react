@@ -14,25 +14,21 @@ import {
   Progress,
 } from "@material-tailwind/react";
 import {
-  ClockIcon,
-  CheckIcon,
   EllipsisVerticalIcon,
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
 import { StatisticsCard } from "@/widgets/cards";
 import { StatisticsChart } from "@/widgets/charts";
-import {
-  statisticsCardsData,
-  statisticsChartsData,
-  projectsTableData,
-  ordersOverviewData,
-} from "@/data";
+import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
+import { useLanguage } from "@/context";
 
 export function Home() {
+  const { languageData, documentDirection } = useLanguage();
+
   return (
     <div className="mt-12">
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-        {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
+        {languageData.statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
           <StatisticsCard
             key={title}
             {...rest}
@@ -50,7 +46,7 @@ export function Home() {
         ))}
       </div>
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
-        {statisticsChartsData.map((props) => (
+        {languageData.statisticsChartsData.map((props) => (
           <StatisticsChart
             key={props.title}
             {...props}
@@ -59,7 +55,7 @@ export function Home() {
                 variant="small"
                 className="flex items-center font-normal text-blue-gray-600"
               >
-                <ClockIcon strokeWidth={2} className="h-4 w-4 text-inherit" />
+                <ClockIcon strokeWidth={2} className="h-4 w-4 text-blue-gray-400" />
                 &nbsp;{props.footer}
               </Typography>
             }
@@ -67,7 +63,7 @@ export function Home() {
         ))}
       </div>
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card className="overflow-hidden xl:col-span-2">
+        <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
           <CardHeader
             floated={false}
             shadow={false}
@@ -76,14 +72,14 @@ export function Home() {
           >
             <div>
               <Typography variant="h6" color="blue-gray" className="mb-1">
-                Projects
+                {languageData.layoutData.homePage.projectsHeader}
               </Typography>
               <Typography
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
-                <CheckIcon strokeWidth={3} className="h-4 w-4 text-blue-500" />
-                <strong>30 done</strong> this month
+                <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
+                {languageData.layoutData.homePage.projectsSubHeader}
               </Typography>
             </div>
             <Menu placement="left-start">
@@ -97,9 +93,13 @@ export function Home() {
                 </IconButton>
               </MenuHandler>
               <MenuList>
-                <MenuItem>Action</MenuItem>
-                <MenuItem>Another Action</MenuItem>
-                <MenuItem>Something else here</MenuItem>
+                {
+                  languageData.layoutData.homePage.projectsMenuItems.map(
+                    (item => 
+                      <MenuItem key={item}>{item}</MenuItem>
+                    )
+                  )
+                }
               </MenuList>
             </Menu>
           </CardHeader>
@@ -107,11 +107,12 @@ export function Home() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {["companies", "members", "budget", "completion"].map(
+                  {languageData.layoutData.homePage.projectsTableHeaders.map(
                     (el) => (
                       <th
                         key={el}
-                        className="border-b border-blue-gray-50 py-3 px-6 text-left"
+                        className={`border-b border-blue-gray-50 py-3 px-6 
+                        ${documentDirection === "ltr" ? "text-left" : "text-right" }`}
                       >
                         <Typography
                           variant="small"
@@ -125,10 +126,10 @@ export function Home() {
                 </tr>
               </thead>
               <tbody>
-                {projectsTableData.map(
+                {languageData.projectsTableData.map(
                   ({ img, name, members, budget, completion }, key) => {
                     const className = `py-3 px-5 ${
-                      key === projectsTableData.length - 1
+                      key === languageData.projectsTableData.length - 1
                         ? ""
                         : "border-b border-blue-gray-50"
                     }`;
@@ -194,7 +195,7 @@ export function Home() {
             </table>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="border border-blue-gray-100 shadow-sm">
           <CardHeader
             floated={false}
             shadow={false}
@@ -202,7 +203,7 @@ export function Home() {
             className="m-0 p-6"
           >
             <Typography variant="h6" color="blue-gray" className="mb-2">
-              Orders Overview
+              {languageData.layoutData.homePage.ordersOverviewHeader}
             </Typography>
             <Typography
               variant="small"
@@ -212,16 +213,16 @@ export function Home() {
                 strokeWidth={3}
                 className="h-3.5 w-3.5 text-green-500"
               />
-              <strong>24%</strong> this month
+              {languageData.layoutData.homePage.ordersOverviewSubHeader}
             </Typography>
           </CardHeader>
           <CardBody className="pt-0">
-            {ordersOverviewData.map(
+            {languageData.ordersOverviewData.map(
               ({ icon, color, title, description }, key) => (
                 <div key={title} className="flex items-start gap-4 py-3">
                   <div
                     className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${
-                      key === ordersOverviewData.length - 1
+                      key === languageData.ordersOverviewData.length - 1
                         ? "after:h-0"
                         : "after:h-4/6"
                     }`}

@@ -10,7 +10,7 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-  Avatar,
+  Avatar,Select, Option
 } from "@material-tailwind/react";
 import {
   UserCircleIcon,
@@ -73,7 +73,7 @@ export function DashboardNavbar() {
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Type here" />
+            <Input label="Search" />
           </div>
           <IconButton
             variant="text"
@@ -87,7 +87,7 @@ export function DashboardNavbar() {
             <Button
               variant="text"
               color="blue-gray"
-              className="hidden items-center gap-1 px-4 xl:flex"
+              className="hidden items-center gap-1 px-4 xl:flex normal-case"
             >
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
               Sign In
@@ -100,13 +100,6 @@ export function DashboardNavbar() {
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
             </IconButton>
           </Link>
-          <IconButton
-            variant="text"
-            color="blue-gray"
-            onClick={() => setOpenConfigurator(dispatch, true)}
-          >
-            <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-          </IconButton>
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="blue-gray">
@@ -185,6 +178,13 @@ export function DashboardNavbar() {
               </MenuItem>
             </MenuList>
           </Menu>
+          <IconButton
+            variant="text"
+            color="blue-gray"
+            onClick={() => setOpenConfigurator(dispatch, true)}
+          >
+            <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
+          </IconButton>
         </div>
       </div>
     </Navbar>

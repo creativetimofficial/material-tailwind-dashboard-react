@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context";
 import {
   Card,
   CardHeader,
@@ -8,23 +9,28 @@ import {
 import PropTypes from "prop-types";
 
 export function StatisticsCard({ color, icon, title, value, footer }) {
+  const { documentDirection } = useLanguage();
   return (
-    <Card>
-      <CardHeader
+    <Card className="border border-blue-gray-100 shadow-sm">
+      <div className={`flex justify-between items-start`}>
+        <CardHeader
         variant="gradient"
         color={color}
-        className="absolute -mt-4 grid h-16 w-16 place-items-center"
-      >
-        {icon}
-      </CardHeader>
-      <CardBody className="p-4 text-right">
-        <Typography variant="small" className="font-normal text-blue-gray-600">
-          {title}
-        </Typography>
-        <Typography variant="h4" color="blue-gray">
-          {value}
-        </Typography>
-      </CardBody>
+        floated={false}
+        shadow={false}
+        className="grid h-12 w-12 place-items-center"
+        >
+          {icon}
+        </CardHeader>
+        <CardBody className={`p-4 ${ documentDirection === "ltr" ? "text-right" : "text-left" }`}>
+          <Typography variant="small" className="font-normal text-blue-gray-600">
+            {title}
+          </Typography>
+          <Typography variant="h4" color="blue-gray">
+            {value}
+          </Typography>
+        </CardBody>
+      </div>
       {footer && (
         <CardFooter className="border-t border-blue-gray-50 p-4">
           {footer}

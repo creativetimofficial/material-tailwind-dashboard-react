@@ -1,10 +1,12 @@
 # [Material Tailwind Dashboard React](http://demos.creative-tim.com/material-tailwind-dashboard-react/#/?ref=readme-mtdr) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/material-tailwind-dashboard-react&text=Check%20Material%20Tailwind%20Dashboard%20React%20made%20by%20@CreativeTim%20#webdesign%20#kit%20#materialdesign%20#react%20#materialtailwind%20#tailwindcss%20https://www.creative-tim.com/product/material-tailwind-dashboard-react)
 
-![version](https://img.shields.io/badge/version-2.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/material-tailwind-dashboard-react.svg)](https://github.com/creativetimofficial/material-tailwind-dashboard-react/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/material-tailwind-dashboard-react.svg)](https://github.com/creativetimofficial/material-tailwind-dashboard-react/issues?q=is%3Aissue+is%3Aclosed)
+![version](https://img.shields.io/badge/version-2.1.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/material-tailwind-dashboard-react.svg)](https://github.com/creativetimofficial/material-tailwind-dashboard-react/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/material-tailwind-dashboard-react.svg)](https://github.com/creativetimofficial/material-tailwind-dashboard-react/issues?q=is%3Aissue+is%3Aclosed)
 
-![Image](https://s3.amazonaws.com/creativetim_bucket/products/488/original/material-tailwind-react-dashboard.jpg)
+![Image](https://s3.amazonaws.com/creativetim_bucket/products/488/original/material-tailwind-dashboard-react.jpg)
+![Image](https://res.cloudinary.com/db7v5ycxn/image/upload/v1702666156/github-readme-images/xkwcnx11lebs74s8bjh7.png)
+![Image](https://res.cloudinary.com/db7v5ycxn/image/upload/v1702666155/github-readme-images/lq2cg0nusyllgkwvmxnx.png)
 
-Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. If you’re a developer looking to create an admin dashboard that is developer-friendly, rich with features, and highly customisable, here is your match. Our innovative Material Tailwind, Tailwind CSS & React dashboard comes with a beautiful design inspired by Google's Material Design and it will help you create stunning websites & web apps to delight your clients.
+Material Tailwind Dashboard React is our newest free Material Tailwind Admin Template based on Tailwind CSS and React. If you’re a developer looking to create an admin dashboard that is developer-friendly, rich with features, highly customisable, and also supports **multilingual and bidirectional styling**, here is your match. Our innovative Material Tailwind, Tailwind CSS & React dashboard comes with a beautiful design inspired by Google's Material Design and it will help you create stunning websites & web apps to delight your clients.
 
 **Fully Coded Elements**
 
@@ -38,6 +40,7 @@ During the development of this dashboard, we have used many existing resources f
 - [Material Tailwind](https://material-tailwind.com/) - Material Tailwind is an easy to use components library for Tailwind CSS and Material Design.
 - [Hero Icons](https://heroicons.com/) - Beautiful hand-crafted SVG icons.
 - [Apex Charts](https://apexcharts.com/) - Modern & Interactive open-source Charts.
+- [Nepcha Analytics](https://nepcha.com?ref=readme) for the analytics tool. Nepcha is already integrated with Material Tailwind Dashboard React. You can use it to gain insights into your sources of traffic.
 
 Let us know your thoughts below. And good luck with development!
 
@@ -62,7 +65,7 @@ Let us know your thoughts below. And good luck with development!
 | React |
 | ----- |
 
-| [![Material Tailwind Dashboard React](https://s3.amazonaws.com/creativetim_bucket/products/488/thumb/material-tailwind-react-dashboard.jpg)](http://demos.creative-tim.com/material-tailwind-dashboard-react/#/?ref=readme-mtdr)
+| [![Material Tailwind Dashboard React](https://s3.amazonaws.com/creativetim_bucket/products/488/thumb/material-tailwind-dashboard-react.jpg)](http://demos.creative-tim.com/material-tailwind-dashboard-react/#/?ref=readme-mtdr)
 
 ## Demo
 
@@ -137,6 +140,7 @@ At present, we officially aim to support the last two versions of the following 
 - [License Agreement](https://www.creative-tim.com/license?ref=readme-mtdr)
 - [Support](https://www.creative-tim.com/contact-us?ref=readme-mtdr)
 - Issues: [Github Issues Page](https://github.com/creativetimofficial/material-tailwind-dashboard-react/issues)
+- [Nepcha Analytics](https://nepcha.com?ref=readme) - Analytics tool for your website
 
 ## Reporting Issues
 
@@ -152,7 +156,7 @@ If you have questions or need help integrating the product please [contact us](h
 
 ## Licensing
 
-- Copyright 2022 [Creative Tim](https://www.creative-tim.com?ref=readme-mtdr)
+- Copyright 2023 [Creative Tim](https://www.creative-tim.com?ref=readme-mtdr)
 - Creative Tim [license](https://www.creative-tim.com/license?ref=readme-mtdr)
 
 ## Useful Links

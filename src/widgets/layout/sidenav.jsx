@@ -7,30 +7,30 @@ import {
   IconButton,
   Typography,
 } from "@material-tailwind/react";
-import { useMaterialTailwindController, setOpenSidenav } from "@/context";
+import { useMaterialTailwindController, setOpenSidenav, useLanguage } from "@/context";
 
 export function Sidenav({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
+  const {documentDirection} = useLanguage();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
-    dark: "bg-gradient-to-br from-blue-gray-800 to-blue-gray-900",
-    white: "bg-white shadow-lg",
+    dark: "bg-gradient-to-br from-gray-800 to-gray-900",
+    white: "bg-white shadow-sm",
     transparent: "bg-transparent",
   };
 
   return (
     <aside
       className={`${sidenavTypes[sidenavType]} ${
-        openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0`}
+        documentDirection === "rtl" ? 
+          openSidenav ? "-translate-x-0" : "translate-x-80" : 
+          openSidenav ? "translate-x-0" : "-translate-x-80"
+      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100`}
     >
       <div
-        className={`relative border-b ${
-          sidenavType === "dark" ? "border-white/20" : "border-blue-gray-50"
-        }`}
+        className={`relative`}
       >
-        <Link to="/" className="flex items-center gap-4 py-6 px-8">
-          <Avatar src={brandImg} size="sm" />
+        <Link to="/" className="py-6 px-8 text-center">
           <Typography
             variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
@@ -43,10 +43,10 @@ export function Sidenav({ brandImg, brandName, routes }) {
           color="white"
           size="sm"
           ripple={false}
-          className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
+          className={`absolute ${documentDirection === "ltr" ? "right-0" : "left-0"} top-1 grid rounded-br-none rounded-tl-none xl:hidden`}
           onClick={() => setOpenSidenav(dispatch, false)}
         >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
+          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-black" />
         </IconButton>
       </div>
       <div className="m-4">

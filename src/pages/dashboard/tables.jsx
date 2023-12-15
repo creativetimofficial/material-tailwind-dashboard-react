@@ -9,25 +9,30 @@ import {
   Progress,
 } from "@material-tailwind/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
-import { authorsTableData, projectsTableData } from "@/data";
+import { authorsTableData, projectsTableData } from "@/data/english";
+import { useLanguage } from "@/context";
 
 export function Tables() {
+  const { languageData, documentDirection } = useLanguage();
+  const { title, tableHeaders, action } = languageData.layoutData.tablesPage.authorsTable;
+  const { title: projectsTableTitle, tableHeaders:projectsTableHeaders } = languageData.layoutData.tablesPage.projectsTable;
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
-        <CardHeader variant="gradient" color="blue" className="mb-8 p-6">
+        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
-            Authors Table
+            {title}
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["author", "function", "status", "employed", ""].map((el) => (
+                {tableHeaders.map((el) => (
                   <th
                     key={el}
-                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                    className={`border-b border-blue-gray-50 py-3 px-5 
+                    ${ documentDirection === "ltr" ? "text-left" : "text-right" }`}
                   >
                     <Typography
                       variant="small"
@@ -40,7 +45,7 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {authorsTableData.map(
+              {languageData.authorsTableData.map(
                 ({ img, name, email, job, online, date }, key) => {
                   const className = `py-3 px-5 ${
                     key === authorsTableData.length - 1
@@ -52,7 +57,7 @@ export function Tables() {
                     <tr key={name}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" />
+                          <Avatar src={img} alt={name} size="sm" variant="rounded" />
                           <div>
                             <Typography
                               variant="small"
@@ -80,7 +85,7 @@ export function Tables() {
                           variant="gradient"
                           color={online ? "green" : "blue-gray"}
                           value={online ? "online" : "offline"}
-                          className="py-0.5 px-2 text-[11px] font-medium"
+                          className="py-0.5 px-2 text-[11px] font-medium w-fit"
                         />
                       </td>
                       <td className={className}>
@@ -94,7 +99,7 @@ export function Tables() {
                           href="#"
                           className="text-xs font-semibold text-blue-gray-600"
                         >
-                          Edit
+                          {action}
                         </Typography>
                       </td>
                     </tr>
@@ -106,16 +111,16 @@ export function Tables() {
         </CardBody>
       </Card>
       <Card>
-        <CardHeader variant="gradient" color="blue" className="mb-8 p-6">
+        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
-            Projects Table
+            {projectsTableTitle}
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["companies", "members", "budget", "completion", ""].map(
+                {projectsTableHeaders.map(
                   (el) => (
                     <th
                       key={el}
@@ -133,7 +138,7 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {projectsTableData.map(
+              {languageData.projectsTableData.map(
                 ({ img, name, members, budget, completion }, key) => {
                   const className = `py-3 px-5 ${
                     key === projectsTableData.length - 1
@@ -189,7 +194,7 @@ export function Tables() {
                           <Progress
                             value={completion}
                             variant="gradient"
-                            color={completion === 100 ? "green" : "blue"}
+                            color={completion === 100 ? "green" : "gray"}
                             className="h-1"
                           />
                         </div>

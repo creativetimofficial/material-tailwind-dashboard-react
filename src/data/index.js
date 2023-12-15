@@ -1,8 +1,16 @@
-export * from "@/data/statistics-cards-data";
-export * from "@/data/statistics-charts-data";
-export * from "@/data/projects-table-data";
-export * from "@/data/orders-overview-data";
-export * from "@/data/platform-settings-data";
-export * from "@/data/conversations-data";
-export * from "@/data/projects-data";
-export * from "@/data/authors-table-data";
+import langs from "./languages";
+
+const languages = {
+  eng: {
+    lang: "eng",
+    languageData: langs["eng"],
+    direction: "ltr"
+  },
+  fa: {
+    lang: "fa",
+    languageData: langs["fa"],
+    direction: "rtl"
+  }
+};
+
+export default languages;
