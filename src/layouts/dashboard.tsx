@@ -7,6 +7,7 @@ import { useSignal } from "@dilane3/gx";
 import { AuthState } from "@/gx/signals/auth.signal";
 import LoadingPage from "@/components/molecules/LoadingPage";
 import useLoadFaculties from "@/hooks/useLoadFaculties";
+import useLoadSectors from "@/hooks/useLoadSectors";
 
 export function Dashboard() {
   // Global state
@@ -16,7 +17,12 @@ export function Dashboard() {
 
   // This hooks gets the current user from the API
   useAuth();
+
+  // This hooks gets the faculties from the API
   useLoadFaculties();
+
+  // This hooks gets the sectors from the API
+  useLoadSectors();
 
   // Check if the user is authenticated
   if (!loaded && loading) {

@@ -89,7 +89,7 @@ export function Faculties() {
                   className="cursor-pointer border-y border-blue-gray-100 bg-primary bg-opacity-80 p-4 transition-colors hover:bg-opacity-100"
                 >
                   <Typography
-                    variant="h4"
+                    variant="h5"
                     color="white"
                     className="flex items-center justify-between gap-2 font-bold leading-none"
                   >
@@ -116,7 +116,7 @@ export function Faculties() {
                       <Typography
                         variant="paragraph"
                         color="blue-gray"
-                        className="text-lg font-medium"
+                        className="text-lg font-medium capitalize"
                       >
                         {name}
                       </Typography>

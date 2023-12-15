@@ -2,9 +2,10 @@ import FilterAndResearch from "@/components/filterAndResearch/FilterAndResearch"
 import { DefaultPagination } from "@/components/pagination/DefaultPagination";
 import { ModalContext } from "@/context/modalContext";
 import { Sector as SectorEntity } from "@/entities/sector.entity";
-import {
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
+import { SectorsState } from "@/gx/signals/sectors.signal";
+import { formatDate } from "@/utils";
+import { useSignal } from "@dilane3/gx";
+import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, PlusCircleIcon, TrashIcon } from "@heroicons/react/24/solid";
 import {
   Card,
@@ -33,38 +34,27 @@ const TABS = [
   },
 ];
 
-const TABLE_HEAD = ["Name", "Description", "Actions"];
-
-const TABLE_ROWS: Array<SectorEntity> = [
-  new SectorEntity({
-    idFaculty: "1",
-    name: "Informatique",
-    description: "Description de la filière Info",
-  }),
-  new SectorEntity({
-    idFaculty: "2",
-    name: "Biochimie",
-    description: "Description de la filière Bios",
-  }),
-];
+const TABLE_HEAD = ["Name", "Registered At", "Actions"];
 
 export function Sectors() {
+  const { handleOpen, dispatch } = useContext(ModalContext);
 
-  const { handleOpen, dispatch} = useContext(ModalContext)
+  // Global state
+  const { sectors } = useSignal<SectorsState>("sectors");
 
   const handleOpenCreateSectorModal = () => {
-    if(!dispatch) return
-    
-    dispatch!({ type: "ADD_SECTOR" })
+    if (!dispatch) return;
+
+    dispatch!({ type: "ADD_SECTOR" });
     handleOpen();
-  }
+  };
 
   const handleOpenDeleteModal = () => {
-    if(!dispatch) return
-    
-    dispatch!({ type: "DELETE_CONFIRMATION" })
+    if (!dispatch) return;
+
+    dispatch!({ type: "DELETE_CONFIRMATION" });
     handleOpen();
-  }
+  };
 
   return (
     <Card className="h-full w-full">
@@ -78,7 +68,11 @@ export function Sectors() {
               Ci-dessous les informations sur les filières
             </Typography>
           </div>
-          <Button onClick={handleOpenCreateSectorModal} className="flex items-center gap-3 bg-primary" size="md">
+          <Button
+            onClick={handleOpenCreateSectorModal}
+            className="flex items-center gap-3 bg-primary"
+            size="md"
+          >
             <PlusCircleIcon strokeWidth={2} className="h-6 w-6" /> Ajouter une
             filière
           </Button>
@@ -95,7 +89,7 @@ export function Sectors() {
                   className="cursor-pointer border-y border-blue-gray-100 bg-primary bg-opacity-80 p-4 transition-colors hover:bg-opacity-100"
                 >
                   <Typography
-                    variant="h4"
+                    variant="h5"
                     color="white"
                     className="flex items-center justify-between gap-2 font-bold leading-none"
                   >
@@ -109,11 +103,9 @@ export function Sectors() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(({ name, description }, index) => {
-              const isLast = index === TABLE_ROWS.length - 1;
-              const classes = isLast
-                ? "p-4"
-                : "p-4 border-b border-blue-gray-50";
+            {sectors.map(({ name, createdAt }, index) => {
+              const isLast = index === sectors.length - 1;
+              const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
               return (
                 <tr key={name}>
@@ -122,7 +114,7 @@ export function Sectors() {
                       <Typography
                         variant="paragraph"
                         color="blue-gray"
-                        className="text-lg font-medium"
+                        className="text-lg font-medium capitalize"
                       >
                         {name}
                       </Typography>
@@ -134,7 +126,7 @@ export function Sectors() {
                       color="blue-gray"
                       className="text-lg font-medium"
                     >
-                      {description}
+                      {formatDate(createdAt)}
                     </Typography>
                   </td>
                   <td className={classes}>
