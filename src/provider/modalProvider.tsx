@@ -1,5 +1,6 @@
 import { DialogContainer } from "@/components/modal/ModalContainer";
 import CreateAcademicYearModal from "@/components/modal/modalContent/CreateAcademicYearModal";
+import CreateAgentModal from "@/components/modal/modalContent/CreateAgentModal";
 import CreateFacultyModal from "@/components/modal/modalContent/CreateFacultyModal";
 import CreateSectorModal from "@/components/modal/modalContent/CreateSectorModal";
 import DeleteConfirmationModal from "@/components/modal/modalContent/DeleteConfirmationModal";
@@ -12,6 +13,7 @@ const ModalActions = {
     ADD_SECTOR: 'ADD_SECTOR',
     ADD_ACADEMIC_YEAR: 'ADD_ACADEMIC_YEAR',
     DELETE_CONFIRMATION: 'DELETE_CONFIRMATION',
+    ADD_AGENT: 'ADD_AGENT'
 } as const;
 
 export type ModalSize = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
@@ -44,6 +46,8 @@ const ModalProvider = ({ children }: ReactNodeChildren) => {
                 return { ...state, state: <CreateFacultyModal />, size: 'sm' }
             case "ADD_SECTOR":
                 return { ...state, state: <CreateSectorModal />, size: 'sm' }
+            case "ADD_AGENT": 
+                return { ...state, state: <CreateAgentModal /> , size: "sm" }
             case "DELETE_CONFIRMATION":
                 return { ...state, state: <DeleteConfirmationModal />, size: "xs" }
             default:

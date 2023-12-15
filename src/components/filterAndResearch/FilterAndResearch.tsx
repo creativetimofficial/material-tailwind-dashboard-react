@@ -29,7 +29,7 @@ const FilterAndResearch = ({ tabsList }: FilterAndResearchProps) => {
         <div className="w-full md:w-72">
             <Input
                 crossOrigin={null}
-                label="Rechercher"
+                label="Search"
                 className="peer focus:border-primary"
                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
             />

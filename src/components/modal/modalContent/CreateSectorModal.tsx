@@ -69,7 +69,7 @@ const CreateSectorModal = () => {
         type="h2"
         className="uppercase text-2xl text-center mt-8 text-primary font-bold"
       >
-        Ajouter une filière
+        Add a new sector
       </Typography>
       <CardBody className="flex flex-col gap-4">
         <Input
@@ -88,7 +88,7 @@ const CreateSectorModal = () => {
           onChange={(e: any) => handleFacultyChange(e.target.value)}
         >
           <option value="" disabled selected className="font-nunitoRegular">
-            Choisissez une faculté
+            Select a faculty
           </option>
 
           {faculties.map((faculty, index) => {
@@ -110,14 +110,14 @@ const CreateSectorModal = () => {
           className="bg-gray-400 uppercase"
           onClick={handleOpen}
         >
-          Annuler
+          Cancel
         </Button>
         <Button
           variant="filled"
           className="bg-primary uppercase"
           onClick={handleSubmit}
         >
-          {loading ? "Chargement..." : "Ajouter"}
+          {loading ? "Loading..." : "Add"}
         </Button>
       </CardFooter>
     </Card>

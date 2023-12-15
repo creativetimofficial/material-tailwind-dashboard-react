@@ -56,7 +56,7 @@ const CreateFacultyModal = () => {
         type="h2"
         className="uppercase text-2xl text-center mt-8 text-primary font-bold"
       >
-        Ajouter une faculté
+        Add a new faculty
       </Typography>
       <CardBody className="flex flex-col gap-4">
         <Input
@@ -73,7 +73,7 @@ const CreateFacultyModal = () => {
           className="bg-gray-400 uppercase"
           onClick={handleOpen}
         >
-          Annuler
+          Cancel
         </Button>
         <Button
           variant="filled"
@@ -81,7 +81,7 @@ const CreateFacultyModal = () => {
           onClick={handleSubmit}
         >
           {
-            loading ? "Chargement..." : "Ajouter"
+            loading ? "Loading..." : "Add"
           }
         </Button>
       </CardFooter>

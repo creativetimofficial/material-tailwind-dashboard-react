@@ -1,7 +1,12 @@
 import { AxiosRequestConfig } from "axios";
 import instance from "..";
 
-type CreateAgentDto = null;
+type CreateAgentDto = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+};
 type UpdateAgentDto = null;
 
 /**
@@ -10,7 +15,7 @@ type UpdateAgentDto = null;
  */
 export async function createAgent(payload: CreateAgentDto) {
   try {
-    const response = await instance.post("/agents", payload);
+    const response = await instance.post("/users/agents", payload);
 
     if (response.status === 201) {
       return {
@@ -36,7 +41,7 @@ export async function createAgent(payload: CreateAgentDto) {
  */
 export async function updateAgent(id: string, payload: UpdateAgentDto) {
   try {
-    const response = await instance.patch(`/agents/${id}`, payload);
+    const response = await instance.patch(`/users/agents/${id}`, payload);
     if (response.status === 200) {
       return {
         data: response.data,
@@ -60,7 +65,7 @@ export async function updateAgent(id: string, payload: UpdateAgentDto) {
  */
 export async function findAllAgents() {
   try {
-    const response = await instance.get("/agents");
+    const response = await instance.get("/users/agents");
 
     if (response.status === 200) {
       return {

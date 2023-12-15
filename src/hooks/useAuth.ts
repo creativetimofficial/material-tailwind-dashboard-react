@@ -33,20 +33,20 @@ export default function useAuth() {
     if (data) {
       if (userData.admin) {
         const adminData = {
+          id: userData.admin.id,
           lastName: userData.admin.lastName,
           firstName: userData.admin.firstName,
           phone: userData.admin.phone,
           avatar: "https://www.gravatar.com/av",
           sexe: "male",
+          createdAt: new Date(userData.admin.createdAt),
           role: new Role({
-            id: userData.admin.id,
             label: RoleEnum.ADMIN,
             description: "admin",
           }),
         };
 
         const user = new User({
-          id: userData.id,
           email: userData.email,
           ...adminData,
         });

@@ -8,6 +8,7 @@ export interface UserData {
   phone: string;
   avatar: string;
   sexe: string;
+  createdAt: Date;
   role: Role;
 }
 
@@ -19,6 +20,7 @@ export class User {
   private _phone: string;
   private _avatar: string;
   private _sexe: string;
+  private _createdAt: Date;
   private _role: Role;
 
   constructor(data: UserData) {
@@ -29,6 +31,7 @@ export class User {
     this._phone = data.phone;
     this._avatar = data.avatar;
     this._sexe = data.sexe;
+    this._createdAt = data.createdAt;
     this._role = data.role;
   }
 
@@ -60,6 +63,10 @@ export class User {
 
   get sexe(): string {
     return this._sexe;
+  }
+
+  get createdAt(): Date {
+    return this._createdAt;
   }
 
   get avatar(): string {
@@ -98,6 +105,10 @@ export class User {
 
   set sexe(sexe: string) {
     this._sexe = sexe;
+  }
+
+  set createdAt(createdAt: Date) {
+    this._createdAt = createdAt;
   }
 
   set avatar(avatar: string) {

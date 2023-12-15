@@ -8,6 +8,7 @@ import { AuthState } from "@/gx/signals/auth.signal";
 import LoadingPage from "@/components/molecules/LoadingPage";
 import useLoadFaculties from "@/hooks/useLoadFaculties";
 import useLoadSectors from "@/hooks/useLoadSectors";
+import useLoadAgents from "@/hooks/useLoadAgents";
 
 export function Dashboard() {
   // Global state
@@ -23,6 +24,9 @@ export function Dashboard() {
 
   // This hooks gets the sectors from the API
   useLoadSectors();
+
+  // This hooks gets the agents from the API
+  useLoadAgents();
 
   // Check if the user is authenticated
   if (!loaded && loading) {

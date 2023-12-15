@@ -62,10 +62,10 @@ export function Sectors() {
         <div className="mb-8 flex items-center justify-between gap-8">
           <div>
             <Typography variant="h5" color="blue-gray">
-              Liste de filières
+              List of academic sectors
             </Typography>
             <Typography color="gray" className="mt-1 font-normal">
-              Ci-dessous les informations sur les filières
+              Bellow are informations about academic sectors
             </Typography>
           </div>
           <Button
@@ -73,8 +73,7 @@ export function Sectors() {
             className="flex items-center gap-3 bg-primary"
             size="md"
           >
-            <PlusCircleIcon strokeWidth={2} className="h-6 w-6" /> Ajouter une
-            filière
+            <PlusCircleIcon strokeWidth={2} className="h-6 w-6" /> Add a sector
           </Button>
         </div>
         <FilterAndResearch tabsList={TABS} />
@@ -89,7 +88,7 @@ export function Sectors() {
                   className="cursor-pointer border-y border-blue-gray-100 bg-primary bg-opacity-80 p-4 transition-colors hover:bg-opacity-100"
                 >
                   <Typography
-                    variant="h5"
+                    variant="h6"
                     color="white"
                     className="flex items-center justify-between gap-2 font-bold leading-none"
                   >
