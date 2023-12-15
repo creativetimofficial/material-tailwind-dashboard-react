@@ -1,7 +1,9 @@
 import { AxiosRequestConfig } from "axios";
 import instance from "..";
 
-type CreateFacultyDto = null;
+type CreateFacultyDto = {
+  name: string;
+};
 type UpdateFacultyDto = null;
 
 /**
