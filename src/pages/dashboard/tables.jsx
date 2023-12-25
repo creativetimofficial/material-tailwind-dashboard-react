@@ -7,24 +7,32 @@ import {
   Chip,
   Tooltip,
   Progress,
+  Button,
+  IconButton,
 } from "@material-tailwind/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { authorsTableData, projectsTableData } from "@/data";
+import { Link } from "react-router-dom";
 
 export function Tables() {
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
-        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
+        <CardHeader variant="gradient" color="gray" className="flex flex-row justify-between mb-8 p-6">
           <Typography variant="h6" color="white">
             Authors Table
           </Typography>
+          <Link to={"/dashboard/baiViet"}>
+            <Button color="green" size="sm">
+              Tạo bài viết
+            </Button>
+          </Link>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["author", "function", "status", "employed", ""].map((el) => (
+                {["Tiêu đề", "Ngày tạo", "Ngày xuất bản", "Trạng thái", "Hành động", "Ghi chú"].map((el) => (
                   <th
                     key={el}
                     className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -41,7 +49,7 @@ export function Tables() {
             </thead>
             <tbody>
               {authorsTableData.map(
-                ({ img, name, email, job, online, date }, key) => {
+                ({ tieuDe, theLoai, ngayTao, ngayXuatBan, trangThai, ghiChu}, key) => {
                   const className = `py-3 px-5 ${
                     key === authorsTableData.length - 1
                       ? ""
@@ -49,54 +57,85 @@ export function Tables() {
                   }`;
 
                   return (
-                    <tr key={name}>
+                    <tr key={key}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" variant="rounded" />
+                          {/* <Avatar src={img} alt={name} size="sm" variant="rounded" /> */}
                           <div>
                             <Typography
                               variant="small"
                               color="blue-gray"
                               className="font-semibold"
                             >
-                              {name}
+                              {tieuDe}
                             </Typography>
-                            <Typography className="text-xs font-normal text-blue-gray-500">
-                              {email}
-                            </Typography>
+
+                            <div className="flex gap-2">
+                            {theLoai.map((value) => (
+                              <Chip
+                                  key={value}
+                                  value={value}
+                                  variant="ghost"/>
+                              ))  
+                            }
+                            </div>
+                           
                           </div>
                         </div>
                       </td>
+                      
                       <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {job[0]}
+                        <Typography className="text-xs font-semibold text-blue-gray-500">
+                          {ngayTao}
                         </Typography>
-                        <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
+                      </td>
+                      <td className={className}>
+                        <Typography className="text-xs font-semibold text-blue-gray-500">
+                          {ngayXuatBan}
                         </Typography>
                       </td>
                       <td className={className}>
                         <Chip
                           variant="gradient"
-                          color={online ? "green" : "blue-gray"}
-                          value={online ? "online" : "offline"}
+                          color={trangThai == "draft" ? "blue-gray" : trangThai == "published" ?  "green" : "orange"}
+                          value={trangThai}
                           className="py-0.5 px-2 text-[11px] font-medium w-fit"
                         />
                       </td>
                       <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {date}
-                        </Typography>
+                        <div className="flex gap-2">
+                          <Link to={"#"}>
+                            <IconButton variant="gradient">
+                              <i className="fas fa-pencil" />
+                            </IconButton>
+                          </Link>
+                          <Link to={"#"}>
+                            <IconButton variant="gradient">
+                              <i className="fas fa-trash" />
+                            </IconButton>
+                          </Link>
+                          {trangThai == "draft" || trangThai == "schulded" ?
+                            (<Link to={"#"}>
+                              <IconButton variant="gradient">
+                                <i className="fas fa-check-circle" />
+                              </IconButton>
+                            </Link>)
+                            :
+                            (<Link to={"#"}>
+                              <IconButton variant="gradient">
+                                <i className="fas fa-eye-slash" />
+                              </IconButton>
+                            </Link>)}
+                        
+                        </div>
                       </td>
+
                       <td className={className}>
-                        <Typography
-                          as="a"
-                          href="#"
-                          className="text-xs font-semibold text-blue-gray-600"
-                        >
-                          Edit
+                      <Typography  variant="small" className="text-xs font-regular text-blue-gray-500">
+                          {ghiChu}
                         </Typography>
                       </td>
+                      
                     </tr>
                   );
                 }
@@ -105,6 +144,7 @@ export function Tables() {
           </table>
         </CardBody>
       </Card>
+      
       <Card>
         <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
