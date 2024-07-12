@@ -1,0 +1,47 @@
+.chatbot {
+    width: 300px;
+    height: 400px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .message.user {
+    text-align: right;
+    color: blue;
+  }
+  
+  .message.watson {
+    text-align: left;
+    color: green;
+  }
+  
+  .input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+  
+  .input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+  }
+  
+  .input button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+  }
+  

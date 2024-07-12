@@ -5,9 +5,12 @@ import {
   InformationCircleIcon,
   ServerStackIcon,
   RectangleStackIcon,
+  ChatBubbleBottomCenterIcon,
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
+import Chat from "./pages/dashboard/Chatbot";
+import Chatbot from "./pages/dashboard/Chatbot";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -34,6 +37,12 @@ export const routes = [
         name: "tables",
         path: "/tables",
         element: <Tables />,
+      },
+      {
+        icon: <ChatBubbleBottomCenterIcon {...icon} />,
+        name: "Talk to AI",
+        path: "/chat",
+        element: <Chatbot />,
       },
       {
         icon: <InformationCircleIcon {...icon} />,
