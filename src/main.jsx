@@ -16,15 +16,37 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
 import { MaterialTailwindControllerProvider } from "@/context";
 import "../public/css/tailwind.css";
+import UseNotificationsProvider from "./hooks/NotificationContext";
+import { LangProvider } from "./hooks/LangContext";
+import { SnackbarProvider } from "./hooks/SnackBar";
+import { AuthProvider } from "./hooks/Auth";
+import { PopupProvider } from "./hooks/Popup";
+import { ExpandProvider } from "./hooks/ExpandSide";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
+        <UseNotificationsProvider>
+				<LangProvider>
+					<SnackbarProvider>
+						<AuthProvider>
+							<PopupProvider>
+								<ExpandProvider>
       <ThemeProvider>
         <MaterialTailwindControllerProvider>
-          <App />
+									<QueryClientProvider client={queryClient}>
+										<App />
+									</QueryClientProvider>
         </MaterialTailwindControllerProvider>
       </ThemeProvider>
+								</ExpandProvider>
+							</PopupProvider>
+						</AuthProvider>
+					</SnackbarProvider>
+				</LangProvider>
+			</UseNotificationsProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

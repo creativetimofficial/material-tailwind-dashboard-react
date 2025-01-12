@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
   Typography,
@@ -22,33 +22,108 @@ import {
 } from "@heroicons/react/24/solid";
 import {
   useMaterialTailwindController,
-  setOpenConfigurator,
   setOpenSidenav,
 } from "@/context";
+import { useAuth } from "@/hooks/Auth";
+import { useEffect, useRef, useState } from "react";
+import { LogOut } from "lucide-react";
+import { AnimatePresence, motion } from 'framer-motion';
 
 export function DashboardNavbar() {
+  const { account, signout, search, setSearch } = useAuth();
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const profileCardRef = useRef(null);
+  let photoLink = account.photoLink || "https://res.cloudinary.com/dqdt57lxl/image/upload/v1733091929/jhl718s0eucpxdyqpzqh.png";
+  const nav = useNavigate()
+  const toggleProfile = () => {
+    setIsProfileOpen((prevState) => !prevState);
+    console.log("Profile open state:", !isProfileOpen);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isProfileOpen && profileCardRef.current && !profileCardRef.current.contains(e.target)) {
+        setIsProfileOpen(false);
+        console.log("Clicked outside, closing profile card");
+      }
+    };
+
+    const timeoutId = setTimeout(() => {
+      window.addEventListener("click", handleClickOutside);
+    }, 0);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, [isProfileOpen, profileCardRef]);
+
+  const ProfileCard = () => {
+    const variants = {
+      hidden: { opacity: 0, y: -20 },
+      visible: { opacity: 1, y: 0 },
+      exit: { opacity: 0, y: -20 }
+    };
+
+    return (
+      <motion.div
+        ref={profileCardRef}
+        className="absolute text-blue-gray-800 top-14 md:right-14 z-50 flex flex-col justify-start items-start gap-4 w-96 p-4 rounded-2xl bg-white shadow-md shadow-blue-gray-500/80"
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={variants}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="flex justify-start items-center gap-4 w-full">
+          <div className="w-16 h-16 rounded-full bg-gray-300 border-blue-gray-600 border overflow-hidden">
+            <img src={photoLink} className="w-16 h-16 rounded-full object-cover" alt={`${account.firstName}'s profile photo`} />
+          </div>
+          <div className="flex flex-col items-start gap-1">
+            {account.role !== "admin" ? account.firstName + " " + account.lastName : account.name}
+            <Typography variant="small" color="blue-gray" className="font-normal">
+              {account.email}
+            </Typography>
+          </div>
+        </div>
+        <Button
+          variant={"text"}
+          color={"blue-gray"}
+          className="flex items-center gap-4 px-4 capitalize"
+          fullWidth
+          onClick={() => {
+            signout();
+            nav("/auth/sign-in")
+          }}
+        >
+          <LogOut className="rotate-180" strokeWidth={3} />
+          <Typography color="inherit" className="font-medium capitalize">
+            Logout
+          </Typography>
+        </Button>
+      </motion.div>
+    );
+  };
 
   return (
     <Navbar
       color={fixedNavbar ? "white" : "transparent"}
-      className={`rounded-xl transition-all ${
-        fixedNavbar
-          ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5"
-          : "px-0 py-1"
-      }`}
+      className={`rounded-xl relative transition-all ${fixedNavbar
+        ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5"
+        : "px-0 py-1"
+        }`}
       fullWidth
       blurred={fixedNavbar}
     >
       <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
         <div className="capitalize">
           <Breadcrumbs
-            className={`bg-transparent p-0 transition-all ${
-              fixedNavbar ? "mt-1" : ""
-            }`}
+            className={`bg-transparent p-0 transition-all ${fixedNavbar ? "mt-1" : ""
+              }`}
           >
             <Link to={`/${layout}`}>
               <Typography
@@ -73,7 +148,7 @@ export function DashboardNavbar() {
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Search" />
+            <Input name="search" type="text" onChange={(e) => setSearch(e.target.value)} label="Search" />
           </div>
           <IconButton
             variant="text"
@@ -81,29 +156,31 @@ export function DashboardNavbar() {
             className="grid xl:hidden"
             onClick={() => setOpenSidenav(dispatch, !openSidenav)}
           >
-            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
+            <Bars3Icon strokeWidth={3} className="h-7 w-7 text-blue-gray-500" />
           </IconButton>
-          <Link to="/auth/sign-in">
-            <Button
-              variant="text"
-              color="blue-gray"
-              className="hidden items-center gap-1 px-4 xl:flex normal-case"
-            >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
-              Sign In
-            </Button>
-            <IconButton
-              variant="text"
-              color="blue-gray"
-              className="grid xl:hidden"
-            >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
-            </IconButton>
-          </Link>
+          <Button
+            onClick={toggleProfile}
+            variant="text"
+            color="blue-gray"
+            className="hidden items-center gap-1 px-4 xl:flex normal-case"
+          >
+            {photoLink ? <img src={photoLink} alt={`${account.name}'s profile photo`} className="h-7 w-7  border-blue-gray-600 border rounded-full object-cover" /> : <UserCircleIcon className="h-7 w-7 text-blue-gray-500" />}
+          </Button>
+          <AnimatePresence>
+            {isProfileOpen && <ProfileCard />}
+          </AnimatePresence>
+          <IconButton
+            variant="text"
+            onClick={toggleProfile}
+            color="blue-gray"
+            className="grid xl:hidden"
+          >
+            {photoLink ? <div className="w-7 h-7 overflow-hidden border-blue-gray-600 border rounded-full"><img src={photoLink} alt={`${account.name}'s profile photo`} className="h-7 w-7 rounded-full object-cover" /></div> : <UserCircleIcon className="h-7 w-7 text-blue-gray-500" />}
+          </IconButton>
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="blue-gray">
-                <BellIcon className="h-5 w-5 text-blue-gray-500" />
+                <BellIcon className="h-7 w-7 text-blue-gray-500" />
               </IconButton>
             </MenuHandler>
             <MenuList className="w-max border-0">
@@ -178,13 +255,6 @@ export function DashboardNavbar() {
               </MenuItem>
             </MenuList>
           </Menu>
-          <IconButton
-            variant="text"
-            color="blue-gray"
-            onClick={() => setOpenConfigurator(dispatch, true)}
-          >
-            <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-          </IconButton>
         </div>
       </div>
     </Navbar>

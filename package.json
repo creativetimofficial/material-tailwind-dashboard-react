@@ -12,11 +12,20 @@
     "@heroicons/react": "2.0.18",
     "@material-tailwind/react": "2.1.4",
     "apexcharts": "3.44.0",
+    "axios": "^1.7.8",
+    "framer-motion": "^11.12.0",
+    "lucide-react": "^0.462.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-apexcharts": "1.4.1",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.17.0"
+    "react-icons": "^5.3.0",
+    "react-player": "^2.16.0",
+    "react-query": "^3.39.3",
+    "react-router-dom": "6.17.0",
+    "recharts": "^2.15.0",
+    "shadcn-ui": "^0.9.4",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@types/react": "18.2.31",

@@ -1,10 +1,10 @@
 export const projectsData = [
   {
-    img: "/img/home-decor-1.jpeg",
-    title: "Modern",
-    tag: "Project #1",
+    img: "https://res.cloudinary.com/dggku2ndg/image/upload/v1727134741/kxsrjwmzno7zdylbsnng.png",
+    title: "FOREX TECH 1",
+    tag: "Course #1",
     description:
-      "As Uber works through a huge amount of internal management turmoil.",
+      "Unlock the secrets of the global foreign exchange market with our comprehensive Forex Tech Course. Designed for beginners and experienced traders alike, this course blends cutting-edge technology with proven trading strategies to help you excel in the dynamic world of forex.",
     route: "/dashboard/profile",
     members: [
       { img: "/img/team-1.jpeg", name: "Romina Hadid" },
@@ -14,11 +14,11 @@ export const projectsData = [
     ],
   },
   {
-    img: "/img/home-decor-2.jpeg",
-    title: "Scandinavian",
-    tag: "Project #2",
+    img: "https://res.cloudinary.com/dggku2ndg/image/upload/v1727143961/ybggfnqs51vj6a4ctozg.png",
+    title: "OREX TECH 2",
+    tag: "Course #2",
     description:
-      "Music is something that every person has his or her own specific opinion about.",
+      "Unlock the secrets of the global foreign exchange market with our comprehensive Forex Tech Course. Designed for beginners and experienced traders alike, this course blends cutting-edge technology with proven trading strategies to help you excel in the dynamic world of forex.",
     route: "/dashboard/profile",
     members: [
       { img: "/img/team-4.jpeg", name: "Alexander Smith" },
@@ -27,26 +27,12 @@ export const projectsData = [
       { img: "/img/team-1.jpeg", name: "Romina Hadid" },
     ],
   },
-  {
-    img: "/img/home-decor-3.jpeg",
-    title: "Minimalist",
-    tag: "Project #3",
+   {
+    img: "https://res.cloudinary.com/dggku2ndg/image/upload/v1727143961/ybggfnqs51vj6a4ctozg.png",
+    title: "OREX TECH 2",
+    tag: "Course #2",
     description:
-      "Different people have different taste, and various types of music.",
-    route: "/dashboard/profile",
-    members: [
-      { img: "/img/team-1.jpeg", name: "Romina Hadid" },
-      { img: "/img/team-2.jpeg", name: "Ryan Tompson" },
-      { img: "/img/team-3.jpeg", name: "Jessica Doe" },
-      { img: "/img/team-4.jpeg", name: "Alexander Smith" },
-    ],
-  },
-  {
-    img: "/img/home-decor-4.jpeg",
-    title: "Gothic",
-    tag: "Project #4",
-    description:
-      "Why would anyone pick blue over pink? Pink is obviously a better color.",
+      "Unlock the secrets of the global foreign exchange market with our comprehensive Forex Tech Course. Designed for beginners and experienced traders alike, this course blends cutting-edge technology with proven trading strategies to help you excel in the dynamic world of forex.",
     route: "/dashboard/profile",
     members: [
       { img: "/img/team-4.jpeg", name: "Alexander Smith" },
@@ -55,6 +41,22 @@ export const projectsData = [
       { img: "/img/team-1.jpeg", name: "Romina Hadid" },
     ],
   },
+   {
+    img: "https://res.cloudinary.com/dggku2ndg/image/upload/v1727143961/ybggfnqs51vj6a4ctozg.png",
+    title: "OREX TECH 2",
+    tag: "Course #2",
+    description:
+      "Unlock the secrets of the global foreign exchange market with our comprehensive Forex Tech Course. Designed for beginners and experienced traders alike, this course blends cutting-edge technology with proven trading strategies to help you excel in the dynamic world of forex.",
+    route: "/dashboard/profile",
+    members: [
+      { img: "/img/team-4.jpeg", name: "Alexander Smith" },
+      { img: "/img/team-3.jpeg", name: "Jessica Doe" },
+      { img: "/img/team-2.jpeg", name: "Ryan Tompson" },
+      { img: "/img/team-1.jpeg", name: "Romina Hadid" },
+    ],
+  },
+  
+  
 ];
 
 export default projectsData;
