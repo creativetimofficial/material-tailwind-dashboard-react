@@ -8,6 +8,8 @@ import {
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
+import { element } from "prop-types";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -59,6 +61,13 @@ export const routes = [
         path: "/sign-up",
         element: <SignUp />,
       },
+
+      {
+        icon: <RectangleStackIcon {...icon} />,
+        name: "forgot password",
+        path: "/forgot-password",
+        element : <ForgotPassword/>,
+      }
     ],
   },
 ];
