@@ -30,6 +30,11 @@ export function Auth() {
       path: "/auth/sign-in",
       icon: ArrowRightOnRectangleIcon,
     },
+    {
+      name: "metroApt",
+      path: "/dashboard/home",
+      // icon: UserIcon,
+    },
   ];
 
   return (

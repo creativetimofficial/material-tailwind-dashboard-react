@@ -19,91 +19,54 @@ export function Sidenav({ brandImg, brandName, routes }) {
   };
 
   return (
-    <aside
-      className={`${sidenavTypes[sidenavType]} ${
-        openSidenav ? "translate-x-0" : "-translate-x-80"
-      } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100`}
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 h-16 flex items-center justify-between px-6 shadow-md ${
+        sidenavType === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+      }`}
     >
-      <div
-        className={`relative`}
-      >
-        <Link to="/" className="py-6 px-8 text-center">
-          <Typography
-            variant="h6"
-            color={sidenavType === "dark" ? "white" : "blue-gray"}
-          >
-            {brandName}
-          </Typography>
+      {/* home으로 가는 버튼 */}
+      {/* 왼쪽 브랜드 로고 */}
+      <div className="flex items-center">
+        <Link to="/" className="flex items-center gap-2">
+          <img src={brandImg} alt="Brand Logo" className="h-8 w-auto" />
+          <Typography variant="h6">{brandName}</Typography>
         </Link>
-        <IconButton
-          variant="text"
-          color="white"
-          size="sm"
-          ripple={false}
-          className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
-          onClick={() => setOpenSidenav(dispatch, false)}
-        >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
-        </IconButton>
       </div>
-      <div className="m-4">
-        {routes.map(({ layout, title, pages }, key) => (
-          <ul key={key} className="mb-4 flex flex-col gap-1">
-            {title && (
-              <li className="mx-3.5 mt-4 mb-2">
-                <Typography
-                  variant="small"
-                  color={sidenavType === "dark" ? "white" : "blue-gray"}
-                  className="font-black uppercase opacity-75"
-                >
-                  {title}
-                </Typography>
-              </li>
-            )}
-            {pages.map(({ icon, name, path }) => (
-              <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
-                  {({ isActive }) => (
-                    <Button
-                      variant={isActive ? "gradient" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                          ? "white"
-                          : "blue-gray"
-                      }
-                      className="flex items-center gap-4 px-4 capitalize"
-                      fullWidth
-                    >
-                      {icon}
-                      <Typography
-                        color="inherit"
-                        className="font-medium capitalize"
-                      >
-                        {name}
-                      </Typography>
-                    </Button>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        ))}
+      <div className="flex-grow flex justify-start gap-4 ml-8">
+        {routes.map(({ layout, pages }) =>
+          pages.map(({ icon, name, path }) => (
+            <NavLink key={name} to={`/${layout}${path}`}>
+              {({ isActive }) => (
+                <Button
+                  variant={isActive ? "gradient" : "text"}
+                  color={isActive ? "blue-gray" : "gray"} // ✅ "dark" → "gray"로 변경
+                  className={`flex items-center gap-2 capitalize ${
+                    isActive ? "bg-gray-900 text-white" : ""
+                  }`}>
+                  {icon}
+                  <Typography color="inherit" className="font-medium">
+                    {name}
+                  </Typography>
+                </Button>
+              )}
+            </NavLink>
+          ))
+        )}
       </div>
-    </aside>
+    </nav>
   );
 }
 
 Sidenav.defaultProps = {
-  brandImg: "/img/logo-ct.png",
-  brandName: "Material Tailwind React",
+  brandImg: "/img/metroAptLogo.png",
+  brandName: "Metro APT",
 };
 
 Sidenav.propTypes = {
   brandImg: PropTypes.string,
   brandName: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sidenavType: PropTypes.string, // ✅ sidenavType을 props로 받도록 추가
 };
 
 Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
