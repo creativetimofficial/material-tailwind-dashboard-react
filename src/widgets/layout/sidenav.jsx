@@ -39,9 +39,10 @@ export function Sidenav({ brandImg, brandName, routes }) {
               {({ isActive }) => (
                 <Button
                   variant={isActive ? "gradient" : "text"}
-                  color={isActive ? sidenavColor : "blue-gray"}
-                  className="flex items-center gap-2 capitalize"
-                >
+                  color={isActive ? "blue-gray" : "gray"} // ✅ "dark" → "gray"로 변경
+                  className={`flex items-center gap-2 capitalize ${
+                    isActive ? "bg-gray-900 text-white" : ""
+                  }`}>
                   {icon}
                   <Typography color="inherit" className="font-medium">
                     {name}
@@ -57,7 +58,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 }
 
 Sidenav.defaultProps = {
-  brandImg: "/img/logo-ct.png",
+  brandImg: "/img/metroAptLogo.png",
   brandName: "Metro APT",
 };
 
@@ -65,6 +66,7 @@ Sidenav.propTypes = {
   brandImg: PropTypes.string,
   brandName: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sidenavType: PropTypes.string, // ✅ sidenavType을 props로 받도록 추가
 };
 
 Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";

@@ -19,8 +19,8 @@ export const routes = [
     layout: "dashboard",
     pages: [
       {
-        icon: <UserCircleIcon {...icon} />,
-        name: "metroApt",
+        // icon: <UserCircleIcon {...icon} />,
+        name: "서울 지하철",
         path: "/metroApt",
         element: <MetroApt />,
       },

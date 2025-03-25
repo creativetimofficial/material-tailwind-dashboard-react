@@ -33,7 +33,7 @@ export function Auth() {
     {
       name: "metroApt",
       path: "/dashboard/home",
-      icon: UserIcon,
+      // icon: UserIcon,
     },
   ];
 

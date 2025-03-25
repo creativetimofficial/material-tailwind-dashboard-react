@@ -17,10 +17,10 @@ export function Dashboard() {
   return (
     <div className="min-h-screen bg-blue-gray-50/50">
       <Sidenav
+        brandImg={"/img/metroAptLogo.png"}
+        brandName={"metroApt"}
         routes={routes}
-        brandImg={
-          sidenavType === "dark" ? "/img/logo-ct.png" : "/img/logo-ct-dark.png"
-        }
+        // sidenavType={sidenavType} // `sidenavType`을 `Sidenav`에 전달
       />
       <div className="p-4">
         {/* <DashboardNavbar /> */}
