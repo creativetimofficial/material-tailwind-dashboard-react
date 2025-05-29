@@ -19,8 +19,17 @@ import {
   PencilIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
-import { ProfileInfoCard, MessageCard } from "@/widgets/cards";
+import { ProfileInfoCard, MessageCard } from "@/widgets/cards"; // Widgets to be typed later
 import { platformSettingsData, conversationsData, projectsData } from "@/data";
+
+// Import types from @/data
+import type {
+  PlatformSetting,
+  PlatformSettingOption,
+  Conversation as ConversationDataType,
+  Project as ProjectDataType,
+  ProjectMember,
+} from "@/data";
 
 export function Profile() {
   return (
@@ -76,18 +85,20 @@ export function Profile() {
                 Platform Settings
               </Typography>
               <div className="flex flex-col gap-12">
-                {platformSettingsData.map(({ title, options }) => (
+                {/* Type platformSettingsData items */}
+                {(platformSettingsData as PlatformSetting[]).map(({ title, options }: PlatformSetting) => (
                   <div key={title}>
                     <Typography className="mb-4 block text-xs font-semibold uppercase text-blue-gray-500">
                       {title}
                     </Typography>
                     <div className="flex flex-col gap-6">
-                      {options.map(({ checked, label }) => (
+                      {/* Type options items */}
+                      {(options as PlatformSettingOption[]).map(({ checked, label }: PlatformSettingOption) => (
                         <Switch
                           key={label}
                           id={label}
                           label={label}
-                          defaultChecked={checked}
+                          defaultChecked={checked} // checked is boolean
                           labelProps={{
                             className: "text-sm font-normal text-blue-gray-500",
                           }}
@@ -125,10 +136,11 @@ export function Profile() {
                 Platform Settings
               </Typography>
               <ul className="flex flex-col gap-6">
-                {conversationsData.map((props) => (
+                {/* Type conversationsData items (props for MessageCard) */}
+                {(conversationsData as ConversationDataType[]).map((props: ConversationDataType) => (
                   <MessageCard
-                    key={props.name}
-                    {...props}
+                    key={props.name} // name is string
+                    {...props} // Spread ConversationDataType props
                     action={
                       <Button variant="text" size="sm">
                         reply
@@ -150,8 +162,9 @@ export function Profile() {
               Architects design houses
             </Typography>
             <div className="mt-6 grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-4">
-              {projectsData.map(
-                ({ img, title, description, tag, route, members }) => (
+              {/* Type projectsData items */}
+              {(projectsData as ProjectDataType[]).map(
+                ({ img, title, description, tag, route, members }: ProjectDataType) => (
                   <Card key={title} color="transparent" shadow={false}>
                     <CardHeader
                       floated={false}
@@ -159,8 +172,8 @@ export function Profile() {
                       className="mx-0 mt-0 mb-4 h-64 xl:h-40"
                     >
                       <img
-                        src={img}
-                        alt={title}
+                        src={img} // img is string
+                        alt={title} // title is string
                         className="h-full w-full object-cover"
                       />
                     </CardHeader>
@@ -169,38 +182,39 @@ export function Profile() {
                         variant="small"
                         className="font-normal text-blue-gray-500"
                       >
-                        {tag}
+                        {tag} {/* tag is string */}
                       </Typography>
                       <Typography
                         variant="h5"
                         color="blue-gray"
                         className="mt-1 mb-2"
                       >
-                        {title}
+                        {title} {/* title is string */}
                       </Typography>
                       <Typography
                         variant="small"
                         className="font-normal text-blue-gray-500"
                       >
-                        {description}
+                        {description} {/* description is string */}
                       </Typography>
                     </CardBody>
                     <CardFooter className="mt-6 flex items-center justify-between py-0 px-1">
-                      <Link to={route}>
+                      <Link to={route}> {/* route is string */}
                         <Button variant="outlined" size="sm">
                           view project
                         </Button>
                       </Link>
                       <div>
-                        {members.map(({ img, name }, key) => (
-                          <Tooltip key={name} content={name}>
+                        {/* Type members items, key is memberKey from map */}
+                        {(members as ProjectMember[]).map(({ img: memberImg, name: memberName }: ProjectMember, memberKey: number) => (
+                          <Tooltip key={memberName} content={memberName}>
                             <Avatar
-                              src={img}
-                              alt={name}
+                              src={memberImg}
+                              alt={memberName}
                               size="xs"
                               variant="circular"
                               className={`cursor-pointer border-2 border-white ${
-                                key === 0 ? "" : "-ml-2.5"
+                                memberKey === 0 ? "" : "-ml-2.5" // Use memberKey from map
                               }`}
                             />
                           </Tooltip>

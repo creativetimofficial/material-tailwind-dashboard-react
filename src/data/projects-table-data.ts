@@ -1,4 +1,17 @@
-export const projectsTableData = [
+interface ProjectTableMember {
+  img: string;
+  name: string;
+}
+
+interface ProjectTableRow {
+  img: string;
+  name: string;
+  members: ProjectTableMember[];
+  budget: string;
+  completion: number;
+}
+
+export const projectsTableData: ProjectTableRow[] = [
   {
     img: "/img/logo-xd.svg",
     name: "Material XD Version",

@@ -11,6 +11,13 @@ import {
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { authorsTableData, projectsTableData } from "@/data";
 
+// Import types from @/data
+import type {
+  Author,
+  ProjectTableRow,
+  ProjectTableMember,
+} from "@/data";
+
 export function Tables() {
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
@@ -40,10 +47,11 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {authorsTableData.map(
-                ({ img, name, email, job, online, date }, key) => {
+              {/* Type authorsTableData items, key is index from map */}
+              {(authorsTableData as Author[]).map(
+                ({ img, name, email, job, online, date }: Author, index: number) => {
                   const className = `py-3 px-5 ${
-                    key === authorsTableData.length - 1
+                    index === authorsTableData.length - 1 // Use index from map
                       ? ""
                       : "border-b border-blue-gray-50"
                   }`;
@@ -69,23 +77,23 @@ export function Tables() {
                       </td>
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {job[0]}
+                          {job[0]} {/* job is [string, string] */}
                         </Typography>
                         <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
+                          {job[1]} {/* job is [string, string] */}
                         </Typography>
                       </td>
                       <td className={className}>
                         <Chip
                           variant="gradient"
-                          color={online ? "green" : "blue-gray"}
+                          color={online ? "green" : "blue-gray"} // online is boolean
                           value={online ? "online" : "offline"}
                           className="py-0.5 px-2 text-[11px] font-medium w-fit"
                         />
                       </td>
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {date}
+                          {date} {/* date is string */}
                         </Typography>
                       </td>
                       <td className={className}>
@@ -133,10 +141,11 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {projectsTableData.map(
-                ({ img, name, members, budget, completion }, key) => {
+              {/* Type projectsTableData items, key is index from map */}
+              {(projectsTableData as ProjectTableRow[]).map(
+                ({ img, name, members, budget, completion }: ProjectTableRow, index: number) => {
                   const className = `py-3 px-5 ${
-                    key === projectsTableData.length - 1
+                    index === projectsTableData.length - 1 // Use index from map
                       ? ""
                       : "border-b border-blue-gray-50"
                   }`;
@@ -156,15 +165,16 @@ export function Tables() {
                         </div>
                       </td>
                       <td className={className}>
-                        {members.map(({ img, name }, key) => (
-                          <Tooltip key={name} content={name}>
+                        {/* Type members items, memberKey is index from this inner map */}
+                        {(members as ProjectTableMember[]).map(({ img: memberImg, name: memberName }: ProjectTableMember, memberKey: number) => (
+                          <Tooltip key={memberName} content={memberName}>
                             <Avatar
-                              src={img}
-                              alt={name}
+                              src={memberImg}
+                              alt={memberName}
                               size="xs"
                               variant="circular"
                               className={`cursor-pointer border-2 border-white ${
-                                key === 0 ? "" : "-ml-2.5"
+                                memberKey === 0 ? "" : "-ml-2.5" // Use memberKey from map
                               }`}
                             />
                           </Tooltip>
@@ -175,7 +185,7 @@ export function Tables() {
                           variant="small"
                           className="text-xs font-medium text-blue-gray-600"
                         >
-                          {budget}
+                          {budget} {/* budget is string */}
                         </Typography>
                       </td>
                       <td className={className}>
@@ -184,10 +194,10 @@ export function Tables() {
                             variant="small"
                             className="mb-1 block text-xs font-medium text-blue-gray-600"
                           >
-                            {completion}%
+                            {completion}% {/* completion is number */}
                           </Typography>
                           <Progress
-                            value={completion}
+                            value={completion} // completion is number
                             variant="gradient"
                             color={completion === 100 ? "green" : "gray"}
                             className="h-1"

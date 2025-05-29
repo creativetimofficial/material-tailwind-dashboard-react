@@ -1,4 +1,10 @@
-export const conversationsData = [
+interface Conversation {
+  img: string;
+  name: string;
+  message: string;
+}
+
+export const conversationsData: Conversation[] = [
   {
     img: "/img/team-1.jpeg",
     name: "Sophie B.",

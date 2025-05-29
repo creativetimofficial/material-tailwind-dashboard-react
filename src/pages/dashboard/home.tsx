@@ -25,18 +25,34 @@ import {
   projectsTableData,
   ordersOverviewData,
 } from "@/data";
+// Import specific types from @/data
+import type {
+  StatisticsCard as StatisticsCardDataType,
+  StatisticsChart as StatisticsChartDataType,
+  ProjectTableRow,
+  ProjectTableMember, // Assuming this is the type for members array elements
+  OrderOverviewItem,
+  // HeroIconType is also needed if not defined locally, but it's part of StatisticsCardDataType etc.
+} from "@/data";
+
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
+import type { ForwardRefExoticComponent, SVGProps } from 'react'; // For HeroIconType if needed explicitly
+
+// If HeroIconType is not exported from data files, define it (it's part of those data types)
+type HeroIconType = ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, "ref"> & { title?: string, titleId?: string }>;
+
 
 export function Home() {
   return (
     <div className="mt-12">
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-        {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
+        {/* Type the item from statisticsCardsData */}
+        {(statisticsCardsData as StatisticsCardDataType[]).map(({ icon, title, footer, ...rest }: StatisticsCardDataType) => (
           <StatisticsCard
             key={title}
-            {...rest}
-            title={title}
-            icon={React.createElement(icon, {
+            {...rest} // Spread remaining StatisticsCardDataType props
+            title={title} // title is string
+            icon={React.createElement(icon as HeroIconType, { // Cast icon to HeroIconType
               className: "w-6 h-6 text-white",
             })}
             footer={
@@ -49,10 +65,11 @@ export function Home() {
         ))}
       </div>
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
-        {statisticsChartsData.map((props) => (
+        {/* Type the props from statisticsChartsData */}
+        {(statisticsChartsData as StatisticsChartDataType[]).map((props: StatisticsChartDataType) => (
           <StatisticsChart
             key={props.title}
-            {...props}
+            {...props} // Spread StatisticsChartDataType props
             footer={
               <Typography
                 variant="small"
@@ -106,8 +123,9 @@ export function Home() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
+                  {/* el is string, key is string, this is fine */}
                   {["companies", "members", "budget", "completion"].map(
-                    (el) => (
+                    (el: string) => (
                       <th
                         key={el}
                         className="border-b border-blue-gray-50 py-3 px-6 text-left"
@@ -124,10 +142,11 @@ export function Home() {
                 </tr>
               </thead>
               <tbody>
-                {projectsTableData.map(
-                  ({ img, name, members, budget, completion }, key) => {
+                {/* Type the item from projectsTableData, note: key here is the index from map */}
+                {(projectsTableData as ProjectTableRow[]).map(
+                  ({ img, name, members, budget, completion }: ProjectTableRow, index: number) => {
                     const className = `py-3 px-5 ${
-                      key === projectsTableData.length - 1
+                      index === projectsTableData.length - 1 // Use index from map for comparison
                         ? ""
                         : "border-b border-blue-gray-50"
                     }`;
@@ -147,15 +166,16 @@ export function Home() {
                           </div>
                         </td>
                         <td className={className}>
-                          {members.map(({ img, name }, key) => (
-                            <Tooltip key={name} content={name}>
+                          {/* Type the member item */}
+                          {(members as ProjectTableMember[]).map(({ img: memberImg, name: memberName }, memberKey: number) => (
+                            <Tooltip key={memberName} content={memberName}>
                               <Avatar
-                                src={img}
-                                alt={name}
+                                src={memberImg}
+                                alt={memberName}
                                 size="xs"
                                 variant="circular"
                                 className={`cursor-pointer border-2 border-white ${
-                                  key === 0 ? "" : "-ml-2.5"
+                                  memberKey === 0 ? "" : "-ml-2.5" // Use memberKey from map
                                 }`}
                               />
                             </Tooltip>
@@ -178,7 +198,7 @@ export function Home() {
                               {completion}%
                             </Typography>
                             <Progress
-                              value={completion}
+                              value={completion} // completion is number
                               variant="gradient"
                               color={completion === 100 ? "green" : "blue"}
                               className="h-1"
@@ -215,17 +235,18 @@ export function Home() {
             </Typography>
           </CardHeader>
           <CardBody className="pt-0">
-            {ordersOverviewData.map(
-              ({ icon, color, title, description }, key) => (
+            {/* Type the item from ordersOverviewData, note: key here is the index from map */}
+            {(ordersOverviewData as OrderOverviewItem[]).map(
+              ({ icon, color, title, description }: OrderOverviewItem, index: number) => (
                 <div key={title} className="flex items-start gap-4 py-3">
                   <div
                     className={`relative p-1 after:absolute after:-bottom-6 after:left-2/4 after:w-0.5 after:-translate-x-2/4 after:bg-blue-gray-50 after:content-[''] ${
-                      key === ordersOverviewData.length - 1
+                      index === ordersOverviewData.length - 1 // Use index from map for comparison
                         ? "after:h-0"
                         : "after:h-4/6"
                     }`}
                   >
-                    {React.createElement(icon, {
+                    {React.createElement(icon as HeroIconType, { // Cast icon to HeroIconType
                       className: `!w-5 !h-5 ${color}`,
                     })}
                   </div>

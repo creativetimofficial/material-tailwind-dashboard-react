@@ -8,12 +8,28 @@ import {
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
+import type { ReactNode, JSX } from 'react'; // Import ReactNode and JSX
 
-const icon = {
+// Define interfaces for the route structures
+interface PageRoute {
+  icon: JSX.Element; // The icons are JSX elements e.g. <HomeIcon ... />
+  name: string;
+  path: string;
+  element: ReactNode; // Components like <Home /> are ReactNode or JSX.Element
+}
+
+interface RouteGroup {
+  layout: string;
+  pages: PageRoute[];
+  title?: string; // title is optional
+}
+
+const icon = { // This object is spread onto Heroicon components
   className: "w-5 h-5 text-inherit",
 };
 
-export const routes = [
+// Apply the RouteGroup[] type to the routes array
+export const routes: RouteGroup[] = [
   {
     layout: "dashboard",
     pages: [

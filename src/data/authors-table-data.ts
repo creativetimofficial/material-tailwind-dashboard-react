@@ -1,4 +1,13 @@
-export const authorsTableData = [
+interface Author {
+  img: string;
+  name: string;
+  email: string;
+  job: [string, string]; // Tuple for job title and department
+  online: boolean;
+  date: string; // Assuming date is always a string in "dd/mm/yy" format
+}
+
+export const authorsTableData: Author[] = [
   {
     img: "/img/team-2.jpeg",
     name: "John Michael",

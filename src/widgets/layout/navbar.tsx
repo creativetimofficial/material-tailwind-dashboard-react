@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
   Navbar as MTNavbar,
@@ -9,20 +8,52 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import type { ReactNode, ComponentType, SVGProps, ReactElement } from 'react';
 
-export function Navbar({ brandName, routes, action }) {
+// Define types for props
+type IconType = ComponentType<SVGProps<SVGSVGElement> & { className?: string; strokeWidth?: number }>;
+
+interface NavbarRoute {
+  name: string;
+  path: string;
+  icon?: IconType;
+}
+
+interface NavbarProps {
+  brandName?: string;
+  routes: NavbarRoute[]; // routes is required
+  action?: ReactElement; // action is a ReactElement because React.cloneElement is used
+}
+
+// Define default action button
+const defaultAction = (
+  <a
+    href="https://www.creative-tim.com/product/material-tailwind-dashboard-react"
+    target="_blank"
+    rel="noopener noreferrer" // Added for security
+  >
+    <Button variant="gradient" size="sm" fullWidth>
+      free download
+    </Button>
+  </a>
+);
+
+export function Navbar({
+  brandName = "Material Tailwind React",
+  routes,
+  action = defaultAction,
+}: NavbarProps) {
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
+    const handleResize = () => window.innerWidth >= 960 && setOpenNav(false);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      {routes.map(({ name, path, icon }) => (
+      {routes.map(({ name, path, icon: IconComponent }) => ( // Renamed icon to IconComponent for clarity
         <Typography
           key={name}
           as="li"
@@ -31,8 +62,8 @@ export function Navbar({ brandName, routes, action }) {
           className="capitalize"
         >
           <Link to={path} className="flex items-center gap-1 p-1 font-normal">
-            {icon &&
-              React.createElement(icon, {
+            {IconComponent && // Check if IconComponent exists
+              React.createElement(IconComponent, { // Use IconComponent
                 className: "w-[18px] h-[18px] opacity-50 mr-1",
               })}
             {name}
@@ -54,7 +85,8 @@ export function Navbar({ brandName, routes, action }) {
           </Typography>
         </Link>
         <div className="hidden lg:block">{navList}</div>
-        {React.cloneElement(action, {
+        {/* Ensure action is a valid ReactElement before cloning */}
+        {React.isValidElement(action) && React.cloneElement(action, {
           className: "hidden lg:inline-block",
         })}
         <IconButton
@@ -73,7 +105,8 @@ export function Navbar({ brandName, routes, action }) {
       <Collapse open={openNav}>
         <div className="container mx-auto">
           {navList}
-          {React.cloneElement(action, {
+          {/* Ensure action is a valid ReactElement before cloning */}
+          {React.isValidElement(action) && React.cloneElement(action, {
             className: "w-full block lg:hidden",
           })}
         </div>
@@ -82,26 +115,8 @@ export function Navbar({ brandName, routes, action }) {
   );
 }
 
-Navbar.defaultProps = {
-  brandName: "Material Tailwind React",
-  action: (
-    <a
-      href="https://www.creative-tim.com/product/material-tailwind-dashboard-react"
-      target="_blank"
-    >
-      <Button variant="gradient" size="sm" fullWidth>
-        free download
-      </Button>
-    </a>
-  ),
-};
+// PropTypes and defaultProps are removed
 
-Navbar.propTypes = {
-  brandName: PropTypes.string,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  action: PropTypes.node,
-};
-
-Navbar.displayName = "/src/widgets/layout/navbar.jsx";
+Navbar.displayName = "/src/widgets/layout/navbar.tsx"; // Updated displayName
 
 export default Navbar;

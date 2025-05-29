@@ -6,8 +6,16 @@ import {
   LockOpenIcon,
   BanknotesIcon,
 } from "@heroicons/react/24/solid";
+import { ForwardRefExoticComponent, SVGProps } from 'react';
 
-export const ordersOverviewData = [
+interface OrderOverviewItem {
+  icon: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, "ref"> & { title?: string, titleId?: string }>;
+  color: string;
+  title: string;
+  description: string;
+}
+
+export const ordersOverviewData: OrderOverviewItem[] = [
   {
     icon: BellIcon,
     color: "text-blue-gray-300",

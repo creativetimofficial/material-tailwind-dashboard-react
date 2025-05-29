@@ -1,4 +1,14 @@
-export const platformSettingsData = [
+interface PlatformSettingOption {
+  checked: boolean;
+  label: string;
+}
+
+interface PlatformSetting {
+  title: string;
+  options: PlatformSettingOption[];
+}
+
+export const platformSettingsData: PlatformSetting[] = [
   {
     title: "account",
     options: [

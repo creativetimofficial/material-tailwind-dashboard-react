@@ -1,4 +1,18 @@
-export const projectsData = [
+interface ProjectMember {
+  img: string;
+  name: string;
+}
+
+interface Project {
+  img: string;
+  title: string;
+  tag: string;
+  description: string;
+  route: string;
+  members: ProjectMember[];
+}
+
+export const projectsData: Project[] = [
   {
     img: "/img/home-decor-1.jpeg",
     title: "Modern",

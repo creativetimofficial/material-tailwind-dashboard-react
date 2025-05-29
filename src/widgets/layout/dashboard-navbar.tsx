@@ -24,13 +24,33 @@ import {
   useMaterialTailwindController,
   setOpenConfigurator,
   setOpenSidenav,
-} from "@/context";
+} from "@/context"; // Context functions
+import type { Dispatch } from 'react'; // For Dispatch type
+
+// Simplified types for MaterialTailwindController context (consistent with dashboard.tsx)
+interface MaterialTailwindState {
+  fixedNavbar: boolean;
+  openSidenav: boolean;
+  // Add other relevant state properties from the context if known
+  // e.g., sidenavType: string, openConfigurator: boolean, etc.
+}
+
+// Define action types relevant to this component
+type MaterialTailwindAction =
+  | { type: "OPEN_CONFIGURATOR"; value: boolean }
+  | { type: "OPEN_SIDENAV"; value: boolean }
+  // Add other action types if they are used by context functions here
+  | { type: string; value?: any }; // Fallback
+
+type MaterialTailwindDispatch = Dispatch<MaterialTailwindAction>;
+
 
 export function DashboardNavbar() {
-  const [controller, dispatch] = useMaterialTailwindController();
-  const { fixedNavbar, openSidenav } = controller;
+  const [controller, dispatch] = useMaterialTailwindController() as [MaterialTailwindState, MaterialTailwindDispatch];
+  const { fixedNavbar, openSidenav } = controller; // fixedNavbar, openSidenav are now typed
   const { pathname } = useLocation();
-  const [layout, page] = pathname.split("/").filter((el) => el !== "");
+  // layout and page will be string or undefined if pathname is just "/"
+  const [layout, page]: (string | undefined)[] = pathname.split("/").filter((el) => el !== "");
 
   return (
     <Navbar
@@ -50,25 +70,28 @@ export function DashboardNavbar() {
               fixedNavbar ? "mt-1" : ""
             }`}
           >
-            <Link to={`/${layout}`}>
-              <Typography
-                variant="small"
-                color="blue-gray"
-                className="font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
-              >
-                {layout}
-              </Typography>
-            </Link>
+            {/* Ensure layout is defined before creating a link to it */}
+            {layout && (
+              <Link to={`/${layout}`}>
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
+                >
+                  {layout}
+                </Typography>
+              </Link>
+            )}
             <Typography
               variant="small"
               color="blue-gray"
               className="font-normal"
             >
-              {page}
+              {page || "Home"} {/* Display "Home" or similar if page is undefined */}
             </Typography>
           </Breadcrumbs>
           <Typography variant="h6" color="blue-gray">
-            {page}
+            {page || "Home"} {/* Display "Home" or similar if page is undefined */}
           </Typography>
         </div>
         <div className="flex items-center">

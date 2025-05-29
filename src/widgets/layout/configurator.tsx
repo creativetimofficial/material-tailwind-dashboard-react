@@ -14,39 +14,63 @@ import {
   setSidenavType,
   setFixedNavbar,
 } from "@/context";
+import type { Dispatch } from 'react';
 
-function formatNumber(number, decPlaces) {
+// Define types for context and state
+type SidenavThemeColor = "white" | "dark" | "green" | "orange" | "red" | "pink";
+type SidenavUiType = "dark" | "white" | "transparent";
+
+interface MaterialTailwindState {
+  openConfigurator: boolean;
+  sidenavColor: SidenavThemeColor;
+  sidenavType: SidenavUiType;
+  fixedNavbar: boolean;
+  // other properties if they exist in the actual context state
+}
+
+type MaterialTailwindAction =
+  | { type: "OPEN_CONFIGURATOR"; value: boolean }
+  | { type: "SIDENAV_COLOR"; value: SidenavThemeColor }
+  | { type: "SIDENAV_TYPE"; value: SidenavUiType }
+  | { type: "FIXED_NAVBAR"; value: boolean }
+  | { type: string; value?: any }; // Fallback for other actions
+
+type MaterialTailwindDispatch = Dispatch<MaterialTailwindAction>;
+
+// Type for sidenavColors object
+type SidenavColorsStyleMap = Record<SidenavThemeColor, string>;
+
+
+function formatNumber(number: number, decPlaces: number): string | number {
   decPlaces = Math.pow(10, decPlaces);
 
   const abbrev = ["K", "M", "B", "T"];
+  let numStr: string | number = number;
 
   for (let i = abbrev.length - 1; i >= 0; i--) {
     var size = Math.pow(10, (i + 1) * 3);
 
     if (size <= number) {
-      number = Math.round((number * decPlaces) / size) / decPlaces;
+      numStr = Math.round((number * decPlaces) / size) / decPlaces;
 
-      if (number == 1000 && i < abbrev.length - 1) {
-        number = 1;
+      if (numStr == 1000 && i < abbrev.length - 1) {
+        numStr = 1;
         i++;
       }
-
-      number += abbrev[i];
-
+      numStr += abbrev[i];
       break;
     }
   }
-
-  return number;
+  return numStr;
 }
 
 export function Configurator() {
-  const [controller, dispatch] = useMaterialTailwindController();
+  const [controller, dispatch] = useMaterialTailwindController() as [MaterialTailwindState, MaterialTailwindDispatch];
   const { openConfigurator, sidenavColor, sidenavType, fixedNavbar } =
     controller;
-  const [stars, setStars] = React.useState(0);
+  const [stars, setStars] = React.useState<number | string>(0); // stars can be string like "6.8K"
 
-  const sidenavColors = {
+  const sidenavColors: SidenavColorsStyleMap = {
     white: "from-gray-100 to-gray-100 border-gray-200",
     dark: "from-black to-black border-gray-200",
     green: "from-green-400 to-green-600",
@@ -56,11 +80,16 @@ export function Configurator() {
   };
 
   React.useEffect(() => {
-    const stars = fetch(
+    fetch(
       "https://api.github.com/repos/creativetimofficial/material-tailwind-dashboard-react"
     )
       .then((response) => response.json())
-      .then((data) => setStars(formatNumber(data.stargazers_count, 1)));
+      .then((data) => {
+        if (data && typeof data.stargazers_count === 'number') {
+          setStars(formatNumber(data.stargazers_count, 1));
+        }
+      })
+      .catch(error => console.error("Error fetching GitHub stars:", error));
   }, []);
 
   return (
@@ -92,11 +121,12 @@ export function Configurator() {
             Sidenav Colors
           </Typography>
           <div className="mt-3 flex items-center gap-2">
-            {Object.keys(sidenavColors).map((color) => (
+            {/* Explicitly cast Object.keys to SidenavThemeColor[] */}
+            {(Object.keys(sidenavColors) as SidenavThemeColor[]).map((color: SidenavThemeColor) => (
               <span
                 key={color}
                 className={`h-6 w-6 cursor-pointer rounded-full border bg-gradient-to-br transition-transform hover:scale-105 ${
-                  sidenavColors[color]
+                  sidenavColors[color] // color is SidenavThemeColor, a valid key
                 } ${
                   sidenavColor === color ? "border-black" : "border-transparent"
                 }`}
@@ -115,19 +145,19 @@ export function Configurator() {
           <div className="mt-3 flex items-center gap-2">
             <Button
               variant={sidenavType === "dark" ? "gradient" : "outlined"}
-              onClick={() => setSidenavType(dispatch, "dark")}
+              onClick={() => setSidenavType(dispatch, "dark" as SidenavUiType)}
             >
               Dark
             </Button>
             <Button
               variant={sidenavType === "transparent" ? "gradient" : "outlined"}
-              onClick={() => setSidenavType(dispatch, "transparent")}
+              onClick={() => setSidenavType(dispatch, "transparent" as SidenavUiType)}
             >
               Transparent
             </Button>
             <Button
               variant={sidenavType === "white" ? "gradient" : "outlined"}
-              onClick={() => setSidenavType(dispatch, "white")}
+              onClick={() => setSidenavType(dispatch, "white" as SidenavUiType)}
             >
               White
             </Button>
@@ -141,7 +171,8 @@ export function Configurator() {
             </Typography>
             <Switch
               id="navbar-fixed"
-              value={fixedNavbar}
+              value={String(fixedNavbar)} // Switch value is usually string, ensure it's handled or cast if component expects boolean directly
+              checked={fixedNavbar} // Use checked for boolean state
               onChange={() => setFixedNavbar(dispatch, !fixedNavbar)}
             />
           </div>
@@ -149,7 +180,7 @@ export function Configurator() {
           <div className="my-8 flex flex-col gap-4">
             <a
               href="https://www.creative-tim.com/product/material-tailwind-dashboard-react?rel=mtdr"
-              target="_black"
+              target="_blank" rel="noopener noreferrer"
             >
               <Button variant="gradient" fullWidth>
                 Free Download
@@ -157,7 +188,7 @@ export function Configurator() {
             </a>
             <a
               href="https://www.material-tailwind.com/docs/react/installation?rel=mtdr"
-              target="_black"
+              target="_blank" rel="noopener noreferrer"
             >
               <Button variant="outlined" color="blue-gray" fullWidth>
                 View Documentation
@@ -165,7 +196,7 @@ export function Configurator() {
             </a>
             <a
               href="https://www.material-tailwind.com/blocks/react?rel=mtdr"
-              target="_black"
+              target="_blank" rel="noopener noreferrer"
             >
               <Button variant="outlined" color="blue-gray" fullWidth>
                 Material Tailwind PRO
@@ -176,10 +207,10 @@ export function Configurator() {
             className="mx-auto flex items-center justify-center gap-2"
             href="https://github.com/creativetimofficial/material-tailwind-dashboard-react"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer" // Already correct
           >
             <Chip
-              value={`${stars} - Stars`}
+              value={typeof stars === 'number' ? `${stars.toFixed(0)} - Stars` : `${stars} - Stars`}
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -4,8 +4,23 @@ import {
   UsersIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
+import { ForwardRefExoticComponent, SVGProps } from 'react';
 
-export const statisticsCardsData = [
+interface StatisticsCardFooter {
+  color: string;
+  value: string;
+  label: string;
+}
+
+interface StatisticsCard {
+  color: string;
+  icon: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, "ref"> & { title?: string, titleId?: string }>;
+  title: string;
+  value: string;
+  footer: StatisticsCardFooter;
+}
+
+export const statisticsCardsData: StatisticsCard[] = [
   {
     color: "gray",
     icon: BanknotesIcon,
