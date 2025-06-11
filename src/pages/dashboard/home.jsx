@@ -98,7 +98,7 @@ export function Home() {
               <MenuList>
                 <MenuItem>Action</MenuItem>
                 <MenuItem>Another Action</MenuItem>
-                <MenuItem>Something else here</MenuItem>
+                <MenuItem>Simulate Smiles</MenuItem>
               </MenuList>
             </Menu>
           </CardHeader>
