@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOBI INC - Drug Discovery Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 3Dmol.js for 3D visualization -->
+    <script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+    <!-- RDKit.js for proper SMILES parsing -->
+    <script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #000;
+            margin: 0;
+        }
+        .header {
+            padding: 20px 0;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .nav a:hover, .nav a.active {
+            opacity: 0.7;
+            background: #000;
+            color: #fff;
+        }
+        .main-content {
+            padding: 40px 0;
+        }
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            color: #000;
+        }
+        .section { display: none; }
+        .section.active { display: block; }
+
+        /* --- Home Section --- */
+        .welcome-section {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .welcome-section h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .welcome-section p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card i {
+            font-size: 3em;
+            color: #4facfe;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .feature-card p { color: #666; line-height: 1.6; }
+
+        /* --- Predictor Section --- */
+        .predictor-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .predictor-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .predictor-header h2 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .predictor-content {
+            background: white;
+            padding: 40px;
+        }
+        .input-group { margin-bottom: 20px; }
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .smiles-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+        }
+        .smiles-input:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+        .example-smiles {
+            margin-top: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        .example-smiles h4 { color: #333; margin-bottom: 8px; }
+        .example-item {
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .example-item:hover { background: #e9ecef; }
+        .predict-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .predict-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .predict-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .loading { display: none; text-align: center; margin: 20px 0; }
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4facfe;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+        }
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+        }
+        .results h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .result-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .result-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .result-card h4 {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .result-card .value {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+        .smiles-display {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        /* --- Viewer Section --- */
+        .viewer-container { max-width: 1000px; margin: 0 auto; }
+        .viewer-card {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .viewer-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .viewer-header h2 { font-size: 1.8em; font-weight: 600; }
+        .viewer-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .control-btn {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .control-btn:hover:not(:disabled) { background: rgba(255,255,255,0.3); border-color: rgba(255,255,255,0.5);}
+        .control-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .viewer-body { padding: 30px; }
+        .viewer-input-section { margin-bottom: 20px; }
+        .viewer-content {
+            height: 500px;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .molecule-placeholder {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #666;
+            z-index: 1;
+        }
+        .molecule-placeholder i { font-size: 64px; margin-bottom: 15px; color: #ccc; }
+        #molviewer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        .viewer-info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+        .viewer-info h4 { color: #1976d2; margin-bottom: 8px; }
+        .viewer-info p { color: #424242; font-size: 14px; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 20px; }
+            .nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .page-title { font-size: 32px; }
+            .predictor-content, .viewer-body { padding: 20px; }
+            .result-grid { grid-template-columns: 1fr; }
+            .viewer-content { height: 400px; }
+            .viewer-header { flex-direction: column; gap: 15px; text-align: center;}
+            .features-grid { grid-template-columns: 1fr;}
+            .welcome-section h2 { font-size: 2em;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">KOBI INC</div>
+                <nav>
+                    <ul class="nav">
+                        <li><a href="#" onclick="showSection('home')" class="nav-link active">HOME</a></li>
+                        <li><a href="#" onclick="showSection('predictor')" class="nav-link">DRUG PREDICTOR</a></li>
+                        <li><a href="#" onclick="showSection('viewer')" class="nav-link">MOL VIEWER</a></li>
+                        <li><a href="#" onclick="showSection('news')" class="nav-link">NEWS</a></li>
+                        <li><a href="#" onclick="showSection('science')" class="nav-link">SCIENCE</a></li>
+                        <li><a href="#" onclick="showSection('team')" class="nav-link">TEAM</a></li>
+                        <li><a href="#" onclick="showSection('contact')" class="nav-link">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        <!-- HOME Section -->
+        <div id="home" class="section active">
+            <div class="welcome-section">
+                <h2>Drug Discovery Platform</h2>
+                <p>Advanced computational tools for molecular analysis and drug sensitivity prediction powered by RDKit.js for accurate SMILES-to-3D conversion.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI-Powered Predictions</h3>
+                    <p>State-of-the-art machine learning models for accurate drug sensitivity predictions based on molecular structure analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-atom"></i>
+                    <h3>Real 3D Molecular Visualization</h3>
+                    <p>Interactive 3D molecular viewer with RDKit.js integration for consistent and accurate structural representation.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Glioblastoma Research</h3>
+                    <p>Specialized tools for glioblastoma drug discovery with validated models and comprehensive molecular databases.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DRUG PREDICTOR Section -->
+        <div id="predictor" class="section">
+            <h1 class="page-title">DRUG SENSITIVITY PREDICTOR</h1>
+            <div class="predictor-container">
+                <div class="predictor-header">
+                    <h2><i class="fas fa-microscope"></i> Glioblastoma Drug Sensitivity Predictor</h2>
+                    <p>Predict drug sensitivity using SMILES molecular representation</p>
+                </div>
+                <div class="predictor-content">
+                    <div class="input-group">
+                        <label for="smilesInput" class="input-label">
+                            <i class="fas fa-molecule"></i> Enter SMILES String:
+                        </label>
+                        <input type="text" 
+                            id="smilesInput" 
+                            class="smiles-input"
+                            placeholder="e.g., CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+                            autocomplete="off">
+                    </div>
+                    <div class="example-smiles">
+                        <h4><i class="fas fa-lightbulb"></i> Example SMILES (click to use):</h4>
+                        <div class="example-item" onclick="setSMILES('CN1C=NC2=C1C(=O)N(C(=O)N2C)C')">
+                            <strong>Caffeine:</strong> CN1C=NC2=C1C(=O)N(C(=O)N2C)C
+                        </div>
+                        <div class="example-item" onclick="setSMILES('CC(C)CC1=CC=C(C=C1)C(C)C(=O)O')">
+                            <strong>Ibuprofen:</strong> CC(C)CC1=CC=C(C=C1)C(C)C(=O)O
+                        </div>
+                        <div class="example-item" onclick="setSMILES('CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F')">
+                            <strong>Celecoxib:</strong> CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F
+                        </div>
+                    </div>
+                    <button id="predictBtn" class="predict-btn" onclick="predictSensitivity()">
+                        <i class="fas fa-brain"></i> Predict Drug Sensitivity
+                    </button>
+                    <div id="loading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Analyzing molecular structure...</p>
+                    </div>
+                    <div id="error" class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span id="errorMessage"></span>
+                    </div>
+                    <div id="results" class="results">
+                        <h3><i class="fas fa-chart-line"></i> Prediction Results</h3>
+                        <div class="result-grid">
+                            <div class="result-card">
+                                <i class="fas fa-flask"></i>
+                                <h4>IC50 Prediction</h4>
+                                <div class="value" id="ic50Value">-</div>
+                                <small>μM</small>
+                            </div>
+                            <div class="result-card">
+                                <i class="fas fa-percentage"></i>
+                                <h4>Sensitivity Score</h4>
+                                <div class="value" id="sensitivityScore">-</div>
+                            </div>
+                            <div class="result-card">
+                                <i class="fas fa-thermometer-half"></i>
+                                <h4>Sensitivity Category</h4>
+                                <div class="value" id="sensitivityCategory">-</div>
+                            </div>
+                        </div>
+                        <div class="smiles-display">
+                            <strong>Analyzed SMILES:</strong> <span id="analyzedSmiles">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOLECULAR VIEWER Section -->
+        <div id="viewer" class="section">
+            <h1 class="page-title">MOLECULAR VIEWER</h1>
+            <div class="viewer-container">
+                <div class="viewer-card">
+                    <div class="viewer-header">
+                        <h2><i class="fas fa-eye"></i> 3D Molecular Visualization with RDKit</h2>
+                        <div class="viewer-controls">
+                            <button class="control-btn" id="visualizeBtn" onclick="visualizeMolecule()">
+                                <i class="fas fa-play"></i> Visualize
+                            </button>
+                            <button class="control-btn" onclick="exportSMILES()">
+                                <i class="fas fa-download"></i> Export SMILES
+                            </button>
+                            <button class="control-btn" onclick="clearViewer()">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                            <button class="control-btn" onclick="toggleFullscreen()">
+                                <i class="fas fa-expand"></i> Fullscreen
+                            </button>
+                        </div>
+                    </div>
+                    <div class="viewer-body">
+                        <div class="viewer-input-section">
+                            <div class="input-group">
+                                <label for="viewerSmilesInput" class="input-label">
+                                    <i class="fas fa-molecule"></i> Enter SMILES String for Visualization:
+                                </label>
+                                <input type="text" 
+                                       id="viewerSmilesInput" 
+                                       class="smiles-input"
+                                       placeholder="e.g., CCO (ethanol), CN1C=NC2=C1C(=O)N(C(=O)N2C)C (caffeine)"
+                                       autocomplete="off"
+                                       value="CCO">
+                            </div>
+                            <div class="example-smiles">
+                                <h4><i class="fas fa-lightbulb"></i> Quick Examples:</h4>
+                                <div class="example-item" onclick="setViewerSMILES('CCO')">
+                                    <strong>Ethanol:</strong> CCO
+                                </div>
+                                <div class="example-item" onclick="setViewerSMILES('CN1C=NC2=C1C(=O)N(C(=O)N2C)C')">
+                                    <strong>Caffeine:</strong> CN1C=NC2=C1C(=O)N(C(=O)N2C)C
+                                </div>
+                                <div class="example-item" onclick="setViewerSMILES('CC(C)CC1=CC=C(C=C1)C(C)C(=O)O')">
+                                    <strong>Ibuprofen:</strong> CC(C)CC1=CC=C(C=C1)C(C)C(=O)O
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viewer-content" id="moleculeViewer">
+                            <div class="molecule-placeholder" id="placeholder">
+                                <i class="fas fa-atom"></i>
+                                <p>Enter a SMILES string and click "Visualize" to view the 3D molecule</p>
+                                <small>Powered by RDKit.js for accurate molecular structure generation</small>
+                            </div>
+                            <div id="molviewer"></div>
+                        </div>
+                        <div class="viewer-info">
+                            <h4><i class="fas fa-info-circle"></i> About the Molecular Viewer</h4>
+                            <p>This viewer uses RDKit.js to convert SMILES strings into accurate 3D molecular structures. The same SMILES string will always generate the same 3D conformation, ensuring consistency. You can rotate, zoom, and interact with the molecules in real-time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEWS Section -->
+        <div id="news" class="section">
+            <h1 class="page-title">IN THE NEWS</h1>
+            <!-- (Omitted for brevity; your existing news code here) -->
+            <div class="news-item">
+                <div class="news-date">10/9/2024</div>
+                <h2 class="news-title">Kobi Inc Founder Awarded Breakthrough Prize in Drug Discovery</h2>
+                <p class="news-excerpt">Our scientific founder has been recognized for pioneering work in computational drug design. The science behind Kobi's mission builds directly upon this original di[...]</p>
+                <a href="#" class="read-more">READ MORE</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-date">6/4/2024</div>
+                <h2 class="news-title">Kobi Inc Expands Series A Financing to $71 Million to Advance Computational Drug Design</h2>
+                <p class="news-excerpt">Kobi Inc announced today that it has expanded its Series A financing to $71 million, led by Arch Venture Partners with participation from Menlo Ventures, Madrona Ve[...]</p>
+                <a href="#" class="read-more">READ MORE</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-date">4/25/2024</div>
+                <h2 class="news-title">Kobi Inc Announces New Publication in Science Validating Foundational Approach</h2>
+                <p class="news-excerpt">Kobi Inc announced a new publication in Science validating the foundational approach to design of novel chemically diverse compounds. The study demonstrates breakth[...]</p>
+                <a href="#" class="read-more">READ MORE</a>
+            </div>
+        </div>
+
+        <!-- SCIENCE Section -->
+        <div id="science" class="section">
+            <h1 class="page-title">SCIENCE</h1>
+            <p>Science content coming soon...</p>
+        </div>
+
+        <!-- TEAM Section -->
+        <div id="team" class="section">
+            <h1 class="page-title">TEAM</h1>
+            <p>Team content coming soon...</p>
+        </div>
+
+        <!-- CONTACT Section -->
+        <div id="contact" class="section">
+            <h1 class="page-title">CONTACT</h1>
+            <p>Contact content coming soon...</p>
+        </div>
+    </main>
+    <script>
+        // --- NAVIGATION ---
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        function setViewerSMILES(smiles) {
+            document.getElementById('viewerSmilesInput').value = smiles;
+            document.getElementById('viewerSmilesInput').focus();
+        }
+
+        // ---- Drug Sensitivity Predictor logic ----
+        const API_BASE_URL = 'http://152.42.134.22:5000';
+
+        function setSMILES(smiles) {
+            document.getElementById('smilesInput').value = smiles;
+            document.getElementById('smilesInput').focus();
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('predictBtn').disabled = true;
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('predictBtn').disabled = false;
+        }
+
+        function showError(message) {
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('results').style.display = 'none';
+        }
+
+        function showResults(data) {
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('ic50Value').textContent = data.prediction.ic50_prediction.toFixed(3);
+            document.getElementById('sensitivityScore').textContent = data.prediction.sensitivity_score.toFixed(4);
+            document.getElementById('sensitivityCategory').textContent = data.prediction.sensitivity_category;
+            document.getElementById('analyzedSmiles').textContent = data.smiles;
+            const categoryElement = document.getElementById('sensitivityCategory');
+            const category = data.prediction.sensitivity_category.toLowerCase();
+            if (category.includes('high')) {
+                categoryElement.style.color = '#28a745';
+            } else if (category.includes('moderate')) {
+                categoryElement.style.color = '#ffc107';
+            } else if (category.includes('low')) {
+                categoryElement.style.color = '#dc3545';
+            }
+        }
+
+        async function predictSensitivity() {
+            const smilesInput = document.getElementById('smilesInput').value.trim();
+            if (!smilesInput) {
+                showError('Please enter a SMILES string');
+                return;
+            }
+            showLoading();
+            try {
+                const response = await fetch(`${API_BASE_URL}/predict`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ smiles: smilesInput }),
+                    mode: 'cors'
+                });
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                if (data.status === 'success') {
+                    showResults(data);
+                } else {
+                    showError('Prediction failed. Please check your SMILES string and try again.');
+                }
+            } catch (error) {
+                if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                    showError('CORS Error: Cannot connect to backend. Please check your server configuration.');
+                } else if (error.message.includes('CORS')) {
+                    showError('CORS Error: Please add CORS support to your backend.');
+                } else {
+                    showError(`Connection Error: ${error.message}`);
+                }
+            } finally {
+                hideLoading();
+            }
+        }
+
+        document.getElementById('smilesInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                predictSensitivity();
+            }
+        });
+
+        // --- MOL VIEWER LOGIC ---
+        let viewer3d = null;
+        let RDKit = null;
+        let rdkitReady = false;
+        window.initRDKitModule().then(function(rdkit) {
+            RDKit = rdkit;
+            rdkitReady = true;
+            initializeViewer();
+        }).catch(function(error) {
+            showViewerError('Failed to load RDKit library. Some features may be limited.');
+            initializeViewer();
+        });
+        function initializeViewer() {
+            const viewerElement = document.getElementById('molviewer');
+            if (viewerElement) {
+                viewer3d = $3Dmol.createViewer(viewerElement, {
+                    backgroundColor: 'white',
+                    antialias: true
+                });
+            }
+        }
+        async function visualizeMolecule() {
+            const smilesInput = document.getElementById('viewerSmilesInput').value.trim();
+            if (!smilesInput) {
+                showViewerError('Please enter a SMILES string to visualize');
+                return;
+            }
+            document.getElementById('visualizeBtn').disabled = true;
+            document.getElementById('visualizeBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            // Try RDKit.js
+            if (rdkitReady && RDKit) {
+                try {
+                    const mol = RDKit.get_mol(smilesInput);
+                    if (!mol || mol.is_valid() === 0) {
+                        mol?.delete();
+                        throw new Error('Invalid SMILES string');
+                    }
+                    const molblock = mol.get_molblock();
+                    if (!viewer3d) initializeViewer();
+                    viewer3d.clear();
+                    viewer3d.addModel(molblock, 'sdf');
+                    viewer3d.setStyle({}, {
+                        stick: {radius: 0.15, colorscheme: 'default'},
+                        sphere: {scale: 0.25, colorscheme: 'default'}
+                    });
+                    viewer3d.zoomTo();
+                    viewer3d.render();
+                    document.getElementById('placeholder').style.display = 'none';
+                    mol.delete();
+                    document.getElementById('visualizeBtn').disabled = false;
+                    document.getElementById('visualizeBtn').innerHTML = '<i class="fas fa-play"></i> Visualize';
+                    return;
+                } catch (error) {
+                    // RDKit failed, try fallback below
+                }
+            }
+            // Fallback: PubChem API
+            try {
+                const cidResponse = await fetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${encodeURIComponent(smilesInput)}/cids/JSON`);
+                if (!cidResponse.ok) throw new Error('Molecule not found in PubChem');
+                const cidData = await cidResponse.json();
+                const cid = cidData.IdentifierList.CID[0];
+                const sdfResponse = await fetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cid}/SDF?record_type=3d`);
+                if (!sdfResponse.ok) throw new Error('3D structure not available');
+                const sdf = await sdfResponse.text();
+                if (!viewer3d) initializeViewer();
+                viewer3d.clear();
+                viewer3d.addModel(sdf, 'sdf');
+                viewer3d.setStyle({}, {
+                    stick: {radius: 0.15, colorscheme: 'default'},
+                    sphere: {scale: 0.25, colorscheme: 'default'}
+                });
+                viewer3d.zoomTo();
+                viewer3d.render();
+                document.getElementById('placeholder').style.display = 'none';
+            } catch (error) {
+                // Final fallback: Show error
+                showViewerError('All visualization methods failed. Please check your SMILES string.');
+            } finally {
+                document.getElementById('visualizeBtn').disabled = false;
+                document.getElementById('visualizeBtn').innerHTML = '<i class="fas fa-play"></i> Visualize';
+            }
+        }
+        function showViewerError(message) {
+            document.getElementById('placeholder').style.display = 'block';
+            document.getElementById('placeholder').innerHTML = `
+                <i class="fas fa-exclamation-triangle" style="color: #dc3545; font-size: 48px; margin-bottom: 15px;"></i>
+                <p style="color: #dc3545; font-weight: 600;">${message}</p>
+                <small style="color: #666;">Please check your SMILES string and try again</small>
+            `;
+        }
+        function exportSMILES() {
+            const smilesInput = document.getElementById('viewerSmilesInput').value.trim();
+            if (!smilesInput) {
+                alert('No SMILES string to export. Please enter a molecule first.');
+                return;
+            }
+            const blob = new Blob([smilesInput], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'molecule.smi';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+        function clearViewer() {
+            document.getElementById('viewerSmilesInput').value = '';
+            document.getElementById('placeholder').style.display = 'block';
+            document.getElementById('placeholder').innerHTML = `
+                <i class="fas fa-atom"></i>
+                <p>Enter a SMILES string and click "Visualize" to view the 3D molecule</p>
+                <small>Powered by RDKit.js for accurate molecular structure generation</small>
+            `;
+            if (viewer3d) {
+                viewer3d.clear();
+                viewer3d.render();
+            }
+        }
+        function toggleFullscreen() {
+            const viewerElement = document.getElementById('moleculeViewer');
+            if (!document.fullscreenElement) {
+                viewerElement.requestFullscreen().then(() => {
+                    viewerElement.style.position = 'fixed';
+                    viewerElement.style.top = '0';
+                    viewerElement.style.left = '0';
+                    viewerElement.style.width = '100vw';
+                    viewerElement.style.height = '100vh';
+                    viewerElement.style.zIndex = '9999';
+                    viewerElement.style.background = 'white';
+                    if (viewer3d) {
+                        setTimeout(() => {
+                            viewer3d.resize();
+                            viewer3d.render();
+                        }, 100);
+                    }
+                });
+            } else {
+                document.exitFullscreen().then(() => {
+                    viewerElement.style.position = '';
+                    viewerElement.style.top = '';
+                    viewerElement.style.left = '';
+                    viewerElement.style.width = '';
+                    viewerElement.style.height = '';
+                    viewerElement.style.zIndex = '';
+                    viewerElement.style.background = '';
+                    if (viewer3d) {
+                        setTimeout(() => {
+                            viewer3d.resize();
+                            viewer3d.render();
+                        }, 100);
+                    }
+                });
+            }
+        }
+        document.getElementById('viewerSmilesInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                visualizeMolecule();
+            }
+        });
+    </script>
+</body>
+</html>

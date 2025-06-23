@@ -1,0 +1,208 @@
+/* Minimal mcule.com style for molecule viewer */
+.molecule-2d-viewer {
+  background: #fff !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible;
+  transition: none;
+}
+
+.molecule-2d-viewer:hover {
+  box-shadow: none !important;
+}
+
+.molecule-atom {
+  cursor: pointer;
+  transition: none;
+}
+
+.molecule-atom:hover {
+  transform: none !important;
+  filter: none !important;
+}
+
+.molecule-atom.selected {
+  filter: none !important;
+}
+
+/* Bond styles */
+.molecule-bond {
+  transition: none;
+}
+
+.molecule-bond:hover {
+  stroke-width: 1.2px !important;
+}
+
+/* Atom label enhancements */
+.atom-label {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  pointer-events: none;
+  text-shadow: none;
+}
+
+/* Chemical element specific styling */
+.atom-carbon { fill: #909090; }
+.atom-hydrogen { fill: #FFFFFF; stroke: #808080; }
+.atom-nitrogen { fill: #3050F8; }
+.atom-oxygen { fill: #FF0D0D; }
+.atom-sulfur { fill: #FFFF30; }
+.atom-phosphorus { fill: #FF8000; }
+.atom-fluorine { fill: #90E050; }
+.atom-chlorine { fill: #1FF01F; }
+.atom-bromine { fill: #A62929; }
+.atom-iodine { fill: #940094; }
+
+/* Bond order specific styling */
+.bond-single {
+  stroke: #2C2C2C;
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+}
+
+.bond-double {
+  stroke: #2C2C2C;
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+.bond-triple {
+  stroke: #2C2C2C;
+  stroke-width: 1.8px;
+  stroke-linecap: round;
+}
+
+/* Loading animation */
+.molecule-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+}
+
+.molecule-loader .spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Molecule information overlay */
+.molecule-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .molecule-2d-viewer {
+    border-radius: 8px;
+  }
+  
+  .molecule-2d-viewer svg {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px;
+  }
+  
+  .atom-label {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .molecule-2d-viewer {
+    border-radius: 6px;
+  }
+  
+  .molecule-loader {
+    height: 200px;
+  }
+  
+  .molecule-loader .spinner {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Enhanced visual effects */
+.molecule-2d-viewer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  opacity: 0.6;
+}
+
+/* Molecular formula display */
+.molecular-formula {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* Bond angle indicators */
+.bond-angle {
+  fill: none;
+  stroke: #3498db;
+  stroke-width: 1px;
+  stroke-dasharray: 2,2;
+  opacity: 0.6;
+}
+
+/* Stereochemistry indicators */
+.stereo-wedge {
+  fill: #2c3e50;
+}
+
+.stereo-dash {
+  stroke: #2c3e50;
+  stroke-width: 2px;
+  stroke-dasharray: 3,3;
+}
+
+/* Aromatic ring highlighting */
+.aromatic-ring {
+  fill: none;
+  stroke: #e74c3c;
+  stroke-width: 1px;
+  stroke-dasharray: 4,4;
+  opacity: 0.7;
+  animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}

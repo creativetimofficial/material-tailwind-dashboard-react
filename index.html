@@ -20,18 +20,28 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ 
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+
+    <!-- 3Dmol.js for 3D visualization -->
+    <script src="https://3dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+    <!-- RDKit.js for proper SMILES parsing -->
+    <script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script>
     
-    <!-- Nepcha Analytics (nepcha.com) -->
-    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <!-- Initialize RDKit -->
+    <script>
+        window.initRDKitModule = function() {
+            return new Promise((resolve, reject) => {
+                if (window.RDKit) {
+                    window.RDKit().then(resolve).catch(reject);
+                } else {
+                    reject(new Error('RDKit not loaded'));
+                }
+            });
+        };
+    </script>
   </head>
   <body>
     <div id="root"></div>
