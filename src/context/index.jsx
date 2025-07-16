@@ -24,6 +24,9 @@ export function reducer(state, action) {
     case "OPEN_CONFIGURATOR": {
       return { ...state, openConfigurator: action.value };
     }
+    case "AUTH_STATUS": {
+      return { ...state, isAuthenticated: action.value}
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -33,11 +36,12 @@ export function reducer(state, action) {
 export function MaterialTailwindControllerProvider({ children }) {
   const initialState = {
     openSidenav: false,
-    sidenavColor: "dark",
+    sidenavColor: "blue-gray", 
     sidenavType: "white",
     transparentNavbar: true,
     fixedNavbar: false,
     openConfigurator: false,
+    isAuthenticated: Boolean(localStorage.getItem("token")),
   };
 
   const [controller, dispatch] = React.useReducer(reducer, initialState);
@@ -83,3 +87,5 @@ export const setFixedNavbar = (dispatch, value) =>
   dispatch({ type: "FIXED_NAVBAR", value });
 export const setOpenConfigurator = (dispatch, value) =>
   dispatch({ type: "OPEN_CONFIGURATOR", value });
+export const setAuthStatus = (dispatch, value) => 
+  dispatch({type: "AUTH_STATUS", value})
