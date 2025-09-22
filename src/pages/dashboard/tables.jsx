@@ -203,7 +203,7 @@ export function Tables() {
                           <EllipsisVerticalIcon
                             strokeWidth={2}
                             className="h-5 w-5 text-inherit"
-                          />
+                          />a
                         </Typography>
                       </td>
                     </tr>
