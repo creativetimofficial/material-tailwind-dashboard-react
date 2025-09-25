@@ -24,6 +24,10 @@ export function reducer(state, action) {
     case "OPEN_CONFIGURATOR": {
       return { ...state, openConfigurator: action.value };
     }
+      // YENİ: Kullanıcı rolünü ayarlamak için yeni case eklendi.
+    case "SET_USER_ROLE": {
+      return { ...state, userRole: action.value };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -38,18 +42,20 @@ export function MaterialTailwindControllerProvider({ children }) {
     transparentNavbar: true,
     fixedNavbar: false,
     openConfigurator: false,
+    // YENİ: userRole state'i eklendi. Sayfa yenilendiğinde rolün kaybolmaması için localStorage'dan okunuyor.
+    userRole: localStorage.getItem("userRole") || null,
   };
 
   const [controller, dispatch] = React.useReducer(reducer, initialState);
   const value = React.useMemo(
-    () => [controller, dispatch],
-    [controller, dispatch]
+      () => [controller, dispatch],
+      [controller, dispatch]
   );
 
   return (
-    <MaterialTailwind.Provider value={value}>
-      {children}
-    </MaterialTailwind.Provider>
+      <MaterialTailwind.Provider value={value}>
+        {children}
+      </MaterialTailwind.Provider>
   );
 }
 
@@ -58,7 +64,7 @@ export function useMaterialTailwindController() {
 
   if (!context) {
     throw new Error(
-      "useMaterialTailwindController should be used inside the MaterialTailwindControllerProvider."
+        "useMaterialTailwindController should be used inside the MaterialTailwindControllerProvider."
     );
   }
 
@@ -72,14 +78,18 @@ MaterialTailwindControllerProvider.propTypes = {
 };
 
 export const setOpenSidenav = (dispatch, value) =>
-  dispatch({ type: "OPEN_SIDENAV", value });
+    dispatch({ type: "OPEN_SIDENAV", value });
 export const setSidenavType = (dispatch, value) =>
-  dispatch({ type: "SIDENAV_TYPE", value });
+    dispatch({ type: "SIDENAV_TYPE", value });
 export const setSidenavColor = (dispatch, value) =>
-  dispatch({ type: "SIDENAV_COLOR", value });
+    dispatch({ type: "SIDENAV_COLOR", value });
 export const setTransparentNavbar = (dispatch, value) =>
-  dispatch({ type: "TRANSPARENT_NAVBAR", value });
+    dispatch({ type: "TRANSPARENT_NAVBAR", value });
 export const setFixedNavbar = (dispatch, value) =>
-  dispatch({ type: "FIXED_NAVBAR", value });
+    dispatch({ type: "FIXED_NAVBAR", value });
 export const setOpenConfigurator = (dispatch, value) =>
-  dispatch({ type: "OPEN_CONFIGURATOR", value });
+    dispatch({ type: "OPEN_CONFIGURATOR", value });
+
+
+export const setUserRole = (dispatch, value) =>
+    dispatch({ type: "SET_USER_ROLE", value });

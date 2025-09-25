@@ -5,9 +5,23 @@ import {
   InformationCircleIcon,
   ServerStackIcon,
   RectangleStackIcon,
+  TruckIcon,
+  MapIcon,
+  Squares2X2Icon,
+  QueueListIcon, // 1. YENİ: Sıra Yönetimi sayfası için gerekli ikonu import edelim
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
-import { SignIn, SignUp } from "@/pages/auth";
+
+// 1. YENİ: Yeni sayfa bileşenimizi de diğerlerinin yanına import edelim
+import {
+  Home,
+  Profile,
+  Tables,
+  Notifications,
+  QueueManagementPage
+} from "@/pages/dashboard";
+
+
+import { SignIn } from "@/pages/auth";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -18,28 +32,40 @@ export const routes = [
     layout: "dashboard",
     pages: [
       {
-        icon: <HomeIcon {...icon} />,
-        name: "dashboard",
+        icon: <Squares2X2Icon {...icon} />,
+        name: "Araç Sıraları",
         path: "/home",
         element: <Home />,
       },
+      // 2. YENİ: "Sıra Yönetimi" sayfasını menüye ekleyelim
+      // Bu, feature branch'inden gelen ana özelliktir.
+      {
+        icon: <QueueListIcon {...icon} />,
+        name: "Sıra Yönetimi",
+        path: "/queue-management",
+        element: <QueueManagementPage />,
+        roles: ['admin'], // Sadece adminler görebilir
+      },
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
+        name: "Kullanıcılar",
         path: "/profile",
         element: <Profile />,
+        roles: ['admin'],
       },
       {
-        icon: <TableCellsIcon {...icon} />,
-        name: "tables",
+        icon: <TruckIcon {...icon} />,
+        name: "Araçlar",
         path: "/tables",
         element: <Tables />,
+        roles: ['admin'],
       },
       {
-        icon: <InformationCircleIcon {...icon} />,
-        name: "notifications",
+        icon: <MapIcon {...icon} />,
+        name: "Güzergahlar",
         path: "/notifications",
         element: <Notifications />,
+        roles: ['admin'],
       },
     ],
   },
@@ -52,12 +78,6 @@ export const routes = [
         name: "sign in",
         path: "/sign-in",
         element: <SignIn />,
-      },
-      {
-        icon: <RectangleStackIcon {...icon} />,
-        name: "sign up",
-        path: "/sign-up",
-        element: <SignUp />,
       },
     ],
   },
