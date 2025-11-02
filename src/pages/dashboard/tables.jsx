@@ -9,7 +9,8 @@ import {
   Progress,
 } from "@material-tailwind/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
-import { authorsTableData, projectsTableData } from "@/data";
+import { authorsTableData, projectsTableData, stationsTableData } from "@/data";
+import { format } from "prettier";
 
 export function Tables() {
   return (
@@ -193,6 +194,121 @@ export function Tables() {
                             className="h-1"
                           />
                         </div>
+                      </td>
+                      <td className={className}>
+                        <Typography
+                          as="a"
+                          href="#"
+                          className="text-xs font-semibold text-blue-gray-600"
+                        >
+                          <EllipsisVerticalIcon
+                            strokeWidth={2}
+                            className="h-5 w-5 text-inherit"
+                          />
+                        </Typography>
+                      </td>
+                    </tr>
+                  );
+                }
+              )}
+            </tbody>
+          </table>
+        </CardBody>
+      </Card>
+       <Card>
+        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
+          <Typography variant="h6" color="white">
+            Stations Table
+          </Typography>
+        </CardHeader>
+        <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
+          <table className="w-full min-w-[640px] table-auto">
+            <thead>
+              <tr>
+                {["Plant Name", "Code", "Address", "longitude", "latitude", "Capacity","Grid Date",""].map(
+                  (el) => (
+                    <th
+                      key={el}
+                      className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                    >
+                      <Typography
+                        variant="small"
+                        className="text-[11px] font-bold uppercase text-blue-gray-400"
+                      >
+                        {el}
+                      </Typography>
+                    </th>
+                  )
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              {stationsTableData.map(
+                ({ plantName, plantCode, plantAddress, longitude, latitude, capacity, gridConnectionDate }, key) => {
+                  const className = `py-3 px-5 ${
+                    key === stationsTableData.length - 1
+                      ? ""
+                      : "border-b border-blue-gray-50"
+                  }`;
+
+                  return (
+                    <tr key={plantName}>
+                      <td className={className}>
+                        <div className="flex items-center gap-4">
+                          <Avatar src="/img/factory-svgrepo-com.svg" alt={plantName} size="sm" />
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-bold"
+                          >
+                            {plantName}
+                          </Typography>
+                        </div>
+                      </td>
+                      <td className={className}>
+                        <Typography
+                          variant="small"
+                          className="text-xs font-medium text-blue-gray-600"
+                        >
+                          {plantCode}
+                        </Typography>
+                      </td>
+                      <td className={className}>
+                        <Typography
+                          variant="small"
+                          className="text-xs font-medium text-blue-gray-600"
+                        >
+                          {plantAddress}
+                        </Typography>
+                      </td>
+                      <td className={className}>
+                        <Typography
+                          variant="small"
+                          className="text-xs font-medium text-blue-gray-600"
+                        >
+                          {longitude}
+                        </Typography>
+                      </td>
+                      <td className={className}>
+                        <Typography
+                          variant="small"
+                          className="text-xs font-medium text-blue-gray-600"
+                        >
+                          {latitude}
+                        </Typography>
+                      </td>
+                      <td className={className}>
+                        <Typography
+                          variant="small"
+                          className="text-xs font-medium text-blue-gray-600"
+                        >
+                          {capacity}
+                        </Typography>
+                      </td>
+                      <td className={className}>
+                        <Typography className="text-xs font-semibold text-blue-gray-600">
+                          {gridConnectionDate}
+                        </Typography>
                       </td>
                       <td className={className}>
                         <Typography

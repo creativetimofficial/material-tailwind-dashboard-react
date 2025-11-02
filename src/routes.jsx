@@ -6,7 +6,7 @@ import {
   ServerStackIcon,
   RectangleStackIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
+import { Home, Profile, Tables, Fetch, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 
 const icon = {
@@ -34,6 +34,12 @@ export const routes = [
         name: "tables",
         path: "/tables",
         element: <Tables />,
+      },
+      {
+        icon: <TableCellsIcon {...icon} />,
+        name: "fetch",
+        path: "/fetch",
+        element: <Fetch />,
       },
       {
         icon: <InformationCircleIcon {...icon} />,
