@@ -1,8 +1,37 @@
-export * from "@/data/statistics-cards-data";
-export * from "@/data/statistics-charts-data";
-export * from "@/data/projects-table-data";
-export * from "@/data/orders-overview-data";
-export * from "@/data/platform-settings-data";
-export * from "@/data/conversations-data";
-export * from "@/data/projects-data";
-export * from "@/data/authors-table-data";
+export {
+  initialProjects,
+  getProjectById,
+  getProjectsByStatus,
+  getProjectsByPriority,
+} from './initialProjects';
+export {
+  initialTeamMembers,
+  getTeamMemberById,
+  getTeamMembersByDepartment,
+  getTeamMembersByStatus,
+  getOnlineMembers,
+} from './initialTeamMembers';
+export {
+  initialNotifications,
+  getNotificationById,
+  getUnreadNotifications,
+  getNotificationsByType,
+  getNotificationsByCategory,
+  getRecentNotifications,
+} from './initialNotifications';
+export {
+  dashboardStatistics,
+  projectsByPriority,
+  projectsByStatus,
+  teamByDepartment,
+  budgetAllocation,
+  monthlyRevenue,
+  projectTimeline,
+  taskStatistics,
+  teamPerformance,
+  clientSatisfaction,
+  getTotalRevenue,
+  getTotalProfit,
+  getAverageClientSatisfaction,
+  getTaskCompletionRate,
+} from './statistics';

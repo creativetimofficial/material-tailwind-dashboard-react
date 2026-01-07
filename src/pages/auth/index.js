@@ -1,2 +1,3 @@
-export * from "@/pages/auth/sign-in";
-export * from "@/pages/auth/sign-up";
+export { LoginPage } from './LoginPage';
+export { SignUpPage } from './SignUpPage';
+export { ForgotPasswordPage } from './ForgotPasswordPage';
