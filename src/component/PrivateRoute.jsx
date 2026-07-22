@@ -6,7 +6,7 @@ const PrivateRoute = ({ children }) => {
 
   if (!token) {
     // Token yoksa login sayfasına yönlendir
-    return <Navigate to="/auth/sign-in" replace />;
+    return <Navigate to="/auth/giris" replace />;
   }
 
   return children;
