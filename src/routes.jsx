@@ -1,13 +1,31 @@
 import {
   HomeIcon,
   UserCircleIcon,
-  TableCellsIcon,
-  InformationCircleIcon,
+  TruckIcon,
+  MapIcon,
+  Squares2X2Icon,
+  QueueListIcon,
+  PaperAirplaneIcon,
   ServerStackIcon,
-  RectangleStackIcon,
+  BanknotesIcon,
+  ClipboardDocumentListIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
-import { SignIn, SignUp } from "@/pages/auth";
+
+import {
+  Home,
+  Profile,
+  Tables,
+  Notifications,
+  QueueManagementPage,
+  DispatchPage,
+  MyProfile,
+  AccountingPage,
+  MyAccounting,
+} from "@/pages/dashboard";
+
+import { SignIn } from "@/pages/auth";
+import TVQueuePage from "./pages/dashboard/TVQueuePage";
+import DispatchDetailPage from "./pages/dashboard/DispatchDetailPage";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -15,49 +33,97 @@ const icon = {
 
 export const routes = [
   {
-    layout: "dashboard",
+    layout: "anasayfa",
     pages: [
       {
-        icon: <HomeIcon {...icon} />,
-        name: "dashboard",
-        path: "/home",
+        icon: <Squares2X2Icon {...icon} />,
+        name: "Araç Sıraları",
+        path: "/arac-siralari",
         element: <Home />,
       },
       {
+        icon: <BanknotesIcon {...icon} />,
+        name: "Cari Hesaplar",
+        path: "/cari-hesaplar",
+        element: <AccountingPage />,
+        roles: ['muhasebeci'],
+      },
+      {
+        icon: <ClipboardDocumentListIcon {...icon} />,
+        name: "Cari İşlemlerim",
+        path: "/cari-bilgilerim",
+        element: <MyAccounting />,
+        roles: ['user'],
+      },
+      {
+        icon: <QueueListIcon {...icon} />,
+        name: "Sıra Yönetimi",
+        path: "/sira-yonetimi",
+        element: <QueueManagementPage />,
+        roles: ['admin'],
+      },
+      {
+        icon: <PaperAirplaneIcon {...icon} />,
+        name: "Özel Görev",
+        path: "/ozel-gorev",
+        element: <DispatchPage />,
+        roles: ['admin'],
+      },
+      {
+        hidden: true,
+        path: "/ozel-gorev/:routeId",
+        element: <DispatchDetailPage />,
+        roles: ['admin'],
+      },
+      {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/profile",
+        name: "Kullanıcılar",
+        path: "/kullanicilar",
         element: <Profile />,
+        roles: ['admin'],
       },
       {
-        icon: <TableCellsIcon {...icon} />,
-        name: "tables",
-        path: "/tables",
+        icon: <TruckIcon {...icon} />,
+        name: "Araçlar",
+        path: "/araclar",
         element: <Tables />,
+        roles: ['admin'],
       },
       {
-        icon: <InformationCircleIcon {...icon} />,
-        name: "notifications",
-        path: "/notifications",
+        icon: <MapIcon {...icon} />,
+        name: "Güzergahlar",
+        path: "/guzergahlar",
         element: <Notifications />,
+        roles: ['admin'],
+      },
+      {
+        icon: <UserCircleIcon {...icon} />,
+        name: "Profilim",
+        path: "/profilim",
+        element: <MyProfile />,
+        roles: ['user'],
       },
     ],
   },
   {
-    title: "auth pages",
+    title: "Giriş İşlemleri",
     layout: "auth",
     pages: [
       {
         icon: <ServerStackIcon {...icon} />,
-        name: "sign in",
-        path: "/sign-in",
+        name: "Giriş Yap",
+        path: "/giris",
         element: <SignIn />,
       },
+    ],
+  },
+  {
+    layout: "tv",
+    pages: [
       {
-        icon: <RectangleStackIcon {...icon} />,
-        name: "sign up",
-        path: "/sign-up",
-        element: <SignUp />,
+        name: "TV Monitor",
+        path: "/monitor",
+        element: <TVQueuePage />,
       },
     ],
   },

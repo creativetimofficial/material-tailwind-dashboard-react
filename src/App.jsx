@@ -1,12 +1,29 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Dashboard, Auth } from "@/layouts";
+import PrivateRoute from "../src/component/PrivateRoute";
+import TVQueuePage from "./pages/dashboard/TVQueuePage";
 
 function App() {
   return (
+
+
+
+
     <Routes>
-      <Route path="/dashboard/*" element={<Dashboard />} />
+      <Route
+        path="/anasayfa/*"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+
+      <Route path="/tv/monitor" element={<TVQueuePage />} />
+      {/* Auth sayfaları (giriş, kayıt) herkes görebilir */}
       <Route path="/auth/*" element={<Auth />} />
-      <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
+      {/* Varsayılan yönlendirme */}
+      <Route path="*" element={<Navigate to="/auth/giris" replace />} />
     </Routes>
   );
 }
